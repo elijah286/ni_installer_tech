@@ -296,9 +296,30 @@
 
                     <Expander Header="Organization-approved repository (advanced)" FontWeight="SemiBold">
                         <Border Classes="card" Margin="0,10,0,0" Padding="16">
-                            <StackPanel Spacing="6">
-                                <TextBlock Text="NI-hosted catalog is selected by default" FontWeight="SemiBold" />
-                                <TextBlock Text="Organizations may later select a validated repository or baseline that pins approved component versions. That is not required for normal setup." Classes="muted" TextWrapping="Wrap" />
+                            <StackPanel Spacing="11">
+                                <TextBlock Text="Prototype source repository" FontWeight="SemiBold" />
+                                <TextBlock Text="Use the internal SMB source only for this prototype. Windows first attempts your current sign-in; enter an approved SMB account only if the NAS requires it. The password is cleared after each attempt and is never stored." Classes="muted" TextWrapping="Wrap" />
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="9">
+                                    <StackPanel Spacing="4">
+                                        <TextBlock Text="Repository path" Classes="muted" FontSize="12" />
+                                        <TextBox Text="{Binding RepositoryPath}" PlaceholderText="\\192.168.68.125\Files\NISetupPrototypeRepository" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Spacing="4">
+                                        <TextBlock Text="SMB user name (optional)" Classes="muted" FontSize="12" />
+                                        <TextBox Text="{Binding RepositoryUserName}" PlaceholderText="Use current Windows sign-in" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="1" Spacing="4">
+                                        <TextBlock Text="SMB password (optional)" Classes="muted" FontSize="12" />
+                                        <TextBox Text="{Binding RepositoryPassword}" PasswordChar="●" PlaceholderText="Used once; never saved" />
+                                    </StackPanel>
+                                    <Button Grid.Row="1" Grid.Column="1" Classes="primary" Command="{Binding ConnectRepositoryCommand}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Connect and verify source" />
+                                </Grid>
+                                <Border Background="#EDF6F3" CornerRadius="6" Padding="11,8">
+                                    <StackPanel Spacing="3">
+                                        <TextBlock Text="{Binding RepositoryStatus}" Foreground="{Binding RepositoryStatusColor}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                        <TextBlock Text="{Binding RepositoryDetails}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                </Border>
                             </StackPanel>
                         </Border>
                     </Expander>
@@ -312,7 +333,7 @@
                 <StackPanel IsVisible="{Binding IsReviewStep}" Spacing="23">
                     <StackPanel Spacing="8">
                         <TextBlock Text="Review before installation" Classes="display" />
-                        <TextBlock Text="Nothing will change until you select Install. This prototype simulates the deployment plan only." Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                        <TextBlock Text="Nothing will change until you select Install. The source repository must be connected and approved before a deployment executor can run." Classes="muted" FontSize="16" TextWrapping="Wrap" />
                     </StackPanel>
 
                     <Border Classes="card">
@@ -354,6 +375,13 @@
                         </StackPanel>
                     </Border>
 
+                    <Border Background="#EDF6F3" BorderBrush="#B8CCFA" BorderThickness="1" CornerRadius="8" Padding="16">
+                        <StackPanel Spacing="4">
+                            <TextBlock Text="{Binding RepositoryStatus}" Foreground="{Binding RepositoryStatusColor}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding RepositoryDetails}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
                     <StackPanel Spacing="8">
                         <TextBlock Text="{Binding SelectedComponentCount, StringFormat={}{0} selected components}" FontWeight="SemiBold" FontSize="16" />
                         <ItemsControl ItemsSource="{Binding SelectedComponentNames}">
@@ -367,7 +395,7 @@
 
                     <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,7,0,0">
                         <Button Classes="subtle" Command="{Binding BackCommand}" Content="Back" />
-                        <Button Grid.Column="2" Classes="primary" Command="{Binding StartInstallCommand}" Content="{Binding PrimaryActionLabel}" />
+                        <Button Grid.Column="2" Classes="primary" Command="{Binding StartInstallCommand}" Content="{Binding PrimaryActionLabel}" IsEnabled="{Binding IsInstallationExecutorAvailable}" />
                     </Grid>
                 </StackPanel>
 

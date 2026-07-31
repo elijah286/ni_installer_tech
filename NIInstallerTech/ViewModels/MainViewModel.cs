@@ -6,12 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using NIInstallerTech.Services;
 
 namespace NIInstallerTech.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
     private SetupScenario _scenario;
+    private readonly SmbRepositoryService _repositoryService = new();
 
     public MainViewModel()
     {
@@ -79,6 +81,30 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     private string _installationStatus = string.Empty;
 
+    [ObservableProperty]
+    private string _repositoryPath = @"\\192.168.68.125\Files\NISetupPrototypeRepository";
+
+    [ObservableProperty]
+    private string _repositoryUserName = string.Empty;
+
+    [ObservableProperty]
+    private string _repositoryPassword = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(RepositoryStatusColor))]
+    [NotifyPropertyChangedFor(nameof(PrimaryActionLabel))]
+    private bool _repositoryIsConnected;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(PrimaryActionLabel))]
+    private bool _repositoryIsReadyForInstallation;
+
+    [ObservableProperty]
+    private string _repositoryStatus = "Not connected to the source repository.";
+
+    [ObservableProperty]
+    private string _repositoryDetails = "Use your current Windows sign-in first, or provide an SMB account with read-only access. Credentials are used only for this connection and are never saved.";
+
     public bool IsGoalsStep => CurrentStep == 0;
     public bool IsPlanStep => CurrentStep == 1;
     public bool IsReviewStep => CurrentStep == 2;
@@ -96,6 +122,8 @@ public partial class MainViewModel : ViewModelBase
 
     public bool IsNiHostedDelivery => SelectedDeliveryMode == DeliveryMode.NiHosted;
     public bool IsOfflineBundleDelivery => SelectedDeliveryMode == DeliveryMode.OfflineBundle;
+    public bool IsInstallationExecutorAvailable => false;
+    public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
     public string DeliveryTitle => IsNiHostedDelivery
         ? "Download from NI"
@@ -109,7 +137,11 @@ public partial class MainViewModel : ViewModelBase
         ? "Default • NI-hosted catalog • downloads only what this workstation needs"
         : "Portable bundle • includes selected source components • no network needed on the destination";
 
-    public string PrimaryActionLabel => IsNiHostedDelivery ? "Install selected setup" : "Create offline installer";
+    public string PrimaryActionLabel => !RepositoryIsConnected
+        ? "Connect source to continue"
+        : !RepositoryIsReadyForInstallation
+            ? "Source requires catalog approval"
+            : "Deployment executor unavailable";
     public string CompletionHeading => IsNiHostedDelivery ? "Your setup is ready" : "Your offline installer is ready";
 
     public bool IsLabVIEWQ1Selected => SelectedLabVIEWRelease == LabVIEWRelease.Q1;
@@ -171,6 +203,29 @@ public partial class MainViewModel : ViewModelBase
     private void ChooseOfflineBundle() => SelectedDeliveryMode = DeliveryMode.OfflineBundle;
 
     [RelayCommand]
+    private async Task ConnectRepository()
+    {
+        RepositoryStatus = "Connecting to the source repository…";
+        RepositoryDetails = "Windows is attempting the configured SMB connection.";
+        RepositoryIsConnected = false;
+        RepositoryIsReadyForInstallation = false;
+
+        var password = RepositoryPassword;
+        try
+        {
+            var result = await Task.Run(() => _repositoryService.ConnectAndVerify(RepositoryPath, RepositoryUserName, password));
+            RepositoryIsConnected = result.IsConnected;
+            RepositoryIsReadyForInstallation = result.IsReadyForInstallation;
+            RepositoryStatus = result.Status;
+            RepositoryDetails = result.Details;
+        }
+        finally
+        {
+            RepositoryPassword = string.Empty;
+        }
+    }
+
+    [RelayCommand]
     private void SelectLabVIEWQ1()
     {
         if (SelectedLabVIEWRelease == LabVIEWRelease.Q1) return;
@@ -193,42 +248,32 @@ public partial class MainViewModel : ViewModelBase
     private void Back() => CurrentStep = CurrentStep == 2 ? 1 : 0;
 
     [RelayCommand]
-    private async Task StartInstall()
+    private void StartInstall()
     {
-        CurrentStep = 3;
-        InstallProgress = 0;
-
-        var stages = new[]
-            {
-                "Checking the selected component plan…",
-                "Retrieving selected components from the NI catalog…",
-                "Preparing your workstation…",
-                "Adding selected software planes…",
-                "Recording the completed component state…"
-            };
-
-        if (IsOfflineBundleDelivery)
+        if (!RepositoryIsConnected)
         {
-            stages =
-            [
-                "Checking the selected component plan…",
-                "Retrieving selected components from the NI catalog…",
-                "Verifying component digests and source evidence…",
-                "Creating one portable offline installer…",
-                "Recording the bundle contents and destination requirements…"
-            ];
+            RepositoryStatus = "Connect to the source repository before starting a plan.";
+            RepositoryDetails = "Open Organization-approved repository, verify \\192.168.68.125\\Files, and connect with the current Windows sign-in or an approved SMB account.";
+            return;
         }
 
-        for (var stage = 0; stage < stages.Length; stage++)
+        if (!RepositoryIsReadyForInstallation)
         {
-            InstallationStatus = stages[stage];
-            await Task.Delay(650);
-            InstallProgress = (stage + 1) * 20;
+            RepositoryStatus = "The source is connected but is not approved for installation.";
+            RepositoryDetails = "No reviewed catalog and supported deployment executor are currently available. No files were copied and no machine state was changed.";
+            return;
         }
 
-        await Task.Delay(450);
-        CurrentStep = 4;
-        OnPropertyChanged(nameof(CompletionMessage));
+        RepositoryStatus = "The source is connected and catalog-ready, but no Windows deployment executor has been released.";
+        RepositoryDetails = "No files were copied and no machine state was changed. A supported executor must validate component signatures, dependencies, ownership, activation boundaries, and health checks before an actual installation can run.";
+    }
+
+    partial void OnRepositoryPathChanged(string value)
+    {
+        RepositoryIsConnected = false;
+        RepositoryIsReadyForInstallation = false;
+        RepositoryStatus = "Not connected to the source repository.";
+        RepositoryDetails = "Verify the configured UNC path before continuing.";
     }
 
     [RelayCommand]
