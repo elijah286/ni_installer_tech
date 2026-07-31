@@ -102,3 +102,19 @@ The first demonstration should show all of the following separately:
 6. Firmware remains deselected and cannot be activated as an incidental driver update.
 
 No current reference-machine inventory proves these points. It identifies the candidate packages and staged Driver Store state needed to begin the work; source ownership and clean-machine hardware validation are required before the behavior is supported.
+
+## Proof-of-concept signing boundary
+
+An unsigned kernel-mode driver cannot be installed on a normal clean Windows 11 x64 machine with standard code-integrity enforcement. Therefore the clean-machine success criterion must not depend on bypassing driver-signing policy, disabling Secure Boot, or placing a customer machine in test-signing mode.
+
+The prototype has two deliberately separate proof modes:
+
+| Mode | What it proves | Driver behavior | Eligible for the clean-machine demonstration? |
+|---|---|---|---:|
+| Component-installer POC | New catalog, API-only delivery, offline bundle creation, plan/upgrade isolation, and explicit driver activation UX. | A mock driver executor records/stages a declarative driver plan but does not bind a kernel driver. | Yes, for all non-driver capabilities. |
+| Isolated driver-lab POC | New INF/package boundaries, PnP selection, service ownership, and rollback mechanics. | Only a newly built **test-signed** driver package on a disposable dedicated VM/lab machine under explicit test policy. | No. |
+| Production-capable driver package | Actual hardware operation on supported customer Windows configurations. | Newly built package signed through the approved production Windows driver-signing path, or an intact existing signed package. | Yes. |
+
+Test signing is useful only to accelerate engineering feedback on a disposable lab VM. It must be explicit in the catalog (`signingMode: test-only`), rejected by the normal installer/channel policy, and never included in an offline bundle intended for customer systems. The test VM configuration, test certificate, and any required boot/security policy changes are test-lab state—not product behavior and not part of this POC's clean-machine success criterion.
+
+The first functional installer demonstration should therefore prove API/runtime installation and component planning end-to-end while using a mock driver activation boundary. It should then accept an actual production-signed legacy driver package or a newly production-signed redesign package for the hardware-validation phase. This preserves the driver redesign architecture without weakening Windows code-integrity protections.

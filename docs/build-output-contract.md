@@ -171,6 +171,8 @@ Every component must declare separate **planning** and **execution** eligibility
 
 `device-driver`, `firmware`, and host service components are `ineligible` for a generic container by default. A future brokered host executor is a separate component/transaction boundary; a container may request it but must not directly mutate host Driver Store, PnP, kernel/module, firmware, service, licensing, or activation state.
 
+For Windows `device-driver` outputs, the build must declare `signingMode` as `production-signed`, `legacy-original-signed`, or `test-only`. `test-only` is restricted to a disposable driver-lab VM and is rejected by the normal clean-machine installer, customer channel, and offline-bundle policy. An unsigned driver is not a supported driver artifact. See [driver modernization and API decoupling](driver-modernization-and-api-decoupling.md).
+
 The command contract, JSON output, and exit-code requirements are specified in the [CLI interface](cli-interface.md).
 
 ## `health-check.json`: verifiable post-state
