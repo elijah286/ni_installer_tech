@@ -24,6 +24,7 @@ This v0.1 contract does not:
 4. **Compatibility is explicit.** API, ABI, OS, architecture, product-host, hardware-family, firmware, and driver constraints are machine-readable.
 5. **Activation stays external.** A component declares its approved licensing/activation integration requirement but never carries or transforms activation data.
 6. **The contract evolves through repository documentation.** See [documentation governance](documentation-governance.md).
+7. **Headless use is explicit.** A component must declare whether it is eligible for build-agent/container planning, and its host-driver compatibility must be validated before it is eligible for container execution.
 
 ## Required output layout
 
@@ -58,7 +59,9 @@ The final production archive/repository format remains open. These are logical b
   "provides": ["daqmx-c-abi:26"],
   "selection": {
     "buildAgentEligible": true,
-    "containerEligible": "pending-validation",
+    "containerPlanningEligibility": "eligible",
+    "containerExecutionEligibility": "pending-validation",
+    "hostDriverCompatibilityRange": "not-applicable-or-validated-range-required",
     "defaultProfileEligibility": ["recommended-ni-foundation"]
   },
   "documentation": {
@@ -154,6 +157,19 @@ Express both requirements and user-visible explanations. Do not infer requiremen
 ```
 
 Language adapters must identify the exact supported language/product ABI and architecture. Hardware support must identify family-level hardware/compatible-ID rules. Driver and firmware components must explicitly mark their upgrade boundary.
+
+## Headless and container declaration
+
+Every component must declare separate **planning** and **execution** eligibility:
+
+- `containerPlanningEligibility`: whether a CLI may resolve and inspect the component in a headless build/container plan.
+- `containerExecutionEligibility`: `eligible`, `ineligible`, or `pending-validation`; only an approved compatibility matrix may promote it to `eligible`.
+- `hostDriverCompatibilityRange`: required for a container user-mode API/runtime that relies on a host driver.
+- `headlessHealthCheck`: the non-destructive health check usable without a display or prompt.
+
+`device-driver`, `firmware`, and host service components are `ineligible` for a generic container by default. A future brokered host executor is a separate component/transaction boundary; a container may request it but must not directly mutate host Driver Store, PnP, kernel/module, firmware, service, licensing, or activation state.
+
+The command contract, JSON output, and exit-code requirements are specified in the [CLI interface](cli-interface.md).
 
 ## `health-check.json`: verifiable post-state
 

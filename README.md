@@ -9,6 +9,7 @@ The repository is intentionally documentation-first. It is the reviewable record
 - Provide a simple, progressive-disclosure setup experience that makes scope and consequences clear.
 - Separate application/API-only use from configuration, hardware support, kernel drivers, and firmware.
 - Make build-agent and container-oriented plans possible without silently installing device support.
+- Provide a non-interactive CLI with JSON output and explicit exit codes for headless containers and build agents.
 - Update the smallest compatible component closure and explicitly preserve unrelated working components.
 - Support customer-controlled repositories, channels, and baselines without requiring customers to understand package internals.
 - Deliver a small NI-hosted setup application by default, with an explicit option to assemble the selected plan into one portable offline installer for disconnected systems.
@@ -32,6 +33,7 @@ The current experience tests:
 |---|---|---|
 | [Documentation governance](docs/documentation-governance.md) | The mandatory documentation rule, evidence statuses, review expectations, and change process. | Active |
 | [Build-output contract](docs/build-output-contract.md) | The versioned, evolving specification R&D build teams can use to emit component-ready outputs. | Draft v0.1 |
+| [CLI interface](docs/cli-interface.md) | Headless/container commands, JSON contract, exit codes, image boundary, and path to a functional executor. | Draft v0.1 |
 | [Reference-component POC capture](docs/reference-component-poc-capture.md) | Controlled use of reference-machine components; safety, exclusions, provenance, and initial scope. | Planned implementation |
 | [Component repository and packaging architecture](docs/component-repository-and-packaging-architecture.md) | Artifact, catalog, channel, repository, and upgrade design. | Design hypothesis |
 | [NI-DAQmx cut-point hypothesis](docs/ni-daqmx-cut-point-hypothesis.md) | Evidence-based starting boundaries and tests for NI-DAQmx. | Evidence-informed hypothesis |
@@ -66,3 +68,7 @@ The prototype uses Avalonia and C# on .NET 10. Avalonia enables one native deskt
 ## Run the UI prototype
 
 From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET SDK. On Windows, the app opens as a native desktop window; on macOS, it runs locally for UX iteration.
+
+## Run the headless prototype
+
+The [NISetup.Cli](NISetup.Cli) project implements the documented non-mutating CLI contract. From the repository root, run `dotnet run --project NISetup.Cli -- plan --profile recommended --source ni --format json`. Its `install` and `bundle create` command shapes require `--simulate` until an approved deployment engine is implemented. The rootless container definition is [NISetup.Cli/Dockerfile](NISetup.Cli/Dockerfile).
