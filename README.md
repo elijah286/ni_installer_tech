@@ -35,6 +35,7 @@ The current experience tests:
 | [Build-output contract](docs/build-output-contract.md) | The versioned, evolving specification R&D build teams can use to emit component-ready outputs. | Draft v0.1 |
 | [CLI interface](docs/cli-interface.md) | Headless/container commands, JSON contract, exit codes, image boundary, and path to a functional executor. | Draft v0.1 |
 | [Reference-component POC capture](docs/reference-component-poc-capture.md) | Controlled use of reference-machine components; safety, exclusions, provenance, and initial scope. | Planned implementation |
+| [SMB prototype repository](docs/nas-prototype-repository.md) | Chosen internal payload location, repository shape, exclusions, and clean-machine validation criterion. | Infrastructure ready; payloads pending review |
 | [Component repository and packaging architecture](docs/component-repository-and-packaging-architecture.md) | Artifact, catalog, channel, repository, and upgrade design. | Design hypothesis |
 | [NI-DAQmx cut-point hypothesis](docs/ni-daqmx-cut-point-hypothesis.md) | Evidence-based starting boundaries and tests for NI-DAQmx. | Evidence-informed hypothesis |
 | [Portfolio audit and deployment model](docs/public-portfolio-audit-and-deployment-model.md) | Broad portfolio, OS, resource, and transaction model. | Public-information hypothesis |
@@ -53,6 +54,8 @@ See the [build-output contract](docs/build-output-contract.md) for the exact v0.
 The normal experience begins with a small setup application and the NI-hosted catalog. It resolves and downloads only the selected components. An organization-approved repository/baseline is an advanced policy option, not the default customer decision.
 
 For disconnected systems, the same selected plan can create one portable offline installer. It retrieves, verifies, and bundles the selected component artifacts and metadata before transport. The destination evaluates the normal compatibility, privilege, driver/firmware, and existing licensing/activation boundaries; an offline bundle never carries activation records, entitlement data, customer configuration, or raw Driver Store content.
+
+The current internal prototype payload store is the SMB repository documented in [SMB prototype repository](docs/nas-prototype-repository.md). Its payload bytes remain outside GitHub; GitHub retains the reviewable catalog, manifests, tools, documentation, and evidence.
 
 ## Safety and licensing boundary
 

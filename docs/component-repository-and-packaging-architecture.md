@@ -114,6 +114,8 @@ Driver artifacts are special. Store the signed vendor/NI driver package unmodifi
 
 Serve the NAS over authenticated HTTPS if possible. SMB can be used only as an internal early experiment; HTTP(S) supports resumable range downloads, caching, proxying, and a future customer repository model more naturally.
 
+The selected internal SMB experiment is now documented in [nas-prototype-repository.md](nas-prototype-repository.md). It holds prototype payloads and generated bundles only; GitHub remains the source of truth for metadata, tooling, and review documentation.
+
 ```text
 ni-repository/
   metadata/
