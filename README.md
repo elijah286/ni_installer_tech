@@ -1,8 +1,8 @@
 # NI Platform Setup — installation-model prototype
 
-[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/archive/refs/heads/main.zip)
+[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.0-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
 
-**Download the prototype, extract it, then follow [Run the UI prototype](#run-the-ui-prototype).** The current download is the source-based Avalonia prototype and requires the .NET 10 SDK; it previews installer plans but does not yet install NI software, drivers, firmware, or licensing content.
+**Windows:** download the ZIP, extract it, and double-click **NI Platform Setup Prototype.exe**. No .NET SDK, terminal, or source checkout is required. The UI takes you through the installation workflow preview; it does not yet install NI software, drivers, firmware, or licensing content.
 
 This repository is an R&D prototype for a new NI software installation model and its customer-facing experience. It explores how customers can install, update, repair, and remove only the applications, APIs, configuration tools, hardware-family support, drivers, and firmware they need.
 
