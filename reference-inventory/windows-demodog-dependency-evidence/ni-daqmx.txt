@@ -1,0 +1,57 @@
+===== ni-daqmx =====  
+ni-msiproperties	26.5.0.49245-0+f93	windows_x64	Installs the files necessary for Package Manager to resolve NI properties (e.g. the NI Program Files installation directory) and evaluate MSI conditions.
+ni-securityupdate-kb67l8lcqw-killbits	2.1.0.49154-0+f2	windows_all	This is an infrastructure package for NI Software.
+ni-euladepot	26.5.0.49245-0+f93	windows_x64	Installs license and notice files.
+ni-metauninstaller	26.5.0.49246-0+f94	windows_x64	This package provides support for uninstallation of NI products.
+ni-mdfsupport	26.5.0.49246-0+f94	windows_x64	This package installs the files necessary to support building deployments from NI\x27s ADEs.
+ni-cabled-pcie	26.0.0.49356-0+f204	windows_x64	NI-Cabled PCIe
+ni-msdotnet-desktop-runtime-80-x86	26.5.0.49173-0+f21	windows_all	Required by some NI products. The .NET Desktop Runtime enables you to run Windows desktop applications. This package installs the .NET Runtime.
+ni-pxiplatformsoftware-errors	26.0.0.49341-0+f189	windows_x64	Error description files for NI PXI Platform Software
+ni-roco-errors	26.0.0.49297-0+f145	windows_x64	NI Routing Coordinator signal routing support library (error descriptions) Provides signal routing services for NI software.  This package includes descriptions for error codes originating from ni-roco.
+ni-pxiplatformframework-errors	26.0.0.49341-0+f189	windows_x64	NI PXI Platform Framework Error Files
+ni-error-reporting-interface	25.0.0.49226-0+f74	windows_x64	NI Error Reporting Interface provides the error reporting interface for Windows.
+ni-labview-c-interface	1.0.4.49154-0+f2	windows_all	The LabVIEW C Interface to VI Server enables you to call VIs from C code. You can also call VI Server properties and methods on the Application and VI classes.
+ni-pal-errors	26.0.0.49301-0+f149	windows_x64	NI Platform Abstraction Layer error code descriptions (infrastructure) Provides core driver services for NI drivers.  This package includes descriptions for error codes originating from ni-pal.
+ni-msvcrt-2015	26.5.0.49220-0+f68	windows_x64	NI installer for Microsoft Visual C++ 2015-2022 Run-Time, version 14.44.35112
+ni-apal-errors	26.0.0.49258-0+f106	windows_x64	NI device driver error code descriptions (infrastructure) Error code descriptions common to many NI device drivers.
+ni-msdotnet-desktop-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The .NET Desktop Runtime enables you to run Windows desktop applications. This package installs the .NET Runtime.
+ni-zlib1-libs	26.5.0.49231-0+f79	windows_x64	ZLib is a general purpose data compression library. ZLib-NI is a build of ZLib maintained by NI across its software platform. This package is built from ZLib 1.3.2.
+ni-expat1-libs	26.5.0.49176-0+f24	windows_x64	Expat is a C99 library that implements a stream-oriented XML parser. Expat-NI is a build of Expat maintained by NI across its software platform. This package is built from Expat 2.8.1.
+ni-pcibrd	26.0.0.49344-0+f192	windows_x64	NI-PCI Bridge Driver
+ni-xerces-3.3	26.3.0.49218-0+f66	windows_all	NI Xerces Software provides the XML parsing and transforming functionality to user applications.
+ni-rpc	26.5.0.49394-0+f242	windows_x64	NI Remote Procedure Call library (infrastructure) Provides rpc services to NI software.
+ni-svcloc	26.5.0.49327-0+f175	windows_x64	NI Service Locator 2026 Q5 The NI Service Locator facilitates communication between National Instruments support programs and services that use local, dynamic TCP ports to communicate with each other.
+ni-mxlc-core	26.0.0.49300-0+f148	windows_x64	Provides binaries required by NI-MXLC.
+ni-openssl3-libs-x86	26.5.0.49224-0+f72	windows_all	OpenSSL is a robust, commercial-grade, full-featured toolkit for general-purpose cryptography and secure communication. OpenSSL-NI is a build of OpenSSL maintained by NI across its software platform. This package is built from OpenSSL 3.5.7.
+ni-openssl3-libs	26.5.0.49224-0+f72	windows_x64	OpenSSL is a robust, commercial-grade, full-featured toolkit for general-purpose cryptography and secure communication. OpenSSL-NI is a build of OpenSSL maintained by NI across its software platform. This package is built from OpenSSL 3.5.7.
+ni-pal	26.0.0.49304-0+f152	windows_x64	NI Platform Abstraction Layer hardware support library Provides core driver services for NI drivers.
+ni-mi-session-manager-runtime	26.0.0.49374-0+f222	windows_x64	Provides run-time components required to deploy applications using NI MI Session Manager.
+ni-ede	26.0.0.49303-0+f151	windows_x64	NI Ethernet Device Enumerator (infrastructure) Performs discovery and enumeration of embedded ethernet interfaces.
+ni-apxipm2	26.0.0.49341-0+f189	windows_x64	NI Atomic 2.0 PXIe Peripheral Module Driver
+ni-xlator	26.0.0.49258-0+f106	windows_x64	NI error message translation and localization library NI-Xlator translates, when available, error messages into the language of the host system.
+ni-pie	26.0.0.49422-0+f270	windows_x64	This is an infrastructure package for NI Software.
+ni-error-reporting-common	26.5.0.49694-0+f542	windows_x64	NI Error Reporting enables you to send NI a crash or internal warning report.
+ni-portable-configuration	26.5.0.49267-0+f115	windows_x64	Used by National Instruments components to archive and deploy configuration settings.
+ni-mxs	26.0.0.49263-0+f111	windows_x64	Provides an internal configuration database for NI software and hardware.
+ni-mdnsresponder	26.0.0.49260-0+f108	windows_x64	Used by National Instruments components to advertise and discover Zeroconf devices and services. NI mDNS Responder Service advertises and discovers Zeroconf devices and services. If this service is stopped, advertisement and discovery of devices and services will no longer function. If this service is disabled, any services that explicitly depend on it will fail to start.
+ni-mxlc	26.0.0.49300-0+f148	windows_x64	NI mx List Control Terminal I/O support library (infrastructure) Provides infrastructure services for Terminal I/O controls in NI software.
+ni-curl	26.5.0.49176-0+f24	windows_x64	NI Curl provides the build of the "C URL" library that is an open-source command line tool and library for transferring data with URL syntax.
+ni-orb	26.0.0.49303-0+f151	windows_x64	NI Object Request Broker driver support library (infrastructure) Provides core services for NI software.
+ni-update-service	26.5.0.49246-0+f94	windows_x64	NI Update Service checks for and electronically delivers software updates for NI software and drivers.
+ni-pxiplatformservices-expert	26.0.0.49356-0+f204	windows_x64	PXI Platform Services MAX Expert
+ni-sysapi	26.5.0.49267-0+f115	windows_x64	Provides an internal interface for enumerating and configuring devices.
+ni-syncdomain-service	26.0.0.49304-0+f152	windows_x64	Provides support for using NI Sync Domain.
+ni-mdbg	26.0.0.49303-0+f151	windows_x64	NI mxDebug driver support library (infrastructure) Provides debugging services for NI software.
+ni-controllerdriver	26.0.0.49356-0+f204	windows_x64	NI Controller Driver
+ni-mximanager	26.0.0.49347-0+f195	windows_x64	NI MXI Manager
+ni-roco	26.0.0.49299-0+f147	windows_x64	NI Routing Coordinator software infrastructure library Provides signal routing services for NI software.
+ni-dim	26.0.0.49305-0+f153	windows_x64	NI Device Interconnect Manager driver support library (infrastructure) Provides signal routing services for NI software.
+ni-qpxi	26.0.0.49347-0+f195	windows_x64	NI-Query PXI
+ni-rtsi-core	26.0.0.49424-0+f272	windows_all	This is an infrastructure package for NI Software.
+ni-mxdf	26.0.0.49303-0+f151	windows_x64	NI mx Driver Framework driver support library (infrastructure) Provides infrastructure services for NI software.
+ni-mru	26.0.0.49305-0+f153	windows_x64	NI mx Routing Utility driver support library (infrastructure) Provides signal routing services for NI software.
+ni-pxiplatformframework	26.0.0.49356-0+f204	windows_x64	NI PXI Platform Framework supplies PXI system services to NI products.
+ni-rtsi-pal	26.0.0.49426-0+f274	windows_all	This is an infrastructure package for NI Software.
+ni-pxiplatformservices-runtime	26.0.0.49356-0+f204	windows_x64	PXI Platform Services Runtime supports NI PXI Chassis and Controllers, implements the PXI specifications, and supplies system services to other NI products.
+ni-daqmx-runtime-core	26.0.0.49432-0+f280	windows_x64	Run-time components required to deploy applications using NI data acquisition devices.
+ni-daqmx	26.0.0.49428-0+f276	windows_x64	NI-DAQmx provides support for customers using NI data acquisition and signal conditioning devices. NI-DAQmx is an NI instrument driver that controls every aspect of your DAQ system, including signal conditioning, from configuration to programming in LabVIEW to low-level OS and device control. You can build your applications with measurement-specific VIs, functions, data types, and analysis integrations and reliably make faster measurements with optimized DMA data transfer and single-point I/O.

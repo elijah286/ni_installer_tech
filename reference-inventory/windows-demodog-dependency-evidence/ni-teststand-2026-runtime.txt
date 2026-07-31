@@ -1,0 +1,72 @@
+===== ni-teststand-2026-runtime =====  
+ni-msiproperties	26.5.0.49245-0+f93	windows_x64	Installs the files necessary for Package Manager to resolve NI properties (e.g. the NI Program Files installation directory) and evaluate MSI conditions.
+ni-msdotnet4x	26.5.0.49175-0+f23	windows_x64	Installer for .NET Framework 4.8.0
+ni-securityupdate-kb67l8lcqw-killbits	2.1.0.49154-0+f2	windows_all	This is an infrastructure package for NI Software.
+ni-euladepot	26.5.0.49245-0+f93	windows_x64	Installs license and notice files.
+ni-metauninstaller	26.5.0.49246-0+f94	windows_x64	This package provides support for uninstallation of NI products.
+ni-mdfsupport	26.5.0.49246-0+f94	windows_x64	This package installs the files necessary to support building deployments from NI\x27s ADEs.
+ni-opcenum	5.6.3.49154-0+f2	windows_all	OPCEnum application runs locally on the serving computer and exposes available OPC servers to the remotely connecting clients.
+ni-tdms	26.5.0.49332-0+f180	windows_x64	NI TDM Streaming provides functions to read and write waveforms and waveform properties to binary measurement files (.tdms).
+ni-mkl-2020	20.0.0.49154-0+f2	windows_all	Math Kernel Library (MKL) is an Intel software package that provides optimized linear algebra routines.
+ni-logos-xt	26.5.0.49330-0+f178	windows_x64	NI Logos XT provides a thin layer on top of TCP/IP to simplify some common network tasks.
+ni-cvi-instrsup	26.3.0.49425-0+f273	windows_x64	Installs run-time support only for instrument drivers and a limited set of LabWindows/CVI library functions. This package allows other applications to use instrument driver DLLs without having to load the larger LabWindows/CVI Run-Time DLL.
+ni-cvi-internet	26.3.0.49415-0+f263	windows_x64	The LabWindows/CVI Internet Library Runtime provides functions for Internet protocols like FTP, POP3, Telnet, etc. You can distribute the Intenet Library according to your license agreement.
+ni-cvi-opengl	26.3.0.49425-0+f273	windows_x64	Installs the LabWindows/CVI OpenGL Library Runtime.
+ni-cvi-openmp	26.3.0.49415-0+f263	windows_x64	Installs the LabWindows/CVI OpenMP Library Runtime.
+ni-cvi-runtime-realtime	26.3.0.49425-0+f273	windows_x64	Installs run-time support for DLLs targeted for a real-time system.
+ni-cvi-usi	26.3.0.49418-0+f266	windows_x64	Installs the LabWindows/CVI Diadem Connectivity Support. It contains the deprecated cviusi.dll.
+ni-opc-support	26.5.0.49333-0+f181	windows_x64	NI OPC Support helps customers using OPC (OLE for process control) to add advanced analysis and control functionality to their system.
+ni-msdotnet-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The .NET Runtime enables you to run Windows console applications. This package installs the .NET Runtime.
+ni-msdotnet-desktop-runtime-80-x86	26.5.0.49173-0+f21	windows_all	Required by some NI products. The .NET Desktop Runtime enables you to run Windows desktop applications. This package installs the .NET Runtime.
+ni-help-launcher	26.5.0.49203-0+f51	windows_x64	Infrastructure to launch help for NI software
+ni-msvcrt-2015	26.5.0.49220-0+f68	windows_x64	NI installer for Microsoft Visual C++ 2015-2022 Run-Time, version 14.44.35112
+ni-python-interface	26.3.0.49370-0+f218	windows_x64	NI Python Interface is a common Python interface for all NI products.
+ni-error-reporting-interface	25.0.0.49226-0+f74	windows_x64	NI Error Reporting Interface provides the error reporting interface for Windows.
+ni-cvi-sql-toolkit-runtime	2.4.0.49154-0+f2	windows_all	The LabWindows/CVI SQL Toolkit Runtime
+ni-teststand-2021-labview-ng-5.0.0-controls	21.0.0.49157-0+f5	windows_x64	Controls for use within LabVIEW NXG for TestStand.
+ni-teststand-2026-runtime-automationadapter	26.0.0.49296-0+f144	windows_x64	Automation Adapter is a software add-on that enables engineers to run COM and HT Basic based code on TestStand. It also contains the files for backwards compatibility.
+ni-teststand-2026-runtime-componentuser	26.0.0.49296-0+f144	windows_x64	Component User is a software add-on that provide icons and callbacks for the product.
+ni-teststand-2026-runtime-cppadapter	26.0.0.49296-0+f144	windows_x64	Cpp Adapter is a software add-on that enables engineers to run C++ based code on TestStand.
+ni-teststand-2026-runtime-session-manager	26.0.0.49296-0+f144	windows_x64	Runtime Session Manager is an utility for hardware session management.
+ni-teststand-2026-runtime-tsgac	26.0.0.49296-0+f144	windows_x64	Registers assemblies to GAC.
+ni-cvi-tdms	26.3.0.49421-0+f269	windows_x64	The LabWindows/CVI TDM Streaming Library Runtime contains functions that you can use to log large amounts of test data quickly.
+ni-cvi-analysis	26.3.0.49419-0+f267	windows_x64	The LabWindows/CVI Analysis Library Runtime provides functions for 1D and 2D array manipulation, complex operations, matrix operations, and statistics.
+ni-msaspdotnetcore-runtime-80-x86	26.5.0.49173-0+f21	windows_all	Required by some NI products. The ASP.NET Core Runtime enables you to run existing web/server applications on Windows.  This package installs the ASP.NET Core Runtime.
+ni-msdotnet-desktop-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The .NET Desktop Runtime enables you to run Windows desktop applications. This package installs the .NET Runtime.
+ni-cvi-2026-reflector	26.3.0.49416-0+f264	windows_x64	The LabWindows/CVI .NET Reflector Runtime provides functions that facilitate calling .NET assemblies
+ni-expat1-libs	26.5.0.49176-0+f24	windows_x64	Expat is a C99 library that implements a stream-oriented XML parser. Expat-NI is a build of Expat maintained by NI across its software platform. This package is built from Expat 2.8.1.
+ni-openssl3-libs-x86	26.5.0.49224-0+f72	windows_all	OpenSSL is a robust, commercial-grade, full-featured toolkit for general-purpose cryptography and secure communication. OpenSSL-NI is a build of OpenSSL maintained by NI across its software platform. This package is built from OpenSSL 3.5.7.
+ni-openssl3-libs	26.5.0.49224-0+f72	windows_x64	OpenSSL is a robust, commercial-grade, full-featured toolkit for general-purpose cryptography and secure communication. OpenSSL-NI is a build of OpenSSL maintained by NI across its software platform. This package is built from OpenSSL 3.5.7.
+ni-zlib1-libs	26.5.0.49231-0+f79	windows_x64	ZLib is a general purpose data compression library. ZLib-NI is a build of ZLib maintained by NI across its software platform. This package is built from ZLib 1.3.2.
+ni-xerces-3.3	26.3.0.49218-0+f66	windows_all	NI Xerces Software provides the XML parsing and transforming functionality to user applications.
+ni-rpc	26.5.0.49394-0+f242	windows_x64	NI Remote Procedure Call library (infrastructure) Provides rpc services to NI software.
+ni-mesa	17.1.1.49154-0+f2	windows_all	Mesa is an open-source implementation of the OpenGL specification that is a system for rendering interactive 3D graphics.
+ni-logos	26.5.0.49330-0+f178	windows_x64	NI Logos provides support for the network protocol that uses network-published shared variables.
+ni-teststand-version-selector	26.0.0.49296-0+f144	windows_x64	A utility to select the active TestStand version.
+ni-activex-container	17.1.2.49154-0+f2	windows_all	NI ActiveX Container enables you to embed ActiveX objects on the front panel of a VI.
+ni-error-report	25.0.0.49231-0+f79	windows_x64	NI Error Reporting (64-bit) enables you to send NI a crash or internal warning report.
+ni-teststand-session-manager	26.0.0.49296-0+f144	windows_x64	A utility for hardware session management.
+ni-teststand-2026-runtime-pythonadapter	26.0.0.49296-0+f144	windows_x64	Python Adapter is a software add-on that enables engineers to run Python based code on TestStand.
+ni-teststand-2026-runtime-labviewapi-adapter	26.0.0.49296-0+f144	windows_x64	LabView API Adapter is a software add-on that enables engineers use LABView API in TestStand.
+ni-msaspdotnetcore-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The ASP.NET Core Runtime enables you to run existing web/server applications on Windows.  This package installs the ASP.NET Core Runtime.
+ni-slcp-common	26.5.0.49220-0+f68	windows_x64	Provides shared binaries for the NI Software License Compliance Program.
+ni-cvi-dotnet	26.3.0.49416-0+f264	windows_x64	The LabWindows/CVI .NET Library Runtime provides functions that facilitate calling .NET assemblies.
+ni-curl	26.5.0.49176-0+f24	windows_x64	NI Curl provides the build of the "C URL" library that is an open-source command line tool and library for transferring data with URL syntax.
+ni-cvi-runtime-core	26.3.0.49425-0+f273	windows_x64	Installs run-time support for projects built with full run-time support. This package provides support for most, but not all, of the provided libraries. You will also need to select additional library support if your application calls the corresponding library functions.
+ni-mxs	26.0.0.49263-0+f111	windows_x64	Provides an internal configuration database for NI software and hardware.
+ni-datasocket	26.3.0.49347-0+f195	windows_x64	Support for built applications or shared libraries that use DataSocket. This installer includes the DataSocket Server, DataSocket Server Manager, and OPC Demo Server.
+ni-cvi-network-variable	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI Network Variable Library Runtime provides functions for reading and writing data to network variables. You can use the functions in this library to communicate with LabVIEW shared variables and Measurement Studio network variables. You also can use the Network Variable Library functions in real-time (RT) applications.
+ni-cvi-networkstreams	26.3.0.49420-0+f268	windows_x64	The LabWindows/CVI Network Streams Library Runtime provides functions for reading and writing data to network streams. You also can use the Network Streams Library functions in real-time (RT) applications.
+ni-cvi-activex	26.3.0.49415-0+f263	windows_x64	The LabWindows/CVI ActiveX Library Runtime provides functions for ActiveX programming. You can distribute the ActiveX Library according to your license agreement.
+ni-teststand-2026-runtime-dotnetadapter	26.0.0.49296-0+f144	windows_x64	Dotnet Adapter is a software add-on that enables engineers to run Dotnet based code on TestStand.
+ni-slcp	26.5.0.49220-0+f68	windows_x64	The NI Software License Compliance Program is a mechanism that records and sends to NI only the critical information necessary to validate legal compliance with NI licensing policies.
+ni-slcp-x86	26.5.0.49220-0+f68	windows_x64	The NI Software License Compliance Program is a mechanism that records and sends to NI only the critical information necessary to validate legal compliance with NI licensing policies.
+ni-sysapi	26.5.0.49267-0+f115	windows_x64	Provides an internal interface for enumerating and configuring devices.
+ni-variable-engine	26.5.0.49333-0+f181	windows_x64	NI Variable Engine supports applications that read and write live data using shared variables. You must install this engine if you host, configure, or create shared variables in your application.
+ni-cvi-datasocket	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI DataSocket Library Runtime functions simplify live data exchange between applications. You can distribute the DataSocket Library according to your license agreement.
+ni-remote-configuration	26.5.0.49267-0+f115	windows_x64	Provides remote configuration of NI Real-Time targets.
+ni-cvi-rte	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI Shared Runtime Base enables you to run most executables or use most DLLs created with LabWindows/CVI on a machine without the development environment installed. The LabWindows/CVI Shared Runtime Base enables you to run executables or use DLLs created with LabWindows/CVI that do not use separate LabWindows/CVI Shared Runtime libraries, and it must be present on any target computer on which you want to run your executable program. You can distribute the Runtime according to your license agreement.  The mark LabWindows is used under a license from Microsoft Corporation. Windows is a registered trademark of Microsoft Corporation in the United States and other countries.
+ni-cvi-runtime-engine	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI Shared Runtime enables you to run executables or use DLLs created with LabWindows/CVI on machines without LabWindows/CVI installed. The LabWindows/CVI Shared Runtime is backwards compatible and may be used with applications that were created with previous versions of LabWindows/CVI. You can distribute the Runtime according to your license agreement. The mark LabWindows is used under a license from Microsoft Corporation. Windows is a registered trademark of Microsoft Corporation in the United States and other countries.
+ni-cvi-teststand-debugger-support	20.0.1.49154-0+f2	windows_all	Installs the LabWindows/CVI TestStand Debugger Support components.
+ni-teststand-2026-runtime-flexcviadapter	26.0.0.49296-0+f144	windows_x64	FlexCVI Adapter is a software add-on that provide icons and callbacks for the product.
+ni-teststand-2026-runtime	26.0.0.49299-0+f147	windows_x64	The TestStand Runtime Infrastructure is a software add-on that enables engineers to run TestStand applications on a non-development machine.

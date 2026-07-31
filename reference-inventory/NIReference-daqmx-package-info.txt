@@ -1,0 +1,1838 @@
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: 0cbf21cb-2860-4e6c-b2a5-56dcb2cf10d1 (< 18.59.0)
+Depends: ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0)
+Description: This is an infrastructure package for NI Software.
+DisplayName: NI-DAQmx Common User Documents
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-common-docs/26.0.0/26.0.0.49416-0+f264/ni-daqmx-common-docs_26.0.0.49416-0+f264_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 8b56f4c8e36641dabe6e2ef887ffbd34
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={0CBF21CB-2860-4E6C-B2A5-56DCB2CF10D1}:PC={94B1A2F0-F233-4EFB-922C-AE12604ABB92}:PV=26.00.49416
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-common-docs
+Plugin: wininst
+Priority: standard
+Provides: 0cbf21cb-2860-4e6c-b2a5-56dcb2cf10d1 (= 26.00.49416),ni-daqmx-common-docs (= 26.0.0.49416-0+f264)
+Replaces: 0cbf21cb-2860-4e6c-b2a5-56dcb2cf10d1 (< 18.59.0)
+SHA256: 58b49103a4e2e1d267dd9415d3583d541af03689095eb358449e37c7e67c6c61
+Section: Infrastructure
+Size: 11439258
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+Version: 26.0.0.49416-0+f264
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Depends: ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0)
+Description: Provides firmware for Ethernet CompactDAQ Chassis, FieldDAQ, and NI Linux Real-Time CompactDAQ Controllers
+Description-de: Stellt Firmware für Ethernet-CompactDAQ-Chassis, FieldDAQ und Controller für NI Linux Real-Time CompactDAQ bereit.
+Description-fr: Fournit le firmware pour les châssis Ethernet CompactDAQ, FieldDAQ et les contrôleurs CompactDAQ NI Linux Real-Time
+Description-ja: Ethernet CompactDAQシャーシ、FieldDAQ、およびNI Linux Real-Time CompactDAQコントローラのファームウェアを提供
+Description-ko: 이더넷 CompactDAQ 섀시, FieldDAQ, NI Linux Real-Time CompactDAQ 컨트롤러를 위한 펌웨어를 제공합니다.
+Description-zh-CN: 提供用于Ethernet CompactDAQ机箱、FieldDAQ和NI Linux Real-Time CompactDAQ控制器的固件
+DisplayName: NI-DAQmx cDAQ Firmware
+DisplayName-de: NI-DAQmx - cDAQ-Firmware
+DisplayName-fr: NI-DAQmx - Firmware cDAQ
+DisplayName-ja: NI-DAQmx cDAQファームウェア
+DisplayName-ko: NI-DAQmx cDAQ 펌웨어
+DisplayName-zh-CN: NI-DAQmx cDAQ固件
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-cdaq-firmware/26.0.0/26.0.0.49427-0+f275/ni-daqmx-cdaq-firmware_26.0.0.49427-0+f275_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 9d10de6465c54c93d8180faff2904638
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={DEB54F5D-A83C-4537-8378-4FBF4B5A2124}:PC={7FA827CD-A948-40DA-888C-4C6426D24FDE}:PV=26.00.49427
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-cdaq-firmware
+Plugin: wininst
+Priority: standard
+Provides: ni-daqmx-cdaq-firmware (= 26.0.0.49427-0+f275)
+SHA256: 60c689679f855e003397bfc631a8193c863453ce10fdf32134180e887b7154dd
+Section: Drivers
+Size: 240270362
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49427-0+f275
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: 49e44cb1-082e-4927-965d-5fc64f83eaf7 (< 0.0.1)
+Depends: ni-device-monitor (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0)
+Description: This is an infrastructure package for NI Software.
+DisplayName: NI-DAQmx NI Device Monitor Support Installer
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-devmon-support/26.0.0/26.0.0.49428-0+f276/ni-daqmx-devmon-support_26.0.0.49428-0+f276_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 63c5882c9706ea63a69f7604f5d2153f
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={49E44CB1-082E-4927-965D-5FC64F83EAF7}:PC={2231212E-6260-4B11-AD07-2D15AAE41BAD}:PV=26.00.49428
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-devmon-support
+Plugin: wininst
+Priority: standard
+Provides: 49e44cb1-082e-4927-965d-5fc64f83eaf7 (= 26.00.49428),ni-daqmx-devmon-support (= 26.0.0.49428-0+f276)
+Replaces: 49e44cb1-082e-4927-965d-5fc64f83eaf7 (< 0.0.1)
+SHA256: af671935b7144c981fbabfb35619474b411f908771f984f49392fdb4a631021c
+Section: Infrastructure
+Size: 406756
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+Version: 26.0.0.49428-0+f276
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: 923c9cd5-a0d8-4147-9a8d-998780e30763 (< 16.99.0)
+Depends: ni-apal-errors (>= 26.0.0),ni-curl (>= 26.0.0),ni-dim (>= 26.0.0),ni-ede (>= 26.0.0),ni-mdbg (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-mdnsresponder (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-mi-session-manager-runtime (>= 26.0.0),ni-mru (>= 26.0.0),ni-msvcrt-2015 (>= 26.0.0),ni-mxdf (>= 26.0.0),ni-mxlc (>= 26.0.0),ni-mxs (>= 26.0.0),ni-openssl3-libs (>= 26.0.0),ni-openssl3-libs-x86 (>= 26.0.0),ni-orb (>= 26.0.0),ni-pal (>= 26.0.0),ni-pie (>= 26.0.0),ni-portable-configuration (>= 26.0.0),ni-pxiplatformframework (>= 26.0.0),ni-pxiplatformservices-runtime (>= 26.0.0),ni-qpxi (>= 26.0.0),ni-rtsi-core (>= 26.0.0),ni-rtsi-pal (>= 26.0.0),ni-syncdomain-service (>= 26.0.0),ni-sysapi (>= 26.0.0),ni-xlator (>= 26.0.0)
+Description: Run-time components required to deploy applications using NI data acquisition devices.
+Description-de: Laufzeitkomponenten, die für das Verwenden von Anwendungen mit Datenerfassungsgeräten von NI außerhalb der Entwicklungsumgebung erforderlich sind.
+Description-fr: Composants d'exécution requis pour le déploiement d'applications utilisant des périphériques d'acquisition de données NI.
+Description-ja: NI データ収集デバイスを使用してアプリケーションをデプロイする場合に必要なランタイムコンポーネントです。
+Description-ko: NI 데이터 수집 디바이스를 사용하는 어플리케이션의 배포에 필요한 런타임 구성요소.
+Description-zh-CN: 部署使用NI数据采集设备的应用程序所需的运行引擎组件。
+DisplayName: NI-DAQmx Runtime
+DisplayName-de: NI-DAQmx - Runtime
+DisplayName-fr: NI-DAQmx - Moteur d'exécution
+DisplayName-ja: NI-DAQmxランタイム
+DisplayName-ko: NI-DAQmx 런타임
+DisplayName-zh-CN: NI-DAQmx运行引擎
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-runtime-core/26.0.0/26.0.0.49432-0+f280/ni-daqmx-runtime-core_26.0.0.49432-0+f280_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 627744b2a0376d0ae8f4fa365b95c469
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={6154980D-AF72-4F31-9529-22D6E2F70BFC}:PC={38AA31E5-5047-4615-ABC6-A9D13C6505AE}:PV=26.00.49430,UC={6EA62E73-0D65-4115-A830-00C58E2619EF}:PC={8250F008-5AD2-423E-AA7B-B90B32794C3F}:PV=26.00.49430,UC={0BC9BA05-2170-43D6-B0A4-9DCE429DC3EC}:PC={5C8FEECC-71E7-44DB-ABC0-2CA95A14D60C}:PV=26.00.49432,UC={FD464F8E-F83A-4708-92F9-CA8CB20E8CE5}:PC={A0095C4F-372A-411D-AB69-922CAA14507C}:PV=26.00.49432,UC={BC9B53BF-59EB-402E-91B4-BAF05F78375E}:PC={93EC5B45-7C0A-4347-B661-04CB79FF269E}:PV=14.50.49152,UC={6F82E9E4-4678-4021-8B52-7747E275F3AE}:PC={E17F961A-DCAC-444C-B800-94A1C0292EE8}:PV=14.50.49152,UC={923C9CD5-A0D8-4147-9A8D-998780E30763}:PC={063D0212-F0D6-49DD-B0E4-62D265A5B697}:PV=26.00.49432,UC={D2FB8E6C-DCBB-4361-ACBA-20FE8C18D4D3}:PC={4D2DE52F-E0A0-4B96-BD53-992DFA9FC52E}:PV=26.00.49432,UC={3F05F574-6CEB-42C3-A934-2F55123B7609}:PC={628698A3-7189-4B20-A3F2-71377A325355}:PV=26.00.49432,UC={40C3970D-A47B-4BDF-A783-9A14CFCFAFB7}:PC={198D4DC6-E2A8-4644-B7A8-5469EE0F2A80}:PV=26.00.49432,UC={98F79306-7398-48D2-9537-8DC7EB0BA7B9}:PC={CCDC850E-D499-434E-9719-5DC8C82B8B18}:PV=26.00.49432,UC={18EB94ED-5FB6-4D05-A4C8-85DE15288337}:PC={374F4862-2055-4990-97FF-A8FD25949B3C}:PV=26.00.49432,UC={CE27DD79-CFFE-4A21-9985-5BEC6615ACE4}:PC={D8040C6C-FDD2-4A07-96AF-F424F0E6ACDF}:PV=26.00.49432,UC={0B69A8F8-5AB4-40F7-8CD1-E7F9C0BB1FEC}:PC={5ABA9C2A-CD7C-44FD-841E-B71D95BBCEE9}:PV=26.00.49432,UC={A0A523C7-D47D-46E0-B795-162ECBB66110}:PC={750E6BAD-439C-40A7-834C-B46A40D5549C}:PV=26.00.49432,UC={38E9F31C-3ED8-4DD5-93ED-0F34210F68F6}:PC={D688B12F-AEAC-4A07-ADFC-0122C49028D0}:PV=26.00.49432,UC={5E5382D9-5B53-4575-AC92-8FB6DA4091ED}:PC={CB86EE6C-9319-432D-BFF1-C43EA84AD693}:PV=26.00.49432,UC={7F2661EE-224B-44A1-9D2F-828B1A6A757C}:PC={1B045144-FF5A-4E58-9827-F3FB2B96EB2E}:PV=26.00.49432,UC={72167872-25A8-4DFB-A29F-A7089623E4EE}:PC={FF562DCF-84E0-4B8B-BEA2-A73FB81C3540}:PV=26.00.49432,UC={A296593F-86C0-493C-8C12-42BDF1FA1173}:PC={487A740D-AB35-40BA-B0E9-3AFC50B10C20}:PV=26.00.49432,UC={60B032F1-D23B-4DAE-803E-BA5F4F0F0857}:PC={789BFC9E-5AAD-4EA2-A4F1-79320B1BBD05}:PV=26.00.49432
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-runtime-core
+Plugin: wininst
+Priority: standard
+Provides: 0b69a8f8-5ab4-40f7-8cd1-e7f9c0bb1fec (= 26.00.49432),0bc9ba05-2170-43d6-b0a4-9dce429dc3ec (= 26.00.49432),18eb94ed-5fb6-4d05-a4c8-85de15288337 (= 26.00.49432),38e9f31c-3ed8-4dd5-93ed-0f34210f68f6 (= 26.00.49432),3f05f574-6ceb-42c3-a934-2f55123b7609 (= 26.00.49432),40c3970d-a47b-4bdf-a783-9a14cfcfafb7 (= 26.00.49432),5e5382d9-5b53-4575-ac92-8fb6da4091ed (= 26.00.49432),60b032f1-d23b-4dae-803e-ba5f4f0f0857 (= 26.00.49432),6154980d-af72-4f31-9529-22d6e2f70bfc (= 26.00.49430),6ea62e73-0d65-4115-a830-00c58e2619ef (= 26.00.49430),6f82e9e4-4678-4021-8b52-7747e275f3ae (= 14.50.49152),72167872-25a8-4dfb-a29f-a7089623e4ee (= 26.00.49432),7f2661ee-224b-44a1-9d2f-828b1a6a757c (= 26.00.49432),923c9cd5-a0d8-4147-9a8d-998780e30763 (= 26.00.49432),98f79306-7398-48d2-9537-8dc7eb0ba7b9 (= 26.00.49432),a0a523c7-d47d-46e0-b795-162ecbb66110 (= 26.00.49432),a296593f-86c0-493c-8c12-42bdf1fa1173 (= 26.00.49432),bc9b53bf-59eb-402e-91b4-baf05f78375e (= 14.50.49152),ce27dd79-cffe-4a21-9985-5bec6615ace4 (= 26.00.49432),d2fb8e6c-dcbb-4361-acba-20fe8c18d4d3 (= 26.00.49432),fd464f8e-f83a-4708-92f9-ca8cb20e8ce5 (= 26.00.49432),ni-daqmx-runtime-core (= 26.0.0.49432-0+f280)
+Recommends: ni-certificates (>= 26.0.0)
+Replaces: 923c9cd5-a0d8-4147-9a8d-998780e30763 (< 16.99.0)
+SHA256: 1230381eb0e1c7252b99261456740108f505b20e766f6779d34d28809f082117
+Section: Drivers
+Size: 124251238
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49432-0+f280
+VisibleForRuntimeDeployment: yes
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Depends: ni-daqmx-runtime-core (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-mstudio-common-fx40-19.1.0-runtime (>= 19.1.0),ni-msvcrt-2015 (>= 26.0.0)
+Description: Provides .NET Framework 4.5 runtime support for applications that use the NI-DAQmx .NET API
+Description-de: Stellt die Runtime-Unterstützung für .NET Framework 4.5 für Anwendungen bereit, die mit der .NET-API von NI-DAQmx arbeiten.
+Description-fr: Fournit le support d'exécution .NET Framework 4.5 pour les applications qui utilisent l'API .NET de NI-DAQmx.
+Description-ja: NI-DAQmx .NET API を使用するアプリケーション用の.NET Framework 4.5 ランタイムサポートを提供します
+Description-ko: NI-DAQmx .NET API를 사용하는 어플리케이션에 대한 .NET Framework 4.5 런타임 지원을 제공합니다.
+Description-zh-CN: 为使用NI-DAQmx .NET API的应用程序提供.NET Framework 4.5运行引擎支持
+DisplayName: NI-DAQmx .NET Language Runtime for .NET Framework 4.5
+DisplayName-de: NI-DAQmx - .NET-Sprachen-Runtime für .NET Framework 4.5
+DisplayName-fr: NI-DAQmx - Moteur d'exécution de langage .NET pour .NET Framework 4.5
+DisplayName-ja: NI-DAQmx .NET Language Runtime - .NET Framework 4.5.1用
+DisplayName-ko: NI-DAQmx .NET Language 런타임 - .NET Framework 4.5 지원
+DisplayName-zh-CN: 用于.NET Framework 4.5的NI-DAQmx .NET语言运行引擎
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-26.0.0-dotnet-fx45-runtime/26.0.0/26.0.0.49427-0+f275/ni-daqmx-26.0.0-dotnet-fx45-runtime_26.0.0.49427-0+f275_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 0a17d1cbb704f0d5b880c310f9820794
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={1390F370-3330-4D86-B912-F33815472B7C}:PC={2C8382EF-7AB8-4AD0-BE5C-E4BDCFB9E928}:PV=26.00.49427,UC={57AE3A8F-DC76-497F-9F6B-FEBA60003C72}:PC={C3275AAE-DD60-4B33-92F8-457EFC133B17}:PV=26.00.49427
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-26.0.0-dotnet-fx45-runtime
+Plugin: wininst
+Priority: standard
+Provides: 1390f370-3330-4d86-b912-f33815472b7c (= 26.00.49427),57ae3a8f-dc76-497f-9f6b-feba60003c72 (= 26.00.49427),ni-daqmx-26.0.0-dotnet-fx45-runtime (= 26.0.0.49427-0+f275)
+SHA256: 7e1ab2fd9d055a04c40b875e9780b3694ce7ecae43f9627972919e2b05e0d163
+Section: Drivers
+Size: 1633420
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49427-0+f275
+VisibleForRuntimeDeployment: yes
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Depends: ni-daqmx-runtime-core (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-mstudio-common-fx40-19.1.0-runtime (>= 19.1.0),ni-msvcrt-2015 (>= 26.0.0)
+Description: Provides .NET Framework 4.0 runtime support for applications that use the NI-DAQmx .NET API
+Description-de: Stellt die Runtime-Unterstützung für .NET Framework 4.0 für Anwendungen bereit, die mit der .NET-API von NI-DAQmx arbeiten.
+Description-fr: Fournit le support d'exécution .NET Framework 4.0 pour les applications utilisant l'API .NET de NI-DAQmx.
+Description-ja: NI-DAQmx .NET API を使用するアプリケーション用の.NET Framework 4.0 ランタイムサポートを提供します
+Description-ko: NI-DAQmx .NET API를 사용하는 어플리케이션에 대한 .NET Framework 4.0 런타임 지원을 제공합니다.
+Description-zh-CN: 为使用NI-DAQmx .NET API的应用程序提供.NET Framework 4.0运行引擎支持
+DisplayName: NI-DAQmx .NET Language Runtime for .NET Framework 4.0
+DisplayName-de: NI-DAQmx - .NET-Sprachen-Runtime für .NET Framework 4.0
+DisplayName-fr: NI-DAQmx - Moteur d'exécution de langage .NET pour .NET Framework 4.0
+DisplayName-ja: NI-DAQmx .NET Language Runtime - .NET Framework 4.0用
+DisplayName-ko: NI-DAQmx .NET Language 런타임 - .NET Framework 4.0 지원
+DisplayName-zh-CN: 用于.NET Framework 4.0的NI-DAQmx .NET语言运行引擎
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-26.0.0-dotnet-fx40-runtime/26.0.0/26.0.0.49427-0+f275/ni-daqmx-26.0.0-dotnet-fx40-runtime_26.0.0.49427-0+f275_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 232321aa132ea4ef800fab19632497ad
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={CA0EEE01-C03F-4521-AFDD-E82F349C5C9E}:PC={EA29AF6F-CB0B-485F-9EEE-F37434442350}:PV=26.00.49427,UC={15F34A8A-C0B1-4C4B-8520-14315FA46A7D}:PC={2D3323E8-A6F8-407D-9BD2-702572757705}:PV=26.00.49427
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-26.0.0-dotnet-fx40-runtime
+Plugin: wininst
+Priority: standard
+Provides: 15f34a8a-c0b1-4c4b-8520-14315fa46a7d (= 26.00.49427),ca0eee01-c03f-4521-afdd-e82f349c5c9e (= 26.00.49427),ni-daqmx-26.0.0-dotnet-fx40-runtime (= 26.0.0.49427-0+f275)
+SHA256: 68228e7cb274d7d4f2949ebec0582ff4a95a9f73adf817a4fd6f0ed0d1fbd4a5
+Section: Drivers
+Size: 1633742
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49427-0+f275
+VisibleForRuntimeDeployment: yes
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Depends: ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-msiproperties (>= 26.0.0),ni-offline-help-viewer (>= 26.0.0)
+Description: Provides offline help for NI-DAQmx.
+DisplayName: NI-DAQmx Offline Help
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-offline-manual/26.0.0/26.0.0.49435-0+f283/ni-daqmx-offline-manual_26.0.0.49435-0+f283_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 2ac0647ea6f515c3e086090ea0815eea
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={9687DA1C-223E-3A7C-9AB4-39807D1625EF}:PC={A6A0D375-054A-4263-8470-B6D7E29211E5}:PV=26.00.49435
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-offline-manual
+Plugin: wininst
+Priority: standard
+Provides: ni-daqmx-offline-manual (= 26.0.0.49435-0+f283)
+SHA256: 63f6beed9872cf9a59e8348eea2ce63a7e0482f143ab6791a9c16dc59e5186ea
+Section: Documentation
+Size: 129179182
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49435-0+f283
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: 9856368a-ed47-4944-87be-8ef3472ae39b (< 16.99.0)
+Depends: ni-assistant-framework-x86 (>= 26.1.0),ni-daqmx-devmon-support (>= 26.0.0),ni-daqmx-labview-shared-docs (>= 26.0.0),ni-daqmx-runtime-core (>= 26.0.0),ni-help-assistant (>= 2.2.0),ni-labview-2025-runtime-engine-x86 (>= 25.3.2),ni-max (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-msvcrt-2015 (>= 26.0.0),ni-networkdiscoverysvc (>= 26.0.0),ni-opc-support (>= 26.1.0),ni-pxiplatformservices-provider (>= 26.0.0),ni-rtsi-ui (>= 26.0.0),ni-syscfg-runtime (>= 26.0.0),ni-tdms (>= 26.1.0),ni-usblan (>= 19.0.0),ni-variable-engine (>= 26.1.0)
+Description: Run-time components required to deploy applications using NI data acquisition devices and support for configuring NI hardware via the Measurement & Automation Explorer (MAX).
+Description-de: Laufzeitkomponenten, die für das Verwenden von Anwendungen mit Datenerfassungsgeräten von NI auf Zielsystemen und für das Konfigurieren von NI-Hardware im Measurement & Automation Explorer (MAX) erforderlich sind.
+Description-fr: Composants d'exécution requis pour le déploiement d'applications utilisant des périphériques d'acquisition de données NI et support de configuration du matériel NI avec Measurement & Automation Explorer (MAX).
+Description-ja: NIデータ収集デバイスを使用してアプリケーションをデプロイする場合に必要なランタイムコンポーネント、およびMeasurement & Automation Explorer (MAX) を使用してNIハードウェアを構成するためのサポートです。
+Description-ko: NI 데이터 수집 디바이스를 사용하는 어플리케이션의 배포에 필요한 런타임 구성요소와 Measurement & Automation Explorer (MAX)를 통한 NI 하드웨어의 설정에 필요한 지원.
+Description-zh-CN: 部署使用NI数据采集设备的应用程序所需的运行引擎组件以及通过Measurement & Automation Explorer (MAX)配置NI硬件的支持。
+DisplayName: NI-DAQmx Runtime with Configuration Support
+DisplayName-de: NI-DAQmx Runtime with Configuration Support
+DisplayName-fr: NI-DAQmx - Moteur d'exécution avec support de configuration
+DisplayName-ja: NI-DAQmxランタイム (構成サポート付き)
+DisplayName-ko: NI-DAQmx 런타임 (설정 지원 포함)
+DisplayName-zh-CN: 带配置支持的NI-DAQmx运行引擎
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-config-support-core/26.0.0/26.0.0.49436-0+f284/ni-daqmx-config-support-core_26.0.0.49436-0+f284_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: fdc165651f81b2989d86ee3338aa6e94
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={3E9583F1-29AD-4FEE-BF13-B9976D3C9881}:PC={DE91A768-D7D8-4483-B2E6-6C6DD8B000CA}:PV=26.00.49436,UC={347A5B88-480D-4E7D-B1F6-674EE1F569DF}:PC={85B32370-7993-4DB6-AF5A-F2B5C96D3727}:PV=26.00.49436,UC={9856368A-ED47-4944-87BE-8EF3472AE39B}:PC={F1798049-4034-4CBB-82EE-FAD23913469B}:PV=26.00.49436,UC={CBEC57BE-0F8B-45FD-A67C-222FA6BC73C5}:PC={DC14C49C-698F-4B82-9C33-51CE1B20BE8A}:PV=26.00.49426
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-config-support-core
+Plugin: wininst
+Priority: standard
+Provides: 347a5b88-480d-4e7d-b1f6-674ee1f569df (= 26.00.49436),3e9583f1-29ad-4fee-bf13-b9976d3c9881 (= 26.00.49436),9856368a-ed47-4944-87be-8ef3472ae39b (= 26.00.49436),cbec57be-0f8b-45fd-a67c-222fa6bc73c5 (= 26.00.49426),ni-daqmx-config-support-core (= 26.0.0.49436-0+f284)
+Replaces: 9856368a-ed47-4944-87be-8ef3472ae39b (< 16.99.0)
+SHA256: a7ad95eb39784e241844dd9b9333034b970e30fbc29e0a8754ca285dc264c1d4
+Section: Drivers
+Size: 318841120
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49436-0+f284
+VisibleForRuntimeDeployment: yes
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: dba9d0bd-729e-494f-afa2-0ba464b875c2 (< 18.59.0)
+Depends: ni-daqmx-common-docs (>= 26.0.0),ni-daqmx-config-support-core (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-tdm-excel-addin (>= 21.5.1)
+Description: This is an infrastructure package for NI Software.
+DisplayName: NI-DAQmx Application Development Environment Support (Legacy)
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-development-support/26.0.0/26.0.0.49416-0+f264/ni-daqmx-development-support_26.0.0.49416-0+f264_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 454d8c83527f7419b4747369f58522f2
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={DBA9D0BD-729E-494F-AFA2-0BA464B875C2}:PC={482F8A42-E8BD-48D8-85A6-29900E47BCF6}:PV=26.00.49416
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-development-support
+Plugin: wininst
+Priority: standard
+Provides: dba9d0bd-729e-494f-afa2-0ba464b875c2 (= 26.00.49416),ni-daqmx-development-support (= 26.0.0.49416-0+f264)
+Replaces: dba9d0bd-729e-494f-afa2-0ba464b875c2 (< 18.59.0)
+SHA256: d1ef10257847c7544cf1d6f8bdb715b34ba01ce1577fb64fe5541bce5c7a1424
+Section: Infrastructure
+Size: 877526
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: no
+Version: 26.0.0.49416-0+f264
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: dba9d0bd-729e-494f-afa2-0ba464b875c2 (< 18.59.0)
+Depends: ni-daqmx-development-support (>= 26.0.0),ni-daqmx-runtime-core (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0)
+Description: Provides files to create NI-DAQmx applications using ANSI C compilers like Microsoft Visual C++ 6.
+Description-de: Stellt Dateien für das Entwickeln von NI-DAQmx-Anwendungen in ANSI-C-Compilern wie Microsoft Visual C++ 6 bereit.
+Description-fr: Fournit les fichiers pour créer des applications NI-DAQmx en utilisant des compilateurs C ANSI comme Microsoft Visual C++ 6.
+Description-ja: Microsoft Visual C++ 6などのANSI Cコンパイラを使用してNI-DAQmxアプリケーションを開発するためのファイルを提供します。
+Description-ko: Microsoft Visual C++ 6 등의 ANSI C 컴파일러를 사용하여 NI-DAQmx 어플리케이션을 생성하는 파일을 제공합니다.
+Description-zh-CN: 提供通过Microsoft Visual C++ 6等ANSI C编译器创建NI-DAQmx应用程序所需的文件。
+DisplayName: NI-DAQmx Support for C
+DisplayName-de: NI-DAQmx - Unterstützung für C
+DisplayName-fr: NI-DAQmx - Support pour C
+DisplayName-ja: NI-DAQmxサポート - C用
+DisplayName-ko: NI-DAQmx의 C 지원
+DisplayName-zh-CN: 用于C的NI-DAQmx支持
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-c-support/26.0.0/26.0.0.49432-0+f280/ni-daqmx-c-support_26.0.0.49432-0+f280_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 2a14abdb5f1d849bda8aa6d0f27af585
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={F1419AAA-5F0A-4BB1-AA74-556B98BD82F5}:PC={9343B795-869D-4D05-9600-043AB39FEACF}:PV=26.00.49432
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-c-support
+Plugin: wininst
+Priority: standard
+Provides: f1419aaa-5f0a-4bb1-aa74-556b98bd82f5 (= 26.00.49432),ni-daqmx-c-support (= 26.0.0.49432-0+f280)
+Replaces: dba9d0bd-729e-494f-afa2-0ba464b875c2 (< 18.59.0)
+SHA256: 2f696fc3f3546d75ba7461892544e92dcff1feb9a699b3a3f785209aa6b58d41
+Section: Drivers
+Size: 3986638
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49432-0+f280
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: 2a6faf68-3466-4809-975b-d4a6221d7a32 (< 16.9.0),3a05ec91-9211-47bb-b699-b4156bdeb689 (< 16.9.0),486b135b-d32c-49f9-a72a-a0e2eff7fdb9 (< 16.9.0)
+Depends: ni-daqmx-26.0.0-dotnet-fx45-runtime (>= 26.0.0),ni-daqmx-development-support (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-msiproperties (>= 26.0.0),ni-mstudio-common-fx40-19.1.0-development (>= 19.1.1),ni-msvcrt-2015 (>= 26.0.0)
+Description: Provides .NET interface for DAQ devices and adds NI-DAQmx support for .NET Framework 4.5.
+Description-de: Stellt eine .NET-Schnittstelle für DAQ-Geräte und Dateien zur NI-DAQmx-Unterstützung für .NET Framework 4.5 bereit.
+Description-fr: Fournit une interface .NET pour les périphériques DAQ et ajoute la prise en charge par NI-DAQmx pour .NET Framework 4.5.
+Description-ja: DAQデバイスに.NETインタフェースを提供し、.NET Framework 4.5 用のNI-DAQmxサポートを追加します。
+Description-ko: DAQ 디바이스를 위한 .NET 인터페이스를 제공하고 .NET Framework 4.5를 위한 NI-DAQmx 지원을 추가합니다.
+Description-zh-CN: 为DAQ设备提供.NET接口并添加对.NET Framework 4.5的NI-DAQmx支持。
+DisplayName: NI-DAQmx Support for .NET Framework 4.5 Languages
+DisplayName-de: NI-DAQmx - Unterstützung für .NET-Framework-4.5-Sprachen
+DisplayName-fr: NI-DAQmx - Support pour les langages .NET Framework 4.5
+DisplayName-ja: NI-DAQmxサポート - .NET Framework 4.5 言語用
+DisplayName-ko: NI-DAQmx의 .NET Framework 4.5 언어 지원
+DisplayName-zh-CN: 用于.NET Framework 4.5语言的NI-DAQmx支持
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-dotnet-fx45-support/26.0.0/26.0.0.49429-0+f277/ni-daqmx-dotnet-fx45-support_26.0.0.49429-0+f277_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 3fac4eee8805f20e213ae5c03b895b4c
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={3A05EC91-9211-47BB-B699-B4156BDEB689}:PC={90D49173-4F13-4B52-844B-484C06223639}:PV=26.00.49429
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-dotnet-fx45-support
+Plugin: wininst
+Priority: standard
+Provides: 2a6faf68-3466-4809-975b-d4a6221d7a32 (= 26.00.49429),3a05ec91-9211-47bb-b699-b4156bdeb689 (= 26.00.49429),486b135b-d32c-49f9-a72a-a0e2eff7fdb9 (= 26.00.49429),ni-daqmx-dotnet-fx45-support (= 26.0.0.49429-0+f277)
+Replaces: 2a6faf68-3466-4809-975b-d4a6221d7a32 (< 16.9.0),3a05ec91-9211-47bb-b699-b4156bdeb689 (< 16.9.0),486b135b-d32c-49f9-a72a-a0e2eff7fdb9 (< 16.9.0)
+SHA256: d3961d91d9f48f187a9d0e8a0615fe970bdcb57bda8dce3655bb05dc754e511f
+Section: Drivers
+Size: 16747824
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49429-0+f277
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: 7c18130b-ad7f-4498-ab4c-f47840672f5f (< 16.9.0),9f7321e0-bbfb-46d2-8a52-f187b88a41a4 (< 16.9.0),c28f3822-140f-4cad-ad8b-72e575e29457 (< 16.9.0)
+Depends: ni-daqmx-26.0.0-dotnet-fx40-runtime (>= 26.0.0),ni-daqmx-development-support (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-msiproperties (>= 26.0.0),ni-mstudio-common-fx40-19.1.0-development (>= 19.1.1),ni-msvcrt-2015 (>= 26.0.0)
+Description: Provides .NET interface for DAQ devices and adds NI-DAQmx support for .NET Framework 4.0.
+Description-de: Stellt eine .NET-Schnittstelle für DAQ-Geräte und Dateien zur NI-DAQmx-Unterstützung für .NET Framework 4.0 bereit.
+Description-fr: Fournit une interface .NET pour les périphériques DAQ et ajoute la prise en charge par NI-DAQmx pour .NET Framework 4.0.
+Description-ja: DAQデバイスに.NETインタフェースを提供し、.NET Framework 4.0用のNI-DAQmxサポートを追加します。
+Description-ko: DAQ 디바이스를 위한 .NET 인터페이스를 제공하고 .NET Framework 4.0을 위한 NI-DAQmx 지원을 추가합니다.
+Description-zh-CN: 为DAQ设备提供.NET接口并添加对.NET Framework 4.0的NI-DAQmx支持。
+DisplayName: NI-DAQmx Support for .NET Framework 4.0 Languages
+DisplayName-de: NI-DAQmx - Unterstützung für .NET-Framework-4.0-Sprachen
+DisplayName-fr: NI-DAQmx - Support pour les langages .NET Framework 4.0
+DisplayName-ja: NI-DAQmxサポート - .NET Framework 4.0 言語用
+DisplayName-ko: NI-DAQmx의 .NET Framework 4.0 언어 지원
+DisplayName-zh-CN: 用于.NET Framework 4.0语言的NI-DAQmx支持
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-dotnet-fx40-support/26.0.0/26.0.0.49429-0+f277/ni-daqmx-dotnet-fx40-support_26.0.0.49429-0+f277_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 9f4740a784bbc34f40f3bd4c72678d45
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={7C18130B-AD7F-4498-AB4C-F47840672F5F}:PC={83C7D0CF-A96D-4870-99EC-6D8FF83721F0}:PV=26.00.49429
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-dotnet-fx40-support
+Plugin: wininst
+Priority: standard
+Provides: 7c18130b-ad7f-4498-ab4c-f47840672f5f (= 26.00.49429),9f7321e0-bbfb-46d2-8a52-f187b88a41a4 (= 26.00.49429),c28f3822-140f-4cad-ad8b-72e575e29457 (= 26.00.49429),ni-daqmx-dotnet-fx40-support (= 26.0.0.49429-0+f277)
+Replaces: 7c18130b-ad7f-4498-ab4c-f47840672f5f (< 16.9.0),9f7321e0-bbfb-46d2-8a52-f187b88a41a4 (< 16.9.0),c28f3822-140f-4cad-ad8b-72e575e29457 (< 16.9.0)
+SHA256: bc23bce1b12462d6d53d4c9bac2696ad6e275e8a5a35733c7b3d96f26217fc32
+Section: Drivers
+Size: 10384804
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+UserVisible: yes
+Version: 26.0.0.49429-0+f277
+
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Depends: ni-daqmx-development-support (>= 26.0.0),ni-daqmx-labview-shared-docs (>= 26.0.0),ni-daqmx-runtime-core (>= 26.0.0),ni-help-assistant (>= 2.2.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-mxlc-labview-support (>= 26.0.0),ni-syscfg-labview-support (>= 26.0.0),ni-labview (>= 22.0.0)
+Description: Provides API, documentation and examples for using NI-DAQmx within LabVIEW.
+Description-de: Stellt die API, Dokumentation und die Beispiele für die Verwendung von NI-DAQmx in LabVIEW bereit.
+Description-fr: Fournit une API, de la documentation et des exemples d'utilisation de NI-DAQmx dans LabVIEW.
+Description-ja: LabVIEWでNI-DAQmxを使用するためのAPI、ドキュメント、およびサンプルを提供します。
+Description-ko: LabVIEW에서 NI-DAQmx를 사용할 때 필요한 API, 문서, 예제를 제공합니다.
+Description-zh-CN: 提供在LabVIEW中使用NI-DAQmx的API、文档和范例。
+DisplayName: NI-DAQmx Support for LabVIEW
+DisplayName-de: NI-DAQmx - Unterstützung für LabVIEW
+DisplayName-fr: NI-DAQmx - Support pour LabVIEW
+DisplayName-ja: NI-DAQmxサポート - LabVIEW用
+DisplayName-ko: NI-DAQmx의 LabVIEW 지원
+DisplayName-zh-CN: NI-DAQmx支持 - 用于LabVIEW
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+Filename: ../../../../../pool/ni-d/ni-daqmx-labview-support/26.0.0/26.0.0.49434-0+f282/ni-daqmx-labview-support_26.0.0.49434-0+f282_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: f21306632673ae1eb9771890a8a33e94
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={E1A6C83D-DF8C-3315-BC36-55880B170CD3}:PC={24E2BC34-005D-4F4C-BBCB-DF6AFFCBFF86}:PV=26.00.49434
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-labview-support
+Plugin: wininst
+Priority: standard
+Provides: ni-daqmx-labview-support (= 26.0.0.49434-0+f282)
+SHA256: be23f5e86e3b036eacc6b31995c6d7f87401b000063b1ffbdd9064513d0aa7c1
+Section: Drivers
+Size: 77349164
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+Supplements: ni-labview (>= 22.0.0)
+UserVisible: yes
+Version: 26.0.0.49434-0+f282
+
+AlwaysRemoves: ni-daqmx-runtime-core, ni-daqmx-cdaq-firmware, ni-daqmx-realtime-bin, ni-daqmx-config-support-core, ni-daqmx-labview-support, ni-daqmx-c-support, ni-daqmx-cvi-support, ni-daqmx-dotnet-fx40-support, ni-daqmx-dotnet-fx45-support, ni-daqmx-26.0.0-dotnet-fx40-runtime, ni-daqmx-26.0.0-dotnet-fx45-runtime, ni-daqmx-vs2015-support, ni-daqmx-vs2017-support, ni-daqmx-vs2019-support, ni-testscalesfp-instrumentstudio-support, ni-daqmx-offline-manual, ni-daqmx-labview-ng-support,      ni-daqmx-labview-nxg-2.0.0-support,       ni-daqmx-labview-nxg-3.0.0-support,       ni-daqmx-labview-nxg-4.0.0-support,       ni-daqmx-labview-nxg-5.0.0-support,   ni-daqmx-labview-nxg-2.0.0-rte-support,   ni-daqmx-labview-nxg-3.0.0-rte-support,   ni-daqmx-labview-nxg-4.0.0-rte-support,   ni-daqmx-labview-nxg-5.0.0-rte-support,   ni-daqmx-labview-2015-support,   ni-daqmx-labview-2016-support,   ni-daqmx-labview-2017-support,   ni-daqmx-labview-2018-support,   ni-daqmx-labview-2019-support,   ni-daqmx-labview-2020-support,   ni-daqmx-labview-2021-support,   ni-daqmx-labview-2015-support-x86,   ni-daqmx-labview-2016-support-x86,   ni-daqmx-labview-2017-support-x86,   ni-daqmx-labview-2018-support-x86,   ni-daqmx-labview-2019-support-x86,   ni-daqmx-labview-2020-support-x86,   ni-daqmx-labview-2021-support-x86,  ni-daqmx-dotnet-fx451-support,
+Architecture: windows_x64
+CompatibilityVersion: 260000
+Conflicts: b87bcb47-3c93-11d4-88e6-0008c7c25519 (< 17.0.0),fb02120f-d774-4386-8caa-81d9a8b0bba2 (< 0.0.1)
+Depends: ni-daqmx-runtime-core (>= 26.0.0),ni-mdfsupport (>= 26.0.0),ni-metauninstaller (>= 26.0.0),ni-msiproperties (>= 26.0.0),ni-update-service (>= 26.0.0)
+Description: NI-DAQmx provides support for customers using NI data acquisition and signal conditioning devices.
+  NI-DAQmx is an NI instrument driver that controls every aspect of your DAQ system, including signal conditioning, from configuration to programming in LabVIEW to low-level OS and device control. You can build your applications with measurement-specific VIs, functions, data types, and analysis integrations and reliably make faster measurements with optimized DMA data transfer and single-point I/O.
+Description-de: NI-DAQmx ermöglicht die Arbeit mit Datenerfassungs- und Signalaufbereitungsgeräten von NI.
+  NI-DAQmx ist ein NI-Gerätetreiber, der alle Aspekte Ihres DAQ-Systems einschließlich der Signalaufbereitung von der Konfiguration über die Programmierung in LabVIEW bis hin zur Betriebssystem- und Gerätesteuerung systemnah steuert. Anwendungen können mithilfe messspezifischer VIs, Funktionen, Datentypen und Analysen erstellt werden, während die Messungen selbst durch eine optimierte DMA-Datenübertragung sowie Erfassung und Ausgabe von Einzelwerten zuverlässig beschleunigt werden.
+Description-fr: NI-DAQmx fournit un support aux clients utilisant des dispositifs d'acquisition de données et de conditionnement de signaux NI.
+  NI-DAQmx est un driver d'instrument NI qui contrôle tous les aspects de votre système DAQ, y compris le conditionnement du signal, de la configuration à la programmation dans LabVIEW, en passant par le contrôle du matériel et du système d'exploitation de bas niveau. Vous pouvez créer vos applications avec des VIs, des fonctions, des types de données et des intégrations d'analyse spécifiques à la mesure et effectuer des mesures plus rapides de manière fiable avec un transfert de données DMA optimisé et des E/S point par point.
+Description-ja: NI-DAQmxは、NIのデータ収集/信号調節デバイスを使用するためのサポートを提供します。
+  NI-DAQmxは、LabVIEWによる構成やプログラミングからOSやデバイスのローレベルの制御に至るまで、DAQシステム (NI信号調節デバイスなど) 全般を制御するNIの計測器ドライバです。測定に特化したVI、関数、データタイプ、および解析統合などを使用してアプリケーションを構築し、最適化されたDMAデータ転送およびシングルポイントI/Oにより、より高速で信頼性の高い測定を実現できます。
+Description-ko: NI-DAQmx는 NI 데이터 수집 및 신호 컨디셔닝 디바이스를 사용하는 고객을 지원합니다.
+  NI-DAQmx는 신호 컨디셔닝을 포함한 DAQ 시스템의 모든 측면을 컨트롤하는 NI 인스트루먼트 드라이버로, LabVIEW를 사용한 설정부터 프로그래밍, 하위 레벨 OS 및 디바이스 컨트롤까지 이에 해당합니다. 측정 관련 VI, 함수, 데이터 타입, 분석 통합을 사용하여 어플리케이션을 빌드하고, 최적화된 DMA 데이터 전송 및 단일 포인트 I/O를 사용하며 안정적으로 보다 신속하게 측정을 수행할 수 있습니다.
+Description-zh-CN: NI-DAQmx为使用NI数据采集和信号调理设备的客户提供支持。
+  NI-DAQmx是一款NI仪器驱动程序，可对DAQ系统进行从LabVIEW配置及编程到底层操作系统和设备控制在内的全方位控制，包括信号调理。可使用测量特有的VI、函数、数据类型及分析集成创建应用程序，并通过优化DMA数据传输和单点I/O实现可靠的快速测量。
+DisplayName: NI-DAQmx
+DisplayName-de: NI-DAQmx
+DisplayName-fr: NI-DAQmx
+DisplayName-ja: NI-DAQmx
+DisplayName-ko: NI-DAQmx
+DisplayName-zh-CN: NI-DAQmx
+DisplayVersion: 2026 Q1
+Eula: eula-ni-standard
+FeedURIs: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released,https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released-critical
+Filename: ../../../../../pool/ni-d/ni-daqmx/26.0.0/26.0.0.49428-0+f276/ni-daqmx_26.0.0.49428-0+f276_windows_x64.nipkg
+HardwareSupport: 
+  BUS_01,VID_1093,PID_0160
+  National Instruments,NI PCI-DIO-96
+  BUS_0D,VID_1093,PID_044A
+  National Instruments,NI SCB-68
+  BUS_0D,VID_1093,PID_044C
+  National Instruments,NI SCB-100
+  BUS_0D,VID_1093,PID_0454
+  National Instruments,NI CB-68LP
+  BUS_0D,VID_1093,PID_045F
+  National Instruments,NI BNC-2090
+  BUS_0D,VID_1093,PID_0461
+  National Instruments,NI SC-2042 RTD
+  BUS_0D,VID_1093,PID_0463
+  National Instruments,NI SC-2043-SG
+  BUS_0D,VID_1093,PID_046C
+  National Instruments,NI SC-2060
+  BUS_0D,VID_1093,PID_046D
+  National Instruments,NI SC-2061
+  BUS_0D,VID_1093,PID_046E
+  National Instruments,NI SC-2062
+  BUS_0D,VID_1093,PID_0474
+  National Instruments,NI SC-2075
+  BUS_0D,VID_1093,PID_0492
+  National Instruments,NI TBX-68
+  BUS_0D,VID_1093,PID_04D7
+  National Instruments,NI BNC-2111
+  BUS_0D,VID_1093,PID_04D8
+  National Instruments,NI BNC-2110
+  BUS_0D,VID_1093,PID_04E7
+  National Instruments,NI BNC-2120
+  BUS_0D,VID_1093,PID_04E9
+  National Instruments,NI BNC-2121
+  BUS_0D,VID_1093,PID_04EC
+  National Instruments,NI TB-2705
+  BUS_01,VID_1093,PID_1150
+  National Instruments,NI PCI-DIO-32HS
+  BUS_01,VID_1093,PID_1290
+  National Instruments,NI PCI-6704
+  BUS_01,VID_1093,PID_12B0
+  National Instruments,NI PCI-6534
+  BUS_01,VID_1093,PID_1310
+  National Instruments,NI PCI-6602
+  BUS_01,VID_1093,PID_1320
+  National Instruments,NI PXI-6533
+  BUS_01,VID_1093,PID_1360
+  National Instruments,NI PXI-6602
+  BUS_01,VID_1093,PID_13C0
+  National Instruments,NI PXI-6508
+  BUS_01,VID_1093,PID_1490
+  National Instruments,NI PXI-6534
+  BUS_01,VID_1093,PID_14E0
+  National Instruments,NI PCI-6110
+  BUS_01,VID_1093,PID_14F0
+  National Instruments,NI PCI-6111
+  BUS_01,VID_1093,PID_1710
+  National Instruments,NI PXI-6509
+  BUS_01,VID_1093,PID_17D0
+  National Instruments,NI PCI-6503
+  BUS_01,VID_1093,PID_1870
+  National Instruments,NI PCI-6713
+  BUS_01,VID_1093,PID_1880
+  National Instruments,NI PCI-6711
+  BUS_01,VID_1093,PID_1920
+  National Instruments,NI PXI-6704
+  BUS_01,VID_1093,PID_19C0
+  National Instruments,NI PCI-4472
+  BUS_01,VID_1093,PID_1AD0
+  National Instruments,NI PCI-6133
+  BUS_01,VID_1093,PID_1AE0
+  National Instruments,NI PXI-6133
+  BUS_01,VID_1093,PID_1E30
+  National Instruments,NI PCI-6624
+  BUS_01,VID_1093,PID_1E40
+  National Instruments,NI PXI-6624
+  BUS_01,VID_1093,PID_2410
+  National Instruments,NI PCI-6733
+  BUS_01,VID_1093,PID_2420
+  National Instruments,NI PXI-6733
+  BUS_01,VID_1093,PID_2430
+  National Instruments,NI PCI-6731
+  BUS_01,VID_1093,PID_2470
+  National Instruments,NI PCI-4474
+  BUS_01,VID_1093,PID_24F0
+  National Instruments,NI PXI-4472
+  BUS_01,VID_1093,PID_2510
+  National Instruments,NI PCI-4472
+  BUS_01,VID_1093,PID_2520
+  National Instruments,NI PCI-4474
+  BUS_01,VID_1093,PID_27A0
+  National Instruments,NI PCI-6123
+  BUS_01,VID_1093,PID_27B0
+  National Instruments,NI PXI-6123
+  BUS_01,VID_1093,PID_28A0
+  National Instruments,NI PXI-4461
+  BUS_01,VID_1093,PID_2B10
+  National Instruments,NI PXI-6527
+  BUS_01,VID_1093,PID_2B20
+  National Instruments,NI PCI-6527
+  BUS_01,VID_1093,PID_2B80
+  National Instruments,NI PXI-6713
+  BUS_01,VID_1093,PID_2B90
+  National Instruments,NI PXI-6711
+  BUS_01,VID_1093,PID_2C60
+  National Instruments,NI PCI-6601
+  BUS_01,VID_1093,PID_2C90
+  National Instruments,NI PCI-6703
+  BUS_01,VID_1093,PID_2CC0
+  National Instruments,NI PXI-6608
+  BUS_01,VID_1093,PID_2EB0
+  National Instruments,NI PXI-4472
+  BUS_01,VID_1093,PID_2EC0
+  National Instruments,NI PXI-6115
+  BUS_01,VID_1093,PID_2ED0
+  National Instruments,NI PCI-6115
+  BUS_01,VID_1093,PID_2EE0
+  National Instruments,NI PXI-6120
+  BUS_01,VID_1093,PID_2EF0
+  National Instruments,NI PCI-6120
+  BUS_01,VID_1093,PID_7073
+  National Instruments,NI PCI-6723
+  BUS_01,VID_1093,PID_707E
+  National Instruments,NI PXI-4462
+  BUS_01,VID_1093,PID_7085
+  National Instruments,NI PCI-6509
+  BUS_01,VID_1093,PID_7086
+  National Instruments,NI PXI-6528
+  BUS_01,VID_1093,PID_7087
+  National Instruments,NI PCI-6515
+  BUS_01,VID_1093,PID_7088
+  National Instruments,NI PCI-6514
+  BUS_01,VID_1093,PID_70A9
+  National Instruments,NI PCI-6528
+  BUS_01,VID_1093,PID_70AA
+  National Instruments,NI PCI-6229
+  BUS_01,VID_1093,PID_70AB
+  National Instruments,NI PCI-6259
+  BUS_01,VID_1093,PID_70AC
+  National Instruments,NI PCI-6289
+  BUS_01,VID_1093,PID_70AD
+  National Instruments,NI PXI-6251
+  BUS_01,VID_1093,PID_70AE
+  National Instruments,NI PXI-6220
+  BUS_01,VID_1093,PID_70AF
+  National Instruments,NI PCI-6221
+  BUS_01,VID_1093,PID_70B0
+  National Instruments,NI PCI-6220
+  BUS_01,VID_1093,PID_70B1
+  National Instruments,NI PXI-6229
+  BUS_01,VID_1093,PID_70B2
+  National Instruments,NI PXI-6259
+  BUS_01,VID_1093,PID_70B3
+  National Instruments,NI PXI-6289
+  BUS_01,VID_1093,PID_70B4
+  National Instruments,NI PCI-6250
+  BUS_01,VID_1093,PID_70B5
+  National Instruments,NI PXI-6221
+  BUS_01,VID_1093,PID_70B6
+  National Instruments,NI PCI-6280
+  BUS_01,VID_1093,PID_70B7
+  National Instruments,NI PCI-6254
+  BUS_01,VID_1093,PID_70B8
+  National Instruments,NI PCI-6251
+  BUS_01,VID_1093,PID_70B9
+  National Instruments,NI PXI-6250
+  BUS_01,VID_1093,PID_70BA
+  National Instruments,NI PXI-6254
+  BUS_01,VID_1093,PID_70BB
+  National Instruments,NI PXI-6280
+  BUS_01,VID_1093,PID_70BC
+  National Instruments,NI PCI-6284
+  BUS_01,VID_1093,PID_70BD
+  National Instruments,NI PCI-6281
+  BUS_01,VID_1093,PID_70BE
+  National Instruments,NI PXI-6284
+  BUS_01,VID_1093,PID_70BF
+  National Instruments,NI PXI-6281
+  BUS_01,VID_1093,PID_70C0
+  National Instruments,NI PCI-6143
+  BUS_01,VID_1093,PID_70C3
+  National Instruments,NI PCI-6511
+  BUS_01,VID_1093,PID_70C8
+  National Instruments,NI PCI-6513
+  BUS_01,VID_1093,PID_70C9
+  National Instruments,NI PXI-6515
+  BUS_01,VID_1093,PID_70CC
+  National Instruments,NI PCI-6512
+  BUS_01,VID_1093,PID_70CD
+  National Instruments,NI PXI-6514
+  BUS_01,VID_1093,PID_70D1
+  National Instruments,NI PXI-6513
+  BUS_01,VID_1093,PID_70D2
+  National Instruments,NI PXI-6512
+  BUS_01,VID_1093,PID_70D3
+  National Instruments,NI PXI-6511
+  BUS_01,VID_1093,PID_70D4
+  National Instruments,NI PCI-6722
+  BUS_01,VID_1093,PID_70F2
+  National Instruments,NI PCI-6224
+  BUS_01,VID_1093,PID_70F3
+  National Instruments,NI PXI-6224
+  BUS_01,VID_1093,PID_70FF
+  National Instruments,NI PXI-6723
+  BUS_01,VID_1093,PID_7100
+  National Instruments,NI PXI-6722
+  BUS_01,VID_1093,PID_710D
+  National Instruments,NI PXI-6143
+  BUS_01,VID_1093,PID_7124
+  National Instruments,NI PCI-6510
+  BUS_01,VID_1093,PID_7125
+  National Instruments,NI PCI-6516
+  BUS_01,VID_1093,PID_7126
+  National Instruments,NI PCI-6517
+  BUS_01,VID_1093,PID_7127
+  National Instruments,NI PCI-6518
+  BUS_01,VID_1093,PID_7128
+  National Instruments,NI PCI-6519
+  BUS_0D,VID_1093,PID_7140
+  National Instruments,NI TB-2715
+  BUS_01,VID_1093,PID_7146
+  National Instruments,NI PCI-6132
+  BUS_01,VID_1093,PID_7147
+  National Instruments,NI PXI-6132
+  BUS_01,VID_1093,PID_7148
+  National Instruments,NI PCI-6122
+  BUS_01,VID_1093,PID_7149
+  National Instruments,NI PXI-6122
+  BUS_07,VID_1093,PID_715F
+  National Instruments,NI 9221
+  BUS_07,VID_1093,PID_7160
+  National Instruments,NI 9421
+  BUS_07,VID_1093,PID_7161
+  National Instruments,NI 9421 (DSUB)
+  BUS_07,VID_1093,PID_7162
+  National Instruments,NI 9472
+  BUS_07,VID_1093,PID_7163
+  National Instruments,NI 9472 (DSUB)
+  BUS_07,VID_1093,PID_7164
+  National Instruments,NI 9481
+  BUS_07,VID_1093,PID_7165
+  National Instruments,NI 9401
+  BUS_01,VID_1093,PID_716B
+  National Instruments,NI PCI-6230
+  BUS_01,VID_1093,PID_716C
+  National Instruments,NI PCI-6225
+  BUS_01,VID_1093,PID_716D
+  National Instruments,NI PXI-6225
+  BUS_01,VID_1093,PID_716F
+  National Instruments,NI PCI-4461
+  BUS_01,VID_1093,PID_7170
+  National Instruments,NI PCI-4462
+  BUS_01,VID_1093,PID_7177
+  National Instruments,NI PXI-6230
+  BUS_0D,VID_1093,PID_7178
+  National Instruments,NI BNC-2115
+  BUS_0D,VID_1093,PID_7179
+  National Instruments,NI TB-2706
+  BUS_02,VID_3923,PID_717A
+  National Instruments,NI USB-6008
+  BUS_02,VID_3923,PID_717B
+  National Instruments,NI USB-6009
+  BUS_01,VID_1093,PID_717D
+  National Instruments,NI PCIe-6251
+  BUS_01,VID_1093,PID_717F
+  National Instruments,NI PCIe-6259
+  BUS_0D,VID_1093,PID_7184
+  National Instruments,NI CB-37F-LP
+  BUS_0D,VID_1093,PID_7185
+  National Instruments,NI CB-37FH
+  BUS_0D,VID_1093,PID_7186
+  National Instruments,NI CB-37FV
+  BUS_02,VID_3923,PID_718A
+  National Instruments,NI USB-6501
+  BUS_01,VID_1093,PID_718B
+  National Instruments,NI PCI-6521
+  BUS_01,VID_1093,PID_718C
+  National Instruments,NI PXI-6521
+  BUS_01,VID_1093,PID_7191
+  National Instruments,NI PCI-6154
+  BUS_01,VID_1093,PID_719F
+  National Instruments,NI PCIe-6535
+  BUS_01,VID_1093,PID_71A0
+  National Instruments,NI PCIe-6536
+  BUS_07,VID_1093,PID_71B0
+  National Instruments,NI 9211
+  BUS_07,VID_1093,PID_71B1
+  National Instruments,NI 9215
+  BUS_07,VID_1093,PID_71B2
+  National Instruments,NI 9215 (BNC)
+  BUS_07,VID_1093,PID_71B3
+  National Instruments,NI 9205 (DSUB)
+  BUS_07,VID_1093,PID_71B4
+  National Instruments,NI 9263
+  BUS_01,VID_1093,PID_71BC
+  National Instruments,NI PCI-6221 (37-pin)
+  BUS_01,VID_1093,PID_71C5
+  National Instruments,NI PCI-6520
+  BUS_0D,VID_1093,PID_71C8
+  National Instruments,NI SCC-68
+  BUS_02,VID_3923,PID_71D6
+  National Instruments,NI USB-6008OEM1
+  BUS_02,VID_3923,PID_71D7
+  National Instruments,NI USB-6009OEM1
+  BUS_02,VID_3923,PID_71D8
+  National Instruments,NI USB-6009OEM2
+  BUS_02,VID_3923,PID_71DD
+  National Instruments,NI Harmonica
+  BUS_02,VID_3923,PID_71DF
+  National Instruments,NI USB-6525
+  BUS_01,VID_1093,PID_71E0
+  National Instruments,NI PCI-6255
+  BUS_01,VID_1093,PID_71E1
+  National Instruments,NI PXI-6255
+  BUS_0D,VID_1093,PID_71F7
+  National Instruments,NI CB-68LPR
+  BUS_01,VID_1093,PID_7209
+  National Instruments,NI PCI-6233
+  BUS_01,VID_1093,PID_720A
+  National Instruments,NI PXI-6233
+  BUS_01,VID_1093,PID_720B
+  National Instruments,NI PCI-6238
+  BUS_01,VID_1093,PID_720C
+  National Instruments,NI PXI-6238
+  BUS_02,VID_3923,PID_7252
+  National Instruments,NI USB-6251
+  BUS_02,VID_3923,PID_7253
+  National Instruments,NI USB-6259
+  BUS_07,VID_1093,PID_7263
+  National Instruments,NI 9234
+  BUS_07,VID_1093,PID_7264
+  National Instruments,NI 9206
+  BUS_07,VID_1093,PID_7265
+  National Instruments,NI 9205
+  BUS_02,VID_3923,PID_726F
+  National Instruments,NI USB-6210
+  BUS_02,VID_3923,PID_7270
+  National Instruments,NI USB-6211
+  BUS_02,VID_3923,PID_7271
+  National Instruments,NI USB-6215
+  BUS_02,VID_3923,PID_7272
+  National Instruments,NI USB-6218
+  BUS_01,VID_1093,PID_7273
+  National Instruments,NI PXI-4461
+  BUS_01,VID_1093,PID_7274
+  National Instruments,NI PXI-4462
+  BUS_0D,VID_1093,PID_7277
+  National Instruments,NI TB-2708
+  BUS_0D,VID_1093,PID_7278
+  National Instruments,NI TB-2709
+  BUS_01,VID_1093,PID_7279
+  National Instruments,NI PCI-6232
+  BUS_01,VID_1093,PID_727A
+  National Instruments,NI PXI-6232
+  BUS_01,VID_1093,PID_727B
+  National Instruments,NI PCI-6239
+  BUS_01,VID_1093,PID_727C
+  National Instruments,NI PXI-6239
+  BUS_01,VID_1093,PID_7281
+  National Instruments,NI PCI-6236
+  BUS_01,VID_1093,PID_7282
+  National Instruments,NI PXI-6236
+  BUS_07,VID_1093,PID_7285
+  National Instruments,NI 9237
+  BUS_0D,VID_1093,PID_7286
+  National Instruments,NI CB-37F-HVD
+  BUS_02,VID_3923,PID_7287
+  National Instruments,NI USB-6259 (RTSI)
+  BUS_02,VID_3923,PID_729E
+  National Instruments,NI USB-6251 (OEM)
+  BUS_02,VID_3923,PID_729F
+  National Instruments,NI USB-6259 (OEM)
+  BUS_02,VID_3923,PID_72A0
+  National Instruments,NI USB-6251 (Mass Termination)
+  BUS_02,VID_3923,PID_72A1
+  National Instruments,NI USB-6259 (Mass Termination)
+  BUS_01,VID_1093,PID_72A7
+  National Instruments,NI PCIe-6537
+  BUS_07,VID_1093,PID_72B9
+  National Instruments,NI 9411
+  BUS_07,VID_1093,PID_72BA
+  National Instruments,NI 9422
+  BUS_07,VID_1093,PID_72BB
+  National Instruments,NI 9423
+  BUS_07,VID_1093,PID_72BC
+  National Instruments,NI 9435
+  BUS_07,VID_1093,PID_72BD
+  National Instruments,NI 9474
+  BUS_07,VID_1093,PID_72BE
+  National Instruments,NI 9485
+  BUS_07,VID_1093,PID_72BF
+  National Instruments,NI 9403
+  BUS_07,VID_1093,PID_72C0
+  National Instruments,NI 9425
+  BUS_07,VID_1093,PID_72C1
+  National Instruments,NI 9476
+  BUS_07,VID_1093,PID_72C2
+  National Instruments,NI 9477
+  BUS_07,VID_1093,PID_72C3
+  National Instruments,NI 9264
+  BUS_07,VID_1093,PID_72C4
+  National Instruments,NI 9265
+  BUS_07,VID_1093,PID_72C5
+  National Instruments,NI 9201
+  BUS_07,VID_1093,PID_72C6
+  National Instruments,NI 9201 (DSUB)
+  BUS_07,VID_1093,PID_72C7
+  National Instruments,NI 9221 (DSUB)
+  BUS_07,VID_1093,PID_72C8
+  National Instruments,NI 9203
+  BUS_07,VID_1093,PID_72C9
+  National Instruments,NI 9217
+  BUS_07,VID_1093,PID_72CA
+  National Instruments,NI 9219
+  BUS_07,VID_1093,PID_72CB
+  National Instruments,NI 9239
+  BUS_02,VID_3923,PID_72DC
+  National Instruments,NI USB-6221
+  BUS_02,VID_3923,PID_72DE
+  National Instruments,NI USB-6229
+  BUS_02,VID_3923,PID_72E0
+  National Instruments,NI USB-6221 (OEM)
+  BUS_02,VID_3923,PID_72E2
+  National Instruments,NI USB-6229 (OEM)
+  BUS_02,VID_3923,PID_72E4
+  National Instruments,NI USB-6221 (Mass Termination)
+  BUS_02,VID_3923,PID_72E6
+  National Instruments,NI USB-6229 (Mass Termination)
+  BUS_02,VID_3923,PID_72E7
+  National Instruments,NI USB-6229 (RTSI)
+  BUS_01,VID_1093,PID_72E8
+  National Instruments,NI PXIe-6251
+  BUS_01,VID_1093,PID_72E9
+  National Instruments,NI PXIe-6259
+  BUS_02,VID_3923,PID_72EB
+  National Instruments,NI USB-6210 (OEM)
+  BUS_02,VID_3923,PID_72EC
+  National Instruments,NI USB-6211 (OEM)
+  BUS_02,VID_3923,PID_72ED
+  National Instruments,NI USB-6215 (OEM)
+  BUS_02,VID_3923,PID_72EE
+  National Instruments,NI USB-6218 (OEM)
+  BUS_01,VID_1093,PID_72EF
+  National Instruments,NI PXI-4498
+  BUS_01,VID_1093,PID_72F0
+  National Instruments,NI PXI-4496
+  BUS_07,VID_1093,PID_72FA
+  National Instruments,NI 9229
+  BUS_02,VID_3923,PID_72FF
+  National Instruments,NI USB-6509
+  BUS_01,VID_1093,PID_7307
+  National Instruments,NI PCI-EKTRON
+  BUS_0D,VID_1093,PID_730D
+  National Instruments,NI BNC-2090A
+  BUS_01,VID_1093,PID_7322
+  National Instruments,NI PXIe-6124
+  BUS_01,VID_1093,PID_7327
+  National Instruments,NI PXI-6529
+  BUS_02,VID_3923,PID_732D
+  National Instruments,NI USB-6255
+  BUS_02,VID_3923,PID_732E
+  National Instruments,NI USB-6255 (Mass Termination)
+  BUS_02,VID_3923,PID_732F
+  National Instruments,NI USB-6225
+  BUS_02,VID_3923,PID_7330
+  National Instruments,NI USB-6225 (Mass Termination)
+  BUS_07,VID_1093,PID_7337
+  National Instruments,NI 9402
+  BUS_07,VID_1093,PID_7338
+  National Instruments,NI 9375
+  BUS_02,VID_3923,PID_7339
+  National Instruments,NI USB-6212
+  BUS_02,VID_3923,PID_733B
+  National Instruments,NI USB-6216
+  BUS_02,VID_3923,PID_733F
+  National Instruments,NI USB-6281
+  BUS_02,VID_3923,PID_7340
+  National Instruments,NI USB-6281 (Mass Termination)
+  BUS_01,VID_1093,PID_7342
+  National Instruments,NI PXI-4461
+  BUS_02,VID_3923,PID_7343
+  National Instruments,NI USB-6289
+  BUS_02,VID_3923,PID_7344
+  National Instruments,NI USB-6289 (Mass Termination)
+  BUS_02,VID_3923,PID_7345
+  National Instruments,NI USB-6221 (BNC)
+  BUS_02,VID_3923,PID_7346
+  National Instruments,NI USB-6229 (BNC)
+  BUS_02,VID_3923,PID_7347
+  National Instruments,NI USB-6251 (BNC)
+  BUS_02,VID_3923,PID_7348
+  National Instruments,NI USB-6259 (BNC)
+  BUS_02,VID_3923,PID_734E
+  National Instruments,NI USB-6255 (RTSI)
+  BUS_02,VID_3923,PID_734F
+  National Instruments,NI USB-6225 (RTSI)
+  BUS_01,VID_1093,PID_7352
+  National Instruments,NI PCI-EKTRON68
+  BUS_01,VID_1093,PID_7359
+  National Instruments,NI PXI-4495
+  BUS_02,VID_3923,PID_735C
+  National Instruments,NI USB-6212 (RTSI)
+  BUS_02,VID_3923,PID_735D
+  National Instruments,NI USB-6216 (RTSI)
+  BUS_02,VID_3923,PID_735E
+  National Instruments,NI USB-6255 (OEM)
+  BUS_02,VID_3923,PID_735F
+  National Instruments,NI USB-6225 (OEM)
+  BUS_02,VID_3923,PID_7360
+  National Instruments,NI USB-6216 (OEM)
+  BUS_02,VID_3923,PID_7361
+  National Instruments,NI USB-6212 (OEM)
+  BUS_02,VID_3923,PID_7363
+  National Instruments,NI USB-6281 (OEM)
+  BUS_02,VID_3923,PID_7364
+  National Instruments,NI USB-6289 (OEM)
+  BUS_01,VID_1093,PID_7370
+  National Instruments,NI PXI-4461
+  BUS_02,VID_3923,PID_7371
+  National Instruments,NI USB-6281 (RTSI)
+  BUS_02,VID_3923,PID_7372
+  National Instruments,NI USB-6289 (RTSI)
+  BUS_07,VID_1093,PID_737A
+  National Instruments,NI 9229 (BNC)
+  BUS_07,VID_1093,PID_737B
+  National Instruments,NI 9239 (BNC)
+  BUS_07,VID_1093,PID_737C
+  National Instruments,NI 9263 (BNC)
+  BUS_07,VID_1093,PID_7381
+  National Instruments,NI 9235
+  BUS_07,VID_1093,PID_7382
+  National Instruments,NI 9236
+  BUS_07,VID_1093,PID_7388
+  National Instruments,NI 9225
+  BUS_02,VID_3923,PID_7389
+  National Instruments,NI USB-6212 (Mass Termination)
+  BUS_02,VID_3923,PID_738A
+  National Instruments,NI USB-6216 (Mass Termination)
+  BUS_07,VID_1093,PID_739E
+  National Instruments,NI 9219 with LEMO
+  BUS_02,VID_3923,PID_739F
+  National Instruments,NI USB-6212 (Mass Termination) (RTSI)
+  BUS_02,VID_3923,PID_73A0
+  National Instruments,NI USB-6216 (Mass Termination) (RTSI)
+  BUS_01,VID_1093,PID_73A1
+  National Instruments,NI PXIe-4498
+  BUS_01,VID_1093,PID_73A2
+  National Instruments,NI PXIe-4496
+  BUS_02,VID_3923,PID_73D1
+  National Instruments,NI USB-4432
+  BUS_07,VID_1093,PID_73E2
+  National Instruments,NI 9213
+  BUS_07,VID_1093,PID_73E3
+  National Instruments,NI 9426
+  BUS_07,VID_1093,PID_73E4
+  National Instruments,NI 9475
+  BUS_07,VID_1093,PID_73E5
+  National Instruments,NI 9478
+  BUS_07,VID_1093,PID_73E6
+  National Instruments,NI 9237 (DSUB)
+  BUS_02,VID_3923,PID_73FC
+  National Instruments,NI USB-6212 (BNC)
+  BUS_02,VID_3923,PID_73FD
+  National Instruments,NI USB-6216 (BNC)
+  BUS_02,VID_3923,PID_73FE
+  National Instruments,NI USB-6218 (BNC)
+  BUS_07,VID_1093,PID_7420
+  National Instruments,NI 9227
+  BUS_01,VID_1093,PID_743C
+  National Instruments,NI CSC-3059
+  BUS_02,VID_3923,PID_744F
+  National Instruments,NI USB-4431
+  BUS_02,VID_3923,PID_7458
+  National Instruments,NI USB-6218 (RTSI)
+  BUS_06,VID_3923,PID_7493
+  National Instruments,NI cDAQ-9188
+  BUS_07,VID_1093,PID_7494
+  National Instruments,NI 9264 (DSUB)
+  BUS_02,VID_3923,PID_74A4
+  National Instruments,NI cDAQ-9178
+  BUS_02,VID_3923,PID_74A5
+  National Instruments,NI cDAQ-9174
+  BUS_0D,VID_1093,PID_74B3
+  National Instruments,NI TB-4353
+  BUS_02,VID_3923,PID_74B7
+  National Instruments,NI USB-TC01
+  BUS_0D,VID_1093,PID_74B8
+  National Instruments,NI TB-4300
+  BUS_07,VID_1093,PID_74B9
+  National Instruments,NI 9234B
+  BUS_07,VID_1093,PID_74DF
+  National Instruments,NI 9207 (DSUB)
+  BUS_07,VID_1093,PID_74E0
+  National Instruments,NI 9208 (DSUB)
+  BUS_07,VID_1093,PID_74E6
+  National Instruments,NI 9269
+  BUS_0D,VID_1093,PID_74EF
+  National Instruments,NI TB-4300B
+  BUS_0D,VID_1093,PID_74F0
+  National Instruments,NI TB-4330
+  BUS_02,VID_3923,PID_74F7
+  National Instruments,NI USB-6343
+  BUS_02,VID_3923,PID_74F8
+  National Instruments,NI USB-6341
+  BUS_02,VID_3923,PID_74F9
+  National Instruments,NI USB-6343 (RTSI)
+  BUS_02,VID_3923,PID_74FA
+  National Instruments,NI USB-6351
+  BUS_02,VID_3923,PID_74FB
+  National Instruments,NI USB-6353
+  BUS_02,VID_3923,PID_74FC
+  National Instruments,NI USB-6353 (RTSI)
+  BUS_02,VID_3923,PID_74FD
+  National Instruments,NI USB-6361
+  BUS_02,VID_3923,PID_74FE
+  National Instruments,NI USB-6363
+  BUS_02,VID_3923,PID_74FF
+  National Instruments,NI USB-6363 (RTSI)
+  BUS_01,VID_1093,PID_7528
+  National Instruments,NI PXIe-4497
+  BUS_01,VID_1093,PID_7529
+  National Instruments,NI PXIe-4499
+  BUS_01,VID_1093,PID_752A
+  National Instruments,NI PXIe-4492
+  BUS_07,VID_1093,PID_752B
+  National Instruments,NI 9214
+  BUS_07,VID_1093,PID_7530
+  National Instruments,NI 9222
+  BUS_07,VID_1093,PID_7531
+  National Instruments,NI 9223
+  BUS_0D,VID_1093,PID_753E
+  National Instruments,NI TB-9214
+  BUS_07,VID_1093,PID_7559
+  National Instruments,NI 9232
+  BUS_02,VID_3923,PID_755B
+  National Instruments,NI myDAQ
+  BUS_06,VID_3923,PID_755F
+  National Instruments,NI cDAQ-9181
+  BUS_06,VID_3923,PID_7560
+  National Instruments,NI cDAQ-9191
+  BUS_02,VID_3923,PID_7561
+  National Instruments,NI USB-6356 (32 MS)
+  BUS_02,VID_3923,PID_7562
+  National Instruments,NI USB-6356 (32 MS) (RTSI)
+  BUS_02,VID_3923,PID_7563
+  National Instruments,NI USB-6356 (64 MS)
+  BUS_02,VID_3923,PID_7564
+  National Instruments,NI USB-6356 (64 MS) (RTSI)
+  BUS_02,VID_3923,PID_7565
+  National Instruments,NI USB-6356 (128 MS)
+  BUS_02,VID_3923,PID_7566
+  National Instruments,NI USB-6356 (128 MS) (RTSI)
+  BUS_02,VID_3923,PID_7567
+  National Instruments,NI USB-6366 (32 MS)
+  BUS_02,VID_3923,PID_7568
+  National Instruments,NI USB-6366 (32 MS) (RTSI)
+  BUS_02,VID_3923,PID_7569
+  National Instruments,NI USB-6366 (64 MS)
+  BUS_02,VID_3923,PID_756A
+  National Instruments,NI USB-6366 (64 MS) (RTSI)
+  BUS_02,VID_3923,PID_756B
+  National Instruments,NI USB-6366 (128 MS)
+  BUS_02,VID_3923,PID_756C
+  National Instruments,NI USB-6366 (128 MS) (RTSI)
+  BUS_07,VID_1093,PID_7578
+  National Instruments,NI 9375 (DSUB)
+  BUS_02,VID_3923,PID_7599
+  National Instruments,NI USB-6341 (OEM)
+  BUS_02,VID_3923,PID_759A
+  National Instruments,NI USB-6343 (OEM)
+  BUS_02,VID_3923,PID_759B
+  National Instruments,NI USB-6361 (OEM)
+  BUS_02,VID_3923,PID_759C
+  National Instruments,NI USB-6363 (OEM)
+  BUS_02,VID_3923,PID_759D
+  National Instruments,NI USB-6361 (Mass Termination)
+  BUS_02,VID_3923,PID_759E
+  National Instruments,NI USB-6363 (Mass Termination)
+  BUS_02,VID_3923,PID_759F
+  National Instruments,NI USB-6356 (32 MS) (OEM)
+  BUS_02,VID_3923,PID_75A0
+  National Instruments,NI USB-6366 (64 MS) (OEM)
+  BUS_02,VID_3923,PID_75A1
+  National Instruments,NI USB-6366 (64 MS) (Mass Termination)
+  BUS_0D,VID_1093,PID_75A8
+  National Instruments,NI CAL-4353
+  BUS_0D,VID_1093,PID_75A9
+  National Instruments,NI TC-4353
+  BUS_0D,VID_1093,PID_75D0
+  National Instruments,NI TB-4357
+  BUS_02,VID_3923,PID_75DA
+  National Instruments,NI USB-6341 (BNC)
+  BUS_02,VID_3923,PID_75DB
+  National Instruments,NI USB-6343 (BNC)
+  BUS_02,VID_3923,PID_75DC
+  National Instruments,NI USB-6361 (BNC)
+  BUS_02,VID_3923,PID_75DD
+  National Instruments,NI USB-6363 (BNC)
+  BUS_02,VID_3923,PID_75DE
+  National Instruments,NI USB-6356 (32 MS) (BNC)
+  BUS_02,VID_3923,PID_75DF
+  National Instruments,NI USB-6366 (64 MS) (BNC)
+  BUS_02,VID_3923,PID_75E0
+  National Instruments,NI USB-6343 (RTSI) (OEM)
+  BUS_02,VID_3923,PID_75E1
+  National Instruments,NI USB-6356 (32 MS) (RTSI) (OEM)
+  BUS_02,VID_3923,PID_75E2
+  National Instruments,NI USB-6363 (RTSI) (MT)
+  BUS_02,VID_3923,PID_75E3
+  National Instruments,NI USB-6366 (64 MS) (RTSI) (MT)
+  BUS_07,VID_1093,PID_75EB
+  National Instruments,NI 9469
+  BUS_02,VID_3923,PID_75F0
+  National Instruments,NI cDAQ-9171
+  BUS_02,VID_3923,PID_75F1
+  National Instruments,NI USB DAQ Device
+  BUS_07,VID_1093,PID_7606
+  National Instruments,NI 9220
+  BUS_07,VID_1093,PID_7616
+  National Instruments,NI 9220 (DSUB)
+  BUS_06,VID_3923,PID_7617
+  National Instruments,NI cDAQ-9184
+  BUS_02,VID_3923,PID_7625
+  National Instruments,NI USB-6346
+  BUS_01,VID_1093,PID_763C
+  National Instruments,NI PXI-4465
+  BUS_01,VID_1093,PID_766D
+  National Instruments,NI PCIe-6535B
+  BUS_01,VID_1093,PID_766E
+  National Instruments,NI PCIe-6536B
+  BUS_01,VID_1093,PID_766F
+  National Instruments,NI PCIe-6537B
+  BUS_01,VID_1093,PID_76A3
+  National Instruments,NI PXIe-6535B
+  BUS_01,VID_1093,PID_76A4
+  National Instruments,NI PXIe-6536B
+  BUS_01,VID_1093,PID_76A5
+  National Instruments,NI PXIe-6537B
+  BUS_0D,VID_1093,PID_76AC
+  National Instruments,NI TB-4322
+  BUS_02,VID_3923,PID_76AF
+  National Instruments,NI USB-6000
+  BUS_02,VID_3923,PID_76B0
+  National Instruments,NI USB-6000 (OEM)
+  BUS_0D,VID_1093,PID_76B4
+  National Instruments,NI SCB-68A
+  BUS_02,VID_3923,PID_76BF
+  National Instruments,NI USB-6001
+  BUS_02,VID_3923,PID_76C0
+  National Instruments,NI USB-6001 (OEM)
+  BUS_02,VID_3923,PID_76C4
+  National Instruments,NI USB-6002
+  BUS_02,VID_3923,PID_76C5
+  National Instruments,NI USB-6002 (OEM)
+  BUS_02,VID_3923,PID_76C6
+  National Instruments,NI USB-6003
+  BUS_02,VID_3923,PID_76C7
+  National Instruments,NI USB-6003 (OEM)
+  BUS_06,VID_3923,PID_76E7
+  National Instruments,NI cDAQ-9188XT
+  BUS_07,VID_1093,PID_76F5
+  National Instruments,NI 9482
+  BUS_07,VID_1093,PID_770F
+  National Instruments,NI 9244
+  BUS_07,VID_1093,PID_773C
+  National Instruments,NI 9222 (BNC)
+  BUS_07,VID_1093,PID_773D
+  National Instruments,NI 9223 (BNC)
+  BUS_07,VID_1093,PID_7749
+  National Instruments,NI 9242
+  BUS_07,VID_1093,PID_7751
+  National Instruments,NI 9238
+  BUS_07,VID_1093,PID_7779
+  National Instruments,NI 9218 (DSUB)
+  BUS_07,VID_1093,PID_777A
+  National Instruments,NI 9218
+  BUS_0D,VID_1093,PID_777B
+  National Instruments,NI TB-4339
+  BUS_0D,VID_1093,PID_777C
+  National Instruments,NI TB-4339B
+  BUS_0D,VID_1093,PID_777D
+  National Instruments,NI TB-4339C
+  BUS_07,VID_1093,PID_777F
+  National Instruments,NI 9361
+  BUS_07,VID_1093,PID_778D
+  National Instruments,NI 9437
+  BUS_0D,VID_1093,PID_7796
+  National Instruments,NI 9982L
+  BUS_0D,VID_1093,PID_7797
+  National Instruments,NI 9982D
+  BUS_0D,VID_1093,PID_7798
+  National Instruments,NI 9983L
+  BUS_0D,VID_1093,PID_7799
+  National Instruments,NI 9983D
+  BUS_0D,VID_1093,PID_779A
+  National Instruments,NI 9984L
+  BUS_0D,VID_1093,PID_779B
+  National Instruments,NI 9984D
+  BUS_0D,VID_1093,PID_779C
+  National Instruments,NI 9985L
+  BUS_0D,VID_1093,PID_779D
+  National Instruments,NI 9985D
+  BUS_0D,VID_1093,PID_779E
+  National Instruments,NI 9986L
+  BUS_0D,VID_1093,PID_779F
+  National Instruments,NI 9986D
+  BUS_0D,VID_1093,PID_77A0
+  National Instruments,NI 9987L
+  BUS_0D,VID_1093,PID_77A1
+  National Instruments,NI 9987D
+  BUS_07,VID_1093,PID_77AB
+  National Instruments,NI 9212
+  BUS_0D,VID_1093,PID_77B7
+  National Instruments,NI TB-9212
+  BUS_0D,VID_1093,PID_77C9
+  National Instruments,NI RM-4339_A
+  BUS_07,VID_1093,PID_77CE
+  National Instruments,NI 9230
+  BUS_07,VID_1093,PID_77CF
+  National Instruments,NI 9260 (BNC)
+  BUS_07,VID_1093,PID_77D0
+  National Instruments,NI 9260 (Mini XLR)
+  BUS_07,VID_1093,PID_77D8
+  National Instruments,NI 9216
+  BUS_07,VID_1093,PID_77D9
+  National Instruments,NI 9226
+  BUS_07,VID_1093,PID_77E6
+  National Instruments,NI 9344
+  BUS_07,VID_1093,PID_77E7
+  National Instruments,NI 9247
+  BUS_07,VID_1093,PID_77EB
+  National Instruments,NI 9251 (Mini XLR)
+  BUS_07,VID_1093,PID_77EC
+  National Instruments,NI 9250 (BNC)
+  BUS_07,VID_1093,PID_77F1
+  National Instruments,NI 9209 (DSUB)
+  BUS_02,VID_3923,PID_77F4
+  National Instruments,NI cDAQ-9179
+  BUS_07,VID_1093,PID_77F6
+  National Instruments,NI 9246
+  BUS_0D,VID_1093,PID_77F7
+  National Instruments,NI RM-4339_B
+  BUS_0D,VID_1093,PID_77F8
+  National Instruments,NI RM-4339_C
+  BUS_07,VID_1093,PID_77F9
+  National Instruments,NI 9216 (DSUB)
+  BUS_07,VID_1093,PID_77FA
+  National Instruments,NI 9226 (DSUB)
+  BUS_0D,VID_1093,PID_7806
+  National Instruments,NI TB-4302
+  BUS_0D,VID_1093,PID_7807
+  National Instruments,NI TB-4304
+  BUS_0D,VID_1093,PID_7809
+  National Instruments,NI RM-4302
+  BUS_0D,VID_1093,PID_780A
+  National Instruments,NI RM-4304
+  BUS_07,VID_1093,PID_780F
+  National Instruments,NI 9224
+  BUS_07,VID_1093,PID_7810
+  National Instruments,NI 9228
+  BUS_0D,VID_1093,PID_7815
+  National Instruments,NI 9982F
+  BUS_0D,VID_1093,PID_7816
+  National Instruments,NI 9983F
+  BUS_0D,VID_1093,PID_7817
+  National Instruments,NI 9984F
+  BUS_0D,VID_1093,PID_7818
+  National Instruments,NI 9985F
+  BUS_0D,VID_1093,PID_7819
+  National Instruments,NI 9986F
+  BUS_0D,VID_1093,PID_781A
+  National Instruments,NI 9987F
+  BUS_0D,VID_1093,PID_781B
+  National Instruments,NI TB-9212 MiniTC
+  BUS_0D,VID_1093,PID_782A
+  National Instruments,NI TB-4340
+  BUS_0D,VID_1093,PID_782D
+  National Instruments,NI TB-4300C
+  BUS_0D,VID_1093,PID_782E
+  National Instruments,NI TB-4302C
+  BUS_07,VID_1093,PID_7868
+  National Instruments,NI 9232 (BNC)
+  BUS_07,VID_1093,PID_7869
+  National Instruments,NI 9230 (BNC)
+  BUS_07,VID_1093,PID_786D
+  National Instruments,NI 9436
+  BUS_02,VID_3923,PID_7870
+  National Instruments,NI Simulated DAQ Device
+  BUS_07,VID_1093,PID_788B
+  National Instruments,NI 9202 (DSUB)
+  BUS_07,VID_1093,PID_788D
+  National Instruments,NI 9202
+  BUS_07,VID_1093,PID_78A0
+  National Instruments,NI 9775
+  BUS_0D,VID_1093,PID_78AD
+  National Instruments,NI TB-4309 (ST)
+  BUS_0D,VID_1093,PID_78AE
+  National Instruments,NI TB-4309 (MT)
+  BUS_0D,VID_1093,PID_78AF
+  National Instruments,NI CAL-4309
+  BUS_07,VID_1093,PID_78B2
+  National Instruments,NI 9210 (miniTC)
+  BUS_07,VID_1093,PID_78B5
+  National Instruments,NI 9266
+  BUS_06,VID_3923,PID_78B9
+  National Instruments,NI cDAQ-9189
+  BUS_06,VID_3923,PID_78C7
+  National Instruments,NI cDAQ-9185
+  BUS_0D,VID_1093,PID_78E0
+  National Instruments,NI TB-4310 (10V)
+  BUS_0D,VID_1093,PID_78E1
+  National Instruments,NI TB-4310 (600V)
+  BUS_01,VID_1093,PID_7903
+  National Instruments,NI cRIO-9040
+  BUS_01,VID_1093,PID_7905
+  National Instruments,NI cRIO-9045
+  BUS_01,VID_1093,PID_7907
+  National Instruments,NI cRIO-9043
+  BUS_01,VID_1093,PID_7909
+  National Instruments,NI cRIO-9048
+  BUS_01,VID_1093,PID_790D
+  National Instruments,NI cRIO-9048 (TPM)
+  BUS_01,VID_1093,PID_790F
+  National Instruments,NI cRIO-9042
+  BUS_01,VID_1093,PID_7911
+  National Instruments,NI cRIO-9047
+  BUS_01,VID_1093,PID_7913
+  National Instruments,NI cRIO-9049
+  BUS_07,VID_1093,PID_7918
+  National Instruments,NI 9207
+  BUS_07,VID_1093,PID_7919
+  National Instruments,NI 9208
+  BUS_07,VID_1093,PID_791A
+  National Instruments,NI 9209
+  BUS_07,VID_1093,PID_7923
+  National Instruments,NI 9425 (Spring)
+  BUS_07,VID_1093,PID_7924
+  National Instruments,NI 9476 (Spring)
+  BUS_07,VID_1093,PID_7931
+  National Instruments,NI 9231
+  BUS_07,VID_1093,PID_7940
+  National Instruments,NI FD-11613
+  BUS_06,VID_3923,PID_7941
+  National Instruments,NI FD-11613
+  BUS_07,VID_1093,PID_7942
+  National Instruments,NI FD-11637
+  BUS_06,VID_3923,PID_7943
+  National Instruments,NI FD-11637
+  BUS_07,VID_1093,PID_7944
+  National Instruments,NI FD-11603
+  BUS_06,VID_3923,PID_7945
+  National Instruments,NI FD-11603
+  BUS_0D,VID_1093,PID_7992
+  National Instruments,NI RM-24999_A
+  BUS_0D,VID_1093,PID_7993
+  National Instruments,NI RM-24999_B
+  BUS_0D,VID_1093,PID_7994
+  National Instruments,NI RM-24999_C
+  BUS_07,VID_1093,PID_7998
+  National Instruments,NI 9262
+  BUS_07,VID_1093,PID_79C5
+  National Instruments,NI 9253
+  BUS_07,VID_1093,PID_79C9
+  National Instruments,NI 9252
+  BUS_07,VID_1093,PID_79CB
+  National Instruments,NI 9252 (DSUB)
+  BUS_01,VID_1093,PID_79CF
+  National Instruments,NI cRIO-9046
+  BUS_01,VID_1093,PID_79D1
+  National Instruments,NI cRIO-9041
+  BUS_01,VID_1093,PID_79E1
+  National Instruments,NI cRIO-9053
+  BUS_01,VID_1093,PID_79E2
+  National Instruments,NI cRIO-9054
+  BUS_01,VID_1093,PID_79E3
+  National Instruments,NI cRIO-9056
+  BUS_01,VID_1093,PID_79E4
+  National Instruments,NI cRIO-9057
+  BUS_02,VID_3923,PID_79F7
+  National Instruments,NI USB-6349
+  BUS_07,VID_1093,PID_79FD
+  National Instruments,NI 9266 (DSUB)
+  BUS_07,VID_1093,PID_79FE
+  National Instruments,NI FD-11614
+  BUS_06,VID_3923,PID_79FF
+  National Instruments,NI FD-11614
+  BUS_07,VID_1093,PID_7A06
+  National Instruments,NI FD-11601
+  BUS_06,VID_3923,PID_7A07
+  National Instruments,NI FD-11601
+  BUS_02,VID_3923,PID_7A08
+  National Instruments,NI USB-6346 (BNC)
+  BUS_07,VID_1093,PID_7A09
+  National Instruments,NI FD-11614
+  BUS_07,VID_1093,PID_7A1B
+  National Instruments,NI FD-11634
+  BUS_06,VID_3923,PID_7A1C
+  National Instruments,NI FD-11634
+  BUS_07,VID_1093,PID_7A27
+  National Instruments,NI 9210
+  BUS_01,VID_1093,PID_7A29
+  National Instruments,NI cRIO-9058
+  BUS_01,VID_1093,PID_7A2C
+  National Instruments,NI cRIO-9055
+  BUS_06,VID_3923,PID_7A32
+  National Instruments,NI FD-11605
+  BUS_07,VID_1093,PID_7A33
+  National Instruments,NI FD-11605
+  BUS_01,VID_1093,PID_7A3C
+  National Instruments,NI sbRIO-9603
+  BUS_01,VID_1093,PID_7A3D
+  National Instruments,NI sbRIO-9608
+  BUS_01,VID_1093,PID_7A3E
+  National Instruments,NI sbRIO-9628
+  BUS_01,VID_1093,PID_7A3F
+  National Instruments,NI sbRIO-9638
+  BUS_01,VID_1093,PID_7A42
+  National Instruments,NI sbRIO-9609
+  BUS_01,VID_1093,PID_7A44
+  National Instruments,NI sbRIO-9629
+  BUS_07,VID_1093,PID_7A5F
+  National Instruments,NI 9326
+  BUS_07,VID_1093,PID_7ACF
+  National Instruments,NI TS-15200
+  BUS_07,VID_1093,PID_7AD5
+  National Instruments,NI TS-15100
+  BUS_07,VID_1093,PID_7AD6
+  National Instruments,NI TS-15110
+  BUS_07,VID_1093,PID_7AD7
+  National Instruments,NI TS-15120
+  BUS_07,VID_1093,PID_7AD8
+  National Instruments,NI TS-15130
+  BUS_02,VID_3923,PID_7ADA
+  National Instruments,NI TS-15010
+  BUS_02,VID_3923,PID_7ADC
+  National Instruments,NI TS-15000
+  BUS_07,VID_1093,PID_7ADE
+  National Instruments,NI TS-15050 DIO P0
+  BUS_02,VID_3923,PID_7AFA
+  National Instruments,NI cDAQ-9171EX
+  BUS_02,VID_3923,PID_7B10
+  National Instruments,NI Deprecated USB-6421
+  BUS_02,VID_3923,PID_7B11
+  National Instruments,NI Deprecated USB-6423
+  BUS_02,VID_3923,PID_7B12
+  National Instruments,NI Deprecated USB-6451
+  BUS_02,VID_3923,PID_7B13
+  National Instruments,NI Deprecated USB-6453
+  BUS_02,VID_3923,PID_7B14
+  National Instruments,NI Deprecated USB-6421(OEM)
+  BUS_02,VID_3923,PID_7B15
+  National Instruments,NI Deprecated USB-6423(OEM)
+  BUS_02,VID_3923,PID_7B16
+  National Instruments,NI Deprecated USB-6451(OEM)
+  BUS_02,VID_3923,PID_7B17
+  National Instruments,NI Deprecated USB-6453(OEM)
+  BUS_02,VID_3923,PID_7B34
+  National Instruments,NI cDAQ-9170
+  BUS_02,VID_3923,PID_7B35
+  National Instruments,NI cDAQ-9173
+  BUS_02,VID_3923,PID_7B36
+  National Instruments,NI cDAQ-9177
+  BUS_06,VID_3923,PID_7B37
+  National Instruments,NI cDAQ-9183
+  BUS_06,VID_3923,PID_7B38
+  National Instruments,NI cDAQ-9187
+  BUS_07,VID_1093,PID_7B39
+  National Instruments,NI 9204 (DSUB)
+  BUS_07,VID_1093,PID_7B3A
+  National Instruments,NI 9204
+  BUS_02,VID_3923,PID_7B3D
+  National Instruments,NI USB-6421(OEM)
+  BUS_02,VID_3923,PID_7B3E
+  National Instruments,NI USB-6421
+  BUS_02,VID_3923,PID_7B3F
+  National Instruments,NI USB-6423(OEM)
+  BUS_02,VID_3923,PID_7B40
+  National Instruments,NI USB-6423
+  BUS_02,VID_3923,PID_7B41
+  National Instruments,NI USB-6451(OEM)
+  BUS_02,VID_3923,PID_7B42
+  National Instruments,NI USB-6451
+  BUS_02,VID_3923,PID_7B43
+  National Instruments,NI USB-6453(OEM)
+  BUS_02,VID_3923,PID_7B44
+  National Instruments,NI USB-6453
+  BUS_07,VID_1093,PID_7B46
+  National Instruments,NI 9222 (Snap In)
+  BUS_07,VID_1093,PID_7B48
+  National Instruments,NI 9223 (Snap In)
+  BUS_07,VID_1093,PID_7B4A
+  National Instruments,NI 9225 (Snap In)
+  BUS_07,VID_1093,PID_7B4C
+  National Instruments,NI 9227 (Snap In)
+  BUS_07,VID_1093,PID_7B4E
+  National Instruments,NI 9230 (Snap In)
+  BUS_07,VID_1093,PID_7B50
+  National Instruments,NI 9232 (Snap In)
+  BUS_07,VID_1093,PID_7B52
+  National Instruments,NI 9238 (Snap In)
+  BUS_07,VID_1093,PID_7B54
+  National Instruments,NI 9269 (Snap In)
+  BUS_07,VID_1093,PID_7B56
+  National Instruments,NI 9229 (Snap In)
+  BUS_07,VID_1093,PID_7B58
+  National Instruments,NI 9239 (Snap In)
+  BUS_07,VID_1093,PID_7B5E
+  National Instruments,NI 9320
+  BUS_07,VID_1093,PID_7B5F
+  National Instruments,NI 9320 (DSUB)
+  BUS_07,VID_1093,PID_7B7D
+  National Instruments,NI 9305
+  BUS_07,VID_1093,PID_7B7E
+  National Instruments,NI 9305 (DSUB)
+  BUS_01,VID_1093,PID_72F7C4C4
+  National Instruments,NI PXIe-6535
+  BUS_01,VID_1093,PID_72F8C4C4
+  National Instruments,NI PXIe-6536
+  BUS_01,VID_1093,PID_72F9C4C4
+  National Instruments,NI PXIe-6537
+  BUS_01,VID_1093,PID_7326C4C4
+  National Instruments,NI PCIe-6509
+  BUS_01,VID_1093,PID_7425C4C4
+  National Instruments,NI PCIe-6320
+  BUS_01,VID_1093,PID_7426C4C4
+  National Instruments,NI PXIe-6321
+  BUS_01,VID_1093,PID_7427C4C4
+  National Instruments,NI PCIe-6321
+  BUS_01,VID_1093,PID_7428C4C4
+  National Instruments,NI PXIe-6323
+  BUS_01,VID_1093,PID_7429C4C4
+  National Instruments,NI PCIe-6323
+  BUS_01,VID_1093,PID_742AC4C4
+  National Instruments,NI PXIe-6341
+  BUS_01,VID_1093,PID_742BC4C4
+  National Instruments,NI PCIe-6341
+  BUS_01,VID_1093,PID_742CC4C4
+  National Instruments,NI PXIe-6343
+  BUS_01,VID_1093,PID_742DC4C4
+  National Instruments,NI PCIe-6343
+  BUS_01,VID_1093,PID_742EC4C4
+  National Instruments,NI PXIe-6351
+  BUS_01,VID_1093,PID_742FC4C4
+  National Instruments,NI PCIe-6351
+  BUS_01,VID_1093,PID_7430C4C4
+  National Instruments,NI PXIe-6353
+  BUS_01,VID_1093,PID_7431C4C4
+  National Instruments,NI PCIe-6353
+  BUS_01,VID_1093,PID_7432C4C4
+  National Instruments,NI PXIe-6361
+  BUS_01,VID_1093,PID_7433C4C4
+  National Instruments,NI PCIe-6361
+  BUS_01,VID_1093,PID_7434C4C4
+  National Instruments,NI PXIe-6363
+  BUS_01,VID_1093,PID_7435C4C4
+  National Instruments,NI PCIe-6363
+  BUS_01,VID_1093,PID_7436C4C4
+  National Instruments,NI PXIe-6356
+  BUS_01,VID_1093,PID_7437C4C4
+  National Instruments,NI PXIe-6358
+  BUS_01,VID_1093,PID_7438C4C4
+  National Instruments,NI PXIe-6366
+  BUS_01,VID_1093,PID_7439C4C4
+  National Instruments,NI PXIe-6368
+  BUS_01,VID_1093,PID_7492C4C4
+  National Instruments,NI PXIe-4300
+  BUS_01,VID_1093,PID_74A8C4C4
+  National Instruments,NI PXIe-4330
+  BUS_01,VID_1093,PID_74A9C4C4
+  National Instruments,NI PXIe-4331
+  BUS_01,VID_1093,PID_74B2C4C4
+  National Instruments,NI PXIe-4353
+  BUS_01,VID_1093,PID_75CFC4C4
+  National Instruments,NI PXIe-4357
+  BUS_01,VID_1093,PID_763DC4C4
+  National Instruments,NI PXIe-6349
+  BUS_01,VID_1093,PID_76ABC4C4
+  National Instruments,NI PXIe-4322
+  BUS_01,VID_1093,PID_76C8C4C4
+  National Instruments,NI PXIe-6614
+  BUS_01,VID_1093,PID_76C9C4C4
+  National Instruments,NI PXIe-6612
+  BUS_01,VID_1093,PID_76DCC4C4
+  National Instruments,NI PXIe-4610
+  BUS_01,VID_1093,PID_7711C4C4
+  National Instruments,NI PXIe-4464
+  BUS_01,VID_1093,PID_7712C4C4
+  National Instruments,NI PXIe-4463
+  BUS_01,VID_1093,PID_7716C4C4
+  National Instruments,NI PCIe-6612
+  BUS_01,VID_1093,PID_771EC4C4
+  National Instruments,NI PXIe-4339
+  BUS_01,VID_1093,PID_77A5C4C4
+  National Instruments,NI PXIe-6345
+  BUS_01,VID_1093,PID_77A6C4C4
+  National Instruments,NI PXIe-6355
+  BUS_01,VID_1093,PID_77A7C4C4
+  National Instruments,NI PXIe-6365
+  BUS_01,VID_1093,PID_77A8C4C4
+  National Instruments,NI PXIe-6375
+  BUS_01,VID_1093,PID_77CAC4C4
+  National Instruments,NI PXIe-6738
+  BUS_01,VID_1093,PID_77CBC4C4
+  National Instruments,NI PXIe-6739
+  BUS_01,VID_1093,PID_7802C4C4
+  National Instruments,NI PXIe-4302
+  BUS_01,VID_1093,PID_7803C4C4
+  National Instruments,NI PXIe-4303
+  BUS_01,VID_1093,PID_7805C4C4
+  National Instruments,NI PXIe-4305
+  BUS_01,VID_1093,PID_7829C4C4
+  National Instruments,NI PXIe-4340
+  BUS_01,VID_1093,PID_7844C4C4
+  National Instruments,NI PXIe-4480
+  BUS_01,VID_1093,PID_7845C4C4
+  National Instruments,NI PXIe-4481
+  BUS_01,VID_1093,PID_7882C4C4
+  National Instruments,NI PXIe-6376
+  BUS_01,VID_1093,PID_7883C4C4
+  National Instruments,NI PXIe-6378
+  BUS_01,VID_1093,PID_788EC4C4
+  National Instruments,NI PXIe-4304
+  BUS_01,VID_1093,PID_78ACC4C4
+  National Instruments,NI PXIe-4309
+  BUS_01,VID_1093,PID_78DFC4C4
+  National Instruments,NI PXIe-4310
+  BUS_01,VID_1093,PID_7988C4C4
+  National Instruments,NI PCIe-6738
+  BUS_01,VID_1093,PID_7999C4C4
+  National Instruments,NI PCIe-6376
+  BUS_01,VID_1093,PID_799AC4C4
+  National Instruments,NI PCIe-6374
+  BUS_01,VID_1093,PID_799EC4C4
+  National Instruments,NI PXIe-6386
+  BUS_01,VID_1093,PID_799FC4C4
+  National Instruments,NI PXIe-6396
+  BUS_01,VID_1093,PID_79A7C4C4
+  National Instruments,NI PCIe-6346
+  BUS_01,VID_1093,PID_7A77C4C4
+  National Instruments,NI PXIe-6509
+  BUS_01,VID_1093,PID_7A8DC4C4
+  National Instruments,NI PXIe-4466
+  BUS_01,VID_1093,PID_7AC7C4C4
+  National Instruments,NI PXIe-4467
+  BUS_01,VID_1093,PID_7AE2C4C4
+  National Instruments,NI PXIe-4468
+  BUS_01,VID_1093,PID_7B1AC4C4
+  National Instruments,NI PXIe-4311
+  BUS_01,VID_1093,PID_7B60C4C4
+  National Instruments,NI PXIe-4599 (2AI) (AD7768)
+  BUS_01,VID_1093,PID_7B61C4C4
+  National Instruments,NI PXIe-4597
+  BUS_01,VID_1093,PID_7B64C4C4
+  National Instruments,NI PCIe-6340
+  BUS_01,VID_1093,PID_7B65C4C4
+  National Instruments,NI PCIe-6342
+  BUS_01,VID_1093,PID_7B66C4C4
+  National Instruments,NI PCIe-6345
+  BUS_01,VID_1093,PID_7B67C4C4
+  National Instruments,NI PCIe-6347
+  BUS_01,VID_1093,PID_7B68C4C4
+  National Instruments,NI PCIe-6350
+  BUS_01,VID_1093,PID_7B69C4C4
+  National Instruments,NI PCIe-6352
+  BUS_01,VID_1093,PID_7B6AC4C4
+  National Instruments,NI PCIe-6355
+  BUS_01,VID_1093,PID_7B6BC4C4
+  National Instruments,NI PCIe-6357
+  BUS_01,VID_1093,PID_7B6CC4C4
+  National Instruments,NI PXIe-6357
+  BUS_01,VID_1093,PID_7B6DC4C4
+  National Instruments,NI PXIe-6381
+  BUS_01,VID_1093,PID_7B6EC4C4
+  National Instruments,NI PXIe-6383
+  BUS_01,VID_1093,PID_7B6FC4C4
+  National Instruments,NI PXIe-4599 (8AI)
+  BUS_01,VID_1093,PID_7B70C4C4
+  National Instruments,NI PXIe-4599
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: 01c92ecf12e7f4c4edabf9e5769ab689
+Maintainer: National Instruments <support@ni.com>
+MessageCondition-1: <msi><![CDATA[(DAQDETECTED="YES") AND (NOT NIRUNNINGINSILENTMODE)]]></msi>
+MessageText-1: Notice: Some devices are no longer supported in newer versions of NI-DAQmx
+  An older version of NI-DAQmx was detected on this system. Before continuing with this installation, confirm that your device(s) are supported in this NI-DAQmx version by referring to Device Support in NI-DAQmx in the NI-DAQmx readme or contacting NI Technical Support: https://www.ni.com/r/nidaqmxrn
+MessageText-1-de: Hinweis: Bestimmte Gerätemodelle werden von neueren Versionen von NI-DAQmx nicht mehr unterstützt.
+  Es wurde eine ältere Version von NI-DAQmx gefunden. Bevor Sie mit der Installation fortfahren, vergewissern Sie sich, dass Ihre Geräte in dieser NI-DAQmx-Version unterstützt werden. Weitere Informationen hierzu erhalten Sie in der Liste unterstützter Geräte unter https://www.ni.com/r/nidaqmxrn oder beim technischen Support von NI.
+MessageText-1-fr: Remarque : Certains périphériques ne sont plus pris en charge par les versions les plus récentes de NI-DAQmx.
+  Une version antérieure de NI-DAQmx a été détectée sur ce système. Avant de poursuivre cette installation, vérifiez que vos périphériques sont pris en charge par cette version de NI-DAQmx en vous reportant à la rubrique Périphériques supportés par NI-DAQmx dans le fichier Readme de NI-DAQmx ou en contactant le support technique de NI : https://www.ni.com/r/nidaqmxrn
+MessageText-1-ja: 注意: デバイスの中にはNI-DAQmxの新しいバージョンでのサポートが終了したものがあります。
+  このシステムでNI-DAQmxの古いバージョンが検出されました。このインストールを続行する前に、『NI-DAQmx readme』の「NI-DAQmxでのデバイスサポート」を参照するか、NIテクニカルサポートに問い合わせて、使用するデバイスがこのバージョンのNI-DAQmxでサポートされているかどうかを確認してください (https://www.ni.com/r/nidaqmxrn)。
+MessageText-1-ko: 알림: 일부 디바이스는 NI-DAQmx 이후 버전에서 더이상 지원되지 않습니다.
+  이 시스템에서 NI-DAQmx의 이전 버전이 감지되었습니다. 이 설치를 계속하기 전에, NI-DAQmx Readme(https://www.ni.com/r/nidaqmxrn)에서 "NI-DAQmx의 디바이스 지원"을 참조하거나 NI 기술 지원부에 문의하여, 사용하는 디바이스가 이 NI-DAQmx 버전에서 지원되는지 확인하십시오.
+MessageText-1-zh-CN: 注：新版本的NI-DAQmx不再支持某些设备
+  系统上检测到较早版本的NI-DAQmx。继续安装之前，请参阅NI-DAQmx自述文件中的“NI-DAQmx设备支持”部分或联系NI技术支持(https://www.ni.com/r/nidaqmxrn)，以确认此版本的NI-DAQmx支持您的设备。
+MsiProperties: UC={FB02120F-D774-4386-8CAA-81D9A8B0BBA2}:PC={07EC089D-017B-4697-8749-4DB5B6C187C6}:PV=26.00.49428
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx
+Plugin: wininst
+Priority: standard
+Provides: fb02120f-d774-4386-8caa-81d9a8b0bba2 (= 26.00.49428),ni-daqmx (= 26.0.0.49428-0+f276)
+Recommends: ni-daqmx-c-support (>= 26.0.0),ni-daqmx-config-support-core (>= 26.0.0),ni-daqmx-cvi-support (>= 26.0.0),ni-daqmx-dotnet-fx40-support (>= 26.0.0),ni-daqmx-dotnet-fx45-support (>= 26.0.0),ni-daqmx-labview-support (>= 26.0.0),ni-daqmx-veristand-support (>= 26.0.0),ni-hwcfg-utility (>= 26.0.0),ni-iotrace (>= 26.0.0),ni-linux-rt-system-image-26.0.0-realtime-support (>= 26.0.0)
+ReleaseNotes: 
+  Refer to the NI website at https://www.ni.com/r/nidaqmxrn for installation instructions, known issues, bug fixes, compatibility information, and other important notices about this product.
+ .
+  You must have at least 8 GB of free space available to install this product.
+ReleaseNotes-de: 
+  Auf der NI-Website https://www.ni.com/r/nidaqmxrn finden Sie wichtige Hinweise zu diesem Produkt, darunter Informationen zur Installation, zu bekannten Problemen, zu Fehlerkorrekturen und zur Kompatibilität.
+ .
+  Sie benötigen mindestens 8 GB freien Speicherplatz, um dieses Produkt zu installieren.
+ReleaseNotes-fr: 
+  Reportez-vous au site Web de NI à l'adresse https://www.ni.com/r/nidaqmxrn pour obtenir les instructions d'installation, des informations sur les problèmes connus, les corrections de bugs, la compatibilité ainsi que d'autres informations importantes concernant ce produit.
+ .
+  Vous devez disposer d'au moins 8 Go d'espace libre pour installer ce produit.
+ReleaseNotes-ja: 
+  インストール手順、既知の問題、バグ修正、互換性情報、およびこの製品に関するその他の重要な注意事項については、NI Webサイト (https://www.ni.com/r/nidaqmxrn) を参照してください。
+ .
+  この製品をインストールするには、8 GB以上の空き容量が必要です。
+ReleaseNotes-ko: 
+  이 제품에 대한 설치 방법, 알려진 유의사항, 버그 수정, 호환성 정보, 기타 중요한 알림사항은 NI 웹사이트(https://www.ni.com/r/nidaqmxrn)를 참조하십시오.
+ .
+  이 제품을 설치하려면 최소한 8 GB의 여유 공간이 있어야 합니다.
+ReleaseNotes-zh-CN: 
+  关于安装说明、已知问题、错误修正、兼容信息以及本产品的其他重要说明，请参阅NI网站上的https://www.ni.com/r/nidaqmxrn。
+ .
+  必须有至少2.1 GB的可用空间才能安装本产品。
+Replaces: fb02120f-d774-4386-8caa-81d9a8b0bba2 (< 0.0.1)
+SHA256: de67a4549df7f9ad454e557160961c57babfaf0226aa5171450964fd2b7028ed
+Section: Drivers
+Size: 410746
+SourceFeed: https://download.ni.com/support/nipkg/products/ni-d/ni-daqmx/26.0/released
+StoreProduct: yes
+Suggests: ni-daqmx-cdaq-firmware (>= 26.0.0),ni-daqmx-offline-manual (>= 26.0.0),ni-daqmx-vs2015-support (>= 26.0.0),ni-daqmx-vs2017-support (>= 26.0.0),ni-daqmx-vs2019-support (>= 26.0.0),ni-linux-rt-system-image-26.0.0 (>= 26.0.0),ni-testscalesfp-instrumentstudio-support (>= 26.0.0),ni-web-based-configuration (>= 26.0.0)
+UserVisible: yes
+Version: 26.0.0.49428-0+f276
+
+Architecture: windows_x64
+CompatibilityVersion: 260500
+Conflicts: 8f101784-9b55-4e67-92c8-0e845f12f3ab (< 16.99.0)
+Depends: ni-mdfsupport (>= 26.5.0),ni-metauninstaller (>= 26.5.0)
+Description: This is an infrastructure package for NI Software.
+DisplayName: NI-DAQmx LabVIEW_DAQmx_Docs Product
+DisplayVersion: 2026 Q3
+Eula: eula-ni-standard
+Filename: ../../pool/ni-daqmx-labview-shared-docs_26.5.0.49603-0+f451_windows_x64.nipkg
+Homepage: https://www.ni.com
+InstalledBy: WIA
+MD5sum: ea226799c9188534e94695b54bc14a73
+Maintainer: National Instruments <support@ni.com>
+MsiProperties: UC={8F101784-9B55-4E67-92C8-0E845F12F3AB}:PC={A0FD7167-9295-431C-AD36-084A46A834D9}:PV=26.50.49603,UC={44F184C9-F61E-4D38-940D-6803E2F6F311}:PC={70BF43B0-10C2-459A-ACF9-8D35AC16C9F0}:PV=26.50.49603
+OsRequires: >= 10.0.14393
+OsSupport: WINDOWS_11 WINDOWS_SERVER_2025 WINDOWS_SERVER_2022 WINDOWS_10_IOT_ENTERPRISE_2021
+Package: ni-daqmx-labview-shared-docs
+Plugin: wininst
+Priority: standard
+Provides: 44f184c9-f61e-4d38-940d-6803e2f6f311 (= 26.50.49603),8f101784-9b55-4e67-92c8-0e845f12f3ab (= 26.50.49603),ni-daqmx-labview-shared-docs (= 26.5.0.49603-0+f451)
+Replaces: 8f101784-9b55-4e67-92c8-0e845f12f3ab (< 16.99.0)
+SHA256: 9338086912123e14f6bbff66786ae17bb1ad1e7caffb7932893139d8b0a7e8ee
+Section: Infrastructure
+Size: 29075130
+SourceFeed: ../feeds/ni-labview-2026
+Version: 26.5.0.49603-0+f451
+

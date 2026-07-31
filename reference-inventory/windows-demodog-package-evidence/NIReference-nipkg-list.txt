@@ -1,0 +1,988 @@
+ni-g-web-development-chromiumfx-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-command-line-tools-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-context-help	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-dll-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-licensing-bin	22.3.0.49213-0+f61	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-resources-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-stdlib-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-support-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-web-support	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-websockets-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-nxg-webserver-bin	8.4.0.49152-0+f0	windows_x64	This is an infrastructure package for NI Software.
+ni-post-install-prep	8.4.0.49152-0+f0	windows_x64	This is an infrastructure package for NI Software.
+ni-arch-gen-rt-common-26.0.0	26.0.0.49318-0+f166	windows_x64	This is an infrastructure package for NI Software.
+ni-arch-gen-rt-common-25.8.0	25.8.0.49255-0+f103	windows_x64	This is an infrastructure package for NI Software.
+ni-arch-gen-rt-common-25.0.0	25.0.0.49315-0+f163	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin9	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin8	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin7	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin6	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin5	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin4	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin3	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin2	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin12	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin11	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-vivado-2021.1-bin10	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-systemlink-client-2026-realtime-shared	26.0.0.49322-0+f170	windows_x64	This is an infrastructure package for NI Software.
+ni-systemlink-client-2025.8-realtime-shared	25.8.0.49261-0+f109	windows_x64	This is an infrastructure package for NI Software.
+ni-systemlink-client-2025-realtime-shared	25.0.0.49319-0+f167	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-http-bin	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+mgi-solution-explorer	2.8.0-4	windows_all	Easily develop and build multi-project based LabVIEW Applications
+ni-linux-rt-system-image-26.0.0	26.0.0.49327-0+f175	windows_x64	NI Linux RT System Image provides software that is required to deploy applications on NI real-time controllers. The NI Linux RT System Image is utility software that includes the system image required for formatting and provisioning most NI real-time controllers to run the NI Linux Real-Time OS. It is required to update the system image to install the latest drivers to your NI real-time controller. The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-linux-rt-system-image-25.8.0	25.8.0.49261-0+f109	windows_x64	NI Linux RT System Image provides software that is required to deploy applications on NI real-time controllers. The NI Linux RT System Image is utility software that includes the system image required for formatting and provisioning most NI real-time controllers to run the NI Linux Real-Time OS. It is required to update the system image to install the latest drivers to your NI real-time controller. The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-linux-rt-system-image-25.0.0	25.0.0.49319-0+f167	windows_x64	NI Linux RT System Image provides software that is required to deploy applications on NI real-time controllers. The NI Linux RT System Image is utility software that includes the system image required for formatting and provisioning most NI real-time controllers to run the NI Linux Real-Time OS. It is required to update the system image to install the latest drivers to your NI real-time controller. The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-skyline-tdmreader-service	26.0.0.49264-0+f112	windows_x64	NI SystemLink TDM Reader Service
+ni-skyline-user-service	26.0.0.49264-0+f112	windows_x64	NI SystemLink Security Service
+ni-skyline-serviceregistry	21.5.1.49164-0+f12	windows_x64	NI SystemLink Service Registry
+ni-instrumentstudio-professional	26.0.0.49578-0+f426	windows_x64	Provides licensing support for InstrumentStudio Professional
+ni-skyline-license-webservice	26.0.0.49264-0+f112	windows_x64	NI SystemLink License Web Service
+ni-systemlink-document-manager-service	21.5.1.49164-0+f12	windows_x64	NI SystemLink Document Manager Service
+ni-skyline-message-service	21.5.1.49164-0+f12	windows_x64	NI SystemLink Message Service
+ni-skyline-security-webui	21.5.1.49164-0+f12	windows_x64	NI SystemLink Security Web UI
+ni-dcpower-config-416x-devices	26.0.0.49431-0+f279	windows_x64	Provides NI-DCPower support for configuring Non-NI-DAQmx-Based power supplies and source measure units via Measurement & Automation Explorer (MAX). Refer to the NI-DCPower readme on ni.com/manuals for a full list of supported hardware.
+ni-systemlink-document-manager-webui	21.5.1.49164-0+f12	windows_x64	NI SystemLink Document Manager Web UI
+ni-visa-measurement-plugin-support	26.0.1.49154-0+f2	windows_x64	Provides components for using NI-VISA within Measurement Plug-Ins
+ni-switch-config-ca4-devices	26.0.0.49320-0+f168	windows_x64	Provides NI-SWITCH support for configuring NI 2524/5/6, 273x, and 274x switches via Measurement & Automation Explorer (MAX). Refer to the NI-SWITCH readme on ni.com/manuals for a full list of supported hardware.
+ni-fgen-config-5433-devices	26.0.0.49317-0+f165	windows_x64	Provides NI-FGEN support for configuring NI 5413, 5423, and 5433 waveform generators via Measurement & Automation Explorer (MAX). Refer to the NI-FGEN readme on ni.com/manuals for a full list of supported hardware.
+ni-dmm-config-408x-devices	26.0.0.49336-0+f184	windows_x64	Provides NI-DMM support for configuring NI 408x DMMs via Measurement & Automation Explorer (MAX). Refer to the NI-DMM readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-config-5170-devices	26.0.0.49306-0+f154	windows_x64	Provides NI-SCOPE support for configuring NI 5170 and 5171 oscilloscopes via Measurement & Automation Explorer (MAX). Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-config-5164-devices	26.0.0.49306-0+f154	windows_x64	Provides NI-SCOPE support for configuring NI 5164 oscilloscopes via Measurement & Automation Explorer (MAX). Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-config-5110-devices	26.0.0.49306-0+f154	windows_x64	Provides NI-SCOPE support for configuring NI 5110 oscilloscopes via Measurement & Automation Explorer (MAX). Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-systemlink-webvi-host-webui	21.5.1.49164-0+f12	windows_x64	NI SystemLink Web UI for Hosting WebVIs
+ni-g-web-development	22.3.2.49159-0+f7	windows_x64	G Web Development Software helps you create web-based user interfaces for Test and Measurement applications without the need for web development skills. You can use G Web Development Software to create engineering user interfaces (UIs) that run without plug-ins or installers in any modern web browser. It also enables you to quickly visualize data from distributed systems through industry-standard technologies.
+ni-systemlink-common-g-web-development-support	24.8.1.49154-0+f2	windows_x64	Provides Common SystemLink Data API support for G Web Development Software
+ni-systemlink-message-g-web-development-support	24.8.1.49154-0+f2	windows_x64	Provides SystemLink Message support for G Web Development Software
+ni-systemlink-tag-g-web-development-support	24.8.1.49154-0+f2	windows_x64	Provides SystemLink Tag support for G Web Development Software
+ni-systemlink-file-g-web-development-support	24.8.1.49154-0+f2	windows_x64	Provides SystemLink File support for G Web Development Software
+ni-systemlink-tdm-reader-g-web-development-support	24.8.1.49154-0+f2	windows_x64	Provides SystemLink TDM Reader support for G Web Development Software
+ni-linux-rt-system-image-26.0.0-realtime-support	26.0.0.49327-0+f175	windows_x64	NI Linux RT System Image Driver Support provides software that is required to deploy applications on NI real-time controllers. The NI Linux RT System Image is utility software that includes the system image required for formatting and provisioning most NI real-time controllers to run the NI Linux Real-Time OS. It is required to update the system image to install the latest drivers to your NI real-time controller. The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-linux-rt-system-image-25.8.0-realtime-support	25.8.0.49261-0+f109	windows_x64	NI Linux RT System Image Driver Support provides software that is required to deploy applications on NI real-time controllers. The NI Linux RT System Image is utility software that includes the system image required for formatting and provisioning most NI real-time controllers to run the NI Linux Real-Time OS. It is required to update the system image to install the latest drivers to your NI real-time controller. The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-linux-rt-system-image-25.0.0-realtime-support	25.0.0.49319-0+f167	windows_x64	NI Linux RT System Image Driver Support provides software that is required to deploy applications on NI real-time controllers. The NI Linux RT System Image is utility software that includes the system image required for formatting and provisioning most NI real-time controllers to run the NI Linux Real-Time OS. It is required to update the system image to install the latest drivers to your NI real-time controller. The registered trademark Linux (R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-systemlink-test-monitor-teststand-support-files	26.3.0.49225-0+f73	windows_x64	NI SystemLink Test Monitor Client Support Files for 32-bit and 64-bit TestStand 2023 and later versions. Installs toolkit configuration (Version Selector cfg) and shared assemblies for both architectures.
+ni-systemlink-forwarding-service	26.3.0.49225-0+f73	windows_x64	Enables client to store data while the network connection is disrupted and then forward data to SystemLink after the connection is restored.
+ni-systemlink-python-3.8	26.3.0.49267-0+f115	windows_x64	Python 3.8 and core libraries for use with NI SystemLink components.
+ni-systemlink-testmon-store	26.3.0.49225-0+f73	windows_x64	Enables client to store Test Monitor data while the network connection is disrupted and then forward data to SystemLink Server after the connection is restored.
+ni-systemlink-file-store	26.3.0.49225-0+f73	windows_x64	Enables client to store File data while the network connection is disrupted and then forward data to SystemLink Server after the connection is restored.
+ni-systemlink-apm-store	26.3.0.49225-0+f73	windows_x64	Enables client to store Asset Manager Utilization data while the network connection is disrupted and then forward data to the SystemLink Server after the connection is restored.
+ni-systemlink-apm-labview-runtime	26.3.0.49225-0+f73	windows_x64	Provides run-time components required to deploy 64-bit applications using the NI SystemLink Asset Manager APIs.
+ni-systemlink-apm-labview-runtime-x86	26.3.0.49225-0+f73	windows_x64	Provides run-time components required to deploy 32-bit applications using the NI SystemLink Asset Manager APIs.
+ni-systemlink-python-3.8-systemlink-sdk	26.3.0.49267-0+f115	windows_x64	SystemLink SDK and dependencies for NI SystemLink Python 3.8.
+ni-systemlink-client	26.3.0.49225-0+f73	windows_x64	SystemLink Client provides local device processing and configuration for hardware systems managed by a SystemLink Server. SystemLink Client includes processing services and APIs that enable the remote configuration functions and data services of SystemLink.  Each hardware device managed by a SystemLink Server must have the SystemLink Client installed to manage communications with the server.
+ni-mssqlserver2022expr	26.1.0.49258-0+f106	windows_x64	Installs the Microsoft SQL Server 2022 Express Edition.
+system-windows-x64	26.5.0.49301-0+f149	windows_x64	Package that indicates the current system is running a 64-bit Windows operating system.
+ni-package-manager-upgrader	26.5.0.49301-0+f149	windows_x64	Application used to upgrade the package manager.
+ni-package-manager-released-feed	26.5.0.49301-0+f149	windows_x64	Provides NI Package Manager released packages.
+ni-skyline-openssl	26.5.0.49273-0+f121	windows_x64	NI SystemLink Shared OpenSSL
+jki-dragon	2026.3.0-897	windows_x64	Manage package dependencies directly from your LabVIEW project. Works with VIPM and NI Package Manager to provide a complete dependency management solution for LabVIEW Add-ons, NI Software and Drivers, and more.
+ni-wif-landingpage	26.3.0.49279-0+f127	windows_x64	A web landing page that provides a read only overview of the system. Use NI Web Landing Page to view the system\x27s hostname, model, serial number, status, and network adapter information in a web browser.
+ni-web-based-configuration	26.3.0.49276-0+f124	windows_x64	Enables remote configuration of the system from a web browser. Use NI Web-Based Configuration and Monitoring to configure and monitor NI web servers from a web browser.
+ni-mstudio-common-help	19.1.0.49153-0+f1	windows_all	Measurement Studio Common Library Help for .NET Framework
+ni-securityupdate-kb67l8lcqw-killbits	2.1.0.49154-0+f2	windows_all	This is an infrastructure package for NI Software.
+ni-vision-example-finder-support	25.8.0.49259-0+f107	windows_x64	Provides Example Finder Files for Vision
+ni-vision-example-finder-support-x86	25.8.0.49259-0+f107	windows_x64	Provides Example Finder Files for Vision
+ni-mstudio-basedocs-helpdll	17.0.5.49154-0+f2	windows_all	NI Measurement Studio Help Assembly
+ni-mstudio-basedocs-helpconfig-2010	17.0.5.49154-0+f2	windows_all	NI Help Configuration Utility for VS2010
+ni-vision-assistant-examples	25.8.0.49262-0+f110	windows_x64	Provides Example Code and Solutions for Vision Assistant.
+ni-vision-assistant-examples-x86	25.8.0.49262-0+f110	windows_x64	Provides Example Code and Solutions for Vision Assistant.nipkgbuild_PKG_DEPENDS +=
+ni-vision-assistant-common	25.8.0.49262-0+f110	windows_x64	This is an infrastructure package for NI Software.
+ni-compactrio-development-support	26.0.0.49325-0+f173	windows_x64	Development support for CompactRIO devices
+ni-compactrio-26.0.0-firmware	26.0.0.49322-0+f170	windows_x64	Provides the cRIO firmware for NI Linux-RT Real-Time Embedded Targets.
+ni-teststand-2026-support-shared-visualstudio-x86	26.0.0.49296-0+f144	windows_x64	Source code for Visual Studio Support in TestStand.
+ni-teststand-2026-support-shared-steptypes-x86	26.0.0.49296-0+f144	windows_x64	Source code for StepTypes and CodeTemplates Support in TestStand.
+ni-teststand-2026-support-shared-labview-x86	26.0.0.49296-0+f144	windows_x64	Source code for Labview Support in TestStand.
+ni-teststand-2026-support-shared-database-x86	26.0.0.49296-0+f144	windows_x64	Source code for Database Support in TestStand.
+ni-teststand-2026-support-shared-api-x86	26.0.0.49296-0+f144	windows_x64	Source code for API Support in TestStand.
+ni-teststand-2026-runtime-tsgac-x86	26.0.0.49296-0+f144	windows_x64	Registers assemblies to GAC.
+ni-teststand-2026-runtime-session-manager-x86	26.0.0.49296-0+f144	windows_x64	Runtime Session Manager is an utility for hardware session management.
+ni-teststand-2026-runtime-labviewapi-adapter-x86	26.0.0.49296-0+f144	windows_x64	LabView API Adapter is a software add-on that enables engineers use LABView API in TestStand.
+ni-teststand-2026-runtime-cppadapter-x86	26.0.0.49296-0+f144	windows_x64	Cpp Adapter is a software add-on that enables engineers to run C++ based code on TestStand.
+ni-teststand-2026-runtime-componentuser-x86	26.0.0.49296-0+f144	windows_x64	Component User is a software add-on that provide icons and callbacks for the product.
+ni-teststand-2026-runtime-automationadapter-x86	26.0.0.49296-0+f144	windows_x64	Automation Adapter is a software add-on that enables engineers to run COM and HT Basic based code on TestStand. It also contains the files for backwards compatibility.
+ni-teststand-2026-ade-vs-support	26.0.0.49296-0+f144	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-teststand-2026-ade-labview-support	26.0.0.49296-0+f144	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-teststand-2026-ade-database-support	26.0.0.49296-0+f144	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-teststand-2026-ade-codetemplate-support	26.0.0.49296-0+f144	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-teststand-2026-ade-api-support	26.0.0.49296-0+f144	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-teststand-2026-runtime-tsgac	26.0.0.49296-0+f144	windows_x64	Registers assemblies to GAC.
+ni-teststand-2026-runtime-session-manager	26.0.0.49296-0+f144	windows_x64	Runtime Session Manager is an utility for hardware session management.
+ni-teststand-2026-runtime-cppadapter	26.0.0.49296-0+f144	windows_x64	Cpp Adapter is a software add-on that enables engineers to run C++ based code on TestStand.
+ni-teststand-2026-runtime-componentuser	26.0.0.49296-0+f144	windows_x64	Component User is a software add-on that provide icons and callbacks for the product.
+ni-teststand-2026-runtime-automationadapter	26.0.0.49296-0+f144	windows_x64	Automation Adapter is a software add-on that enables engineers to run COM and HT Basic based code on TestStand. It also contains the files for backwards compatibility.
+ni-teststand-2021-labview-ng-5.0.0-controls	21.0.0.49157-0+f5	windows_x64	Controls for use within LabVIEW NXG for TestStand.
+ni-cvi-sql-toolkit-runtime	2.4.0.49154-0+f2	windows_all	The LabWindows/CVI SQL Toolkit Runtime
+ni-assistant-framework-labview-2026-x86-support	26.1.0.49906-0+f754	windows_x64	NI Assistant Framework LabVIEW 2026 32-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-assistant-framework-labview-2025-x86-support	26.1.0.49906-0+f754	windows_x64	NI Assistant Framework LabVIEW 2025 32-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-assistant-framework-labview-2024-x86-support	26.1.0.49906-0+f754	windows_x64	NI Assistant Framework LabVIEW 2024 32-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-assistant-framework-labview-2023-x86-support	26.1.0.49906-0+f754	windows_x64	NI Assistant Framework LabVIEW 2023 32-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-opcenum	5.6.3.49154-0+f2	windows_all	OPCEnum application runs locally on the serving computer and exposes available OPC servers to the remotely connecting clients.
+ni-lv-2026-ai-addon	26.1.1.49188-0+f36	windows_x64	Provides support for LabVIEW Nigel Integration
+ni-lm-client-26.0-x86	26.1.0.49905-0+f753	windows_x64	Installs binaries for NILM Client
+ni-labview-2026-realtime-nbfifo-x86	26.1.0.49354-0+f202	windows_x64	This is an infrastructure package for NI Software.
+ni-lm-client-26.0	26.1.0.49905-0+f753	windows_x64	Installs binaries for NILM Client
+ni-labview-2026-realtime-nbfifo	26.1.0.49354-0+f202	windows_x64	This is an infrastructure package for NI Software.
+ni-error-reporting-interface	25.0.0.49226-0+f74	windows_x64	NI Error Reporting Interface provides the error reporting interface for Windows.
+ni-linux-rt-base-image-26.0.0-realtime-bin	26.0.0.49327-0+f175	windows_x64	This is an infrastructure package for NI Software.
+ni-cabled-pcie	26.0.0.49356-0+f204	windows_x64	NI-Cabled PCIe
+ni-pxiplatformsoftware-errors	26.0.0.49341-0+f189	windows_x64	Error description files for NI PXI Platform Software
+ni-pxiplatformframework-errors	26.0.0.49341-0+f189	windows_x64	NI PXI Platform Framework Error Files
+ni-watchdog-errors	26.0.0.49341-0+f189	windows_x64	Provides error codes for NI Watchdog components.
+ni-compile-farm-errors-x86	26.1.0.49235-0+f83	windows_x64	This is an infrastructure package for NI Software.
+ni-lm-client-25.5-x86	25.3.0.49512-0+f360	windows_x64	Installs binaries for NILM Client
+ni-labview-2025-runtime-engine-resource	25.3.0.49514-0+f362	windows_x64	LabVIEW 32-bit Runtime Resource contains support for non-English languages to display in dialog boxes, menus, and error messages that are part of the LabVIEW Runtime.
+ni-labview-2025-realtime-nbfifo-x86	25.1.0.49334-0+f182	windows_x64	This is an infrastructure package for NI Software.
+ni-lm-client-25.5	25.3.0.49512-0+f360	windows_x64	Installs binaries for NILM Client
+ni-labview-2025-realtime-nbfifo	25.1.0.49334-0+f182	windows_x64	This is an infrastructure package for NI Software.
+ni-mkl-2020	20.0.0.49154-0+f2	windows_all	Math Kernel Library (MKL) is an Intel software package that provides optimized linear algebra routines.
+ni-linux-rt-base-image-25.8.0-realtime-bin	25.8.0.49261-0+f109	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-errors	25.8.0.49260-0+f108	windows_x64	This is an infrastructure package for NI Software.
+ni-pxi-firmware	26.0.0.49322-0+f170	windows_x64	NI PXI firmware files for PXI controllers
+ni-pal-errors	26.0.0.49301-0+f149	windows_x64	NI Platform Abstraction Layer error code descriptions (infrastructure) Provides core driver services for NI drivers.  This package includes descriptions for error codes originating from ni-pal.
+ni-hwcu-hwsupport	26.0.0.49410-0+f258	windows_x64	Provides hardware support to the NI Hardware Configuration Utility.
+ni-hwcfg-utility-satellites	26.0.0.49410-0+f258	windows_x64	The Hardware Configuration Utility Localized Resources provides support for multiple languages.
+ni-labview-c-interface	1.0.4.49154-0+f2	windows_all	The LabVIEW C Interface to VI Server enables you to call VIs from C code. You can also call VI Server properties and methods on the Application and VI classes.
+ni-launcher	20.7.0.49153-0+f1	windows_x64	NILauncher is for browsing and launching National Instruments software installed on your computer. Installs on Windows 8.x and newer.
+ni-usblan	19.0.0.49155-0+f3	windows_all	This is an infrastructure package for NI Software.
+ni-roco-errors	26.0.0.49297-0+f145	windows_x64	NI Routing Coordinator signal routing support library (error descriptions) Provides signal routing services for NI software.  This package includes descriptions for error codes originating from ni-roco.
+ni-flexrio-shared-documentation	26.0.0.49278-0+f126	windows_x64	Provides documentation for FlexRIO.
+ni-flexrio-shared-runtime-core	26.0.0.49278-0+f126	windows_x64	Shared Support for NI FlexRIO products
+ni-imaq-camera-files	25.8.0.49259-0+f107	windows_x64	This is an infrastructure package for NI Software.
+ni-vas-labview-provider	25.8.0.49260-0+f108	windows_x64	This is an infrastructure package for NI Software.
+ni-vas-errors	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-fpga-errorcodes	26.1.0.49414-0+f262	windows_x64	This is an infrastructure package for NI Software.
+ni-fpga-errorcodes-x86	26.1.0.49414-0+f262	windows_x64	This is an infrastructure package for NI Software.
+ni-idl-errors	26.0.0.49237-0+f85	windows_all	National Instruments Instrument Design Libraries Error Files
+ni-misystem-26.0.0-dotnet-fx40-runtime	26.0.0.49242-0+f90	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-MISystem .NET API.
+ni-misystem-26.0.0-dotnet-fx45-runtime	26.0.0.49242-0+f90	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-MISystem .NET API.
+ni-icp-class-headers	26.0.0.49257-0+f105	windows_x64	Provides headers for IVI class drivers
+ni-icp-max-support	26.0.0.49260-0+f108	windows_x64	Provides the IVI Compliance Package MAX provider
+ni-apal-errors	26.0.0.49258-0+f106	windows_x64	NI device driver error code descriptions (infrastructure) Error code descriptions common to many NI device drivers.
+ni-visa-documentation	26.0.1.49154-0+f2	windows_x64	Provides help documentation for NI-VISA.
+ni-sync-bus-driver	26.0.0.49309-0+f157	windows_x64	Provides bus driver support for NI-Sync.
+ni-sync-iotrace-support	26.0.0.49304-0+f152	windows_x64	Provides support to allow NI I/O Trace to capture NI-Sync API calls.
+ni-flexrio-adapter-module-support-core	26.0.0.49278-0+f126	windows_x64	Installs registry keys, general example finder files, documentation and Adapter Modules Files.
+ni-flexrio-adapter-module-support-core-x86	26.0.0.49278-0+f126	windows_x64	Installs registry keys, general example finder files, documentation and Adapter Modules Files.
+ni-daqmx-common-docs	26.0.0.49416-0+f264	windows_x64	This is an infrastructure package for NI Software.
+ni-linux-rt-base-image-25.0.0-realtime-bin	25.0.0.49319-0+f167	windows_x64	This is an infrastructure package for NI Software.
+ni-imaqdx-isc178x-win	25.8.0.49256-0+f104	windows_x64	This is an infrastructure package for NI Software.
+ni-usbvcp	6.7.6.49154-0+f2	windows_all	This is an infrastructure package for NI Software.
+ni-ivi-runtime-cvi-support	26.0.0.49258-0+f106	windows_x64	Provides runtime support for IVI specific drivers for CVI
+ni-visa-errors	26.0.1.49154-0+f2	windows_x64	This package provides NI-VISA Error Description Files.
+ni-compile-farm-errors	26.1.0.49235-0+f83	windows_x64	This is an infrastructure package for NI Software.
+ni-msvcrt-2013	12.0.2.49153-0+f1	windows_x64	NI installer for Microsoft Visual C++ 2013 Run-Time
+ni-xnet-core	26.0.0.49413-0+f261	windows_x64	This is an infrastructure package for NI Software.
+ni-xnet-support	26.0.0.49414-0+f262	windows_x64	This is an infrastructure package for NI Software.
+ni-sync-documentation	26.0.0.49306-0+f154	windows_x64	Provides documentation on NI-Sync.
+ni-flexrio-integrated-io-adapter-modules	26.0.0.49278-0+f126	windows_x64	Provides adapter module components for FlexRIO with Integrated I/O. Refer to the FlexRIO readme on ni.com/manuals for a full list of supported hardware.
+ni-rio-embedded-can	26.0.0.49234-0+f82	windows_x64	The NI-Embedded CAN for RIO software provides support for the embedded CAN ports on RIO to transmit and receive CAN frames.
+ni-vision-example-images	25.8.0.49260-0+f108	windows_x64	This is an infrastructure package for NI Software.
+ni-985x-development-support	26.0.0.49315-0+f163	windows_x64	Development support for the NI-985x C Series modules.
+ni-flexrio-firmware	26.0.0.49282-0+f130	windows_x64	FlexRIO Firmware for NI Linux-RT Real-Time Embedded Targets
+ni-icp-documentation-core	26.0.0.49258-0+f106	windows_x64	Provides Windows help files for LabVIEW and LabWindows/CVI
+ni-teststand-2026-grpc-service	26.0.1.49211-0+f59	windows_x64	Provides support for the gRPC service files in TestStand.
+ni-compile-farm-webservice-x86	26.1.0.49237-0+f85	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-umber-comm	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-pid	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-linear-algebra	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-ipin	26.1.0.49415-0+f263	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-fixed-point-math	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-dragon-comm	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-docs	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-dmaport-comm	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-digital-designs	26.1.0.49418-0+f266	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-analysis	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-lvrt-26.1.0-linux-labview-support	26.1.0.49357-0+f205	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-linx-shared	26.1.0.49355-0+f203	windows_x64	This is an infrastructure package for NI Software.
+ni-io-server-provider-labview-2026-support	26.1.0.49309-0+f157	windows_x64	This is an infrastructure package for NI Software.
+ni-io-server-provider-labview-2026-rte-support	26.1.0.49309-0+f157	windows_x64	This is an infrastructure package for NI Software.
+ni-g-web-development-bin-msi	22.3.2.49159-0+f7	windows_x64	This is an infrastructure package for NI Software.
+ni-web-pipeline-26.0	26.0.0.49229-0+f77	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-max-xml	19.0.0.49154-0+f2	windows_all	NI LabVIEW MAX XML installs the XML file for defining visibility of LabVIEW in MAX.
+ni-daqmx-cdaq-firmware	26.0.0.49427-0+f275	windows_x64	Provides firmware for Ethernet CompactDAQ Chassis, FieldDAQ, and NI Linux Real-Time CompactDAQ Controllers
+ni-openvino-model-optimizer	25.8.0.49260-0+f108	windows_x64	Provides Python 3.6 support for using the OpenVINO Toolkit Model Optimizer
+ni-industrial-controller-25.0.0-firmware	25.0.0.49256-0+f104	windows_x64	Provides the Industrial Controller firmware for NI Linux Real-Time Embedded Targets.
+ni-mstudio-basedocs-vs2013-support	17.0.5.49154-0+f2	windows_all	NI Measurement Studio BaseDocs 2015 for VS2013
+ni-mstudio-basedocs-vs2012-support	17.0.5.49154-0+f2	windows_all	NI Measurement Studio BaseDocs 2015 for VS2012
+ni-mstudio-basedocs-vs2010-support	17.0.5.49154-0+f2	windows_all	NI Measurement Studio BaseDocs 2015 for VS2010
+ni-teststand-2026-runtime-labviewapi-adapter	26.0.0.49296-0+f144	windows_x64	LabView API Adapter is a software add-on that enables engineers use LABView API in TestStand.
+ni-teststand-2026-runtime-pythonadapter-x86	26.0.0.49296-0+f144	windows_x64	Python Adapter is a software add-on that enables engineers to run Python based code on TestStand.
+ni-teststand-2026-runtime-pythonadapter	26.0.0.49296-0+f144	windows_x64	Python Adapter is a software add-on that enables engineers to run Python based code on TestStand.
+ni-industrial-controller-runtime	25.0.0.49256-0+f104	windows_x64	Driver software for the NI Industrial Controller family of products.
+ni-pie	26.0.0.49422-0+f270	windows_x64	This is an infrastructure package for NI Software.
+ni-teststand-session-manager	26.0.0.49296-0+f144	windows_x64	A utility for hardware session management.
+ni-cvi-2020-reflector	20.0.0.49154-0+f2	windows_all	The LabWindows/CVI .NET Reflector Runtime provides functions that facilitate calling .NET assemblies
+ni-error-report-x86	25.0.0.49231-0+f79	windows_x64	NI Error Reporting (32-bit) enables you to send NI a crash or internal warning report.
+ni-error-report	25.0.0.49231-0+f79	windows_x64	NI Error Reporting (64-bit) enables you to send NI a crash or internal warning report.
+ni-wsrepl	26.1.0.49284-0+f132	windows_x64	NI WS Repl Library 2026 Q1
+ni-mstudio-cw3dgraph	8.7.5.49154-0+f2	windows_all	The National Instruments Measurement Studio 3DGraph ActiveX control.
+ni-activex-container	17.1.2.49154-0+f2	windows_all	NI ActiveX Container enables you to embed ActiveX objects on the front panel of a VI.
+ni-cvi-codegen	20.0.0.49154-0+f2	windows_all	The LabWindows/CVI Code Generator for the NI Assistant Framework.
+ni-tensorflow	25.8.0.49259-0+f107	windows_x64	This is an infrastructure package for NI Software.
+ni-openvino-inference-engine	25.8.0.49259-0+f107	windows_x64	This is an infrastructure package for NI Software.
+ni-ede	26.0.0.49303-0+f151	windows_x64	NI Ethernet Device Enumerator (infrastructure) Performs discovery and enumeration of embedded ethernet interfaces.
+ni-resetniconfig	26.0.0.49263-0+f111	windows_x64	NI Reset Configuration is a utility used to reset all NI device configuration settings.
+ni-mxlc-core	26.0.0.49300-0+f148	windows_x64	Provides binaries required by NI-MXLC.
+ni-visa-shared-components	8.0.2.49155-0+f3	windows_x64	VISA Shared Components
+ni-mstudio-common-fx40-19.0.0-runtime	19.0.0.49154-0+f2	windows_all	Measurement Studio Common Library Runtime for .NET Framework 4.0
+ni-teststand-version-selector	26.0.0.49296-0+f144	windows_x64	A utility to select the active TestStand version.
+ni-grpc-device	26.0.0.49226-0+f74	windows_x64	NI gRPC Device Server package
+ni-rio-fpga-ids	26.0.0.49307-0+f155	windows_x64	This feature includes the NI-RIO FPGA Interface Driver support files.
+ni-pcibrd	26.0.0.49344-0+f192	windows_x64	NI-PCI Bridge Driver
+ni-mesa	17.1.1.49154-0+f2	windows_all	Mesa is an open-source implementation of the OpenGL specification that is a system for rendering interactive 3D graphics.
+ni-vas-coinstaller	25.8.0.49256-0+f104	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-broker	22.3.0.49154-0+f2	windows_x64	NI LabVIEW Broker enables a C++ app to run VIs and interact with LV.
+ni-tclk-runtime	26.0.0.49271-0+f119	windows_x64	Provides run-time components required to deploy applications using NI-TClk synchronization API for SMC-based devices.
+ni-p2p	26.0.0.49307-0+f155	windows_x64	NI Peer-To-Peer driver support library (infrastructure) Provides peer-to-peer device transfer services for NI software.
+ni-mstudio-common-fx40-19.1.0-runtime	19.1.0.49154-0+f2	windows_all	Measurement Studio Common Library Runtime for .NET Framework 4.0
+ni-help-assistant	2.2.0.49154-0+f2	windows_all	Provides support for displaying NI HTML help files.
+ni-modinst-device-icon	26.0.0.49367-0+f215	windows_x64	Provides resource DLLs for NI Modular Instruments Devices.
+ni-apxipm2	26.0.0.49341-0+f189	windows_x64	NI Atomic 2.0 PXIe Peripheral Module Driver
+ni-modinst-runtime	26.0.0.49244-0+f92	windows_x64	Provides run-time components required to deploy applications using NI Modular Instrument Driver Library.
+ni-mi-session-manager-runtime	26.0.0.49374-0+f222	windows_x64	Provides run-time components required to deploy applications using NI MI Session Manager.
+ni-xlator	26.0.0.49258-0+f106	windows_x64	NI error message translation and localization library NI-Xlator translates, when available, error messages into the language of the host system.
+ni-pal	26.0.0.49304-0+f152	windows_x64	NI Platform Abstraction Layer hardware support library Provides core driver services for NI drivers.
+ni-tdm-excel-addin	21.5.1.49165-0+f13	windows_x64	Extends the capabilities of Microsoft Excel by adding the ability to load TDM or TDMS files written with NI hardware and application software.
+ni-visa-passport-grpc	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using gRPC
+ni-usb3vision	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-apxipm	25.8.0.49336-0+f184	windows_x64	NI Atomic PXIe Peripheral Module Driver support for Windows.
+ni-visa-passport-usb	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using USB
+ni-visa-passport-tulip	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using Agilent/HP VXI or GPIB controller hardware
+ni-visa-passport-serial	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using Serial (RS-232 or RS-485)
+ni-visa-passport-gpib	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using GPIB
+ni-visa-passport-enet-serial	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using ENET-Serial (RS-232 or RS-485)
+ni-ssl-support	21.3.0.49153-0+f1	windows_x64	NI SSL Support helps you enable Secure Sockets Layer (SSL) encryption on the Web Server.
+ni-artistic-style-22	2.5.0.49153-0+f1	windows_all	NI Artistic Style Tools 2.2
+ni-sync-enet-driver	26.0.0.49309-0+f157	windows_x64	Provides ethernet driver support for NI-Sync.
+ni-flexrio-adapter-module-digital-support-core	26.0.0.49278-0+f126	windows_x64	Core 64-bit support for FlexRIO Digital Adapter Modules. Support for NI 6581/B, NI 6583, NI 6584, NI 6585/B, NI 6587, and NI 6589 FlexRIO Adapter Modules.
+ni-flexrio-adapter-module-analog-support-core	26.0.0.49278-0+f126	windows_x64	Core 64-bit support for FlexRIO Analog Adapter Modules. Support for NI 5731, NI 5732, NI 5733, NI 5741, NI 5742, NI 5751/B, NI 5752/B, NI 5753, NI 5761, NI 5762, NI 5771, NI 5772, NI 5781, NI 5782, and NI 5783 FlexRIO Adapter Modules.
+ni-flexrio-adapter-module-rf-support-core	26.0.0.49278-0+f126	windows_x64	Core 64-bit support for FlexRIO RF Adapter Modules. Support for NI 5791, NI 5792, and NI 5793 FlexRIO Adapter Modules.
+ni-flexrio-adapter-module-digital-support-core-x86	26.0.0.49278-0+f126	windows_x64	Core 32-bit support for FlexRIO Digital Adapter Modules. Support for NI 6581/B, NI 6583, NI 6584, NI 6585/B, NI 6587, and NI 6589 FlexRIO Adapter Modules.
+ni-flexrio-adapter-module-analog-support-core-x86	26.0.0.49278-0+f126	windows_x64	Core 32-bit support for FlexRIO Analog Adapter Modules. Support for NI 5731, NI 5732, NI 5733, NI 5741, NI 5742, NI 5751/B, NI 5752/B, NI 5753, NI 5761, NI 5762, NI 5771, NI 5772, NI 5781, NI 5782, and NI 5783 FlexRIO Adapter Modules.
+ni-flexrio-adapter-module-rf-support-core-x86	26.0.0.49278-0+f126	windows_x64	Core 32-bit support for FlexRIO RF Adapter Modules. Support for NI 5791, NI 5792, and NI 5793 FlexRIO Adapter Modules.
+ni-vivado-2021.1-bin	26.1.0.49236-0+f84	windows_x64	This is an infrastructure package for NI Software.
+ni-xnet-labview-shared-support	26.0.0.49428-0+f276	windows_x64	This is an infrastructure package for NI Software.
+ni-teststand-2026-runtime-dotnetadapter-x86	26.0.0.49296-0+f144	windows_x64	Dotnet Adapter is a software add-on that enables engineers to run Dotnet based code on TestStand.
+ni-vision-assistant-labview-common	25.8.0.49262-0+f110	windows_x64	Provides common LabVIEW Code Generation support for Vision Assistant (64-bit).
+ni-dcpower-soft-front-panel-redirector	26.0.0.49578-0+f426	windows_x64	The NI-DCPower Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-dmm-soft-front-panel-redirector	26.0.0.49578-0+f426	windows_x64	The NI-DMM Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-fgen-soft-front-panel-redirector	26.0.0.49578-0+f426	windows_x64	The NI-FGEN Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-rfmx-soft-front-panel-redirector	26.0.0.49578-0+f426	windows_x64	RFmx Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-rfsg-soft-front-panel-launcher	26.0.0.49578-0+f426	windows_x64	The NI-RFSG Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-scope-soft-front-panel-redirector	26.0.0.49578-0+f426	windows_x64	The NI-SCOPE Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-linux-rt-system-image-26.0.0-realtime-bin	26.0.0.49327-0+f175	windows_x64	Installs the software necessary to manage a Real-Time Linux target
+ni-linux-rt-system-image-25.8.0-realtime-bin	25.8.0.49261-0+f109	windows_x64	Installs the software necessary to manage a Real-Time Linux target
+ni-slrp	26.0.0.49214-0+f62	windows_x64	NI Standard Logos Requests Protocol
+ni-mxlc	26.0.0.49300-0+f148	windows_x64	NI mx List Control Terminal I/O support library (infrastructure) Provides infrastructure services for Terminal I/O controls in NI software.
+ni-visa-dotnet-shared-components-8.0	8.0.2.49156-0+f4	windows_x64	VISA.NET Shared Components
+ni-visa-headers	26.0.1.49154-0+f2	windows_x64	NI-VISA Development Headers
+ni-teststand-2026-ade-support-shared-x86	26.0.0.49296-0+f144	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-instrumentstudio-mi-teststand-support	26.0.0.49578-0+f426	windows_x64	Allows TestStand to use configurations created by InstrumentStudio for Modular Instruments
+ni-mdnsresponder	26.0.0.49260-0+f108	windows_x64	Used by National Instruments components to advertise and discover Zeroconf devices and services. NI mDNS Responder Service advertises and discovers Zeroconf devices and services. If this service is stopped, advertisement and discovery of devices and services will no longer function. If this service is disabled, any services that explicitly depend on it will fail to start.
+ni-mxs	26.0.0.49263-0+f111	windows_x64	Provides an internal configuration database for NI software and hardware.
+ni-visa-passport-remote	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using Remote NI-VISA to access VISA resources on another computer on the network
+ni-mstudio-cw-ui	8.6.8.49154-0+f2	windows_all	The National Instruments Measurement Studio UI ActiveX control.
+ni-cvi-labview-dll-builder-15.1.0	15.1.1.49154-0+f2	windows_all	This is an infrastructure package for NI Software.
+ni-gvsp	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-mi-common-26.0.0-dotnet-fx40-runtime	26.0.0.49237-0+f85	windows_x64	The MI Common Runtime 26.0 for .NET Framework 4.0
+ni-mi-common-26.0.0-dotnet-fx45-runtime	26.0.0.49237-0+f85	windows_x64	The MI Common Runtime 26.0 for .NET Framework 4.5
+ni-rio-clip-generator	26.0.0.49316-0+f164	windows_x64	This is an infrastructure package for NI Software.
+ni-flexrio-integrated-io-api	26.0.0.49284-0+f132	windows_x64	Provides API components for FlexRIO with Integrated I/O. Refer to the FlexRIO readme on ni.com/manuals for a full list of supported hardware.
+ni-ssl-labview-2025-runtime-engine-support	25.3.0.49354-0+f202	windows_x64	Installs LabVIEW 2025 Q3 64-bit runtime support files for SSL technologies.
+ni-ssl-labview-2025-runtime-engine-x86-support	25.3.0.49354-0+f202	windows_x64	Installs LabVIEW 2025 Q3 runtime support files for SSL technologies.
+ni-watchdog-host	26.0.0.49250-0+f98	windows_x64	Windows 32-Bit drivers for NI-Watchdog.
+ni-orb	26.0.0.49303-0+f151	windows_x64	NI Object Request Broker driver support library (infrastructure) Provides core services for NI software.
+ni-gigevision	25.8.0.49264-0+f112	windows_x64	Optimized GigE Vision driver supporting Intel Pro 1000 Network Interface Cards and NI 8237 cards.
+ni-skyline-service-manager	26.0.0.49264-0+f112	windows_x64	NI SystemLink Service Manager
+ni-linux-rt-system-image-25.0.0-realtime-bin	25.0.0.49319-0+f167	windows_x64	This is an infrastructure package for NI Software.
+ni-teststand-2026-runtime-dotnetadapter	26.0.0.49296-0+f144	windows_x64	Dotnet Adapter is a software add-on that enables engineers to run Dotnet based code on TestStand.
+ni-mxlc-labview-support	26.0.0.49300-0+f148	windows_x64	NI mx List Control Terminal I/O support library LabVIEW Support  Provides LabVIEW development support for infrastructure services for Terminal I/O controls in NI software.
+ni-modinst	26.0.0.49244-0+f92	windows_x64	Provides API, documentation, and examples for using NI-ModInst to query for a list of installed devices that are supported by a specified driver.
+ni-pxiplatformservices-expert	26.0.0.49356-0+f204	windows_x64	PXI Platform Services MAX Expert
+ni-tclock-26.0.0-dotnet-fx40-runtime	26.0.0.49265-0+f113	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-TClk .NET API
+ni-tclock-26.0.0-dotnet-fx45-runtime	26.0.0.49265-0+f113	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-TClk .NET API
+ni-flexrio-integrated-io-api-labview-support	26.0.0.49291-0+f139	windows_x64	This is an infrastructure package for NI Software.
+ni-lv-web-server-labview-2025-runtime-engine-support	25.3.0.49358-0+f206	windows_x64	NI RTE LabVIEW Web Server 64-Bit.
+ni-lv-web-server-labview-2025-runtime-engine-x86-support	25.3.0.49358-0+f206	windows_x64	Include this component when using the Web Server for stand-alone applications and shared libraries.
+ni-compile-farm-server-x86	26.1.0.49238-0+f86	windows_x64	This is an infrastructure package for NI Software.
+ni-compile-farm-client-x86	26.1.0.49237-0+f85	windows_x64	This is an infrastructure package for NI Software.
+ni-syncdomain-service	26.0.0.49304-0+f152	windows_x64	Provides support for using NI Sync Domain.
+ni-visa-passport-enet	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using Ethernet instruments (HiSLIP, VXI-11, or raw sockets)
+ni-compile-farm-client	26.1.0.49237-0+f85	windows_x64	This is an infrastructure package for NI Software.
+ni-mdbg	26.0.0.49303-0+f151	windows_x64	NI mxDebug driver support library (infrastructure) Provides debugging services for NI software.
+ni-skyline-redis-support	26.0.0.49264-0+f112	windows_x64	Installs and configures the SystemLink KeyValue Database Service.
+ni-fpga-compile-worker-cg	26.1.0.49239-0+f87	windows_x64	FPGA Compile Worker accepts compilation requests from FPGA Compile Farm Server and calls Xilinx Compilation Tools to process compilation requests.
+ni-mximanager	26.0.0.49347-0+f195	windows_x64	NI MXI Manager
+ni-rtsi-core	26.0.0.49424-0+f272	windows_all	This is an infrastructure package for NI Software.
+ni-controllerdriver	26.0.0.49356-0+f204	windows_x64	NI Controller Driver
+ni-usblandevice-systemapi	26.0.0.49321-0+f169	windows_x64	Contains files for NI USB Device System API
+ni-device-monitor	26.0.0.49263-0+f111	windows_x64	NI Device Monitor is a getting-started utility for launching applications when an NI device is detected.
+ni-imaq-expert	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-qpxi	26.0.0.49347-0+f195	windows_x64	NI-Query PXI
+ni-roco	26.0.0.49299-0+f147	windows_x64	NI Routing Coordinator software infrastructure library Provides signal routing services for NI software.
+ni-registration-wizard	25.3.0.49219-0+f67	windows_x64	The NI Registration Wizard is designed to assist in the registration of National Instruments products by using a secure internet connection.
+ni-dim	26.0.0.49305-0+f153	windows_x64	NI Device Interconnect Manager driver support library (infrastructure) Provides signal routing services for NI software.
+ni-imaqdx-expert	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-sync-atomic-api	26.0.0.49306-0+f154	windows_x64	Provides atomic driver support for NI-Sync.
+ni-visa-sysapi	26.0.1.49154-0+f2	windows_x64	This package provides configuration and reporting support for NI-VISA based instruments to the NI System API Framework.
+ni-mxdf	26.0.0.49303-0+f151	windows_x64	NI mx Driver Framework driver support library (infrastructure) Provides infrastructure services for NI software.
+ni-realtime-error-dialog-x64	26.1.0.49356-0+f204	windows_x64	LabVIEW Real-Time Error Dialog enables you to view error logs and generate error reports for sessions of a LabVIEW Real-Time target.
+ni-labview-2026-ff-runtime-engine	26.1.0.49905-0+f753	windows_x64	Support for built applications or shared libraries that use LabVIEW Datalogging and Supervisory Control Module features, including security, alarming, logging, and shared variable management.
+ni-realtime-error-dialog-x86	26.1.0.49358-0+f206	windows_x64	LabVIEW Real-Time Error Dialog enables you to view error logs and generate error reports for sessions of a LabVIEW Real-Time target.
+ni-iotrace	26.0.0.49264-0+f112	windows_x64	Debugging utility for monitoring function calls to various NI APIs. NI I/O Trace is an application that monitors, records, and displays NI API calls made by applications. Use NI I/O Trace to quickly locate and analyze any erroneous NI API calls that your application makes, and to verify that the communication with your instrument is correct.
+ni-controllerdriver-c-support	26.0.0.49345-0+f193	windows_x64	Provides files to create NI Controller Driver applications with C.
+ni-sync-wrapper	26.0.0.49304-0+f152	windows_x64	Provides wrapper to support different versions of NI-Sync.
+ni-daqmx-devmon-support	26.0.0.49428-0+f276	windows_x64	This is an infrastructure package for NI Software.
+ni-usblandevice-devmon-support	26.0.0.49321-0+f169	windows_x64	Contains files for NI USB LAN Device Device Monitor Support
+ni-visa-passport-pxi	26.0.1.49154-0+f2	windows_x64	Support for VISA applications using PCI/PXI
+ni-serial-runtime	25.8.0.49261-0+f109	windows_x64	NI-Serial support for NI RS-232 and RS-485 Hardware.
+ni-rtsi-pal	26.0.0.49426-0+f274	windows_all	This is an infrastructure package for NI Software.
+ni-pxiplatformframework	26.0.0.49356-0+f204	windows_x64	NI PXI Platform Framework supplies PXI system services to NI products.
+ni-mru	26.0.0.49305-0+f153	windows_x64	NI mx Routing Utility driver support library (infrastructure) Provides signal routing services for NI software.
+ni-reconfigurable-oscilloscope-runtime-core	26.0.0.49259-0+f107	windows_x64	Provides run-time components required to deploy applications using NI Reconfigurable Oscilloscope Software-Designed Instruments.
+ni-xnet-runtime	26.0.0.49433-0+f281	windows_x64	Run-time components required to deploy applications using NI-XNET devices
+ni-sync-ade-core	26.0.0.49306-0+f154	windows_x64	Provides application development support for NI-Sync devices.
+ni-sync-api-support	26.0.0.49300-0+f148	windows_x64	Provides runtime components required to deploy applications using NI-Sync to synchronize embedded controllers.
+ni-visa-runtime	26.0.1.49154-0+f2	windows_x64	Provides an API for controlling USB, TCPIP, GPIB, Serial, PXI, and other types of instruments.
+ni-pxiplatformservices-runtime	26.0.0.49356-0+f204	windows_x64	PXI Platform Services Runtime supports NI PXI Chassis and Controllers, implements the PXI specifications, and supplies system services to other NI products.
+ni-sync-tsu-driver	26.0.0.49309-0+f157	windows_x64	Provides NI-TSU driver support for NI-Sync.
+ni-cvi-teststand-debugger-support	20.0.1.49154-0+f2	windows_all	Installs the LabWindows/CVI TestStand Debugger Support components.
+ni-ivi-runtime	26.0.0.49258-0+f106	windows_x64	Provides runtime support for IVI specific drivers
+ni-icp-class-drivers-core	26.0.0.49258-0+f106	windows_x64	Provides IVI class driver runtime, C header, C library files, and LabWindows/CVI support files
+ni-xnet-example-databases	26.0.0.49417-0+f265	windows_x64	This is an infrastructure package for NI Software.
+ni-xnet-utilities	26.0.0.49428-0+f276	windows_x64	Provides NI-XNET Bus Monitor and Database Editor utilities. Also provides Wireshark plugins for Automotive Ethernet network analysis.
+ni-xnet-database-editor	26.0.0.49414-0+f262	windows_x64	The NI-XNET Database Editor enables you to view and manage automotive databases for Automotive Ethernet, CAN, LIN, and FlexRay networks; it supports modern automotive industry standards such as AUTOSAR.
+ni-sync-c-support	26.0.0.49306-0+f154	windows_x64	Provides API, documentation, and examples for using NI-Sync with C/C++.
+ni-visa-interactive-control	26.0.1.49154-0+f2	windows_x64	Provides the NI-VISA Interactive Control utility to interact and communicate with NI-VISA resources.
+ni-visa-26.0-dotnet-runtime	26.0.1.49154-0+f2	windows_x64	Enables you to run applications that use the NI-VISA .NET API.
+ni-rio-fpga-driver	26.0.0.49308-0+f156	windows_x64	This feature includes the NI-RIO driver for Windows. This software is required to use RIO devices such as NI R Series and CompactRIO devices.
+ni-daqmx-runtime-core	26.0.0.49432-0+f280	windows_x64	Run-time components required to deploy applications using NI data acquisition devices.
+ni-pxiplatformservices-c-support	26.0.0.49356-0+f204	windows_x64	Provides files to create PXI Platform Services applications with C.
+ni-pxiplatformservices-dotnet-support	26.0.0.49345-0+f193	windows_x64	Provides NI System Configuration .NET Support for PXI.
+ni-488.2-runtime	25.8.0.49260-0+f108	windows_x64	Run-time components required to deploy applications using NI GPIB controllers or NI embedded controllers with GPIB ports.
+ni-vivado-2021.1-cg	26.1.0.49239-0+f87	windows_x64	The LabVIEW FPGA Compilation Tool for Vivado 2021.1 enables you to locally compile LabVIEW FPGA code to run on Xilinx Vivado-supported NI FPGA hardware targets.
+ni-compile-farm-core-x86	26.1.0.49238-0+f86	windows_x64	The NI LabVIEW FPGA Compile Farm Toolkit, a LabVIEW FPGA Module add-on, helps you create an on-site server to manage FPGA compilations easily. You can connect as many worker computers as you need, and the central server software manages the farming out of parallel compilations and queuing. To reduce your FPGA compile times, the toolkit also includes support for Linux compile worker computers.
+ni-teststand-2026-runtime-flexcviadapter-x86	26.0.0.49296-0+f144	windows_x64	FlexCVI Adapter is a software add-on that provide icons and callbacks for the product.
+ni-teststand-2026-runtime-flexcviadapter	26.0.0.49296-0+f144	windows_x64	FlexCVI Adapter is a software add-on that provide icons and callbacks for the product.
+ni-icp-runtime-core	26.0.0.49260-0+f108	windows_x64	Provides runtime support for IVI-C drivers and applications
+ni-tclk	26.0.0.49271-0+f119	windows_x64	Provides API, documentation, and examples for using NI-TClk synchronization between certain Modular Instruments devices.
+ni-ivi-net-shared-fx20-2.0.0	2.0.1.49182-0+f30	windows_x64	Installs IVI Foundation shared components required by IVI.NET APIs for NI and 3rd-party instrument drivers.
+ni-visa-26.0-dotnet-development-support	26.0.1.49154-0+f2	windows_x64	Installs the local assembly for development of NI-VISA applications using the standard .NET API specified by the IVI Foundation.
+ni-rio-mite	26.0.0.49306-0+f154	windows_x64	This is an infrastructure package for NI Software.
+ni-rio-device-setup	26.0.0.49308-0+f156	windows_x64	This feature includes the NI-RIO Device Setup for programming NI FPGA Devices
+ni-rio-chinch-board-driver	26.0.0.49270-0+f118	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-rio-drivers	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-flexrio-integrated-io-drivers	26.0.0.49285-0+f133	windows_x64	Provides driver components required to deploy applications using FlexRIO with Integrated I/O. Refer to the FlexRIO readme on ni.com/manuals for a full list of supported hardware.
+ni-flexrio-runtime-5series	26.0.0.49286-0+f134	windows_x64	Mite board drivers for NI FlexRIO FPGA Devices
+ni-rio-umber	26.0.0.49271-0+f119	windows_x64	This is an infrastructure package for NI Software.
+ni-reconfigurable-oscilloscope-runtime-5164-devices	26.0.0.49267-0+f115	windows_x64	Provides run-time components required to deploy applications using NI 5164 oscilloscopes.
+ni-sdi-based-oscilloscope-runtime-5110-devices	26.0.0.49334-0+f182	windows_x64	Provides run-time components required to deploy applications using NI 5110, 5111, and 5113 SDI-based oscilloscopes.
+ni-reconfigurable-oscilloscope-runtime-5170-devices	26.0.0.49269-0+f117	windows_x64	Provides run-time components required to deploy applications using NI 5170 and 5171 oscilloscopes.
+ni-sync-driver	26.0.0.49309-0+f157	windows_x64	Provides driver support for PXI synchronization modules.
+ni-daqmx-26.0.0-dotnet-fx45-runtime	26.0.0.49427-0+f275	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-DAQmx .NET API
+ni-daqmx-26.0.0-dotnet-fx40-runtime	26.0.0.49427-0+f275	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-DAQmx .NET API
+ni-hsdio-runtime-core	25.5.0.49249-0+f97	windows_x64	Provides run-time components required to deploy applications using NI-HSDIO. Refer to the NI-HSDIO readme on ni.com/manuals for a full list of supported hardware.
+ni-488.2-development-support	25.8.0.49257-0+f105	windows_x64	Common files used for development using NI GPIB controllers or NI embedded controllers with GPIB ports.
+ni-488.2-dotnet-fx45-17.0.0-runtime	17.0.1.49154-0+f2	windows_all	Enables you to run applications that use the NI-488.2 .NET API.
+ni-488.2-dotnet-fx40-17.0.0-runtime	17.0.1.49154-0+f2	windows_all	Enables you to run applications that use the NI-488.2 .NET API.
+ni-teststand-2026-runtime-x86	26.0.0.49299-0+f147	windows_x64	The TestStand Runtime Infrastructure is a software add-on that enables engineers to run TestStand applications on a non-development machine.
+ni-teststand-2026-runtime	26.0.0.49299-0+f147	windows_x64	The TestStand Runtime Infrastructure is a software add-on that enables engineers to run TestStand applications on a non-development machine.
+ni-icp-core	26.0.0.49259-0+f107	windows_x64	Provides support files for the IVI Compliance Package
+ni-icp-com-adapters	26.0.0.49258-0+f106	windows_x64	Provides support for using IVI-COM specific drivers with National Instruments IVI-C class drivers
+ni-icp-class-simulation-drivers-core	26.0.0.49258-0+f106	windows_x64	Provides advanced class-level simulation runtime
+ni-ivi-net-adapters	26.0.0.49258-0+f106	windows_x64	Provides .NET wrappers for IVI C drivers
+ni-systemlink-nosqldatabase-4.2	26.0.0.49264-0+f112	windows_x64	Installs and configures the SystemLink NoSQL Database Service.
+ni-switch-runtime-core	26.0.0.49330-0+f178	windows_x64	Provides run-time components required to deploy applications using NI-SWITCH.
+ni-fgen-runtime-core	26.0.0.49316-0+f164	windows_x64	Provides run-time components required to deploy applications using NI-FGEN. Refer to the NI-FGEN readme on ni.com/manuals for a full list of supported hardware.
+ni-dmm-runtime-core	26.0.0.49345-0+f193	windows_x64	Provides run-time components required to deploy applications using NI-DMM. Refer to the NI-DMM readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-runtime-core	26.0.0.49306-0+f154	windows_x64	Provides run-time components required to deploy applications using NI-SCOPE. Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-dcpower-runtime-core	26.0.0.49446-0+f294	windows_x64	Provides run-time components required to deploy applications using NI DC power supplies and source measure units.
+ni-compactrio-runtime	26.0.0.49316-0+f164	windows_x64	Runtime driver support for CompactRIO Reconfigurable Embedded Targets. This also includes support for sbRIO and MXI-Express Targets.
+ni-flexrio-chinch-common	26.0.0.49278-0+f126	windows_x64	FlexRIO common product for Chinch drivers.
+ni-imaq-io-runtime	25.8.0.49264-0+f112	windows_x64	Provides driver software for controlling reconfigurable input/output on certain image acquisition devices. For more information, refer to the NI Vision Acquisition Software Readme.
+ni-r-series-runtime	26.0.0.49267-0+f115	windows_x64	Runtime driver support for NI R Series Multifunction RIO devices
+ni-sync-runtime	26.0.0.49299-0+f147	windows_x64	Provides runtime components required to deploy applications using NI-Sync PXI Synchronization Modules.
+ni-hsdio-full-common	25.5.0.49249-0+f97	windows_x64	Common files used for development using NI-HSDIO IVI Instruments.
+ni-488.2-example-common	25.8.0.49256-0+f104	windows_x64	Common files for NI-488.2 application examples.
+ni-488.2-documentation	25.8.0.49260-0+f108	windows_x64	Provides NI-488.2 driver documentation.
+ni-488.2-dotnet-devcore-fx45-support	17.0.1.49154-0+f2	windows_all	NI-488.2 .NET Language Development Core  for .NET Framework 4.5
+ni-488.2-dotnet-devcore-fx40-support	17.0.1.49154-0+f2	windows_all	NI-488.2 .NET Language Development Core  for .NET Framework 4.0
+ni-teststand-2026-ade-support-package	26.0.0.49299-0+f147	windows_x64	Source code for user-modifiable components, API, and templates in TestStand.
+ni-icp-class-simulation-drivers-source-core	26.0.0.49258-0+f106	windows_x64	Provides source for the advanced class-level simulation runtime
+ni-skyline-core-services	26.0.0.49264-0+f112	windows_x64	NI SystemLink Core Services
+ni-hwcfg-utility	26.0.0.49410-0+f258	windows_x64	The Hardware Configuration Utility provides a graphical user interface to discover and configure your NI and third-party hardware.
+ni-pinmap-service	26.0.0.49578-0+f426	windows_x64	Provides the NI pin map service.
+ni-parameter-passing-service	26.0.0.49578-0+f426	windows_x64	Provides the parameter passing service.
+ni-panel-service	26.0.0.49578-0+f426	windows_x64	Provides Panel service.
+ni-monitoring-service	26.0.0.49578-0+f426	windows_x64	Provides the NI monitoring service.
+ni-io-discovery-service	26.0.0.49578-0+f426	windows_x64	Provides the I/O Discovery Service.
+ni-grpcdevice-server-activation-service	26.0.0.49578-0+f426	windows_x64	Provides the gRPC Device Server Activation Service.
+ni-data-store-service	26.0.0.49285-0+f133	windows_x64	Provides the measurement data services.
+ni-lvaspt-offline-manual-en	25.4.0.49196-0+f44	windows_x64	This is an infrastructure package for NI Software.
+ni-compactrio-offline-manual	26.0.0.49328-0+f176	windows_x64	This is an infrastructure package for NI Software.
+ni-xnet-offline-manual	26.0.0.49436-0+f284	windows_x64	This is an infrastructure package for NI Software.
+ni-lvfpga-offline-manual-en	26.1.0.49417-0+f265	windows_x64	This is an infrastructure package for NI Software.
+ni-lvrt-offline-manual-en	26.1.0.49355-0+f203	windows_x64	This is an infrastructure package for NI Software.
+ni-dcpower-offline-manual	26.0.0.49456-0+f304	windows_x64	Provides offline help for NI-DCPower.
+ni-daqmx-offline-manual	26.0.0.49435-0+f283	windows_x64	Provides offline help for NI-DAQmx.
+ni-mstudio-common-fx40-19.0.0-development	19.0.0.49154-0+f2	windows_all	Measurement Studio Common Library Development for .NET Framework 4.0
+ni-measurement-ui-editor	26.0.0.49578-0+f426	windows_x64	Provides an editor for measurement UIs that can be used in InstrumentStudio.
+ni-mstudio-common-fx40-19.1.0-development	19.1.1.49154-0+f2	windows_all	Measurement Studio Common Library Development for .NET Framework 4.0
+ni-labview-aspt-toolkit-lic	25.4.0.49193-0+f41	windows_x64	NI LabVIEW 2025 Advanced Signal Processing Toolkit License provides Advanced Signal Processing Toolkit license files
+ni-labview-2026-fpga-module-lic	26.1.0.49416-0+f264	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-lic	26.1.0.49353-0+f201	windows_x64	This is an infrastructure package for NI Software.
+ni-switch-full-common	26.0.0.49330-0+f178	windows_x64	Common files used for development using NI-SWITCH IVI Instruments.
+ni-switch-runtime-daqmx-devices	26.0.0.49330-0+f178	windows_x64	Provides run-time components required to deploy applications using NI-DAQmx-based switches. Refer to the NI-SWITCH readme on ni.com/manuals for a full list of supported hardware.
+ni-switch-runtime-ca4-devices	26.0.0.49329-0+f177	windows_x64	Provides run-time components required to deploy applications using NI 2524/5/6, 273x, and 274x switches. Refer to the NI-SWITCH readme on ni.com/manuals for a full list of supported hardware.
+ni-switch-26.0.0-dotnet-fx45-runtime	26.0.0.49323-0+f171	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-SWITCH .NET API.
+ni-switch-26.0.0-dotnet-fx40-runtime	26.0.0.49323-0+f171	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-SWITCH .NET API.
+ni-fgen-full-common	26.0.0.49317-0+f165	windows_x64	Common files for components required to deploy applications using NI signal generators.
+ni-fgen-runtime-daqmx-devices	26.0.0.49319-0+f167	windows_x64	Provides run-time components required to deploy applications using NI-DAQmx-based waveform generators. Refer to the NI-FGEN readme on ni.com/manuals for a full list of supported hardware.
+ni-fgen-runtime-5433-devices	26.0.0.49319-0+f167	windows_x64	Provides run-time components required to deploy applications using NI 5413, 5423, and 5433 waveform generators. Refer to the NI-FGEN readme on ni.com/manuals for a full list of supported hardware.
+ni-fgen-runtime-grpc-devices	26.0.0.49317-0+f165	windows_x64	Provides run-time components required to deploy LabVIEW Measurement Plug-Ins using NI-FGEN devices.
+ni-fgen-26.0.0-dotnet-fx45-runtime	26.0.0.49312-0+f160	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-FGEN .NET API.
+ni-fgen-26.0.0-dotnet-fx40-runtime	26.0.0.49312-0+f160	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-FGEN .NET API.
+ni-dmm-full-common	26.0.0.49345-0+f193	windows_x64	Common files used for development using NI-DMM IVI Instruments.
+ni-dmm-runtime-408x-devices	26.0.0.49345-0+f193	windows_x64	Provides run-time components required to deploy applications using NI 408x DMMs. Refer to the NI-DMM readme on ni.com/manuals for a full list of supported hardware.
+ni-dmm-runtime-daqmx-devices	26.0.0.49346-0+f194	windows_x64	Provides run-time components required to deploy applications using NI 407x and 4065 DMMs. Refer to the NI-DMM readme on ni.com/manuals for a full list of supported hardware.
+ni-dmm-runtime-grpc-devices	26.0.0.49345-0+f193	windows_x64	Provides run-time components required to deploy LabVIEW Measurement Plug-Ins using NI-DMM devices.
+ni-dmm-26.0.0-dotnet-fx45-runtime	26.0.0.49343-0+f191	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-DMM .NET API.
+ni-dmm-26.0.0-dotnet-fx40-runtime	26.0.0.49343-0+f191	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-DMM .NET API.
+ni-scope-full-common	26.0.0.49307-0+f155	windows_x64	Common files used for development using NI-SCOPE IVI Instruments.
+ni-scope-runtime-daqmx-devices	26.0.0.49312-0+f160	windows_x64	Provides run-time components required to deploy applications using NI-DAQmx-based oscilloscopes. Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-runtime-5164-devices	26.0.0.49336-0+f184	windows_x64	Provides run-time components required to deploy applications using NI 5164 oscilloscopes. Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-runtime-5110-devices	26.0.0.49312-0+f160	windows_x64	Provides run-time components required to deploy applications using NI 5110, 5111, and 5113 Devices. Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-runtime-grpc-devices	26.0.0.49308-0+f156	windows_x64	Provides run-time components required to deploy LabVIEW Measurement Plug-Ins using NI-SCOPE devices.
+ni-scope-runtime-5170-devices	26.0.0.49336-0+f184	windows_x64	Provides run-time components required to deploy applications using 5108, 5170, 5171, and 5172 oscilloscopes. Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-26.0.0-dotnet-fx45-runtime	26.0.0.49302-0+f150	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-SCOPE .NET API.
+ni-scope-26.0.0-dotnet-fx40-runtime	26.0.0.49302-0+f150	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-SCOPE .NET API.
+ni-dcpower-full-common	26.0.0.49434-0+f282	windows_x64	Common files used for development using NI-DCPower power supplies and source measure units.
+ni-dcpower-runtime-416x-devices	26.0.0.49447-0+f295	windows_x64	Provides run-time components required to deploy applications using Non-NI-DAQmx-Based Power Supplies and SMUs. Refer to the NI-DCPower readme on ni.com/manuals for a full list of supported hardware.
+ni-dcpower-runtime-daqmx-devices	26.0.0.49456-0+f304	windows_x64	Provides run-time components required to deploy applications using NI-DAQmx-Based Power Supplies and SMUs. Refer to the NI-DCPower readme on ni.com/manuals for a full list of supported hardware.
+ni-dcpower-runtime-grpc-devices	26.0.0.49446-0+f294	windows_x64	Provides run-time components required to deploy LabVIEW Measurement Plug-ins using NI-DCPower devices.
+ni-dcpower-26.0.0-dotnet-fx45-runtime	26.0.0.49439-0+f287	windows_x64	Provides .NET Framework 4.5 runtime support for applications that use the NI-DCPower .NET API.
+ni-dcpower-26.0.0-dotnet-fx40-runtime	26.0.0.49439-0+f287	windows_x64	Provides .NET Framework 4.0 runtime support for applications that use the NI-DCPower .NET API.
+ni-compactrio-common	26.0.0.49316-0+f164	windows_x64	This is an infrastructure package for NI Software.
+ni-flexrio-runtime-7series	26.0.0.49286-0+f134	windows_x64	NI FlexRIO 797X Driver
+ni-flexrio-runtime-6series	26.0.0.49286-0+f134	windows_x64	NI FlexRIO 796X Driver
+ni-r-series-common	26.0.0.49272-0+f120	windows_x64	This is an infrastructure package for NI Software.
+ni-hsdio-documentation	25.5.0.49249-0+f97	windows_x64	Documentation for NI high-speed digital I/O hardware and NI-HSDIO software.
+ni-488.2-vb-support	25.8.0.49257-0+f105	windows_x64	NI-488.2 application interface files and examples for Microsoft Visual Basic.
+ni-488.2-dll-support	25.8.0.49257-0+f105	windows_x64	NI-488.2 examples for DLL direct entry.
+ni-488.2-c-support	25.8.0.49257-0+f105	windows_x64	NI-488.2 application interface files and examples for C/C++. For use with Microsoft Visual C/C++ compilers.
+ni-488.2-utilities	25.8.0.49260-0+f108	windows_x64	Provides NI-488.2 configuration utilities.
+ni-teststand-2026-process-model-runtime-support	26.0.0.49299-0+f147	windows_x64	Default model sequence files, result processors, and utilities, also includes legacy sequence files.
+ni-skyline-file-service	26.0.0.49264-0+f112	windows_x64	NI SystemLink File Service
+ni-skyline-tag-service	26.0.0.49264-0+f112	windows_x64	NI SystemLink Tag Service
+ni-rtsi-ui	26.0.0.49424-0+f272	windows_all	This is an infrastructure package for NI Software.
+ni-rio-max-support	26.0.0.49307-0+f155	windows_x64	Provides support for configuring NI-RIO devices via Measurement & Automation Explorer (MAX)
+ni-smartcamera-max-provider	25.8.0.49259-0+f107	windows_x64	This is an infrastructure package for NI Software.
+ni-cvs-max-provider	25.8.0.49259-0+f107	windows_x64	This is an infrastructure package for NI Software.
+ni-assistant-framework-x86	26.1.0.49906-0+f754	windows_x64	NI Assistant Framework (32-bit) is a toolset for making software applications, with a particular emphasis on tools needed for measurement applications.
+ni-pxiplatformservices-provider	26.0.0.49356-0+f204	windows_x64	Allows PXI system configuration in Measurement & Automation Explorer.
+ni-visa-configuration	26.0.1.49154-0+f2	windows_x64	Provides support for viewing and/or configuring NI-VISA resources in NI MAX.
+ni-xnet-max-support	26.0.0.49425-0+f273	windows_x64	This is an infrastructure package for NI Software.
+ni-switchexecutive-full-common	26.0.0.49217-0+f65	windows_x64	NI Switch Executive, the intelligent switch management and routing application.
+ni-industrial-controller-max-provider	25.0.0.49255-0+f103	windows_x64	Provides required software to configure and use an Industrial Controller Real-Time target.
+ni-session-management-service	26.0.0.49578-0+f426	windows_x64	Provides the NI session management service.
+ni-teststand-2025-nls-plugin	25.5.1.49161-0+f9	windows_x64	Provides support for the Nigel AI Advisor in TestStand.
+ni-labview-datafinder-runtime-x86	26.0.0.49196-0+f44	windows_x64	LabVIEW DataFinder Connectivity Runtime enables the connection to DataFinder Server
+ni-488.2-dotnet-fx451-support	17.0.1.49154-0+f2	windows_all	NI-488.2 examples and help files for .NET framework 450
+ni-488.2-dotnet-fx45-support	17.0.1.49154-0+f2	windows_all	NI-488.2 examples and help files for .NET framework 450
+ni-488.2-dotnet-fx40-support	17.0.1.49154-0+f2	windows_all	NI-488.2 examples and help files for .NET framework 400
+ni-mi-common-26.0.0-dotnet-fx40-devcore	26.0.0.49237-0+f85	windows_x64	The MI Common Development Core 26.0 for .NET Framework 4.0
+ni-mi-common-26.0.0-dotnet-fx45-devcore	26.0.0.49237-0+f85	windows_x64	The MI Common Development Core 26.0 for .NET Framework 4.5
+ni-misystem-26.0.0-dotnet-fx40-support	26.0.0.49242-0+f90	windows_x64	Provides API, documentation, and examples for using NI-MISystem devices within .NET Framework 4.0 languages.
+ni-misystem-26.0.0-dotnet-fx45-support	26.0.0.49242-0+f90	windows_x64	Provides API, documentation, and examples for using NI-MISystem devices within .NET Framework 4.5 languages.
+ni-switch-documentation	26.0.0.49329-0+f177	windows_x64	Documentation for NI switch hardware and NI-SWITCH software.
+ni-fgen-documentation	26.0.0.49317-0+f165	windows_x64	Documentation for NI signal generator hardware and NI-FGEN software.
+ni-dmm-documentation	26.0.0.49345-0+f193	windows_x64	Documentation for NI digital multimeter hardware and NI-DMM software.
+ni-scope-documentation	26.0.0.49308-0+f156	windows_x64	Documentation for NI oscilloscope hardware and NI-SCOPE software.
+ni-dcpower-development-support	26.0.0.49446-0+f294	windows_x64	Common files used for development using the NI-DCPower API.
+ni-dcpower-config-core	26.0.0.49431-0+f279	windows_x64	Provides NI-DCPower support for configuring Non-NI-DAQmx-Based power supplies and source measure units via Measurement & Automation Explorer (MAX). Refer to the NI-DCPower readme on ni.com/manuals for a full list of supported hardware.
+ni-r-series-development-support	26.0.0.49272-0+f120	windows_x64	Development support for R Series Multifunction RIO devices
+ni-hsdio-development-support	25.5.0.49249-0+f97	windows_x64	Common files used for development using the NI-HSDIO API.
+ni-488.2-max-support	25.8.0.49260-0+f108	windows_x64	Provides NI-488.2 support for configuring GPIB ports via Measurement & Automation Explorer (MAX).
+ni-measurement-plugin-teststand-2026-support	26.0.0.49578-0+f426	windows_x64	NI Measurement Plug-In Support for TestStand 2026 Q1 adds the ability to control measurement plug-ins from TestStand 2026 Q1
+ni-sequencing-service	26.0.0.49229-0+f77	windows_x64	Provides the NI Sequencing Service.
+ni-flexrio-config-core	26.0.0.49281-0+f129	windows_x64	Provides FlexRIO support for configuring FlexRIO devices via Measurement & Automation Explorer (MAX).
+ni-flexrio-integrated-io-runtime	26.0.0.49284-0+f132	windows_x64	Provides run-time components required to deploy applications using FlexRIO with Integrated I/O. Refer to the FlexRIO readme on ni.com/manuals for a full list of supported hardware.
+ni-flexrio-legacy-runtime-core	26.0.0.49286-0+f134	windows_x64	Support for NI FlexRIO products
+ni-compactrio-max-support	26.0.0.49324-0+f172	windows_x64	Provides support for configuring CompactRIO devices via Measurement & Automation Explorer (MAX)
+ni-cvs-firmware	25.8.0.49262-0+f110	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-acquisition-express-core	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-assistant-labview-common-x86	25.8.0.49262-0+f110	windows_x64	Provides common LabVIEW Code Generation support for Vision Assistant (32-bit).
+ni-xnet-labview-project-support	26.0.0.49428-0+f276	windows_x64	This is an infrastructure package for NI Software.
+ni-daqmx-config-support-core	26.0.0.49436-0+f284	windows_x64	Run-time components required to deploy applications using NI data acquisition devices and support for configuring NI hardware via the Measurement & Automation Explorer (MAX).
+ni-visa-server	26.0.1.49154-0+f2	windows_x64	Provides remote access to resources on the current machine.
+ni-visa-development-common	26.0.1.49154-0+f2	windows_x64	Provides shared binaries and registry keys used by various NI-VISA application development environment support.
+ni-nve-serial-support	26.1.0.49287-0+f135	windows_x64	Installs NI Network Variable Engine Serial Support files.
+ni-serial-config	25.8.0.49261-0+f109	windows_x64	Support for configuring NI-Serial hardware settings in Measurement & Automation Explorer.
+ni-xnet-docs	26.0.0.49414-0+f262	windows_x64	This is an infrastructure package for NI Software.
+ni-switchexecutive-documentation	26.0.0.49217-0+f65	windows_x64	Documentation for NI Switch Executive software.
+ni-industrial-controller-development-support	25.0.0.49256-0+f104	windows_x64	Provides Development Support files for the NI Industrial Controller family of products.
+ni-systemlink-user-data-service	26.0.0.49264-0+f112	windows_x64	NI SystemLink User Data Service
+ni-skyline-tag-webservice	21.5.1.49165-0+f13	windows_x64	NI SystemLink Tag Web Service
+ni-skyline-file-webservice	21.5.1.49165-0+f13	windows_x64	NI SystemLink File Web Service
+ni-skyline-tdmreader-webservice	21.5.1.49164-0+f12	windows_x64	NI SystemLink TDM Reader Web Service
+ni-measurement-plugin-support	26.0.0.49578-0+f426	windows_x64	Measurement Plug-in Support allows the use of reusable measurement services from InstrumentStudio and TestStand. It also provides tools that enable measurement service authors to develop their measurements and edit measurement UIs.
+ni-labview-2026-nls-plugin	26.1.1.49188-0+f36	windows_x64	Provides support for the Nigel AI in LabVIEW.
+ni-teststand-2026-nls-plugin	26.0.1.49211-0+f59	windows_x64	Provides support for the Nigel AI in TestStand.
+ni-mi-common-26.0.0-dotnet-fx40-support	26.0.0.49238-0+f86	windows_x64	The MI Common Development 26.0 for .NET Framework 4.0
+ni-mi-common-26.0.0-dotnet-fx45-support	26.0.0.49238-0+f86	windows_x64	The MI Common Development 26.0 for .NET Framework 4.5
+ni-switch-development-support	26.0.0.49329-0+f177	windows_x64	Common files used for development using the NI-SWITCH API.
+ni-switch-config-core	26.0.0.49320-0+f168	windows_x64	Provides NI-SWITCH support for configuring switches via Measurement & Automation Explorer (MAX). Refer to the NI-SWITCH readme on ni.com/manuals for a full list of supported hardware.
+ni-fgen-development-support	26.0.0.49317-0+f165	windows_x64	Common files used for development using the NI-FGEN API.
+ni-fgen-config-core	26.0.0.49317-0+f165	windows_x64	Provides NI-FGEN support for configuring waveform generators via Measurement & Automation Explorer (MAX). Refer to the NI-FGEN readme on ni.com/manuals for a full list of supported hardware.
+ni-dmm-development-support	26.0.0.49345-0+f193	windows_x64	Common files used for development using the NI-DMM API.
+ni-dmm-config-core	26.0.0.49336-0+f184	windows_x64	Provides NI-DMM support for configuring digital multimeters via Measurement & Automation Explorer (MAX). Refer to the NI-DMM readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-development-support	26.0.0.49307-0+f155	windows_x64	Common files used for development using the NI-SCOPE API.
+ni-scope-config-core	26.0.0.49306-0+f154	windows_x64	Provides NI-SCOPE support for configuring oscilloscopes via Measurement & Automation Explorer (MAX). Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-dcpower-c-support	26.0.0.49446-0+f294	windows_x64	Provides API, documentation, and examples for using NI-DCPower devices within C.
+ni-hsdio-c-support	25.5.0.49248-0+f96	windows_x64	Provides API, documentation, and examples for using NI-HSDIO devices within C.
+ni-instrumentstudio-platform-support	26.0.0.49578-0+f426	windows_x64	Provides InstrumentStudio NXG platform support
+ni-flexrio-modular-io-common	26.0.0.49284-0+f132	windows_x64	Provides common development support for FlexRIO with Modular I/O.
+ni-imaq-io-development-support	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-daqmx-development-support	26.0.0.49416-0+f264	windows_x64	This is an infrastructure package for NI Software.
+ni-sync-max-support	26.0.0.49312-0+f160	windows_x64	Provides support for configuring NI-Sync PXI synchronization modules via Measurement & Automation Explorer (MAX).
+ni-hsdio-config-core	25.5.0.49243-0+f91	windows_x64	Provides NI-HSDIO support for configuring high-speed digital I/O devices via Measurement & Automation Explorer (MAX). Refer to the NI-HSDIO readme on ni.com/manuals for a full list of supported hardware.
+ni-dcpower-config-daqmx-devices	26.0.0.49431-0+f279	windows_x64	Provides NI-DCPower support for configuring NI-DAQmx-Based Power Supplies and SMUs via Measurement & Automation Explorer (MAX). Refer to the NI-DCPower readme on ni.com/manuals for a full list of supported hardware.
+ni-visa-development-support-compatibility	26.0.1.49154-0+f2	windows_x64	NI-VISA Compatibility Package provides smoother upgrade experience for installs of NI-VISA earlier than version 17.5.0.
+ni-modbus-io-server	26.1.0.49287-0+f135	windows_x64	Installs NI Modbus I/O Server files.
+ni-xnet-compat-lib	26.0.0.49428-0+f276	windows_x64	Enables NI-CAN applications to run on NI-XNET CAN PCI and PXI hardware as well as CAN C Series modules used with CompactDAQ
+ni-xnet-msvc-support	26.0.0.49434-0+f282	windows_x64	Provides API, documentation, and examples for using NI-XNET devices within Microsoft Visual C/C++
+ni-switchexecutive-excel-support	26.0.0.49217-0+f65	windows_x64	Provides examples for using NI Switch Executive within Microsoft Excel.
+ni-switchexecutive-c-support	26.0.0.49217-0+f65	windows_x64	Provides API, documentation, and examples for using NI Switch Executive within C.
+ni-skyline-tag-webui	21.5.1.49165-0+f13	windows_x64	NI SystemLink Tag Web UI
+ni-skyline-file-webui	21.5.1.49165-0+f13	windows_x64	NI SystemLink File Service Web UI
+ni-nls-plugin-2026	26.1.1.49189-0+f37	windows_x64	Provides support for the Nigel AI in LabVIEW and TestStand 2026.
+ni-tclock-26.0.0-dotnet-fx40-support	26.0.0.49269-0+f117	windows_x64	Provides .NET Framework 4.0 API and documentation support for applications that use the NI-TClk .NET API
+ni-switch-26.0.0-dotnet-fx40-support	26.0.0.49326-0+f174	windows_x64	Provides API, documentation, and examples for using NI-SWITCH devices within .NET Framework 4.0 languages.
+ni-dmm-26.0.0-dotnet-fx40-support	26.0.0.49343-0+f191	windows_x64	Provides API, documentation, and examples for using NI-DMM devices within .NET Framework 4.0 languages.
+ni-dcpower-26.0.0-dotnet-fx40-support	26.0.0.49439-0+f287	windows_x64	Provides API, documentation, and examples for using NI-DCPower devices within .NET Framework 4.0 languages.
+ni-tclock-26.0.0-dotnet-fx45-support	26.0.0.49269-0+f117	windows_x64	Provides .NET Framework 4.5 API and documentation support for applications that use the NI-TClk .NET API
+ni-switch-26.0.0-dotnet-fx45-support	26.0.0.49326-0+f174	windows_x64	Provides API, documentation, and examples for using NI-SWITCH devices within .NET Framework 4.5 languages.
+ni-dmm-26.0.0-dotnet-fx45-support	26.0.0.49343-0+f191	windows_x64	Provides API, documentation, and examples for using NI-DMM devices within .NET Framework 4.5 languages.
+ni-dcpower-26.0.0-dotnet-fx45-support	26.0.0.49439-0+f287	windows_x64	Provides API, documentation, and examples for using NI-DCPower devices within .NET Framework 4.5 languages.
+ni-switch-c-support	26.0.0.49328-0+f176	windows_x64	Provides API, documentation, and examples for using NI-SWITCH devices within C.
+ni-switch-soft-front-panel	26.0.0.49330-0+f178	windows_x64	The NI-SWITCH Soft Front Panel makes it easy to take quick, interactive measurements without programming.
+ni-switch-config-daqmx-devices	26.0.0.49320-0+f168	windows_x64	Provides NI-SWITCH support for configuring NI-DAQmx-based switches via Measurement & Automation Explorer (MAX). Refer to the NI-SWITCH readme on ni.com/manuals for a full list of supported hardware.
+ni-fgen-c-support	26.0.0.49319-0+f167	windows_x64	Provides API, documentation, and examples for using NI-FGEN devices within C.
+ni-fgen-config-daqmx-devices	26.0.0.49304-0+f152	windows_x64	Provides NI-FGEN support for configuring NI-DAQmx-based waveform generators via Measurement & Automation Explorer (MAX). Refer to the NI-FGEN readme on ni.com/manuals for a full list of supported hardware.
+ni-dmm-c-support	26.0.0.49345-0+f193	windows_x64	Provides API, documentation, and examples for using NI-DMM devices within C.
+ni-dmm-config-daqmx-devices	26.0.0.49336-0+f184	windows_x64	Provides NI-DMM support for configuring NI 407x and 4065 DMMs via Measurement & Automation Explorer (MAX). Refer to the NI-DMM readme on ni.com/manuals for a full list of supported hardware.
+ni-scope-c-support	26.0.0.49308-0+f156	windows_x64	Provides API, documentation, and examples for using NI-SCOPE devices within C.
+ni-scope-config-daqmx-devices	26.0.0.49292-0+f140	windows_x64	Provides NI-SCOPE support for configuring NI-DAQmx-based oscilloscopes via Measurement & Automation Explorer (MAX). Refer to the NI-SCOPE readme on ni.com/manuals for a full list of supported hardware.
+ni-instrumentstudio-instrument-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI instrumentation in InstrumentStudio
+ni-daqmx-c-support	26.0.0.49432-0+f280	windows_x64	Provides files to create NI-DAQmx applications using ANSI C compilers like Microsoft Visual C++ 6.
+ni-daqmx-dotnet-fx45-support	26.0.0.49429-0+f277	windows_x64	Provides .NET interface for DAQ devices and adds NI-DAQmx support for .NET Framework 4.5.
+ni-daqmx-dotnet-fx40-support	26.0.0.49429-0+f277	windows_x64	Provides .NET interface for DAQ devices and adds NI-DAQmx support for .NET Framework 4.0.
+ni-visa-driver-development-wizard	26.0.1.49154-0+f2	windows_x64	Provides the NI-VISA Driver Development Wizard for creating INF files for PXI and USB.
+ni-visa-c-examples	26.0.1.49154-0+f2	windows_x64	Provides examples for programming using the C API.
+ni-modbus-io-server-labview-2026-support	26.1.0.49309-0+f157	windows_x64	Installs NI Modbus I/O Server VIs for LabVIEW 2026 (64-bit). Modbus I/O Server adds Modbus support to the Network Variable Engine.
+ni-scope-26.0.0-dotnet-fx40-support	26.0.0.49302-0+f150	windows_x64	Provides API, documentation, and examples for using NI-SCOPE devices within .NET Framework 4.0 languages.
+ni-fgen-26.0.0-dotnet-fx40-support	26.0.0.49312-0+f160	windows_x64	Provides API, documentation, and examples for using NI-FGEN devices within .NET Framework 4.0 languages.
+ni-scope-26.0.0-dotnet-fx45-support	26.0.0.49302-0+f150	windows_x64	Provides API, documentation, and examples for using NI-SCOPE devices within .NET Framework 4.5 languages.
+ni-fgen-26.0.0-dotnet-fx45-support	26.0.0.49312-0+f160	windows_x64	Provides API, documentation, and examples for using NI-FGEN devices within .NET Framework 4.5 languages.
+ni-instrumentstudio-scpi-support	26.0.0.49578-0+f426	windows_x64	Provides SCPI Instrument Support.
+ni-instrumentstudio-scope-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI-SCOPE devices in InstrumentStudio
+ni-instrumentstudio-rfsg-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI-RFSG devices in InstrumentStudio
+ni-instrumentstudio-rfmx-support	26.0.0.49578-0+f426	windows_x64	Provides RFmx support for RFSA devices in InstrumentStudio
+ni-instrumentstudio-fgen-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI-FGEN devices in InstrumentStudio
+ni-instrumentstudio-dmm-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI-DMM devices in InstrumentStudio
+ni-instrumentstudio-dcpower-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI-DCPower devices in InstrumentStudio
+ni-instrumentstudio-daqmx-support	26.0.0.49578-0+f426	windows_x64	Provides support for NI-DAQmx devices in InstrumentStudio
+ni-instrumentstudio-application	26.0.0.49578-0+f426	windows_x64	Provides InstrumentStudio application files
+ni-instrumentstudio-support	26.0.0.49578-0+f426	windows_x64	Provides InstrumentStudio support
+ni-instrumentstudio	26.0.0.49578-0+f426	windows_x64	InstrumentStudio is free application software that provides an integrated approach to interactive PXI measurements.
+ni-aspt-labview-support	25.4.0.49197-0+f45	windows_x64	The LabVIEW Advanced Signal Processing Toolkit is a set of software tools that you can use to perform time frequency, time series, and wavelet analysis. The LabVIEW Advanced Signal Processing Toolkit is add-on software for LabVIEW that includes tools for the analysis of time frequency, time series, and wavelets. This add-on includes the LabVIEW Digital Filter Design Toolkit, which is also available separately. To extract the underlying information of a signal effectively, you need to choose an appropriate analysis tool. You can use the time frequency analysis tools for evolutionary signals with slowly varying spectral content, the time series analysis tools for stationary signals, and the wavelet analysis tools for both evolutionary signals and transient signals describing short-time events. You can also deploy your analysis code to NI real-time embedded hardware.
+ni-testscalesfp-instrumentstudio-support	26.0.0.49427-0+f275	windows_x64	The TestScale Soft Front Panel helps you configure and execute measurements with TestScale hardware in InstrumentStudio.
+ni-data-store-service-labview-support	26.0.1.49154-0+f2	windows_x64	LabVIEW API for the measurement data services.
+ni-labview-fpga-advanced-session-resources	26.0.0.49305-0+f153	windows_x64	Provides API, documentation, and examples for using FPGA Advanced Session Resources within LabVIEW.
+ni-controllerdriver-labview-support	26.0.0.49345-0+f193	windows_x64	Provides files to create NI Controller Driver applications within LabVIEW.
+ni-teds-labview-support	26.0.0.49305-0+f153	windows_x64	Provides API, documentation, and examples for using NI TEDS VI Library within LabVIEW.
+ni-watchdog-labview-support	26.0.0.49250-0+f98	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-acquisition-express-labview-support	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-fpga-module-host-comm	26.1.0.49307-0+f155	windows_x64	This is an infrastructure package for NI Software.
+ni-tclk-labview-support	26.0.0.49271-0+f119	windows_x64	Provides API, documentation and examples for using NI-TClk within LabVIEW.
+ni-p2p-labview-support	26.0.0.49307-0+f155	windows_x64	NI-P2P Installer for LabVIEW
+ni-modinst-labview-support	26.0.0.49244-0+f92	windows_x64	Provides API, documentation and examples for using NI-ModInst within LabVIEW.
+ni-visa-labview-support	26.0.1.49154-0+f2	windows_x64	Provides NI-VISA Probes for using NI-VISA resources within LabVIEW.
+ni-rio-projecttemplates-labview-support	25.1.0.49344-0+f192	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-providers-en	26.1.0.49365-0+f213	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-1131fbset	26.1.0.49365-0+f213	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-modbus-api	26.1.0.49262-0+f110	windows_x64	This is an infrastructure package for NI Software.
+ni-xnet-labview-support	26.0.0.49435-0+f283	windows_x64	Provides API, documentation, and examples for using NI-XNET within LabVIEW.
+ni-sync-labview-support	26.0.0.49303-0+f151	windows_x64	Provides API, documentation and examples for using NI-Sync within LabVIEW.
+ni-rio-embedded-can-labview-support	26.0.0.49234-0+f82	windows_x64	Provides API, documentation, and examples for using NI-Embedded CAN for RIO within LabVIEW.
+ni-daqmx-labview-support	26.0.0.49434-0+f282	windows_x64	Provides API, documentation and examples for using NI-DAQmx within LabVIEW.
+ni-switchexecutive-labview-support	26.0.0.49217-0+f65	windows_x64	Provides API, documentation, and examples for using NI SwitchExecutive within LabVIEW.
+ni-icp-labview-support	26.0.0.49258-0+f106	windows_x64	Provides VIs, menus, and resource files for using IVI class drivers within LabVIEW.
+ni-pxiplatformservices-labview-support	26.0.0.49345-0+f193	windows_x64	Provides files to create PXI Platform Services applications within LabVIEW.
+ni-labview-2026-fpga-module-host-comm	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-rio-labview-support	26.0.0.49308-0+f156	windows_x64	Provides API, documentation, and examples for using NI-RIO within LabVIEW.
+ni-switch-labview-support	26.0.0.49329-0+f177	windows_x64	Provides API, documentation, and examples for using NI-SWITCH within LabVIEW.
+ni-scope-labview-support	26.0.0.49334-0+f182	windows_x64	Provides API, documentation and examples for using NI-SCOPE within LabVIEW.
+ni-hsdio-labview-support	25.5.0.49250-0+f98	windows_x64	Provides API, documentation and examples for using NI-HSDIO within LabVIEW.
+ni-fgen-labview-support	26.0.0.49319-0+f167	windows_x64	Provides API, documentation and examples for using NI-FGEN within LabVIEW.
+ni-dmm-labview-support	26.0.0.49345-0+f193	windows_x64	Provides API, documentation, and examples for using NI-DMM within LabVIEW.
+ni-dcpower-labview-support	26.0.0.49446-0+f294	windows_x64	Provides API and examples for using NI-DCPower within LabVIEW.
+ni-visa	26.0.1.49154-0+f2	windows_x64	NI-VISA provides support for customers using Ethernet, GPIB, serial, USB, and other types of instruments. NI-VISA is an NI instrument driver that is an implementation of the Virtual Instrument Software Architecture (VISA) I/O standard. VISA is a standard for configuring, programming, and troubleshooting instrumentation systems comprising GPIB, VXI, PXI, serial (RS232/RS485), Ethernet/LXI, and/or USB interfaces. NI-VISA includes utilities, low-level control features, and examples to help you create your application.
+ni-switchexecutive	26.0.0.49217-0+f65	windows_x64	NI Switch Executive, the intelligent switch management and routing application.
+ni-icp	26.0.0.49256-0+f104	windows_x64	The IVI Compliance Package contains IVI class drivers and support libraries for developing and using applications that leverage IVI interchangeability.
+ni-labview-2026-fpga-module	26.1.0.49421-0+f269	windows_x64	The LabVIEW FPGA Module enables you to develop FPGA VIs on a host computer and compile and implement the code on NI reconfigurable I/O (RIO) hardware. LabVIEW FPGA enables you to more efficiently and effectively design complex systems by providing a highly integrated development environment, IP libraries, a high-fidelity simulator, and debugging features. You can create embedded FPGA VIs that combine direct access to I/O with user-defined LabVIEW logic to define custom hardware for applications such as digital protocol communication, hardware-in-the-loop simulation, and rapid control prototyping. Though the LabVIEW FPGA Module contains many built-in signal processing routines, you can also integrate existing hardware description language (HDL) code as well as third-party IP.
+ni-idl-labview-support	26.0.0.49237-0+f85	windows_x64	Provides API, documentation, and examples for using NI-Common Instrument Design Libraries within LabVIEW.
+ni-vision-rio-labview-support	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-r-series-labview-support	26.0.0.49272-0+f120	windows_x64	LabVIEW support for R Series Multifunction RIO devices
+ni-compactrio-labview-support	26.0.0.49328-0+f176	windows_x64	Provides API, documentation, and examples for using NI CompactRIO within LabVIEW.
+ni-hsdio	25.5.0.49244-0+f92	windows_x64	NI-HSDIO provides support for customers using NI high-speed digital I/O products.
+ni-labview-2026-rt-module-en	26.1.0.49365-0+f213	windows_x64	The LabVIEW Real-Time Module helps you create reliable, stand-alone applications that execute on embedded hardware devices. The LabVIEW Real-Time Module is add-on software for the LabVIEW programming environment that you can use to create and deploy real-time, distributed system applications for test, monitoring, and control. You can take advantage of a real-time OS to ensure reliability and precise timing in your stand-alone system. You also can save valuable development time by selecting from hundreds of prewritten LabVIEW libraries and hardware APIs, which enable deterministic data acquisition.
+ni-flexrio-shared-labview-support	26.0.0.49289-0+f137	windows_x64	This is an infrastructure package for NI Software.
+ni-eyescan-labview-support	26.0.0.49197-0+f45	windows_x64	Provides API, documentation, and examples for using Eyescan IDL within LabVIEW.
+ni-flexrio-adapter-module-shared-labview-support	26.0.0.49278-0+f126	windows_x64	This is an infrastructure package for NI Software.
+ni-industrial-controller-labview-support	25.0.0.49256-0+f104	windows_x64	Provides API for using NI Industrial Controller within LabVIEW.
+ni-flexrio-integrated-io-labview-support	26.0.0.49294-0+f142	windows_x64	Provides API, documentation, and examples for using NI-FlexRIO Integrated I/O within LabVIEW.
+ni-flexrio-modular-io-labview-support	26.0.0.49289-0+f137	windows_x64	Provides API, documentation, and examples for using NI-FlexRIO Modular I/O within LabVIEW.
+ni-flexrio-adapter-module-digital-labview-support	26.0.0.49287-0+f135	windows_x64	Provides API, documentation, and examples for using NI-FlexRIO Digital Adapter Module within LabVIEW.
+ni-flexrio-adapter-module-analog-labview-support	26.0.0.49289-0+f137	windows_x64	Provides API, documentation, and examples for using NI-FlexRIO Analog Adapter Module within LabVIEW.
+ni-flexrio-adapter-module-rf-labview-support	26.0.0.49287-0+f135	windows_x64	Provides API, documentation, and examples for using NI-FlexRIO Adapter Module RF within LabVIEW.
+ni-pxiplatformservices	26.0.0.49357-0+f205	windows_x64	PXI Platform Services supports NI PXI chassis and controllers, implements PXI software specifications, and supplies system services to other NI products. PXI Platform Services is required to identify NI PXI and PXI Express chassis and modules, as well as to allow for trigger routing. The applicable hardware driver for specific NI modules is still required for full module functionality. NI PXI Platform Services is already included as part of NI instrument drivers, but there may be cases where only the PXI Platform Services software is needed for certain applications, such as using NI MXI products or using NI PXI or PXI Express chassis without installing other NI PXI hardware drivers.
+ni-switch	26.0.0.49331-0+f179	windows_x64	NI-SWITCH provides support for customers using NI switch products.
+ni-fgen	26.0.0.49315-0+f163	windows_x64	NI-FGEN provides support for customers using NI waveform generator products.
+ni-dmm	26.0.0.49345-0+f193	windows_x64	NI-DMM provides support for customers using NI digital multimeters.
+ni-compactrio	26.0.0.49323-0+f171	windows_x64	NI CompactRIO provides support for the CompactRIO Controller, CompactRIO Chassis, and CompactRIO Single-Board Controller. NI CompactRIO is NI driver software that provides support for identifying, programming, and deploying CompactRIO systems. You must install this driver in addition to LabVIEW along with the LabVIEW Real-Time Module and/or the LabVIEW FPGA Module to begin programming your hardware.
+ni-sync	26.0.0.49308-0+f156	windows_x64	NI-Sync provides synchronization support for customers using PXI Synchronization Modules or any NI controller that supports real-time operating systems. NI-Sync is an NI instrument driver with which you can configure system timing and synchronization, including signal-based synchronization and direct clock usage. You also can perform time-based synchronization using time protocols such as IEEE 1588 Standard, IEEE 802.1AS Standard, IRIG, or GPS as a time reference to time stamp or perform synchronized clock and trigger generation. NI-Sync supports PXI Synchronization Modules and real-time PXI, CompactDAQ, and CompactRIO controllers as well as Compact Vision Systems and Industrial Controllers. NI-Sync also includes advanced utilities and examples to make it easy to create your application.
+ni-scope	26.0.0.49305-0+f153	windows_x64	NI-SCOPE provides support for customers using NI oscilloscope products.
+ni-dcpower	26.0.0.49446-0+f294	windows_x64	NI-DCPower provides support for customers using NI DC power supplies and source measure units (SMUs).
+ni-daqmx	26.0.0.49428-0+f276	windows_x64	NI-DAQmx provides support for customers using NI data acquisition and signal conditioning devices. NI-DAQmx is an NI instrument driver that controls every aspect of your DAQ system, including signal conditioning, from configuration to programming in LabVIEW to low-level OS and device control. You can build your applications with measurement-specific VIs, functions, data types, and analysis integrations and reliably make faster measurements with optimized DMA data transfer and single-point I/O.
+ni-r-series	26.0.0.49269-0+f117	windows_x64	NI R Series Multifunction RIO supports reconfigurable data acquisition and control hardware. NI R Series Multifunction RIO is an NI instrument driver that supports the PXI Multifunction Reconfigurable I/O Module and Multifunction Reconfigurable I/O Device. This driver provides the files you will need to program this hardware in LabVIEW using the LabVIEW FPGA Module. The driver is also required for communicating with hardware even if an FPGA bitfile is already available.
+ni-flexrio-integrated-io	26.0.0.49284-0+f132	windows_x64	FlexRIO with Integrated I/O provides support for customers using NI FlexRIO with Integrated I/O products.
+ni-flexrio	26.0.0.49284-0+f132	windows_x64	FlexRIO with Modular I/O provides support for customers using NI FlexRIO with Modular I/O products.
+ni-vision-common-resources	25.8.0.49261-0+f109	windows_x64	The Vision Common Resources helps you develop and deploy applications using basic machine vision functions. The Vision Common Resources is driver software that provides support for NI Vision image management functions, Image Display controls, and image-shared variables across both Windows hardware or NI Linux Real-Time hardware. Comprehensive machine vision support is available through the Vision Development Module. The registered trademark Linux(R) is used pursuant to a sublicense from LMI, the exclusive licensee of Linus Torvalds, owner of the mark on a worldwide basis.
+ni-serial	25.8.0.49262-0+f110	windows_x64	NI-Serial provides support for customers using NI serial products.
+ni-488.2	25.8.0.49261-0+f109	windows_x64	NI-488.2 provides support for customers using NI GPIB controllers and NI embedded controllers with GPIB ports. NI-488.2 is an NI instrument driver with several utilities that help in developing and debugging an application program. NI-488.2 includes high-level commands that automatically handle all bus management, so you do not have to learn the programming details of the GPIB hardware product or the IEEE 488.2 protocol. Low-level commands are also available for maximum flexibility and performance.
+ni-xnet	26.0.0.49434-0+f282	windows_x64	NI-XNET provides support for developing applications for prototyping, simulating, and testing Automotive Ethernet, CAN, LIN, and FlexRay networks. NI-XNET is an NI instrument driver that features a common set of easy-to-use functions for reading and writing Automotive Ethernet, CAN, LIN, and FlexRay frames and signals in many different platforms including PXI, PCI, NI CompactDAQ, and NI CompactRIO. NI-XNET CAN, LIN, and FlexRay interfaces are optimized for applications requiring real-time, high-speed manipulation of hundreds of CAN frames and signals, such as hardware-in-the-loop simulation, rapid control prototyping, bus monitoring, and automation control.
+ni-industrial-controller	25.0.0.49256-0+f104	windows_x64	NI Industrial Controller Device Drivers software provides support for customers using NI Industrial Controllers. NI Industrial Controller Device Drivers is driver software for configuring and programming Industrial Controllers. You can also use it to control the digital I/O of Industrial Controllers. You must install this driver in addition to LabVIEW, the LabVIEW Real-Time Module, or NI Vision Builder for Automated Inspection to begin programming an Industrial Controller.
+ni-vision-common-labview-support	25.8.0.49262-0+f110	windows_x64	Provides API, documentation, and examples for using NI Vision Common within LabVIEW.
+ni-imaq-runtime	25.8.0.49264-0+f112	windows_x64	NI-IMAQ provides support for acquiring, displaying, and saving images from parallel digital and Camera Link devices.
+ni-imaq-config-client	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-runtime	25.8.0.49261-0+f109	windows_x64	The Vision Development Module Runtime helps you run compiled code such as DLLs, libraries, and executables built using the Vision Development Module (VDM). The Vision Development Module Runtime is an edition of the VDM software that helps you deploy code to target hardware, but the edition does not include APIs for developing and running applications in the programming environments.
+ni-imaq-io-labview-support	25.8.0.49264-0+f112	windows_x64	Provides API, documentation, and examples for using NI-IMAQ I/O within LabVIEW.
+ni-imaq-config	25.8.0.49264-0+f112	windows_x64	Provides support for configuring cameras and Camera Link image acquisition devices via Measurement & Automation Explorer (MAX). Refer to the Vision Acquisition Software readme on ni.com/manuals for a full list of supported hardware.
+ni-imaqdx-runtime	25.8.0.49264-0+f112	windows_x64	Runtime components required to deploy image acquisition applications.
+ni-vision-full-common	25.8.0.49262-0+f110	windows_x64	Provides shared development support for NI Vision across development environments
+ni-imaq-io	25.8.0.49264-0+f112	windows_x64	NI-IMAQ I/O driver software helps you program FPGAs on Frame Grabber Reconfigurable Devices. NI-IMAQ I/O driver software helps you program FPGAs on Frame Grabber Reconfigurable Devices. It also includes the Vision RIO API, with which you can program the digital I/O on a Compact Vision System, Industrial Controller, or Frame Grabber Reconfigurable Devices without using the LabVIEW FPGA Module. You can use this driver in conjunction with the Vision Development Module or Vision Builder for Automated Inspection to develop and deploy machine vision applications.
+ni-imaq-development-support	25.8.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-imaqdx-development-support	25.8.0.49264-0+f112	windows_x64	Provides shared development support for NI-IMAQdx across development environments
+ni-gvsp-gigevision	25.8.0.49264-0+f112	windows_x64	Optimized GigE Vision driver supporting Intel Pro 1000 Network Interface Cards.
+ni-vision-training-interfaces	25.8.0.49262-0+f110	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-assistant-app	25.8.0.49262-0+f110	windows_x64	Provides Vision Assistant (64-bit) Application.
+ni-vision-assistant-app-x86	25.8.0.49262-0+f110	windows_x64	Provides Vision Assistant (32-bit) Application.
+ni-vision-fpga-labview-support	25.8.0.49262-0+f110	windows_x64	Provides API, documentation, and examples for using NI Vision within LabVIEW FPGA Module.
+ni-imaq-labview-support	25.8.0.49264-0+f112	windows_x64	Provides API, documentation, and examples for using NI-IMAQ within LabVIEW.
+ni-imaq-c-support	25.8.0.49264-0+f112	windows_x64	Provides API, documentation, and examples for using NI-IMAQ devices within C/C++ development environments.
+ni-imaqdx-labview-support	25.8.0.49264-0+f112	windows_x64	Provides API, documentation, and examples for using NI-IMAQdx within LabVIEW.
+ni-imaqdx-c-support	25.8.0.49264-0+f112	windows_x64	Provides API, documentation, and examples for using NI-IMAQdx devices within C/C++ development environments.
+ni-vision-legacy	25.8.0.49262-0+f110	windows_x64	This is an infrastructure package for NI Software.
+ni-vision-assistant-c-support	25.8.0.49262-0+f110	windows_x64	Provides C Code Generation support for Vision Assistant (64-bit).
+ni-vision-assistant-c-support-x86	25.8.0.49262-0+f110	windows_x64	Provides C Code Generation support for Vision Assistant (32-bit).
+ni-imaq	25.8.0.49264-0+f112	windows_x64	NI-IMAQ is driver software for acquiring, displaying, and saving images using Camera Link Frame Grabber Devices. NI-IMAQ is driver software for acquiring images from Camera Link Frame Grabber Devices. You can use this driver in conjunction with the Vision Development Module or Vision Builder for Automated Inspection to develop and deploy machine vision applications.
+ni-imaqdx	25.8.0.49264-0+f112	windows_x64	NI-IMAQdx supports acquiring, displaying, and saving images from cameras. NI-IMAQdx is driver software that you can use to acquire images from Camera Link, USB3 Vision, GigE Vision, DirectShow-compliant USB devices, and Smart Cameras. You can use NI-IMAQdx in conjunction with the Vision Development Module or Vision Builder for Automated Inspection to develop and deploy machine vision applications.
+ni-vision-labview-support	25.8.0.49262-0+f110	windows_x64	Provides API, documentation, and examples for using NI Vision within LabVIEW.
+ni-vision-c-support-x86	25.8.0.49262-0+f110	windows_x64	Provides development support for NI Vision in Visual C/C++, Eclipse, and other C/C++ development environments
+ni-vision-development-module	25.8.0.49262-0+f110	windows_x64	Vision Development Module provides hundreds of functions for developing and deploying machine vision applications. Vision Development Module (VDM) is designed to help you develop machine vision applications using LabVIEW or C/C++ and deploy those applications to Windows or NI Linux Real-Time hardware. With its comprehensive function library, you can access hundreds of image processing algorithms and machine vision functions to enhance images, check for presence, locate features, identify objects, measure parts, and more. VDM also includes the Vision Assistant, which is an algorithm engineering tool that simplifies vision system design by helping you develop algorithms for deployment on either CPUs or FPGAs.
+ni-skyline-tag-client	26.3.0.49225-0+f73	windows_x64	NI SystemLink Tag Client Runtime
+ni-skyline-tag-client-x86	26.3.0.49225-0+f73	windows_x64	NI SystemLink Tag Client x86 Runtime
+ni-skyline-message-client	26.3.0.49225-0+f73	windows_x64	NI SystemLink Message Client Runtime
+ni-skyline-message-client-x86	26.3.0.49225-0+f73	windows_x64	NI SystemLink Message Client x86 Runtime
+ni-skyline-file-client	26.3.0.49225-0+f73	windows_x64	NI SystemLink File Client Runtime
+ni-skyline-file-client-x86	26.3.0.49225-0+f73	windows_x64	NI SystemLink File Client x86 Runtime
+ni-systemlink-test-monitor-teststand-support	26.3.0.49225-0+f73	windows_x64	NI SystemLink Test Monitor Client Support for 32-bit and 64-bit TestStand 2023 and later versions. Installs toolkit configuration (Version Selector cfg) and shared assemblies for both architectures.
+ni-sysmgmt-minionagent	26.3.0.49225-0+f73	windows_x64	NI SystemLink Systems Management Minion Agent Service
+ni-sysmgmt-salt-minion-support	26.3.0.49225-0+f73	windows_x64	NI SystemLink Systems Management Salt Minion Service
+ni-skyline-api-webservice	26.3.0.49267-0+f115	windows_x64	NI SystemLink API Web Service
+ni-dataplugins-mdf4	26.3.0.49217-0+f65	windows_x64	The ASAM e.V. DataPlugin for MDF4 supports reading, writing, and importing of Measure Data Format 4 (MDF4) files.
+ni-diadem-2026-examples-en	26.3.0.49351-0+f199	windows_x64	The installation of the examples facilitates the familiarization with DIAdem.
+ni-dataplugins-aop5	26.3.0.49217-0+f65	windows_x64	The ASAM Standards DataPlugin for AOP5 supports reading, writing, importing, and exporting of ASAM operational data store (ODS) data objects.
+ni-dataplugins-aop6	26.3.0.49217-0+f65	windows_x64	The ASAM Standards DataPlugin for AOP6 supports reading and importing of ASAM operational data store (ODS) data objects.
+ni-dataplugins-audio	26.3.0.49217-0+f65	windows_x64	The Microsoft/IBM DataPlugin for Audio supports reading, writing, importing, and exporting of Waveform Audio File Format (WAVE) files.
+ni-diadem-2026-dac-en	26.3.0.49351-0+f199	windows_x64	DIAdem DAC provides components for data acquisition.
+ni-diadem-data-model	26.3.0.49351-0+f199	windows_x64	Contains DIAdem data models
+ni-tdmserver-2025q2-client	26.3.0.49246-0+f94	windows_x64	NI SystemLink TDM SDK provides the ability to create packages for SystemLink TDM
+ni-metasuite	26.3.0.49237-0+f85	windows_x64	This package provides support for creating Suited installers.
+ni-diadem-2026-license	26.3.0.49351-0+f199	windows_x64	DIAdem License provides licenses to run DIAdem
+ni-datafinder-desktop-dc-eng	26.3.0.49246-0+f94	windows_x64	NI DataFinder Desktop (My DataFinder) indexes the descriptive information of data files. NI DataFinder Desktop Runtime (My DataFinder) indexes the descriptive information of your data files and allows you to quickly find the information you are searching for.
+ni-diadem-2026-core-en	26.3.0.49352-0+f200	windows_x64	DIAdem helps engineers and scientists to gain information from data. DIAdem is software designed to help engineers and scientists quickly locate, inspect, analyze, and report on measurement data using one software tool.
+ni-diadem-2026-en	26.3.0.49352-0+f200	windows_x64	DIAdem provides the most commonly used measurement data post-processing workflows and the ability to create scripts to automate workflows. DIAdem is a single, unified software environment that makes you more efficient when post-processing your measurement data. DIAdem is optimized for large data sets and includes tools to help you quickly search for the data you need, view and investigate that data, transform it with engineering-specific analysis functions, and share results with a powerful drag-and-drop report editor. You can use scripts in DIAdem to automate your repetitive data post-processing tasks and efficiently transform your measurement data into valuable insights.
+ni-assistant-framework-labview-2026-codegen-x86-support	26.1.0.49906-0+f754	windows_x64	NI Assistant Framework LabVIEW Code Generator 2026 (32-bit) is used to install Engine Entry Points for LabVIEW 2026 Code Generator.
+ni-example-finder-x86	26.1.0.49908-0+f756	windows_x64	NI Example Finder is a utility that you can browse and search LabVIEW example VIs.
+ni-labview-2026-coreother-x86-en	26.1.1.49193-0+f41	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-example-x86-en	26.1.1.49193-0+f41	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-executable-x86	26.1.1.49193-0+f41	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-help-x86-en	26.1.0.49905-0+f753	windows_x64	NI LabVIEW Help is used to provide help information for LabVIEW.
+ni-labview-2026-helpchm-en	26.1.0.49901-0+f749	windows_x64	Installs LabVIEW help chm files
+ni-labview-2026-manuals-x86-en	26.1.0.49905-0+f753	windows_x64	NI LabVIEW Manuals is used to provide manuals for LabVIEW.
+ni-labview-2026-scripting-codegen-x86	26.1.0.49905-0+f753	windows_x64	NI LabVIEW 2026 Scripting Code Generator installs the LabVIEW 2026 Scripting Code Generator Engine.
+ni-labview-2026-simulation-x86-en	26.1.0.49905-0+f753	windows_x64	Installs files in the LabVIEW addons simulation folder
+ni-labview-2026-vilib-x86-en	26.1.1.49193-0+f41	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-vicompare-x86	26.1.0.49908-0+f756	windows_x64	NI LabVIEW Compare Utility (32-bit) is a utility to compare LabVIEW VIs.
+ni-labview-vimerge-x86	26.1.0.49908-0+f756	windows_x64	NI LabVIEW Merge Utility (32-bit) is a utility to merge LabVIEW VIs.
+ni-logos-labview-2026-support-x86-en	26.1.0.49905-0+f753	windows_x64	NI Logos LabVIEW 2026 Support is used to provide LabVIEW 2026 Support for Logos Networking Technology.
+ni-package-builder-labview-2026-support-x86-en	26.1.0.49905-0+f753	windows_x64	Allows building packages from LabVIEW 2026 (32-bit)
+ni-ssl-labview-2026-x86-support	26.1.0.49305-0+f153	windows_x64	Installs LabVIEW 2026 Q1 support files for SSL technologies.
+ni-variable-engine-labview-2026-support-x86-en	26.1.0.49905-0+f753	windows_x64	NI Variable Engine LabVIEW 2026 Support is used to provide LabVIEW 2026 Support for Variable Engine.
+ni-labview-2026-rt-module-linx-shared-x86-en	26.1.0.49355-0+f203	windows_x64	This is an infrastructure package for NI Software.
+ni-lvrt-multi-variable-dialog-labview-2026-support-x86	26.1.0.49352-0+f200	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-analysis-x86-en	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-digital-designs-x86	26.1.0.49418-0+f266	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-dmaport-comm-x86	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-dragon-comm-x86	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-ipin-x86	26.1.0.49415-0+f263	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-linear-algebra-x86-en	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-pid-x86	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-umber-comm-x86	26.1.0.49419-0+f267	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-dsc-module-lic	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-spc-toolkit-x86	26.1.0.49264-0+f112	windows_x64	The Statistical Process Control Toolkit provides VIs and controls for process monitoring applications.
+ni-lvdsc-offline-manual-en	26.1.0.49263-0+f111	windows_x64	This is an infrastructure package for NI Software.
+ni-mstudio-networkvariable-fx45-19.0.0-runtime	19.0.0.49154-0+f2	windows_all	Measurement Studio NetworkVariable Library Runtime for .NET Framework 4.5
+ni-opc-io-server-labview-2026-support-x86	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-search-x86	26.1.0.49900-0+f748	windows_x64	NI Search Shared Engine provides libraries and other files necessary to run search in NI applications.
+ni-lv-web-server-labview-2026-x86-support	26.1.0.49288-0+f136	windows_x64	NI LabVIEW 2026 Q1 Web Server.
+ni-mstudio-ui-styles3d-fx40-19.0.0-runtime	19.0.0.49154-0+f2	windows_all	Measurement Studio UI Styles3D Library Runtime for .NET Framework 4.0
+ni-msvcrt-2008	9.1.1.49153-0+f1	windows_all	NI installer for Microsoft's Visual C++ 2008 Runtime support (Service Pack 1 ATL Security Update + hotfix 420568)
+ni-opc-servers-lic	26.1.0.49260-0+f108	windows_x64	Installs license files for The National Instruments OPC Servers V5.
+ni-labview-2026-ff-runtime-engine-x86	26.1.0.49908-0+f756	windows_x64	Support for built applications or shared libraries that use LabVIEW Datalogging and Supervisory Control Module features, including security, alarming, logging, and shared variable management.
+ni-io-server-provider-labview-2026-support-vi-x86	26.1.0.49310-0+f158	windows_x64	This is an infrastructure package for NI Software.
+ni-io-server-provider-labview-2026-support-x86	26.1.0.49310-0+f158	windows_x64	This is an infrastructure package for NI Software.
+ni-modbus-io-server-labview-2026-support-x86	26.1.0.49309-0+f157	windows_x64	Installs NI Modbus I/O Server VIs for LabVIEW 2026. Modbus I/O Server adds Modbus support to the Network Variable Engine.
+ni-mssqlserver2005bc	8.1.0.49153-0+f1	windows_all	Installs Microsoft SQL Server 2005 backward compatibility features.
+ni-io-server-provider-labview-2026-rte-support-x86	26.1.0.49310-0+f158	windows_x64	This is an infrastructure package for NI Software.
+ni-alarm-printer	26.1.0.49264-0+f112	windows_x64	Installs DSC Alarm Printer IO Server for printing alarms and events that LabVIEW processes generate.
+ni-citadel-core	26.1.0.49263-0+f111	windows_x64	NI Citadel Core provides the core functionality of shared variable engine logging database.
+ni-dsc-common-tools	26.1.0.49261-0+f109	windows_x64	A collection of DSC common tools.
+ni-historical-data-viewer	26.1.0.49263-0+f111	windows_x64	Installs NI wrapped Xerces-C++ dynamic linked library and its legal documents. Xerces-C++ is a validating XML parser written in a portable subset of C++, which makes it easy to give your application the ability to read and write XML data.
+ni-labview-2026-dsc-module-rts-lic	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-dsc-module-alarm-web-services	26.1.0.49264-0+f112	windows_x64	This web service provides users with web service-based APIs, including read alarms, events, alarms status and acknowledge alarms.
+ni-labview-dsc-module-citadel-web-services	26.1.0.49264-0+f112	windows_x64	This web service provides users with a set of APIs to query citadel historical data.
+ni-labview-dsc-module-max-support	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-dsc-module-variable-engine	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-opc-io-server	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-epics-base	26.1.0.49287-0+f135	windows_x64	Installs EPICS base DLLs for desktop windows.
+ni-epics-palette-labview-2026-support-x86	26.1.0.49305-0+f153	windows_x64	Installs EPICS palette files for LabVIEW 2026.
+ni-nvioref-labview-2026-runtime-engine-support-x86	26.1.0.49261-0+f109	windows_x64	Installs shared variable node support files for LabVIEW 2026 Runtime Engine.
+ni-search-labview-2026-support-x86	26.1.0.49900-0+f748	windows_x64	NI Search LabVIEW 2026 Support provides libraries and other files necessary to run search in LabVIEW 2026.
+ni-web-services-labview-2026-x86-support	26.1.0.49288-0+f136	windows_x64	Installs Web Services Runtime Components.
+ni-mstudio-ui-fx45-19.0.0-runtime	19.0.0.49154-0+f2	windows_all	Measurement Studio UI Library Runtime for .NET Framework 4.5
+ni-opc-servers	26.1.0.49260-0+f108	windows_x64	The National Instruments OPC Servers provide industry-standard software connectivity to a wide variety of industrial automation devices and industrial networks.
+ni-labview-2026-ff-runtime-engine-libs-x86	26.1.0.49908-0+f756	windows_x64	Support for built applications or shared libraries that use LabVIEW Datalogging and Supervisory Control Module features, including security, alarming, logging, and shared variable management.
+ni-alarm-printer-labview-2026-support-x86	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-citadel-logging	26.1.0.49263-0+f111	windows_x64	NI Citadel Logging provides the support for shared variable logging.
+ni-dsc-common-tools-logging	26.1.0.49261-0+f109	windows_x64	A tool for reading values from and writing values to tags.
+ni-historical-data-viewer-logging	26.1.0.49263-0+f111	windows_x64	A tool for viewing, archiving, and exporting data from logged to the Citadel database.
+ni-labview-dsc-module-variable-engine-logging	26.1.0.49264-0+f112	windows_x64	This is an infrastructure package for NI Software.
+ni-epics-server-io-server	26.1.0.49287-0+f135	windows_x64	EPICS Server I/O Server provides files necessary to publish shared variables to the EPICS (Experimental Physics and Industry Control System) network.
+ni-epics-client-io-server	26.1.0.49287-0+f135	windows_x64	Installs EPICS Client I/O Server for publishing shared variables to an EPICS network as PVs by using the CA network protocol.
+ni-nvioref-labview-2026-support-x86	26.1.0.49261-0+f109	windows_x64	Installs shared variable node support files for LabVIEW 2026.
+ni-labview-2026-core-x86-en	26.1.1.49193-0+f41	windows_x64	LabVIEW is systems engineering software for applications that require test, measurement, and control with rapid access to hardware and data insights. The LabVIEW programming environment simplifies hardware integration for engineering applications so that you have a consistent way to acquire data from NI and third-party hardware. LabVIEW reduces the complexity of programming, so you can focus on your unique engineering problem. LabVIEW enables you to immediately visualize results with built-in, drag-and-drop engineering user interface creation and integrated data viewers. To turn your acquired data into real business results, you can develop algorithms for data analysis and advanced control with included math and signal processing IP or reuse your own libraries from a variety of tools. To ensure compatibility with other engineering tools, LabVIEW can interoperate with, and reuse libraries from, other software and open-source languages.
+ni-mstudio-ui-winforms-fx45-19.0.0-runtime	19.0.0.49154-0+f2	windows_all	Measurement Studio UI WinForms Library Runtime for .NET Framework 4.5
+ni-epics-server-api-labview-2026-support-x86	26.1.0.49310-0+f158	windows_x64	Installs NI EPICS Server API for LabVIEW 2026.
+ni-labview-2026-dsc-module-runtime-system-x86	26.1.0.49264-0+f112	windows_x64	The LabVIEW Datalogging and Supervisory Control (DSC) Run-Time is a deployment license for applications built using LabVIEW DSC. The LabVIEW Datalogging and Supervisory Control (DSC) Module is add-on software for the LabVIEW programming environment. You can use this module to develop a distributed monitoring and control system with tags ranging from a few dozen to tens of thousands. It includes tools for logging data to a networked historical database, tracking real-time and historical trends, managing alarms and events, networking LabVIEW Real-Time targets and OPC devices into one complete system, and adding security to user interfaces.
+ni-webservices-amqp-labview-2026-support-x86	26.1.0.49285-0+f133	windows_x64	Provides support for developing Web services in LabVIEW 2026 (32-bit) hosted by NI Web Server.
+ni-labview-2026-dsc-module-runtime-system-logging	26.1.0.49264-0+f112	windows_x64	The NI Shared Variable Logging Support provides the functionality for logging data, alarms, and events.
+ni-labview-2026-modbus-api-x86	26.1.0.49262-0+f110	windows_x64	This is an infrastructure package for NI Software.
+ni-epics-client-api-labview-2026-support-x86	26.1.0.49310-0+f158	windows_x64	Installs NI EPICS Client API for LabVIEW 2026.
+ni-labview-2026-fpga-module-host-comm-x86-zh-cn	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-host-comm-x86-ja	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-host-comm-x86-en	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-fixed-point-math-x86-en	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-fpga-module-docs-x86	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-providers-x86-en	26.1.0.49366-0+f214	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-1131fbset-x86-en	26.1.0.49366-0+f214	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-dsc-module-x86	26.1.0.49264-0+f112	windows_x64	The LabVIEW Datalogging and Supervisory Control (DSC) Module helps you develop HMI/SCADA or high-channel-count data-logging applications. The LabVIEW Datalogging and Supervisory Control (DSC) Module is add-on software for the LabVIEW programming environment. You can use this module to develop a distributed monitoring and control system with tags ranging from a few dozen to tens of thousands. It includes tools for logging data to a networked historical database, tracking real-time and historical trends, managing alarms and events, networking LabVIEW Real-Time targets and OPC devices into one complete system, and adding security to user interfaces.
+ni-labview-2026-fpga-module-host-comm-x86	26.1.0.49421-0+f269	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-rt-module-x86-en	26.1.0.49366-0+f214	windows_x64	The LabVIEW Real-Time Module helps you create reliable, stand-alone applications that execute on embedded hardware devices. The LabVIEW Real-Time Module is add-on software for the LabVIEW programming environment that you can use to create and deploy real-time, distributed system applications for test, monitoring, and control. You can take advantage of a real-time OS to ensure reliability and precise timing in your stand-alone system. You also can save valuable development time by selecting from hundreds of prewritten LabVIEW libraries and hardware APIs, which enable deterministic data acquisition.
+ni-labview-2026-fpga-module-x86-en	26.1.0.49421-0+f269	windows_x64	The LabVIEW FPGA Module enables you to develop FPGA VIs on a host computer and compile and implement the code on NI reconfigurable I/O (RIO) hardware. LabVIEW FPGA enables you to more efficiently and effectively design complex systems by providing a highly integrated development environment, IP libraries, a high-fidelity simulator, and debugging features. You can create embedded FPGA VIs that combine direct access to I/O with user-defined LabVIEW logic to define custom hardware for applications such as digital protocol communication, hardware-in-the-loop simulation, and rapid control prototyping. Though the LabVIEW FPGA Module contains many built-in signal processing routines, you can also integrate existing hardware description language (HDL) code as well as third-party IP.
+ni-labview-2025-runtime-engine-x86	25.3.4.49158-0+f6	windows_x64	The LabVIEW Runtime is a software add-on that enables engineers to run executables on a nondevelopment machine. The LabVIEW Runtime enables you to run executables created with the LabVIEW Application Builder on machines that do not have LabVIEW installed. The LabVIEW Runtime includes the libraries and other files necessary to run basic application types built in LabVIEW.
+ni-labview-2025-runtime-engine	25.3.4.49158-0+f6	windows_x64	The LabVIEW Runtime is a software add-on that enables engineers to run executables on a nondevelopment machine. The LabVIEW Runtime enables you to run executables created with the LabVIEW Application Builder on machines that do not have LabVIEW installed. The LabVIEW Runtime includes the libraries and other files necessary to run basic application types built in LabVIEW.
+ni-certificates	26.5.0.49183-0+f31	windows_all	NI Certificates configures Microsoft Windows to always trust software from NI. When NI Certificates are installed, no Windows security popups appear for installers that have a valid National Instruments digital signature.
+ni-msiproperties	26.5.0.49245-0+f93	windows_x64	Installs the files necessary for Package Manager to resolve NI properties (e.g. the NI Program Files installation directory) and evaluate MSI conditions.
+ni-package-manager-deployment-support	26.5.0.49301-0+f149	windows_x64	Deployment support for NI Package Manager.
+ni-msdotnet4x	26.5.0.49175-0+f23	windows_x64	Installer for .NET Framework 4.8.0
+ni-package-manager	26.5.0.49301-0+f149	windows_x64	NI Package Manager facilitates the installation, removal, and management of NI software.
+ni-metauninstaller	26.5.0.49246-0+f94	windows_x64	This package provides support for uninstallation of NI products.
+ni-euladepot	26.5.0.49245-0+f93	windows_x64	Installs license and notice files.
+ni-mdfsupport	26.5.0.49246-0+f94	windows_x64	This package installs the files necessary to support building deployments from NI\x27s ADEs.
+ni-labview-database-toolkit-utility	26.3.0.49242-0+f90	windows_x64	This is an infrastructure package for NI Software.
+ni-msdotnet-desktop-runtime-80-x86	26.5.0.49173-0+f21	windows_all	Required by some NI products. The .NET Desktop Runtime enables you to run Windows desktop applications. This package installs the .NET Runtime.
+ni-cvi-usi	26.3.0.49418-0+f266	windows_x64	Installs the LabWindows/CVI Diadem Connectivity Support. It contains the deprecated cviusi.dll.
+ni-cvi-runtime-realtime	26.3.0.49425-0+f273	windows_x64	Installs run-time support for DLLs targeted for a real-time system.
+ni-cvi-openmp	26.3.0.49415-0+f263	windows_x64	Installs the LabWindows/CVI OpenMP Library Runtime.
+ni-cvi-opengl	26.3.0.49425-0+f273	windows_x64	Installs the LabWindows/CVI OpenGL Library Runtime.
+ni-cvi-internet	26.3.0.49415-0+f263	windows_x64	The LabWindows/CVI Internet Library Runtime provides functions for Internet protocols like FTP, POP3, Telnet, etc. You can distribute the Intenet Library according to your license agreement.
+ni-cvi-instrsup	26.3.0.49425-0+f273	windows_x64	Installs run-time support only for instrument drivers and a limited set of LabWindows/CVI library functions. This package allows other applications to use instrument driver DLLs without having to load the larger LabWindows/CVI Run-Time DLL.
+ni-cvi-activex	26.3.0.49415-0+f263	windows_x64	The LabWindows/CVI ActiveX Library Runtime provides functions for ActiveX programming. You can distribute the ActiveX Library according to your license agreement.
+ni-mswebview2	26.5.0.49173-0+f21	windows_x64	Microsoft WebView2 Runtime 148.0.3967
+ni-license-manager-compatibility-server	26.5.0.49698-0+f546	windows_x64	Server to allow .NET 6+ products to interface with NI License Manager.
+ni-assistant-framework-ui-assemblies	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework UI Assemblies contains the UI assemblies used by Assistant Framework.
+ni-lv-ai-addon	25.8.2.49163-0+f11	windows_x64	Provides support for LabVIEW Nigel Integration
+ni-search	26.3.0.49790-0+f638	windows_x64	NI Search Shared Engine (64-bit) provides libraries and other files necessary to run search in NI applications.
+ni-msdotnet-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The .NET Runtime enables you to run Windows console applications. This package installs the .NET Runtime.
+ni-logos-xt	26.5.0.49330-0+f178	windows_x64	NI Logos XT provides a thin layer on top of TCP/IP to simplify some common network tasks.
+ni-lm-clr-compatibility-client	26.3.0.49789-0+f637	windows_x64	Installs binaries for NILM CLR Compatibilty Client
+ni-lm-client-26.5	26.3.0.49792-0+f640	windows_x64	Installs binaries for NILM Client
+ni-labview-2026-runtime-engine-resource-x64	26.3.0.49794-0+f642	windows_x64	LabVIEW 64-bit Runtime Resource contains support for non-English languages to display in dialog boxes, menus, and error messages that are part of the LabVIEW Runtime.
+ni-lm-clr-compatibility-client-x86	26.3.0.49789-0+f637	windows_x64	Installs binaries for NILM CLR Compatibilty Client
+ni-lm-client-26.5-x86	26.3.0.49792-0+f640	windows_x64	Installs binaries for NILM Client
+ni-labview-2026-runtime-engine-resource	26.3.0.49794-0+f642	windows_x64	LabVIEW 32-bit Runtime Resource contains support for non-English languages to display in dialog boxes, menus, and error messages that are part of the LabVIEW Runtime.
+ni-cvi-analysis	26.3.0.49419-0+f267	windows_x64	The LabWindows/CVI Analysis Library Runtime provides functions for 1D and 2D array manipulation, complex operations, matrix operations, and statistics.
+ni-tdms	26.5.0.49332-0+f180	windows_x64	NI TDM Streaming provides functions to read and write waveforms and waveform properties to binary measurement files (.tdms).
+ni-assistant-framework-labview-2026-support	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework LabVIEW 2026 64-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-assistant-framework-labview-2025-support	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework LabVIEW 2025 64-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-assistant-framework-labview-2024-support	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework LabVIEW 2024 64-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-assistant-framework-labview-2023-support	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework LabVIEW 2023 64-bit Support contains the LabVIEW project provider file for Assistant Framework.
+ni-lv-2026q3-ai-addon	26.5.0.49361-0+f209	windows_x64	Provides support for LabVIEW Nigel Integration
+ni-web-pipeline-26.5	26.5.0.49225-0+f73	windows_x64	This is an infrastructure package for NI Software.
+ni-python-interface	26.3.0.49370-0+f218	windows_x64	NI Python Interface is a common Python interface for all NI products.
+ni-opc-support	26.5.0.49333-0+f181	windows_x64	NI OPC Support helps customers using OPC (OLE for process control) to add advanced analysis and control functionality to their system.
+ni-msvcrt-2015	26.5.0.49220-0+f68	windows_x64	NI installer for Microsoft Visual C++ 2015-2022 Run-Time, version 14.44.35112
+ni-labview-2026-vilib	26.3.0.49792-0+f640	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-simulation-x64	26.3.0.49792-0+f640	windows_x64	Installs files in the LabVIEW (64-bit) addons simulation folder
+ni-labview-2026-scripting-codegen	26.3.0.49792-0+f640	windows_x64	NI LabVIEW 2026 (64-bit) Scripting Code Generator installs the LabVIEW 2026 (64-bit) Scripting Code Generator Engine.
+ni-labview-2026-manuals	26.3.0.49792-0+f640	windows_x64	NI LabVIEW (64-bit) Manuals is used to provide manuals for LabVIEW (64-bit).
+ni-labview-2026-help-en	26.3.0.49792-0+f640	windows_x64	NI LabVIEW (64-bit) Help is used to provide help information for LabVIEW (64-bit).
+ni-labview-2026-executable	26.3.0.49792-0+f640	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-2026-example	26.3.0.49792-0+f640	windows_x64	This is an infrastructure package for NI Software.
+ni-json-map	26.3.0.49369-0+f217	windows_x64	NI JSON Map Files contains the information about NI Component locations for better error messaging with missing subVIs.
+ni-help-launcher	26.5.0.49203-0+f51	windows_x64	Infrastructure to launch help for NI software
+ni-daqmx-labview-shared-docs	26.5.0.49603-0+f451	windows_x64	This is an infrastructure package for NI Software.
+ni-codesignapi	26.5.0.49246-0+f94	windows_x64	This package installs the NI CodeSignAPI DLL.
+ni-assistant-framework-labview-2026-codegen-support	26.3.0.49791-0+f639	windows_x64	NI Assistant Framework LabVIEW Code Generator 2026 (64-bit) is used to install Engine Entry Points for LabVIEW 2026 Code Generator.
+ni-msdotnet-desktop-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The .NET Desktop Runtime enables you to run Windows desktop applications. This package installs the .NET Runtime.
+ni-dotnetcore-interface-x86	26.3.0.49790-0+f638	windows_x64	NI LabVIEW DotNet Core Interface
+ni-cvi-datasocket	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI DataSocket Library Runtime functions simplify live data exchange between applications. You can distribute the DataSocket Library according to your license agreement.
+ni-assistant-framework-custom-ui-tool	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework Custom UI contains the custom UI files of Assistant Framework.
+ni-search-labview-2026-support	26.3.0.49790-0+f638	windows_x64	NI Search LabVIEW 2026 (64-bit) Support provides libraries and other files necessary to run search in LabVIEW 2026 (64-bit).
+ni-msaspdotnetcore-runtime-80-x86	26.5.0.49173-0+f21	windows_all	Required by some NI products. The ASP.NET Core Runtime enables you to run existing web/server applications on Windows.  This package installs the ASP.NET Core Runtime.
+ni-cvi-tdms	26.3.0.49421-0+f269	windows_x64	The LabWindows/CVI TDM Streaming Library Runtime contains functions that you can use to log large amounts of test data quickly.
+ni-systemlink-message-broker	26.5.0.49271-0+f119	windows_x64	Broker for AMQP messages
+ni-auth	26.5.0.49329-0+f177	windows_x64	NI Authentication
+ni-cvi-2026-reflector	26.3.0.49416-0+f264	windows_x64	The LabWindows/CVI .NET Reflector Runtime provides functions that facilitate calling .NET assemblies
+ni-rpc	26.5.0.49394-0+f242	windows_x64	NI Remote Procedure Call library (infrastructure) Provides rpc services to NI software.
+ni-max-rempxi-provider	26.5.0.49267-0+f115	windows_x64	Provides remote configuration of NI Real-Time PXI targets in Measurement & Automation Explorer (MAX).
+ni-lv-web-server-labview-2026-support	26.5.0.49335-0+f183	windows_x64	NI LabVIEW 2026 Q5 Web Server 64-Bit.
+ni-dataplugins-python-host	26.5.0.49251-0+f99	windows_all	NI DataPlugins Python Host
+ni-datafinder-desktop-quit-dc	26.5.0.49251-0+f99	windows_x64	Quit of DataFinder Desktop
+ni-xerces-3.3	26.3.0.49218-0+f66	windows_all	NI Xerces Software provides the XML parsing and transforming functionality to user applications.
+ni-traceengine	26.5.0.49327-0+f175	windows_x64	NI Trace Engine
+ni-matlab-interface	26.3.0.49370-0+f218	windows_x64	Interface that allows interoperability between NI Software and MATLAB.
+ni-openssl3-libs	26.5.0.49224-0+f72	windows_x64	OpenSSL is a robust, commercial-grade, full-featured toolkit for general-purpose cryptography and secure communication. OpenSSL-NI is a build of OpenSSL maintained by NI across its software platform. This package is built from OpenSSL 3.5.7.
+ni-openssl3-libs-x86	26.5.0.49224-0+f72	windows_all	OpenSSL is a robust, commercial-grade, full-featured toolkit for general-purpose cryptography and secure communication. OpenSSL-NI is a build of OpenSSL maintained by NI across its software platform. This package is built from OpenSSL 3.5.7.
+ni-zlib1-libs	26.5.0.49231-0+f79	windows_x64	ZLib is a general purpose data compression library. ZLib-NI is a build of ZLib maintained by NI across its software platform. This package is built from ZLib 1.3.2.
+ni-systemlogging-utils	26.5.0.49329-0+f177	windows_x64	NI System Logging Utilities
+ni-svcloc	26.5.0.49327-0+f175	windows_x64	NI Service Locator 2026 Q5 The NI Service Locator facilitates communication between National Instruments support programs and services that use local, dynamic TCP ports to communicate with each other.
+ni-package-builder-labview-2026-support	26.3.0.49792-0+f640	windows_x64	Allows building packages from LabVIEW 2026 (64-bit)
+ni-logos	26.5.0.49330-0+f178	windows_x64	NI Logos provides support for the network protocol that uses network-published shared variables.
+ni-labview-2026-coreother	26.3.0.49792-0+f640	windows_x64	This is an infrastructure package for NI Software.
+ni-expat1-libs	26.5.0.49176-0+f24	windows_x64	Expat is a C99 library that implements a stream-oriented XML parser. Expat-NI is a build of Expat maintained by NI across its software platform. This package is built from Expat 2.8.1.
+ni-slcp-common	26.5.0.49220-0+f68	windows_x64	Provides shared binaries for the NI Software License Compliance Program.
+ni-dotnetcore-interface	26.3.0.49790-0+f638	windows_x64	NI LabVIEW DotNet Core Interface
+ni-error-reporting-common	26.5.0.49694-0+f542	windows_x64	NI Error Reporting enables you to send NI a crash or internal warning report.
+ni-msaspdotnetcore-runtime-80	26.5.0.49173-0+f21	windows_x64	Required by some NI products. The ASP.NET Core Runtime enables you to run existing web/server applications on Windows.  This package installs the ASP.NET Core Runtime.
+ni-cvi-dotnet	26.3.0.49416-0+f264	windows_x64	The LabWindows/CVI .NET Library Runtime provides functions that facilitate calling .NET assemblies.
+ni-usi-core	26.5.0.49251-0+f99	windows_all	NI USI Core provides components for NI TDM software NI USI Core provides components for NI TDM software and allows access to any file format using DataPlugins.
+ni-max-software-provider	26.5.0.49267-0+f115	windows_x64	Provides software configuration in Measurement & Automation Explorer (MAX).
+ni-web-services-labview-2026-support	26.5.0.49335-0+f183	windows_x64	Installs Web Services Runtime Components 64-Bit.
+ni-ssl-labview-2026-runtime-engine-support	26.3.0.49339-0+f187	windows_x64	Installs LabVIEW 2026 Q3 64-bit runtime support files for SSL technologies.
+ni-ssl-labview-2026-runtime-engine-x86-support	26.3.0.49339-0+f187	windows_x64	Installs LabVIEW 2026 Q3 runtime support files for SSL technologies.
+ni-ssl-labview-2026-support	26.3.0.49339-0+f187	windows_x64	Installs LabVIEW 2026 Q3 64-bit support files for SSL technologies.
+ni-curl	26.5.0.49176-0+f24	windows_x64	NI Curl provides the build of the "C URL" library that is an open-source command line tool and library for transferring data with URL syntax.
+ni-cvi-runtime-core	26.3.0.49425-0+f273	windows_x64	Installs run-time support for projects built with full run-time support. This package provides support for most, but not all, of the provided libraries. You will also need to select additional library support if your application calls the corresponding library functions.
+ni-portable-configuration	26.5.0.49267-0+f115	windows_x64	Used by National Instruments components to archive and deploy configuration settings.
+ni-system-webserver-base	26.5.0.49335-0+f183	windows_x64	NI System Web Server Base 2026 Q5
+ni-labview-system-state-publisher	26.3.0.49791-0+f639	windows_x64	NI System State Publisher provides System State Publisher support for LabVIEW.
+ni-deployment-framework	26.3.0.49791-0+f639	windows_x64	Provides a framework to support RT or assembly deployment.
+ni-deployment-framework-x86	26.3.0.49791-0+f639	windows_x64	Provides a framework to support RT or assembly deployment.
+ni-cvi-networkstreams	26.3.0.49420-0+f268	windows_x64	The LabWindows/CVI Network Streams Library Runtime provides functions for reading and writing data to network streams. You also can use the Network Streams Library functions in real-time (RT) applications.
+ni-cvi-network-variable	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI Network Variable Library Runtime provides functions for reading and writing data to network variables. You can use the functions in this library to communicate with LabVIEW shared variables and Measurement Studio network variables. You also can use the Network Variable Library functions in real-time (RT) applications.
+ni-variable-engine	26.5.0.49333-0+f181	windows_x64	NI Variable Engine supports applications that read and write live data using shared variables. You must install this engine if you host, configure, or create shared variables in your application.
+ni-logos-labview-2026-support-en	26.3.0.49792-0+f640	windows_x64	NI Logos LabVIEW 2026 (64-bit) Support is used to provide LabVIEW 2026 (64-bit) Support for Logos Networking Technology.
+ni-datasocket	26.3.0.49347-0+f195	windows_x64	Support for built applications or shared libraries that use DataSocket. This installer includes the DataSocket Server, DataSocket Server Manager, and OPC Demo Server.
+ni-slcp-x86	26.5.0.49220-0+f68	windows_x64	The NI Software License Compliance Program is a mechanism that records and sends to NI only the critical information necessary to validate legal compliance with NI licensing policies.
+ni-slcp	26.5.0.49220-0+f68	windows_x64	The NI Software License Compliance Program is a mechanism that records and sends to NI only the critical information necessary to validate legal compliance with NI licensing policies.
+ni-error-reporting-native-x86	26.5.0.49216-0+f64	windows_x64	NI Error Reporting enables you to send NI a crash or internal warning report.
+ni-update-service	26.5.0.49246-0+f94	windows_x64	NI Update Service checks for and electronically delivers software updates for NI software and drivers.
+ni-error-reporting-native	26.5.0.49216-0+f64	windows_x64	NI Error Reporting enables you to send NI a crash or internal warning report.
+ni-datafinder-client-api	26.5.0.49255-0+f103	windows_all	NI DataFinder Client provides components for connecting to DataFinder Desktop and DataFinder Server.
+ni-sysapi	26.5.0.49267-0+f115	windows_x64	Provides an internal interface for enumerating and configuring devices.
+ni-lv-web-server-labview-2026-runtime-engine-support	26.5.0.49335-0+f183	windows_x64	NI RTE LabVIEW Web Server 64-Bit.
+ni-lv-web-server-labview-2026-runtime-engine-x86-support	26.5.0.49335-0+f183	windows_x64	Include this component when using the Web Server for stand-alone applications and shared libraries.
+ni-system-webserver-appserver	26.5.0.49335-0+f183	windows_x64	Include this component when using Web Services built with LabVIEW.
+ni-variable-engine-labview-2026-support-en	26.3.0.49792-0+f640	windows_x64	NI Variable Engine LabVIEW 2026 (64-bit) Support is used to provide LabVIEW 2026 (64-bit) Support for Variable Engine.
+ni-networkdiscoverysvc	26.5.0.49267-0+f115	windows_x64	Provides network device and service discovery for NI services and applications. NI Network Discovery Service discovers NI Zeroconf devices and services. If this service is stopped components that rely on discovering NI Zeroconf devices and services will no longer function. If this service is disabled any services that explicitly depend on it will fail to start.
+ni-remote-configuration	26.5.0.49267-0+f115	windows_x64	Provides remote configuration of NI Real-Time targets.
+ni-labview-2026-runtime-engine	26.3.0.49794-0+f642	windows_x64	The LabVIEW Runtime is a software add-on that enables engineers to run executables on a nondevelopment machine. The LabVIEW Runtime enables you to run executables created with the LabVIEW Application Builder on machines that do not have LabVIEW installed. The LabVIEW Runtime includes the libraries and other files necessary to run basic application types built in LabVIEW.
+ni-labview-2026-runtime-engine-x86	26.3.0.49794-0+f642	windows_x64	The LabVIEW Runtime is a software add-on that enables engineers to run executables on a nondevelopment machine. The LabVIEW Runtime enables you to run executables created with the LabVIEW Application Builder on machines that do not have LabVIEW installed. The LabVIEW Runtime includes the libraries and other files necessary to run basic application types built in LabVIEW.
+ni-system-webserver	26.5.0.49335-0+f183	windows_x64	Support for using Web services to communicate between National Instruments software, such as LabVIEW and NI Measurement & Automation Explorer.
+ni-syscfg-runtime	26.5.0.49267-0+f115	windows_x64	Run-time components required to deploy applications that use the NI System Configuration API.
+ni-cvi-rte	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI Shared Runtime Base enables you to run most executables or use most DLLs created with LabWindows/CVI on a machine without the development environment installed. The LabWindows/CVI Shared Runtime Base enables you to run executables or use DLLs created with LabWindows/CVI that do not use separate LabWindows/CVI Shared Runtime libraries, and it must be present on any target computer on which you want to run your executable program. You can distribute the Runtime according to your license agreement.  The mark LabWindows is used under a license from Microsoft Corporation. Windows is a registered trademark of Microsoft Corporation in the United States and other countries.
+ni-vipm	26.3.0.49161-0+f9	windows_x64	VI Package Manager helps you discover, create, and install LabVIEW add-ons. VI Package Manager helps you discover and install LabVIEW add-ons from the LabVIEW Tools Network. VI Package Manager can also help you work smarter by building reusable code libraries and tools for your developers and customers.
+ni-labview-vimerge	26.3.0.49794-0+f642	windows_x64	NI LabVIEW Merge Utility (64-bit) is a utility to merge LabVIEW VIs.
+ni-labview-vicompare	26.3.0.49794-0+f642	windows_x64	NI LabVIEW Compare Utility (64-bit) is a utility to compare LabVIEW VIs.
+ni-labview-command-line-interface-x86	26.3.0.49372-0+f220	windows_x64	The NI LabVIEW Command Line Interface (CLI) helps you run operations in LabVIEW by executing commands from the command line. The NI LabVIEW Command Line Interface (CLI) is a software add-on for LabVIEW. You can use it to automate the build process of LabVIEW applications and run the VIs and custom operations you create in LabVIEW.
+ni-distributed-system-manager-2026	26.3.0.49794-0+f642	windows_x64	Support for creating and monitoring variables, processes, I/O servers, and Web services, as well as interacting with the NI Variable Engine and managing security aliases.
+ni-sysdetails-webservice	26.3.0.49279-0+f127	windows_x64	Provides a web service for querying system details.
+ni-sysapi-webservice	26.3.0.49279-0+f127	windows_x64	Provides 32-bit web service components for the NI System API Framework.
+ni-syscfg-labview-support-common	26.5.0.49267-0+f115	windows_x64	Provides files required to create applications using the NI System Configuration API within LabVIEW.
+ni-syscfg-dotnet-runtime	26.5.0.49267-0+f115	windows_x64	Enables you to run applications that use the NI System Configuration .NET API.
+ni-targetdiscoverywizard	26.5.0.49268-0+f116	windows_x64	Diagnoses problems adding a remote system to NI MAX. NI Remote System Discovery Troubleshooting Wizard diagnoses problems with adding a system to Measurement & Automation Explorer (MAX).
+ni-example-finder	26.3.0.49794-0+f642	windows_x64	NI Example Finder is a utility that you can browse and search LabVIEW example VIs.
+ni-cvi-runtime-engine	26.3.0.49425-0+f273	windows_x64	The LabWindows/CVI Shared Runtime enables you to run executables or use DLLs created with LabWindows/CVI on machines without LabWindows/CVI installed. The LabWindows/CVI Shared Runtime is backwards compatible and may be used with applications that were created with previous versions of LabWindows/CVI. You can distribute the Runtime according to your license agreement. The mark LabWindows is used under a license from Microsoft Corporation. Windows is a registered trademark of Microsoft Corporation in the United States and other countries.
+ni-max-remote-provider	26.5.0.49268-0+f116	windows_x64	Provides remote configuration of NI Real-Time targets in Measurement & Automation Explorer (MAX).
+ni-ceip-common	26.5.0.49222-0+f70	windows_x64	Provides shared binaries for the NI Customer Experience Improvement Program.
+ni-ceip-x86	26.5.0.49222-0+f70	windows_x64	NI Customer Experience Improvement Program gives NI customers the ability to contribute to the design and development of NI products.
+ni-ceip	26.5.0.49222-0+f70	windows_x64	NI Customer Experience Improvement Program gives NI customers the ability to contribute to the design and development of NI products.
+ni-vipm-helper	26.3.0.49161-0+f9	windows_x64	Discover and install LabVIEW add-ons from the LabVIEW Tools Network. Package your own reusable code and share it with others.
+ni-offline-help-viewer	26.5.0.49204-0+f52	windows_x64	Application to view offline help for NI software
+ni-webserver	26.5.0.49248-0+f96	windows_x64	The NI Web Server hosts web applications and web UIs.
+ni-discovery-service	26.5.0.49706-0+f554	windows_x64	Provides the NI discovery service.
+ni-license-manager	26.5.0.49256-0+f104	windows_x64	NI License Manager is an application that helps you manage licensed NI software assets. NI License Manager is a tool designed to help you activate, deactivate, and transfer software products using license activation codes or license files. License administrators can use NI License Manager to automate product activation and add volume license servers.
+ni-lvvia-offline-manual-en	26.3.0.49277-0+f125	windows_x64	This is an infrastructure package for NI Software.
+ni-lvutf-offline-manual-en	26.3.0.49249-0+f97	windows_x64	This is an infrastructure package for NI Software.
+ni-lvrgt-offline-manual-en	26.3.0.49243-0+f91	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-offline-manual-en	26.3.0.49793-0+f641	windows_x64	LabVIEW Offline Manual provides help services while offline
+ni-lvdfdt-offline-manual-en	26.3.0.49267-0+f115	windows_x64	This is an infrastructure package for NI Software.
+ni-lvdct-offline-manual-en	26.3.0.49244-0+f92	windows_x64	This is an infrastructure package for NI Software.
+ni-lvdett-offline-manual-en	26.3.0.49250-0+f98	windows_x64	This is an infrastructure package for NI Software.
+ni-lvdfc-offline-manual-en	26.3.0.49232-0+f80	windows_x64	This is an infrastructure package for NI Software.
+ni-webserver-webservices	26.5.0.49246-0+f94	windows_x64	Provides support for the NI Web Server to host web services.
+ni-max	26.5.0.49268-0+f116	windows_x64	Use this application to configure, test, and communicate with your NI hardware. Use Measurement & Automation Explorer (MAX) to configure, test, and communicate with your NI hardware. You must install the appropriate driver software for your hardware to appear in MAX.
+ni-nigel-local-service	26.5.0.49706-0+f554	windows_x64	NI Nigel Local Service
+ni-labview-vi-analyzer-toolkit-lic	26.3.0.49275-0+f123	windows_x64	This installs the NI LabVIEW VI Analyzer Toolkit License.
+ni-labview-unit-test-framework-toolkit-lic	26.3.0.49246-0+f94	windows_x64	This installs the NI LabVIEW Unit Test Framework Toolkit License.
+ni-labview-report-generation-toolkit-lic	26.3.0.49242-0+f90	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-dfd-toolkit-lic	26.3.0.49266-0+f114	windows_x64	This installs the NI LabVIEW 2026 Digital Filter Design Toolkit License.
+ni-labview-database-toolkit-lic	26.3.0.49243-0+f91	windows_x64	This is an infrastructure package for NI Software.
+ni-labview-dett-lic	26.3.0.49248-0+f96	windows_x64	This installs the NI LabVIEW Desktop Execution Trace Toolkit License.
+ni-nls-plugin-entitlement	26.5.0.49360-0+f208	windows_x64	Installs the NI License Manager entitlement file for NI Nigel Advanced.
+ni-labview-2026-license	26.3.0.49791-0+f639	windows_x64	NI LabVIEW License is used to install license files for LabVIEW.
+ni-labview-2026-deployable-license	26.3.0.49792-0+f640	windows_x64	NI LabVIEW Deployable License contains components to support remote panel licenses.
+ni-labview-datafinder-runtime	26.3.0.49232-0+f80	windows_x64	LabVIEW DataFinder Connectivity Runtime enables the connection to DataFinder Server
+ni-skyline-wif-webservice	26.5.0.49273-0+f121	windows_x64	NI SystemLink Web Interface Framework Web Service
+ni-webserver-webservices-amqp	26.5.0.49246-0+f94	windows_x64	Provides support for the NI Web Server to host AMQP web services.
+ni-assistant-framework	26.3.0.49793-0+f641	windows_x64	NI Assistant Framework (64-bit) is a toolset for making software applications, with a particular emphasis on tools needed for measurement applications.
+ni-labview-2025-nls-plugin	25.8.2.49163-0+f11	windows_x64	Provides support for the Nigel AI Advisor in LabVIEW
+ni-labview-dett-core	26.3.0.49250-0+f98	windows_x64	This installs the NI LabVIEW Desktop Execution Trace Toolkit core part files.
+ni-skyline-wif-webui	26.5.0.49273-0+f121	windows_x64	NI SystemLink Web Interface Framework Web UI
+ni-labview-2026q3-nls-plugin	26.5.0.49361-0+f209	windows_x64	Provides support for the Nigel AI in LabVIEW.
+ni-webservices-amqp-deployment-support-x86	26.5.0.49330-0+f178	windows_x64	Provides support for hosting Web services built in LabVIEW 2026 (32-bit) on NI Web Server.
+ni-webservices-amqp-deployment-support	26.5.0.49330-0+f178	windows_x64	Provides support for hosting Web services built in LabVIEW 2026 (64-bit) on NI Web Server.
+ni-labview-2026-core-en	26.3.0.49795-0+f643	windows_x64	LabVIEW is systems engineering software for applications that require test, measurement, and control with rapid access to hardware and data insights. The LabVIEW programming environment simplifies hardware integration for engineering applications so that you have a consistent way to acquire data from NI and third-party hardware. LabVIEW reduces the complexity of programming, so you can focus on your unique engineering problem. LabVIEW enables you to immediately visualize results with built-in, drag-and-drop engineering user interface creation and integrated data viewers. To turn your acquired data into real business results, you can develop algorithms for data analysis and advanced control with included math and signal processing IP or reuse your own libraries from a variety of tools. To ensure compatibility with other engineering tools, LabVIEW can interoperate with, and reuse libraries from, other software and open-source languages.
+ni-dfc-labview-support	26.3.0.49232-0+f80	windows_x64	LabVIEW DataFinder Connectivity Runtime enables the connection to DataFinder Server
+ni-dct-labview-support	26.3.0.49244-0+f92	windows_x64	The LabVIEW Database Connectivity Toolkit helps you connect to local and remote databases and implement common database operations. The LabVIEW Database Connectivity Toolkit is a software add-on for LabVIEW that helps you perform many database operations without using structured query language (SQL) programming. It readily connects to popular databases, such as Microsoft Access, SQL Server, and Oracle. If you need advanced database functionality and flexibility, the LabVIEW Database Connectivity Toolkit also offers complete SQL capabilities.
+ni-dfdt-labview-support	26.3.0.49268-0+f116	windows_x64	The LabVIEW Digital Filter Design Toolkit provides interactive tools for the design, analysis, and implementation of digital filters. The LabVIEW Digital Filter Design Toolkit is a software add-on for LabVIEW that helps you explore classic filter designs with its the built-in interactive design tools. It also provides a breadth of algorithms, filter topologies, and analysis tools for both fixed- and floating-point digital filters. For fixed-point filters, you can model quantization effects, optimize numeric representation/topology, and deploy the design on a digital signal processor or an FPGA using automatically generated ANSI C or LabVIEW FPGA code.
+ni-dett-labview-support	26.3.0.49250-0+f98	windows_x64	This installs the LabVIEW Desktop Execution Trace Toolkit support files for LabVIEW.
+ni-labview-dett	26.3.0.49250-0+f98	windows_x64	The LabVIEW Desktop Execution Trace Toolkit helps you perform dynamic code analysis for advanced debugging. The LabVIEW Desktop Execution Trace Toolkit helps you trace the execution of LabVIEW VIs on a Windows target during run time to detect and locate problems in code that could affect performance or cause unexpected behavior. It provides a chronological view of VI events, queue operations, reference leaks, memory allocation, unhandled errors, and subVI execution. With this toolkit, you can programmatically generate user-defined events from the block diagram of a LabVIEW application.
+ni-rgt-labview-support	26.3.0.49243-0+f91	windows_x64	The LabVIEW Report Generation Toolkit provides VIs for programmatically creating and editing Microsoft Word and Excel reports from LabVIEW. The LabVIEW Report Generation Toolkit is a software add-on for LabVIEW that can generate reports on manufacturing test results or compile process statistics to improve your production yields. With this toolkit, you can easily populate report templates, email reports, execute macros, and manage report layout and appearance.
+ni-syscfg-labview-support	26.5.0.49267-0+f115	windows_x64	Provides files required to create applications using the NI System Configuration API within LabVIEW.
+ni-utf-labview-support	26.3.0.49249-0+f97	windows_x64	The LabVIEW Unit Test Framework Toolkit helps you automate LabVIEW VI unit testing to perform functional validation. The LabVIEW Unit Test Framework Toolkit is a software add-on for LabVIEW that helps you automate functional validation and demonstrate whether an application behaves properly. You can generate a unit test or import test parameters from a text document created in an editor such as Microsoft Excel. Tests can encompass multiple test cases, which define input values and the expected output for any data type, including arrays and clusters. You can identify the source of incorrect outputs, track code coverage, and generate validation documents in HTML, ATML/XML, or ASCII formats.
+ni-viawin-labview-support	26.3.0.49277-0+f125	windows_x64	The LabVIEW VI Analyzer Toolkit helps you perform static code analysis to improve the quality and readability of your LabVIEW code. The LabVIEW VI Analyzer Toolkit is a software add-on for LabVIEW that helps you improve graphical code developed in LabVIEW. With this toolkit, you can configure more than 90 included tests for automated code review and static code analysis of all VIs in an application, or you can create your own using the test creation wizard. The LabVIEW VI Analyzer Toolkit provides debugging tools that help you avoid improper coding techniques that could impact an application\x27s performance, functionality, or maintainability. In addition, you can enforce effective programming practices and coding styles within teams of developers to ensure code readability and functionality.
+ni-webservices-amqp-labview-2026-support	26.5.0.49330-0+f178	windows_x64	Provides support for developing Web services in LabVIEW 2026 (64-bit) hosted by NI Web Server.

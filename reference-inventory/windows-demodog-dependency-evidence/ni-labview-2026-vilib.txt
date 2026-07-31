@@ -1,0 +1,6 @@
+===== ni-labview-2026-vilib =====  
+ni-securityupdate-kb67l8lcqw-killbits	2.1.0.49154-0+f2	windows_all	This is an infrastructure package for NI Software.
+ni-euladepot	26.5.0.49245-0+f93	windows_x64	Installs license and notice files.
+ni-metauninstaller	26.5.0.49246-0+f94	windows_x64	This package provides support for uninstallation of NI products.
+ni-mdfsupport	26.5.0.49246-0+f94	windows_x64	This package installs the files necessary to support building deployments from NI\x27s ADEs.
+ni-labview-2026-vilib	26.3.0.49792-0+f640	windows_x64	This is an infrastructure package for NI Software.

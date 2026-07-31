@@ -1,0 +1,14 @@
+# .NET build outputs
+**/bin/
+**/obj/
+
+# IDE and OS files
+.vs/
+.vscode/
+*.user
+*.suo
+.DS_Store
+
+# Local POC captures and generated repository objects; never commit payloads or secrets.
+reference-poc/
+ni-repository/

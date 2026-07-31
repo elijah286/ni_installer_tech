@@ -1,0 +1,323 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:NIInstallerTech.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="NIInstallerTech.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Width="1240" Height="790" MinWidth="1050" MinHeight="680"
+        Background="#F8F8F5"
+        Title="NI Setup">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="18,11" />
+            <Setter Property="CornerRadius" Value="7" />
+        </Style>
+        <Style Selector="Button.primary">
+            <Setter Property="Background" Value="#005F4B" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="Button.primary:pointerover">
+            <Setter Property="Background" Value="#004B3C" />
+        </Style>
+        <Style Selector="Button.subtle">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#005F4B" />
+        </Style>
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#D9DEEA" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="22" />
+        </Style>
+        <Style Selector="TextBlock.muted">
+            <Setter Property="Foreground" Value="#5C615D" />
+        </Style>
+        <Style Selector="TextBlock.display">
+            <Setter Property="FontFamily" Value="Georgia" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="278,*" RowDefinitions="72,*">
+        <Border Grid.ColumnSpan="2" Background="White" BorderBrush="#E4E7EF" BorderThickness="0,0,0,1">
+            <Grid Margin="32,0" ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                    <Border Width="34" Height="32" Background="#00B894" CornerRadius="2">
+                        <TextBlock Text="ni" Foreground="#004B3C" FontSize="19" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                    <TextBlock Text="NI Setup" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    <Border Background="#DCF5EF" CornerRadius="12" Padding="9,4" Margin="6,0,0,0">
+                        <TextBlock Text="Concept" Foreground="#005F4B" FontSize="12" FontWeight="SemiBold" />
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <Ellipse Width="8" Height="8" Fill="#00B894" VerticalAlignment="Center" />
+                    <TextBlock Text="NI software portfolio • July 2026" Classes="muted" FontSize="13" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Background="#004B3C" Padding="28,35">
+            <Grid RowDefinitions="Auto,*,Auto">
+                <StackPanel Spacing="7">
+                    <TextBlock Text="YOUR SETUP" Foreground="#9AE3D3" FontSize="11" FontWeight="Bold" LetterSpacing="1.2" />
+                    <TextBlock Text="{Binding StepLabel}" Foreground="White" FontSize="17" FontWeight="SemiBold" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="0,38,0,0" Spacing="25">
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="1" Foreground="#9AE3D3" FontWeight="Bold" />
+                        <TextBlock Text="Goals" Foreground="White" />
+                        <TextBlock Text="Choose what you need" Foreground="#D2E9E4" FontSize="12" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="2" Foreground="#9AE3D3" FontWeight="Bold" />
+                        <TextBlock Text="Plan" Foreground="White" />
+                        <TextBlock Text="Review components and impact" Foreground="#D2E9E4" FontSize="12" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="3" Foreground="#9AE3D3" FontWeight="Bold" />
+                        <TextBlock Text="Review" Foreground="White" />
+                        <TextBlock Text="Confirm exactly what will change" Foreground="#D2E9E4" FontSize="12" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="4" Foreground="#9AE3D3" FontWeight="Bold" />
+                        <TextBlock Text="Install" Foreground="White" />
+                        <TextBlock Text="Follow each step to completion" Foreground="#D2E9E4" FontSize="12" TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+
+                <Border Grid.Row="2" Background="#006B56" CornerRadius="8" Padding="14">
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Clear, predictable setup" Foreground="White" FontWeight="SemiBold" FontSize="13" />
+                        <TextBlock Text="Only decisions that affect your setup are shown." Foreground="#D2E9E4" FontSize="12" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="58,42" MaxWidth="810">
+                <StackPanel IsVisible="{Binding IsGoalsStep}" Spacing="25">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Set up your NI software" Classes="display" />
+                        <TextBlock Text="Start with the recommended foundation. Add the applications and hardware support that fit your work when you need them." Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <Button Command="{Binding ChooseApiOnlyCommand}" HorizontalContentAlignment="Stretch" Background="#F2FAF7" BorderBrush="#005F4B" BorderThickness="2" CornerRadius="10" Padding="22">
+                        <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="18">
+                            <Border Width="42" Height="42" Background="#DCF5EF" CornerRadius="21">
+                                <TextBlock Text="⌘" Foreground="#005F4B" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock Text="Recommended setup" FontSize="17" FontWeight="SemiBold" />
+                                    <Border Background="#005F4B" CornerRadius="9" Padding="7,2">
+                                        <TextBlock Text="BEST PLACE TO START" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                    </Border>
+                                </StackPanel>
+                                <TextBlock Text="LabVIEW, NI Measurement &amp; Automation Explorer, and NI-DAQmx—the foundation for most NI measurement and automation work." Classes="muted" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <TextBlock Grid.Column="2" Text="›" FontSize="30" Foreground="#005F4B" VerticalAlignment="Center" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,12,0,0" Text="You can add TestStand, FlexLogger, InstrumentStudio, DIAdem, and more on the next screen." Foreground="#005F4B" FontSize="12" TextWrapping="Wrap" />
+                        </Grid>
+                    </Button>
+
+                    <TextBlock Text="OTHER WAYS TO START" Foreground="#5C615D" FontSize="11" FontWeight="Bold" LetterSpacing="1" Margin="0,8,0,-12" />
+                    <Button Command="{Binding ChooseDeviceSupportCommand}" HorizontalContentAlignment="Stretch" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" CornerRadius="10" Padding="22">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="18">
+                            <Border Width="42" Height="42" Background="#EAF8F1" CornerRadius="21">
+                                <TextBlock Text="▣" Foreground="#197449" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                                <TextBlock Text="Add specialized hardware or protocol support" FontSize="17" FontWeight="SemiBold" />
+                                <TextBlock Text="Start with the core setup, then select support for PXI instruments, RF, waveform generation, scopes, or industrial communications." Classes="muted" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <TextBlock Grid.Column="2" Text="›" FontSize="30" Foreground="#005F4B" VerticalAlignment="Center" />
+                        </Grid>
+                    </Button>
+
+                    <Button Command="{Binding ChooseTestSystemCommand}" HorizontalContentAlignment="Stretch" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" CornerRadius="10" Padding="22">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="18">
+                            <Border Width="42" Height="42" Background="#FFF0D4" CornerRadius="21">
+                                <TextBlock Text="▤" Foreground="#8A4D00" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                                <TextBlock Text="Set up an automated test workstation" FontSize="17" FontWeight="SemiBold" />
+                                <TextBlock Text="Start with the core setup and TestStand, then add PXI, DAQ, instrument, data, and operations software." Classes="muted" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <TextBlock Grid.Column="2" Text="›" FontSize="30" Foreground="#005F4B" VerticalAlignment="Center" />
+                        </Grid>
+                    </Button>
+
+                    <Border Classes="card" Background="#EDF6F3" BorderThickness="0" Padding="17">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="i" FontWeight="Bold" Foreground="#005F4B" />
+                            <TextBlock Text="Need an offline or organization-approved source? You can select a repository on the next screen." Classes="muted" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsPlanStep}" Spacing="22">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Your recommended setup" Classes="display" />
+                        <TextBlock Text="{Binding PlanIntroduction}" Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <Border Classes="card" BorderBrush="#B8CCFA" Background="#FBFCFF">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="24">
+                            <StackPanel Spacing="6">
+                                <TextBlock Text="RECOMMENDED PLAN" Foreground="#005F4B" FontSize="12" FontWeight="Bold" LetterSpacing="1" />
+                                <TextBlock Text="{Binding PlanName}" FontSize="19" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding PlanSummary}" Classes="muted" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="5" HorizontalAlignment="Right">
+                                <TextBlock Text="{Binding DownloadSize}" FontWeight="SemiBold" HorizontalAlignment="Right" />
+                                <TextBlock Text="{Binding InstallSize} installed" Classes="muted" FontSize="12" HorizontalAlignment="Right" />
+                            </StackPanel>
+                            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,18,0,0" Background="#EDF6F3" CornerRadius="6" Padding="12,8">
+                                <TextBlock Text="{Binding ImpactMessage}" Foreground="#32435F" FontSize="13" TextWrapping="Wrap" />
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Core setup and optional additions" FontSize="16" FontWeight="SemiBold" />
+                        <ItemsControl ItemsSource="{Binding Components}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:SetupComponent">
+                                    <Border Classes="card" Padding="16" Margin="0,0,0,10">
+                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="13">
+                                            <CheckBox IsChecked="{Binding IsSelected}" IsEnabled="{Binding IsOptional}" VerticalAlignment="Center" />
+                                            <StackPanel Grid.Column="1" Spacing="2">
+                                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+                                                    <Border IsVisible="{Binding IsRequired}" Background="#DCF5EF" CornerRadius="8" Padding="7,2">
+                                                        <TextBlock Text="CORE" Foreground="#005F4B" FontSize="10" FontWeight="SemiBold" />
+                                                    </Border>
+                                                </StackPanel>
+                                                <TextBlock Text="{Binding Description}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                                            </StackPanel>
+                                            <TextBlock Grid.Column="2" Text="{Binding Size}" Classes="muted" FontSize="13" VerticalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <Expander Header="Repository" FontWeight="SemiBold">
+                        <Border Classes="card" Margin="0,10,0,0" Padding="16">
+                            <StackPanel Spacing="6">
+                                <TextBlock Text="NI software catalog" FontWeight="SemiBold" />
+                                <TextBlock Text="An organization can select an approved repository and pin the component versions used by its teams." Classes="muted" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
+                    </Expander>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,4,0,0">
+                        <Button Classes="subtle" Command="{Binding BackCommand}" Content="Back" />
+                        <Button Grid.Column="2" Classes="primary" Command="{Binding ContinueCommand}" Content="Review setup" />
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsReviewStep}" Spacing="23">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Review before installation" Classes="display" />
+                        <TextBlock Text="Nothing will change until you select Install. This prototype simulates the deployment plan only." Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <Border Classes="card">
+                        <StackPanel Spacing="17">
+                            <TextBlock Text="{Binding PlanName}" FontSize="18" FontWeight="SemiBold" />
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="35" RowSpacing="16">
+                                <StackPanel Spacing="4">
+                                    <TextBlock Text="Download" Classes="muted" FontSize="12" />
+                                    <TextBlock Text="{Binding DownloadSize}" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Spacing="4">
+                                    <TextBlock Text="Disk space after install" Classes="muted" FontSize="12" />
+                                    <TextBlock Text="{Binding InstallSize}" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Spacing="4">
+                                    <TextBlock Text="Administrative access" Classes="muted" FontSize="12" />
+                                    <TextBlock Text="{Binding AdminRequirement}" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Spacing="4">
+                                    <TextBlock Text="Restart" Classes="muted" FontSize="12" />
+                                    <TextBlock Text="{Binding RestartRequirement}" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#FFF7E5" BorderBrush="#F0D89A" BorderThickness="1" CornerRadius="8" Padding="16">
+                        <StackPanel Orientation="Horizontal" Spacing="11">
+                            <TextBlock Text="!" Foreground="#8B6300" FontWeight="Bold" />
+                            <TextBlock Text="{Binding ReviewNotice}" Foreground="#5B4819" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="What will be changed" FontWeight="SemiBold" FontSize="16" />
+                        <ItemsControl ItemsSource="{Binding SelectedComponentNames}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Classes="muted" Margin="0,2" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,7,0,0">
+                        <Button Classes="subtle" Command="{Binding BackCommand}" Content="Back" />
+                        <Button Grid.Column="2" Classes="primary" Command="{Binding StartInstallCommand}" Content="Install setup" />
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsInstallingStep}" Spacing="24" VerticalAlignment="Center" Margin="0,90,0,0">
+                    <TextBlock Text="Installing your setup" Classes="display" />
+                    <TextBlock Text="{Binding InstallationStatus}" Classes="muted" FontSize="16" />
+                    <ProgressBar Minimum="0" Maximum="100" Value="{Binding InstallProgress}" Height="10" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBlock Text="{Binding InstallProgress, StringFormat={}{0:0}% complete}" Classes="muted" />
+                        <TextBlock Grid.Column="1" Text="Installation details saved" Foreground="#005F4B" FontWeight="SemiBold" />
+                    </Grid>
+                    <Border Classes="card" Margin="0,18,0,0">
+                        <StackPanel Spacing="7">
+                            <TextBlock Text="Designed for a consistent result" FontWeight="SemiBold" />
+                            <TextBlock Text="The final product records each component it adds, so it can complete an update, repair the selected setup, or remove only what it owns." Classes="muted" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsCompleteStep}" Spacing="23" VerticalAlignment="Center" Margin="0,65,0,0">
+                    <Border Width="58" Height="58" Background="#EAF8F1" CornerRadius="29" HorizontalAlignment="Left">
+                        <TextBlock Text="✓" Foreground="#197449" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Your setup is ready" Classes="display" />
+                        <TextBlock Text="{Binding CompletionMessage}" Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <Border Classes="card">
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="Your setup is recorded" FontWeight="SemiBold" />
+                            <TextBlock Text="The final product retains this plan and component state, making later updates, repair, and selective removal clear and predictable." Classes="muted" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                    <Button Classes="primary" Command="{Binding StartOverCommand}" Content="Explore another setup" HorizontalAlignment="Left" />
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
