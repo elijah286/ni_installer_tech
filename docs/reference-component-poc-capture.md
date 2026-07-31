@@ -66,6 +66,10 @@ Never capture:
 
 No capture tool may change files, services, registry values, driver bindings, firmware, package state, activation state, or network configuration on the reference machine.
 
+### Original package-cache exception
+
+An individual original NIPM package artifact may be copied read-only from the reference machine's package cache into the internal SMB POC repository when its filename, package identity, digest, source path, and intended candidate component are explicitly recorded. This is not permission to copy generic `ProgramData`: cache configuration, logs, activation/entitlement state, raw content, and all other machine state remain excluded. The artifact remains `internal-original-package-artifact-poc`, non-redistributable, and untrusted for clean-machine installation until signature/provenance and complete dependency-closure validation are recorded.
+
 ## Licensing/activation handling
 
 Reference capture deliberately does not observe or package activation artifacts. The POC preserves existing access protection by leaving licensing and activation tooling unchanged. If a captured payload requires activation to run, the prototype records only the declaration `existing-ni-activation-tooling / unchanged`; it does not attempt to make the payload runnable outside the approved existing model.
