@@ -91,7 +91,7 @@ public partial class MainViewModel : ViewModelBase
     private RepositoryTransport _selectedRepositoryTransport = RepositoryTransport.Web;
 
     [ObservableProperty]
-    private string _repositoryUrl = "http://192.168.68.125:PORT/";
+    private string _repositoryUrl = "http://192.168.68.125:8081/files";
 
     [ObservableProperty]
     private string _repositoryUserName = string.Empty;

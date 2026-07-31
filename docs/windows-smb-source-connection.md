@@ -3,7 +3,7 @@
 The Windows prototype supports two internal source transports for controlled prototype validation:
 
 ```text
-Web (preferred): http://192.168.68.125:<port>/
+Web (preferred): http://192.168.68.125:8081/files
 SMB fallback:     \\192.168.68.125\Files\NISetupPrototypeRepository
 ```
 
@@ -13,7 +13,7 @@ The web server root must expose the repository tree, including `metadata/reposit
 
 1. Open **Organization-approved repository (advanced)** on the plan screen.
 2. Select **Web source**.
-3. Enter the exact local server root, for example `http://192.168.68.125:8080/`.
+3. Keep the default `http://192.168.68.125:8081/files` or enter the exact local server root you need.
 4. Select **Connect and verify source**.
 
 The app requests `<entered-url>/metadata/repository.json`; it does not add credentials to the URL or save any authentication material. The server must be reachable from the Windows test machine and permit a read-only `GET` request to that file.

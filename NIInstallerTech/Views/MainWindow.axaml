@@ -325,7 +325,7 @@
                                 </Grid>
                                 <StackPanel IsVisible="{Binding IsWebRepositoryTransport}" Spacing="7">
                                     <TextBlock Text="Local web server URL" Classes="muted" FontSize="12" />
-                                    <TextBox Text="{Binding RepositoryUrl}" PlaceholderText="http://192.168.68.125:8080/" />
+                                    <TextBox Text="{Binding RepositoryUrl}" PlaceholderText="http://192.168.68.125:8081/files" />
                                     <TextBlock Text="Enter the server root that contains metadata/repository.json, objects/, and metadata/. The port is yours to choose." Classes="muted" FontSize="12" TextWrapping="Wrap" />
                                 </StackPanel>
                                 <Grid IsVisible="{Binding IsSmbRepositoryTransport}" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="9">
