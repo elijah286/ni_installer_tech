@@ -1,6 +1,6 @@
 # NI Platform Setup — installation-model prototype
 
-[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.3-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
+[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.4-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
 
 **Windows:** download the ZIP, extract it, and double-click **NI Platform Setup Prototype.exe**. No .NET SDK, terminal, or source checkout is required. The UI takes you through the installation workflow preview; it does not yet install NI software, drivers, firmware, or licensing content.
 

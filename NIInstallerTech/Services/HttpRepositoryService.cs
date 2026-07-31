@@ -14,14 +14,22 @@ public sealed class HttpRepositoryService
 
     public async Task<RepositoryAccessResult> ConnectAndVerifyAsync(string repositoryUrl, CancellationToken cancellationToken = default)
     {
-        if (!TryGetRepositoryMetadataUri(repositoryUrl, out var metadataUri, out var validationError))
+        if (!TryGetRepositoryMetadataUris(repositoryUrl, out var metadataUri, out var nestedMetadataUri, out var validationError))
         {
             return RepositoryAccessResult.Failed(validationError);
         }
 
+        HttpResponseMessage? response = null;
         try
         {
-            using var response = await Client.GetAsync(metadataUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            response = await Client.GetAsync(metadataUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                response.Dispose();
+                response = await Client.GetAsync(nestedMetadataUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+                metadataUri = nestedMetadataUri;
+            }
+
             if (response.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
             {
                 return RepositoryAccessResult.Failed("The web source rejected this request. Configure the local web server to allow read-only access to repository metadata, or use its supported authentication mechanism.");
@@ -53,12 +61,12 @@ public sealed class HttpRepositoryService
             {
                 return RepositoryAccessResult.ConnectedButNotReady(
                     "Connected to the NI Setup web source.",
-                    $"Repository state: {state ?? "unknown"}. A reviewed catalog and supported deployment executor are still required before installation can begin.");
+                    $"Verified {metadataUri.AbsolutePath}. Repository state: {state ?? "unknown"}. A reviewed catalog and supported deployment executor are still required before installation can begin.");
             }
 
             return RepositoryAccessResult.Ready(
                 "Connected to the NI Setup web source.",
-                "The repository identity and ready state were verified. The connection is ready for a future deployment executor.");
+                $"Verified {metadataUri.AbsolutePath}. The repository identity and ready state were verified. The connection is ready for a future deployment executor.");
         }
         catch (TaskCanceledException) when (!cancellationToken.IsCancellationRequested)
         {
@@ -74,11 +82,16 @@ public sealed class HttpRepositoryService
                 "Connected to the web source, but repository metadata is invalid.",
                 "The installer will not consume source content until metadata is repaired and reviewed.");
         }
+        finally
+        {
+            response?.Dispose();
+        }
     }
 
-    private static bool TryGetRepositoryMetadataUri(string repositoryUrl, out Uri metadataUri, out string error)
+    private static bool TryGetRepositoryMetadataUris(string repositoryUrl, out Uri metadataUri, out Uri nestedMetadataUri, out string error)
     {
         metadataUri = null!;
+        nestedMetadataUri = null!;
         error = string.Empty;
         if (!Uri.TryCreate(repositoryUrl.Trim(), UriKind.Absolute, out var baseUri) || baseUri.Scheme is not ("http" or "https"))
         {
@@ -94,6 +107,7 @@ public sealed class HttpRepositoryService
 
         var normalizedBase = baseUri.AbsoluteUri.EndsWith("/", StringComparison.Ordinal) ? baseUri : new Uri(baseUri.AbsoluteUri + "/");
         metadataUri = new Uri(normalizedBase, "metadata/repository.json");
+        nestedMetadataUri = new Uri(normalizedBase, "NISetupPrototypeRepository/metadata/repository.json");
         return true;
     }
 }

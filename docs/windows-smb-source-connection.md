@@ -7,7 +7,7 @@ Web (preferred): http://192.168.68.125:8081/files
 SMB fallback:     \\192.168.68.125\Files\NISetupPrototypeRepository
 ```
 
-The web server root must expose the repository tree, including `metadata/repository.json`, `metadata/`, and `objects/`. It never treats the raw NIPM intake directory as an installable package source. The UI first verifies the repository identity file at `metadata/repository.json`, then reports whether an approved component catalog is available.
+The web server root may expose `NISetupPrototypeRepository/`, as the current `http://192.168.68.125:8081/Files` endpoint does, or it may serve the repository root directly. The UI checks `metadata/repository.json` first, then automatically checks `NISetupPrototypeRepository/metadata/repository.json`. It never treats the raw NIPM intake directory as an installable package source.
 
 ## Connect by web server
 
@@ -16,7 +16,7 @@ The web server root must expose the repository tree, including `metadata/reposit
 3. Keep the default `http://192.168.68.125:8081/files` or enter the exact local server root you need.
 4. Select **Connect and verify source**.
 
-The app requests `<entered-url>/metadata/repository.json`; it does not add credentials to the URL or save any authentication material. The server must be reachable from the Windows test machine and permit a read-only `GET` request to that file.
+The app requests `<entered-url>/metadata/repository.json`, then falls back to `<entered-url>/NISetupPrototypeRepository/metadata/repository.json`. It does not add credentials to the URL or save any authentication material. The server must be reachable from the Windows test machine and permit a read-only `GET` request to that file.
 
 ## Web source results
 
