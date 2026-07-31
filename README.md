@@ -11,6 +11,7 @@ The repository is intentionally documentation-first. It is the reviewable record
 - Make build-agent and container-oriented plans possible without silently installing device support.
 - Update the smallest compatible component closure and explicitly preserve unrelated working components.
 - Support customer-controlled repositories, channels, and baselines without requiring customers to understand package internals.
+- Deliver a small NI-hosted setup application by default, with an explicit option to assemble the selected plan into one portable offline installer for disconnected systems.
 - Preserve current NI activation and licensing tooling and protections. This work must not copy, bypass, alter, or replace entitlement, activation, licensing, or access-control behavior.
 - Base the proof of concept on controlled, read-only evidence and selected final-state components from the Windows reference machine while retaining the distinction between a POC capture and an authorized production artifact.
 
@@ -44,6 +45,12 @@ Status labels are deliberate: a **draft** asks for review, a **hypothesis** need
 The proposed output is not a replacement installer format yet. It is a small, additive component descriptor plus a deterministic payload manifest, resource claims, compatibility metadata, health checks, SBOM/provenance, and an explicit licensing/activation declaration. Build systems should retain their current installers and activation integration while producing these reviewable inputs alongside them.
 
 See the [build-output contract](docs/build-output-contract.md) for the exact v0.1 structure, required fields, and adoption sequence. The contract is designed to evolve as this prototype measures real component boundaries; it must not be treated as final until marked approved.
+
+## Delivery defaults
+
+The normal experience begins with a small setup application and the NI-hosted catalog. It resolves and downloads only the selected components. An organization-approved repository/baseline is an advanced policy option, not the default customer decision.
+
+For disconnected systems, the same selected plan can create one portable offline installer. It retrieves, verifies, and bundles the selected component artifacts and metadata before transport. The destination evaluates the normal compatibility, privilege, driver/firmware, and existing licensing/activation boundaries; an offline bundle never carries activation records, entitlement data, customer configuration, or raw Driver Store content.
 
 ## Safety and licensing boundary
 

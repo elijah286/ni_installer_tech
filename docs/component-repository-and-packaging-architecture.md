@@ -134,6 +134,25 @@ ni-repository/
 
 Use a TUF-like signed metadata model: a long-lived root of trust, separately signed catalog/channel metadata, key rotation, expiry, and consistent snapshots. The prototype can begin with one offline signing key and a static signed catalog, but should retain the same identity model.
 
+## Delivery modes and offline bundle
+
+The default installer is deliberately small. It uses the NI-hosted catalog/channel, resolves the selected plan, and retrieves only the content-addressed artifacts required for that plan. An organization may later configure an approved repository or baseline, but this is an advanced policy choice rather than the normal setup path.
+
+After a plan is resolved, the same UX can offer **Create offline installer**. This operation downloads the complete resolved artifact closure, verifies every digest, and generates one atomic portable bundle containing:
+
+```text
+ni-offline-installer/
+  bootstrapper/                 # small plan-aware installer host
+  plan.json                     # resolved component IDs, versions, catalog digest
+  objects/sha256/...            # exact selected artifacts, once per digest
+  metadata/                     # catalog subset, manifests, SBOM/provenance
+  bundle-manifest.json          # bundle digest, size, target platform, expiry/policy
+```
+
+The bundle contains only selected component artifacts and metadata. It must not include activation or entitlement data, credentials, customer configuration, user data, or raw Driver Store state. On the disconnected destination, it still performs normal compatibility checks and invokes existing approved licensing/activation tooling without changing that tooling or policy. Driver/firmware activation remains an explicit boundary at the destination.
+
+An offline bundle is atomic from the transport perspective: its manifest lists the exact complete artifact closure, and the bootstrapper rejects incomplete or altered contents. It is not an opaque monolithic product installer; its plan remains inspectable and records the independently serviceable component identities.
+
 ## Upgrade behavior
 
 A channel does **not** contain copies of every package. It pins a catalog digest and policy.

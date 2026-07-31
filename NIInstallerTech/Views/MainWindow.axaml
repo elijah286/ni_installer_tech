@@ -163,7 +163,7 @@
                     <Border Classes="card" Background="#EDF6F3" BorderThickness="0" Padding="17">
                         <StackPanel Orientation="Horizontal" Spacing="12">
                             <TextBlock Text="i" FontWeight="Bold" Foreground="#005F4B" />
-                            <TextBlock Text="Need an offline or organization-approved source? You can select a repository on the next screen." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="Setup starts as a small NI-hosted downloader. On the next screen, you can instead create one portable offline installer from the same selected plan." Classes="muted" TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -192,7 +192,8 @@
                     </Border>
 
                     <StackPanel Spacing="10">
-                        <TextBlock Text="Core setup and optional additions" FontSize="16" FontWeight="SemiBold" />
+                        <TextBlock Text="Component planes in this plan" FontSize="16" FontWeight="SemiBold" />
+                        <TextBlock Text="These boundaries reflect the reference-system inspection: application, configuration, API/runtime, language adapter, hardware family, and firmware are separate decisions." Classes="muted" FontSize="13" TextWrapping="Wrap" />
                         <ItemsControl ItemsSource="{Binding Components}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="vm:SetupComponent">
@@ -205,8 +206,12 @@
                                                     <Border IsVisible="{Binding IsRequired}" Background="#DCF5EF" CornerRadius="8" Padding="7,2">
                                                         <TextBlock Text="CORE" Foreground="#005F4B" FontSize="10" FontWeight="SemiBold" />
                                                     </Border>
+                                                    <Border Background="#EFF2F8" CornerRadius="8" Padding="7,2">
+                                                        <TextBlock Text="{Binding Plane}" Foreground="#43506A" FontSize="10" FontWeight="SemiBold" />
+                                                    </Border>
                                                 </StackPanel>
                                                 <TextBlock Text="{Binding Description}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                                                <TextBlock Text="{Binding ChangeBoundary}" Foreground="#705D1A" FontSize="12" FontWeight="SemiBold" />
                                             </StackPanel>
                                             <TextBlock Grid.Column="2" Text="{Binding Size}" Classes="muted" FontSize="13" VerticalAlignment="Center" />
                                         </Grid>
@@ -216,11 +221,47 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <Expander Header="Repository" FontWeight="SemiBold">
+                    <Border Classes="card" Background="#FBFCFF" BorderBrush="#B8CCFA">
+                        <StackPanel Spacing="13">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="How should this plan be delivered?" FontSize="16" FontWeight="SemiBold" />
+                                <TextBlock Text="NI-hosted delivery is the normal path. An offline installer is created from this exact selection, not from a broad product image." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                            </StackPanel>
+                            <Button Command="{Binding ChooseNiHostedDeliveryCommand}" HorizontalContentAlignment="Stretch" Background="#F2FAF7" BorderBrush="#005F4B" BorderThickness="1" Padding="14">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                    <TextBlock Text="↓" Foreground="#005F4B" FontSize="23" VerticalAlignment="Center" />
+                                    <StackPanel Grid.Column="1" Spacing="3">
+                                        <TextBlock Text="Small setup app downloads from NI" FontWeight="SemiBold" />
+                                        <TextBlock Text="Default — retrieve only the selected components from the NI-hosted catalog." Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                    <Border Grid.Column="2" IsVisible="{Binding IsNiHostedDelivery}" Background="#005F4B" CornerRadius="8" Padding="7,3" VerticalAlignment="Center">
+                                        <TextBlock Text="SELECTED" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                    </Border>
+                                </Grid>
+                            </Button>
+                            <Button Command="{Binding ChooseOfflineBundleCommand}" HorizontalContentAlignment="Stretch" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" Padding="14">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                    <TextBlock Text="▣" Foreground="#005F4B" FontSize="20" VerticalAlignment="Center" />
+                                    <StackPanel Grid.Column="1" Spacing="3">
+                                        <TextBlock Text="Create a portable offline installer" FontWeight="SemiBold" />
+                                        <TextBlock Text="Retrieve all selected source components now, verify them, and create one transferable installer for disconnected systems." Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                    </StackPanel>
+                                    <Border Grid.Column="2" IsVisible="{Binding IsOfflineBundleDelivery}" Background="#005F4B" CornerRadius="8" Padding="7,3" VerticalAlignment="Center">
+                                        <TextBlock Text="SELECTED" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                    </Border>
+                                </Grid>
+                            </Button>
+                            <Border Background="#FFF7E5" CornerRadius="6" Padding="11,8">
+                                <TextBlock Text="Offline bundles include selected component bytes and manifests only. They do not include activation, entitlement, customer configuration, or copied driver-store state." Foreground="#5B4819" FontSize="12" TextWrapping="Wrap" />
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <Expander Header="Organization-approved repository (advanced)" FontWeight="SemiBold">
                         <Border Classes="card" Margin="0,10,0,0" Padding="16">
                             <StackPanel Spacing="6">
-                                <TextBlock Text="NI software catalog" FontWeight="SemiBold" />
-                                <TextBlock Text="An organization can select an approved repository and pin the component versions used by its teams." Classes="muted" TextWrapping="Wrap" />
+                                <TextBlock Text="NI-hosted catalog is selected by default" FontWeight="SemiBold" />
+                                <TextBlock Text="Organizations may later select a validated repository or baseline that pins approved component versions. That is not required for normal setup." Classes="muted" TextWrapping="Wrap" />
                             </StackPanel>
                         </Border>
                     </Expander>
@@ -240,6 +281,13 @@
                     <Border Classes="card">
                         <StackPanel Spacing="17">
                             <TextBlock Text="{Binding PlanName}" FontSize="18" FontWeight="SemiBold" />
+                            <Border Background="#EDF6F3" CornerRadius="7" Padding="12">
+                                <StackPanel Spacing="3">
+                                    <TextBlock Text="{Binding DeliveryTitle}" FontWeight="SemiBold" Foreground="#005F4B" />
+                                    <TextBlock Text="{Binding DeliveryDescription}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding DeliveryDetail}" Foreground="#005F4B" FontSize="12" />
+                                </StackPanel>
+                            </Border>
                             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="35" RowSpacing="16">
                                 <StackPanel Spacing="4">
                                     <TextBlock Text="Download" Classes="muted" FontSize="12" />
@@ -281,17 +329,17 @@
 
                     <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,7,0,0">
                         <Button Classes="subtle" Command="{Binding BackCommand}" Content="Back" />
-                        <Button Grid.Column="2" Classes="primary" Command="{Binding StartInstallCommand}" Content="Install setup" />
+                        <Button Grid.Column="2" Classes="primary" Command="{Binding StartInstallCommand}" Content="{Binding PrimaryActionLabel}" />
                     </Grid>
                 </StackPanel>
 
                 <StackPanel IsVisible="{Binding IsInstallingStep}" Spacing="24" VerticalAlignment="Center" Margin="0,90,0,0">
-                    <TextBlock Text="Installing your setup" Classes="display" />
+                    <TextBlock Text="{Binding PrimaryActionLabel}" Classes="display" />
                     <TextBlock Text="{Binding InstallationStatus}" Classes="muted" FontSize="16" />
                     <ProgressBar Minimum="0" Maximum="100" Value="{Binding InstallProgress}" Height="10" />
                     <Grid ColumnDefinitions="*,Auto">
                         <TextBlock Text="{Binding InstallProgress, StringFormat={}{0:0}% complete}" Classes="muted" />
-                        <TextBlock Grid.Column="1" Text="Installation details saved" Foreground="#005F4B" FontWeight="SemiBold" />
+                        <TextBlock Grid.Column="1" Text="Plan details recorded" Foreground="#005F4B" FontWeight="SemiBold" />
                     </Grid>
                     <Border Classes="card" Margin="0,18,0,0">
                         <StackPanel Spacing="7">
@@ -306,7 +354,7 @@
                         <TextBlock Text="✓" Foreground="#197449" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <StackPanel Spacing="8">
-                        <TextBlock Text="Your setup is ready" Classes="display" />
+                        <TextBlock Text="{Binding CompletionHeading}" Classes="display" />
                         <TextBlock Text="{Binding CompletionMessage}" Classes="muted" FontSize="16" TextWrapping="Wrap" />
                     </StackPanel>
                     <Border Classes="card">
