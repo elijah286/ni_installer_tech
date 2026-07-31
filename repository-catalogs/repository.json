@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "prototype-repository-v0.1",
+  "id": "ni-setup-prototype-smb",
+  "classification": "internal-reference-derived-poc-only",
+  "transport": "smb",
+  "contentAddressing": "sha256",
+  "state": "ready",
+  "deploymentScope": "app-owned-managed-file-copy",
+  "activeCatalog": "metadata/catalogs/prototype-managed-install-catalog-v0.1.json",
+  "permittedArtifactClassifications": [
+    "reference-derived-poc",
+    "authorized-build-output-poc"
+  ],
+  "prohibitedContent": [
+    "licenses",
+    "activation-records",
+    "entitlement-data",
+    "credentials",
+    "private-keys",
+    "customer-data",
+    "machine-configuration",
+    "raw-driver-store-content"
+  ],
+  "githubDocumentation": [
+    "docs/reference-component-poc-capture.md",
+    "docs/build-output-contract.md",
+    "docs/component-repository-and-packaging-architecture.md",
+    "docs/cli-interface.md"
+  ]
+}

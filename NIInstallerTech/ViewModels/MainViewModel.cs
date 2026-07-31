@@ -15,10 +15,15 @@ public partial class MainViewModel : ViewModelBase
     private SetupScenario _scenario;
     private readonly SmbRepositoryService _smbRepositoryService = new();
     private readonly HttpRepositoryService _httpRepositoryService = new();
+    private readonly ManagedDeploymentService _deploymentService = new();
+    private readonly PrototypeOperationLog _operationLog = new();
+    private Uri? _resolvedRepositoryUri;
 
     public MainViewModel()
     {
         Components = new ObservableCollection<SetupComponent>();
+        OperationLogPath = _operationLog.FilePath;
+        InstalledComponentCount = _deploymentService.GetInstalledComponentCount();
         ConfigurePlan(SetupScenario.Application);
     }
 
@@ -102,10 +107,12 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(RepositoryStatusColor))]
     [NotifyPropertyChangedFor(nameof(PrimaryActionLabel))]
+    [NotifyPropertyChangedFor(nameof(IsInstallationExecutorAvailable))]
     private bool _repositoryIsConnected;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(PrimaryActionLabel))]
+    [NotifyPropertyChangedFor(nameof(IsInstallationExecutorAvailable))]
     private bool _repositoryIsReadyForInstallation;
 
     [ObservableProperty]
@@ -113,6 +120,21 @@ public partial class MainViewModel : ViewModelBase
 
     [ObservableProperty]
     private string _repositoryDetails = "Use your current Windows sign-in first, or provide an SMB account with read-only access. Credentials are used only for this connection and are never saved.";
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(PrimaryActionLabel))]
+    [NotifyPropertyChangedFor(nameof(IsInstallationExecutorAvailable))]
+    private bool _deploymentPreflightIsReady;
+
+    [ObservableProperty]
+    private string _deploymentStatus = "Connect to a source repository to run deployment preflight.";
+
+    [ObservableProperty]
+    private string _operationLogPath = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasInstalledPrototypeComponents))]
+    private int _installedComponentCount;
 
     public bool IsGoalsStep => CurrentStep == 0;
     public bool IsPlanStep => CurrentStep == 1;
@@ -133,7 +155,8 @@ public partial class MainViewModel : ViewModelBase
     public bool IsOfflineBundleDelivery => SelectedDeliveryMode == DeliveryMode.OfflineBundle;
     public bool IsWebRepositoryTransport => SelectedRepositoryTransport == RepositoryTransport.Web;
     public bool IsSmbRepositoryTransport => SelectedRepositoryTransport == RepositoryTransport.Smb;
-    public bool IsInstallationExecutorAvailable => false;
+    public bool IsInstallationExecutorAvailable => RepositoryIsReadyForInstallation && DeploymentPreflightIsReady && IsWebRepositoryTransport;
+    public bool HasInstalledPrototypeComponents => InstalledComponentCount > 0;
     public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
     public string DeliveryTitle => IsNiHostedDelivery
@@ -152,7 +175,9 @@ public partial class MainViewModel : ViewModelBase
         ? "Connect source to continue"
         : !RepositoryIsReadyForInstallation
             ? "Source requires catalog approval"
-            : "Deployment executor unavailable";
+            : !DeploymentPreflightIsReady
+                ? "Selected plan is not deployable"
+                : IsNiHostedDelivery ? "Install selected managed artifacts" : "Create managed offline copy";
     public string CompletionHeading => IsNiHostedDelivery ? "Your setup is ready" : "Your offline installer is ready";
 
     public bool IsLabVIEWQ1Selected => SelectedLabVIEWRelease == LabVIEWRelease.Q1;
@@ -173,10 +198,16 @@ public partial class MainViewModel : ViewModelBase
         .Where(component => component.IsSelected)
         .Select(component => component.Name);
 
+    public IReadOnlyCollection<string> SelectedDeploymentComponentIds => Components
+        .Where(component => component.IsSelected)
+        .Select(component => component.DeploymentComponentId)
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .ToArray();
+
     public string CompletionMessage => _scenario switch
     {
         SetupScenario.Application => IsNiHostedDelivery
-            ? "LabVIEW, NI Measurement & Automation Explorer, and the selected NI-DAQmx planes are ready. Hardware, firmware, and optional applications remain separate until you select them."
+            ? "The selected managed source artifacts were verified, deployed under this prototype's owned directory, and recorded for complete removal. LabVIEW, drivers, firmware, activation, and licensing remain outside this source catalog."
             : "A portable offline installer contains the selected LabVIEW, MAX, and NI-DAQmx component planes. It can be taken to a disconnected system without carrying licenses or machine configuration.",
         SetupScenario.Hardware => IsNiHostedDelivery
             ? "Your core NI software and selected family-level hardware support are ready. Driver and firmware boundaries were reviewed separately."
@@ -228,6 +259,8 @@ public partial class MainViewModel : ViewModelBase
             : "Windows is attempting the configured SMB connection.";
         RepositoryIsConnected = false;
         RepositoryIsReadyForInstallation = false;
+        DeploymentPreflightIsReady = false;
+        _resolvedRepositoryUri = null;
 
         var password = RepositoryPassword;
         try
@@ -239,6 +272,23 @@ public partial class MainViewModel : ViewModelBase
             RepositoryIsReadyForInstallation = result.IsReadyForInstallation;
             RepositoryStatus = result.Status;
             RepositoryDetails = result.Details;
+            _resolvedRepositoryUri = result.RepositoryUri;
+            _operationLog.Write("repository-connect", result.IsConnected ? "connected" : "failed", result.Status, new { result.Details, RepositoryUrl, RepositoryPath });
+
+            if (RepositoryIsReadyForInstallation && IsWebRepositoryTransport && _resolvedRepositoryUri is not null)
+            {
+                await RefreshDeploymentPreflightAsync();
+            }
+            else
+            {
+                DeploymentStatus = "A reviewed repository state and web source are required before deployment preflight can run.";
+            }
+        }
+        catch (Exception exception)
+        {
+            RepositoryStatus = "Source connection encountered an unexpected error.";
+            RepositoryDetails = exception.Message;
+            _operationLog.Write("repository-connect", "failed", exception.Message, new { exception.StackTrace });
         }
         finally
         {
@@ -269,7 +319,7 @@ public partial class MainViewModel : ViewModelBase
     private void Back() => CurrentStep = CurrentStep == 2 ? 1 : 0;
 
     [RelayCommand]
-    private void StartInstall()
+    private async Task StartInstall()
     {
         if (!RepositoryIsConnected)
         {
@@ -285,14 +335,105 @@ public partial class MainViewModel : ViewModelBase
             return;
         }
 
-        RepositoryStatus = "The source is connected and catalog-ready, but no Windows deployment executor has been released.";
-        RepositoryDetails = "No files were copied and no machine state was changed. A supported executor must validate component signatures, dependencies, ownership, activation boundaries, and health checks before an actual installation can run.";
+        if (!IsWebRepositoryTransport || _resolvedRepositoryUri is null)
+        {
+            DeploymentStatus = "Managed deployment currently requires the approved web repository source.";
+            _operationLog.Write("install", "blocked", DeploymentStatus);
+            return;
+        }
+
+        try
+        {
+            await RefreshDeploymentPreflightAsync();
+            if (!DeploymentPreflightIsReady)
+            {
+                _operationLog.Write("install", "blocked", DeploymentStatus);
+                return;
+            }
+
+            CurrentStep = 3;
+            InstallProgress = 0;
+            InstallationStatus = "Starting managed deployment transaction...";
+            var progress = new Progress<DeploymentProgress>(update =>
+            {
+                InstallationStatus = update.Status;
+                InstallProgress = update.TotalComponents == 0 ? 0 : (update.CompletedComponents / (double)update.TotalComponents) * 100;
+            });
+            var preflight = await _deploymentService.PreflightAsync(_resolvedRepositoryUri, SelectedDeploymentComponentIds, _operationLog);
+            var result = await _deploymentService.InstallAsync(preflight, _operationLog, progress);
+            DeploymentStatus = result.Message;
+            OperationLogPath = result.LogFilePath;
+            InstalledComponentCount = _deploymentService.GetInstalledComponentCount();
+
+            if (!result.IsSuccess)
+            {
+                CurrentStep = 2;
+                RepositoryStatus = "Installation did not complete.";
+                RepositoryDetails = result.Message;
+                return;
+            }
+
+            InstallProgress = 100;
+            CurrentStep = 4;
+            OnPropertyChanged(nameof(CompletionMessage));
+        }
+        catch (Exception exception)
+        {
+            CurrentStep = 2;
+            DeploymentPreflightIsReady = false;
+            DeploymentStatus = $"Installation could not proceed: {exception.Message}";
+            RepositoryStatus = "Installation encountered an unexpected error.";
+            RepositoryDetails = DeploymentStatus;
+            _operationLog.Write("install", "failed", DeploymentStatus, new { exception.StackTrace });
+        }
+    }
+
+    [RelayCommand]
+    private async Task RemovePrototypeComponents()
+    {
+        try
+        {
+            var result = await _deploymentService.UninstallAllAsync(_operationLog);
+            DeploymentStatus = result.Message;
+            OperationLogPath = result.LogFilePath;
+            InstalledComponentCount = _deploymentService.GetInstalledComponentCount();
+            _operationLog.Write("uninstall", result.IsSuccess ? "completed" : "failed", result.Message);
+        }
+        catch (Exception exception)
+        {
+            DeploymentStatus = $"Uninstall could not proceed: {exception.Message}";
+            _operationLog.Write("uninstall", "failed", DeploymentStatus, new { exception.StackTrace });
+        }
+    }
+
+    private async Task RefreshDeploymentPreflightAsync()
+    {
+        if (_resolvedRepositoryUri is null)
+        {
+            DeploymentPreflightIsReady = false;
+            DeploymentStatus = "No verified web repository URI is available for preflight.";
+            return;
+        }
+
+        try
+        {
+            var preflight = await _deploymentService.PreflightAsync(_resolvedRepositoryUri, SelectedDeploymentComponentIds, _operationLog);
+            DeploymentPreflightIsReady = preflight.IsReady;
+            DeploymentStatus = preflight.Message;
+        }
+        catch (Exception exception)
+        {
+            DeploymentPreflightIsReady = false;
+            DeploymentStatus = $"Deployment preflight failed: {exception.Message}";
+            _operationLog.Write("preflight", "failed", DeploymentStatus, new { exception.StackTrace });
+        }
     }
 
     partial void OnRepositoryPathChanged(string value)
     {
         RepositoryIsConnected = false;
         RepositoryIsReadyForInstallation = false;
+        DeploymentPreflightIsReady = false;
         RepositoryStatus = "Not connected to the source repository.";
         RepositoryDetails = "Verify the configured UNC path before continuing.";
     }
@@ -301,6 +442,7 @@ public partial class MainViewModel : ViewModelBase
     {
         RepositoryIsConnected = false;
         RepositoryIsReadyForInstallation = false;
+        DeploymentPreflightIsReady = false;
         RepositoryStatus = "Not connected to the source repository.";
         RepositoryDetails = "Enter the exact HTTP or HTTPS URL once the local server is available.";
     }
@@ -309,6 +451,7 @@ public partial class MainViewModel : ViewModelBase
     {
         RepositoryIsConnected = false;
         RepositoryIsReadyForInstallation = false;
+        DeploymentPreflightIsReady = false;
         RepositoryStatus = "Not connected to the source repository.";
         RepositoryDetails = value == RepositoryTransport.Web
             ? "Enter the local web server URL. The app will request metadata/repository.json from it."
@@ -328,13 +471,16 @@ public partial class MainViewModel : ViewModelBase
     {
         _scenario = scenario;
         Components.Clear();
+        DeploymentPreflightIsReady = false;
+        DeploymentStatus = "The selected plan changed. Run source verification again to preflight this selection.";
 
         var release = SelectedLabVIEWRelease == LabVIEWRelease.Q1 ? "2026 Q1" : "2026 Q3";
-        AddComponent($"LabVIEW {release} x64", "Selected application release observed on the reference system. One LabVIEW release is selected for this plan.", "1.2 GB", "Application", "User-mode; one release selected", false, "labview-core", "One selected release");
-        AddComponent("NI Measurement & Automation Explorer 26.5", "Configuration and discovery plane. Current device configuration is never copied into the plan.", "94 MB", "Configuration", "One active configuration schema", false, "max-configuration", "Singleton");
-        AddComponent("NI-DAQmx 26.0 user-mode runtime", "API/runtime plane for NI data acquisition. It remains separate from hardware, driver, and firmware activation.", "124 MB", "API runtime", "User-mode; revision-compatible", false, "daqmx-user-mode", "Side-by-side when compatible");
-        AddComponent($"NI-DAQmx LabVIEW {release} adapter", "LabVIEW API, palettes, and integration bound to the selected LabVIEW ABI.", "42 MB", "Language adapter", "User-mode; bound to selected release", false, $"daqmx-labview-{release.Replace(" ", "-").ToLowerInvariant()}", "Side-by-side when compatible");
-        AddComponent("NI-DAQmx documentation and examples", "Optional local help and examples; removable without changing runtime or device support.", "140 MB", "Optional content", "No machine impact", true);
+        var releaseId = SelectedLabVIEWRelease == LabVIEWRelease.Q1 ? "2026-q1" : "2026-q3";
+        AddComponent($"LabVIEW {release} x64", "Not staged in the managed prototype source catalog. Select it only after a verified LabVIEW artifact closure is published.", "1.2 GB", "Application", "Not available from this source", true, "labview-core", "One selected release", $"labview.core.{releaseId}.x64", initiallySelected: false);
+        AddComponent("NI Measurement & Automation Explorer 26.5", "Configuration and discovery plane. Current device configuration is never copied into the plan.", "94 MB", "Configuration", "One active configuration schema", false, "max-configuration", "Singleton", "max.configuration", initiallySelected: true);
+        AddComponent("NI-DAQmx 26.0 user-mode runtime", "API/runtime plane for NI data acquisition. It remains separate from hardware, driver, and firmware activation.", "124 MB", "API runtime", "User-mode; revision-compatible", false, "daqmx-user-mode", "Side-by-side when compatible", "daqmx.runtime.user-mode", initiallySelected: true);
+        AddComponent($"NI-DAQmx LabVIEW {release} adapter", "A managed source artifact is staged for 2026 Q3, but it remains optional until a compatible LabVIEW core is staged.", "42 MB", "Language adapter", "User-mode; bound to selected release", true, $"daqmx-labview-{release.Replace(" ", "-").ToLowerInvariant()}", "Side-by-side when compatible", $"daqmx.labview-adapter.{releaseId}.x64", initiallySelected: false);
+        AddComponent("NI-DAQmx documentation and examples", "Optional local help and examples; removable without changing runtime or device support.", "140 MB", "Optional content", "No machine impact", true, deploymentComponentId: "daqmx.documentation", initiallySelected: true);
 
         if (scenario == SetupScenario.Application)
         {
@@ -376,7 +522,7 @@ public partial class MainViewModel : ViewModelBase
         };
         PlanSummary = scenario switch
         {
-            SetupScenario.Application => "Includes LabVIEW, NI Measurement & Automation Explorer, and NI-DAQmx. Add applications and hardware support only when useful.",
+            SetupScenario.Application => "This staged source includes managed MAX and NI-DAQmx artifacts. LabVIEW and other applications remain unselected until their verified source closures are published.",
             SetupScenario.Hardware => "Includes the core NI setup plus support for instruments, PXI, RF, or industrial protocols.",
             _ => "Includes the core NI setup, TestStand, and selected hardware support for an automated test station."
         };
@@ -391,9 +537,9 @@ public partial class MainViewModel : ViewModelBase
             : "Hardware, signed driver, service, and firmware items are deliberate boundaries. The final installer will require explicit review if a selected item needs elevation, restart, or device activation.";
     }
 
-    private void AddComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional, string upgradeDomain = "user-mode", string coexistencePolicy = "Side-by-side when compatible")
+    private void AddComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional, string upgradeDomain = "user-mode", string coexistencePolicy = "Side-by-side when compatible", string? deploymentComponentId = null, bool initiallySelected = false)
     {
-        var component = new SetupComponent(name, description, size, plane, changeBoundary, isOptional, upgradeDomain, coexistencePolicy);
+        var component = new SetupComponent(name, description, size, plane, changeBoundary, isOptional, upgradeDomain, coexistencePolicy, deploymentComponentId ?? CreateUnmappedDeploymentComponentId(name), initiallySelected);
         component.PropertyChanged += ComponentChanged;
         Components.Add(component);
     }
@@ -402,7 +548,10 @@ public partial class MainViewModel : ViewModelBase
     {
         if (e.PropertyName == nameof(SetupComponent.IsSelected))
         {
+            DeploymentPreflightIsReady = false;
+            DeploymentStatus = "The selected plan changed. Reconnect to preflight the updated selection.";
             OnPropertyChanged(nameof(SelectedComponentNames));
+            OnPropertyChanged(nameof(SelectedDeploymentComponentIds));
             RefreshPlanMetrics();
         }
     }
@@ -423,11 +572,17 @@ public partial class MainViewModel : ViewModelBase
 
     private static string FormatSize(int megabytes, string suffix)
         => megabytes >= 1024 ? $"{megabytes / 1024d:0.0} GB {suffix}" : $"{megabytes} MB {suffix}";
+
+    private static string CreateUnmappedDeploymentComponentId(string name)
+    {
+        var id = new string(name.Select(character => char.IsLetterOrDigit(character) ? char.ToLowerInvariant(character) : '-').ToArray()).Trim('-');
+        return $"unmapped.{id}";
+    }
 }
 
 public partial class SetupComponent : ObservableObject
 {
-    public SetupComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional, string upgradeDomain, string coexistencePolicy)
+    public SetupComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional, string upgradeDomain, string coexistencePolicy, string deploymentComponentId, bool initiallySelected)
     {
         Name = name;
         Description = description;
@@ -437,8 +592,9 @@ public partial class SetupComponent : ObservableObject
         IsOptional = isOptional;
         UpgradeDomain = upgradeDomain;
         CoexistencePolicy = coexistencePolicy;
+        DeploymentComponentId = deploymentComponentId;
         SizeMb = ParseSizeMb(size);
-        IsSelected = true;
+        IsSelected = initiallySelected;
     }
 
     public string Name { get; }
@@ -451,6 +607,9 @@ public partial class SetupComponent : ObservableObject
     public int SizeMb { get; }
     public string UpgradeDomain { get; }
     public string CoexistencePolicy { get; }
+    public string DeploymentComponentId { get; }
+    public bool IsCatalogAvailable => DeploymentComponentId is "max.configuration" or "daqmx.runtime.user-mode" or "daqmx.labview-adapter.2026-q3.x64" or "daqmx.documentation";
+    public bool CanSelect => IsOptional && IsCatalogAvailable;
     public bool IsSingleton => CoexistencePolicy == "Singleton" || CoexistencePolicy == "One selected release";
     public bool RequiresElevation => ChangeBoundary.Contains("elevation", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);
     public bool MayRequireRestart => ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);

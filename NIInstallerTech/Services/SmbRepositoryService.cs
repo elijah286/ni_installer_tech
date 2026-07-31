@@ -194,9 +194,9 @@ public sealed class SmbRepositoryService
     }
 }
 
-public sealed record RepositoryAccessResult(bool IsConnected, bool IsReadyForInstallation, string Status, string Details)
+public sealed record RepositoryAccessResult(bool IsConnected, bool IsReadyForInstallation, string Status, string Details, Uri? RepositoryUri = null)
 {
     public static RepositoryAccessResult Failed(string details) => new(false, false, "Unable to connect to the source repository.", details);
-    public static RepositoryAccessResult ConnectedButNotReady(string status, string details) => new(true, false, status, details);
-    public static RepositoryAccessResult Ready(string status, string details) => new(true, true, status, details);
+    public static RepositoryAccessResult ConnectedButNotReady(string status, string details, Uri? repositoryUri = null) => new(true, false, status, details, repositoryUri);
+    public static RepositoryAccessResult Ready(string status, string details, Uri? repositoryUri = null) => new(true, true, status, details, repositoryUri);
 }

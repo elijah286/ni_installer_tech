@@ -50,6 +50,7 @@ public sealed class HttpRepositoryService
             var root = document.RootElement;
             var id = root.TryGetProperty("id", out var idElement) ? idElement.GetString() : null;
             var state = root.TryGetProperty("state", out var stateElement) ? stateElement.GetString() : null;
+            var repositoryUri = new Uri(metadataUri, "..");
             if (!string.Equals(id, ExpectedRepositoryId, StringComparison.Ordinal))
             {
                 return RepositoryAccessResult.ConnectedButNotReady(
@@ -61,12 +62,14 @@ public sealed class HttpRepositoryService
             {
                 return RepositoryAccessResult.ConnectedButNotReady(
                     "Connected to the NI Setup web source.",
-                    $"Verified {metadataUri.AbsolutePath}. Repository state: {state ?? "unknown"}. A reviewed catalog and supported deployment executor are still required before installation can begin.");
+                    $"Verified {metadataUri.AbsolutePath}. Repository state: {state ?? "unknown"}. A reviewed catalog and supported deployment executor are still required before installation can begin.",
+                    repositoryUri);
             }
 
             return RepositoryAccessResult.Ready(
                 "Connected to the NI Setup web source.",
-                $"Verified {metadataUri.AbsolutePath}. The repository identity and ready state were verified. The connection is ready for a future deployment executor.");
+                $"Verified {metadataUri.AbsolutePath}. The repository identity and ready state were verified. The connection is ready for managed deployment preflight.",
+                repositoryUri);
         }
         catch (TaskCanceledException) when (!cancellationToken.IsCancellationRequested)
         {

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "ni-setup-managed-catalog-v0.1",
+  "catalogId": "prototype-managed-install-catalog-v0.1",
+  "classification": "internal-reference-derived-poc-only",
+  "deploymentScope": "app-owned-managed-file-copy",
+  "generatedAtUtc": "2026-07-31T00:00:00Z",
+  "components": [
+    {
+      "id": "max.configuration",
+      "displayName": "NI Measurement & Automation Explorer 26.5 source artifact",
+      "version": "26.5.0.49268",
+      "artifactSha256": "9a9053d118e909fc89aeb7d5789616879716d7c5fee897c6727591d9d624519a",
+      "installMode": "managed-file-copy",
+      "approvedForManagedPrototypeInstall": true,
+      "sourceComponentId": "source.ni-max-26-5-0-49268-0-f116-windows-x64",
+      "installRoot": "%LocalAppData%\\NISetupPrototype\\components",
+      "activation": "none",
+      "uninstall": "ledger-owned-directory-removal"
+    },
+    {
+      "id": "daqmx.runtime.user-mode",
+      "displayName": "NI-DAQmx 26.0 user-mode source artifact",
+      "version": "26.0.0.49432",
+      "artifactSha256": "9174f2d0170f96a5e00d65973a61d32e1823648a374fbdfa1493c041d66368b5",
+      "installMode": "managed-file-copy",
+      "approvedForManagedPrototypeInstall": true,
+      "sourceComponentId": "source.ni-daqmx-runtime-core-26-0-0-49432-0-f280-windows-x64",
+      "installRoot": "%LocalAppData%\\NISetupPrototype\\components",
+      "activation": "none",
+      "uninstall": "ledger-owned-directory-removal"
+    },
+    {
+      "id": "daqmx.labview-adapter.2026-q3.x64",
+      "displayName": "NI-DAQmx LabVIEW 2026 Q3 adapter source artifact",
+      "version": "26.0.0.49434",
+      "artifactSha256": "7fe58887107dec59aea20588169e11920a3d84c0162c9d71a577fa87f4f6bd14",
+      "installMode": "managed-file-copy",
+      "approvedForManagedPrototypeInstall": true,
+      "sourceComponentId": "source.ni-daqmx-labview-support-26-0-0-49434-0-f282-windows-x64",
+      "installRoot": "%LocalAppData%\\NISetupPrototype\\components",
+      "activation": "none",
+      "uninstall": "ledger-owned-directory-removal"
+    },
+    {
+      "id": "daqmx.documentation",
+      "displayName": "NI-DAQmx 26.0 documentation source artifact",
+      "version": "26.0.0.49416",
+      "artifactSha256": "920f585c5d43bb86535388396833a766862058a49593cd46a42cf999bab9ba68",
+      "installMode": "managed-file-copy",
+      "approvedForManagedPrototypeInstall": true,
+      "sourceComponentId": "source.ni-daqmx-common-docs-26-0-0-49416-0-f264-windows-x64",
+      "installRoot": "%LocalAppData%\\NISetupPrototype\\components",
+      "activation": "none",
+      "uninstall": "ledger-owned-directory-removal"
+    }
+  ]
+}

@@ -233,7 +233,7 @@
                                 <DataTemplate x:DataType="vm:SetupComponent">
                                     <Border Classes="card" Padding="16" Margin="0,0,0,10">
                                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="13">
-                                            <CheckBox IsChecked="{Binding IsSelected}" IsEnabled="{Binding IsOptional}" VerticalAlignment="Center" />
+                                            <CheckBox IsChecked="{Binding IsSelected}" IsEnabled="{Binding CanSelect}" VerticalAlignment="Center" />
                                             <StackPanel Grid.Column="1" Spacing="2">
                                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                                     <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
@@ -411,6 +411,15 @@
                         </StackPanel>
                     </Border>
 
+                    <Border Background="#F2FAF7" BorderBrush="#9CDACB" BorderThickness="1" CornerRadius="8" Padding="16">
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Managed deployment preflight" Foreground="#005F4B" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding DeploymentStatus}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding OperationLogPath}" Foreground="#43506A" FontSize="12" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding InstalledComponentCount, StringFormat={}{0} managed prototype component(s) currently installed}" Foreground="#43506A" FontSize="12" />
+                        </StackPanel>
+                    </Border>
+
                     <StackPanel Spacing="8">
                         <TextBlock Text="{Binding SelectedComponentCount, StringFormat={}{0} selected components}" FontWeight="SemiBold" FontSize="16" />
                         <ItemsControl ItemsSource="{Binding SelectedComponentNames}">
@@ -422,9 +431,10 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,7,0,0">
+                    <Grid ColumnDefinitions="Auto,*,Auto,Auto" Margin="0,7,0,0" ColumnSpacing="8">
                         <Button Classes="subtle" Command="{Binding BackCommand}" Content="Back" />
-                        <Button Grid.Column="2" Classes="primary" Command="{Binding StartInstallCommand}" Content="{Binding PrimaryActionLabel}" IsEnabled="{Binding IsInstallationExecutorAvailable}" />
+                        <Button Grid.Column="2" Classes="subtle" Command="{Binding RemovePrototypeComponentsCommand}" Content="Uninstall managed prototype components" IsVisible="{Binding HasInstalledPrototypeComponents}" />
+                        <Button Grid.Column="3" Classes="primary" Command="{Binding StartInstallCommand}" Content="{Binding PrimaryActionLabel}" IsEnabled="{Binding IsInstallationExecutorAvailable}" />
                     </Grid>
                 </StackPanel>
 
@@ -438,8 +448,9 @@
                     </Grid>
                     <Border Classes="card" Margin="0,18,0,0">
                         <StackPanel Spacing="7">
-                            <TextBlock Text="Designed for a consistent result" FontWeight="SemiBold" />
-                            <TextBlock Text="The final product records each component it adds, so it can complete an update, repair the selected setup, or remove only what it owns." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="Tracked and reversible" FontWeight="SemiBold" />
+                            <TextBlock Text="Every deployment event, verification result, and error is recorded in the operation log. A failure rolls back files created by this transaction." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding OperationLogPath}" Foreground="#43506A" FontSize="12" TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -454,10 +465,12 @@
                     </StackPanel>
                     <Border Classes="card">
                         <StackPanel Spacing="10">
-                            <TextBlock Text="Your setup is recorded" FontWeight="SemiBold" />
-                            <TextBlock Text="The final product retains this plan and component state, making later updates, repair, and selective removal clear and predictable." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="Managed prototype deployment is recorded" FontWeight="SemiBold" />
+                            <TextBlock Text="Only payload files deployed under this app's local managed directory are recorded in the ownership ledger. The uninstall action removes only those recorded files." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding OperationLogPath}" Foreground="#43506A" FontSize="12" TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
+                    <Button Classes="subtle" Command="{Binding RemovePrototypeComponentsCommand}" Content="Uninstall managed prototype components" IsVisible="{Binding HasInstalledPrototypeComponents}" HorizontalAlignment="Left" />
                     <Button Classes="primary" Command="{Binding StartOverCommand}" Content="Explore another setup" HorizontalAlignment="Left" />
                 </StackPanel>
             </Grid>

@@ -1,8 +1,8 @@
 # NI Platform Setup — installation-model prototype
 
-[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.4-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
+[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.5-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
 
-**Windows:** download the ZIP, extract it, and double-click **NI Platform Setup Prototype.exe**. No .NET SDK, terminal, or source checkout is required. The UI takes you through the installation workflow preview; it does not yet install NI software, drivers, firmware, or licensing content.
+**Windows:** download the ZIP, extract it, and double-click **NI Platform Setup Prototype.exe**. No .NET SDK, terminal, or source checkout is required. The released UI can deploy the currently staged catalog-approved source artifacts into its app-owned managed directory.
 
 This repository is an R&D prototype for a new NI software installation model and its customer-facing experience. It explores how customers can install, update, repair, and remove only the applications, APIs, configuration tools, hardware-family support, drivers, and firmware they need.
 
@@ -22,11 +22,13 @@ The repository is intentionally documentation-first. It is the reviewable record
 
 ## Current prototype
 
-[NIInstallerTech](NIInstallerTech) is a cross-platform Avalonia UI prototype. It does **not** deliver packages, install drivers, elevate privileges, change licensing/activation, or modify a machine. Its mocked catalog and plan flow are the integration seam for the catalog, solver, repository, and platform-specific deployment engine proposed by this research.
+[NIInstallerTech](NIInstallerTech) is a cross-platform Avalonia UI prototype. Its managed deployment proof of concept can download only catalog-approved, SHA-256-verified artifacts and extract their `payload/` contents only below `%LocalAppData%\NISetupPrototype\components`. It writes JSONL operation logs under `%LocalAppData%\NISetupPrototype\logs` and a durable ownership ledger at `%LocalAppData%\NISetupPrototype\ledger.json` before moving any payload. Uninstall removes every ledger-owned payload directory, including interrupted transactions, and clears app-owned transaction staging. It does **not** execute NIPM, MSI, drivers, firmware, services, licensing, or activation tooling, and it never elevates privileges.
+
+The current internal repository publishes a managed-install catalog for the staged MAX, NI-DAQmx runtime, NI-DAQmx LabVIEW adapter, and documentation source artifacts. The UI enables only catalog-backed selections and blocks LabVIEW, drivers, firmware, services, and unstaged products. Each catalog entry has an immutable SHA-256 digest, version, and `managed-file-copy` scope.
 
 The current experience tests:
 
-1. A recommended foundation: LabVIEW, NI Measurement & Automation Explorer, and NI-DAQmx.
+1. A managed source-artifact foundation: NI Measurement & Automation Explorer and NI-DAQmx.
 2. Specialized hardware/protocol and automated-test-workstation paths as secondary choices.
 3. A clear plan that exposes optional choices, download/disk size, privilege, restart, driver, and firmware impact.
 4. A future upgrade view that distinguishes changed, retained, unselected, blocked, and explicit-boundary components.
@@ -44,6 +46,7 @@ The current experience tests:
 | [Reference-component POC capture](docs/reference-component-poc-capture.md) | Controlled use of reference-machine components; safety, exclusions, provenance, and initial scope. | Planned implementation |
 | [SMB prototype repository](docs/nas-prototype-repository.md) | Chosen internal payload location, repository shape, exclusions, and clean-machine validation criterion. | Infrastructure ready; payloads pending review |
 | [Windows prototype source connection](docs/windows-smb-source-connection.md) | Connect the Windows UI to a local HTTP/HTTPS repository endpoint, with SMB retained as an optional fallback. | Implemented prototype access flow |
+| [Testing and CI](docs/testing.md) | Isolated deployment safety harness, local test command, and GitHub Actions validation scope. | Implemented baseline |
 | [Component repository and packaging architecture](docs/component-repository-and-packaging-architecture.md) | Artifact, catalog, channel, repository, and upgrade design. | Design hypothesis |
 | [NI-DAQmx cut-point hypothesis](docs/ni-daqmx-cut-point-hypothesis.md) | Evidence-based starting boundaries and tests for NI-DAQmx. | Evidence-informed hypothesis |
 | [Portfolio audit and deployment model](docs/public-portfolio-audit-and-deployment-model.md) | Broad portfolio, OS, resource, and transaction model. | Public-information hypothesis |

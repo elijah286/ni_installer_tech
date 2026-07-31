@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build and test (.NET 10)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore projects
+        run: |
+          dotnet restore NIInstallerTech/NIInstallerTech.csproj
+          dotnet restore NISetup.Cli/NISetup.Cli.csproj
+          dotnet restore NISetup.ComponentAssembler/NISetup.ComponentAssembler.csproj
+          dotnet restore NIInstallerTech.Tests/NIInstallerTech.Tests.csproj
+
+      - name: Build projects
+        run: |
+          dotnet build NIInstallerTech/NIInstallerTech.csproj --configuration Release --no-restore
+          dotnet build NISetup.Cli/NISetup.Cli.csproj --configuration Release --no-restore
+          dotnet build NISetup.ComponentAssembler/NISetup.ComponentAssembler.csproj --configuration Release --no-restore
+          dotnet build NIInstallerTech.Tests/NIInstallerTech.Tests.csproj --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test NIInstallerTech.Tests/NIInstallerTech.Tests.csproj --configuration Release --no-build --filter "Category!=LiveRepository" --logger "trx;LogFileName=tests.trx" --results-directory TestResults
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults
+          if-no-files-found: ignore

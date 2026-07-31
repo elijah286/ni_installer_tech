@@ -26,7 +26,7 @@ The app requests `<entered-url>/metadata/repository.json`, then falls back to `<
 | `HTTP 401` or `HTTP 403` | Configure read-only access to the repository metadata or use the web server's supported authentication scheme. The URL field must not contain credentials. |
 | `metadata/repository.json was not found` | Set the server root to `NISetupPrototypeRepository`, not an `objects` or intake subdirectory. |
 | repository identity is not recognized | The endpoint is reachable but is not serving the approved prototype repository metadata. |
-| Connected, but source is not approved | The endpoint is correct. The source remains an internal POC until a reviewed catalog and deployment executor are published. |
+| Connected, but source is not approved | The endpoint is correct. The source remains an internal POC until it is marked ready and a reviewed managed-install catalog is published. |
 
 ## Connect by SMB
 
@@ -52,6 +52,10 @@ The password is sent only to Windows' temporary SMB connection request and is cl
 
 The development macOS host currently mounts the share as a guest session. Windows security policy commonly blocks insecure SMB guest logons. The prototype does not change that policy or weaken SMB signing/authentication. Prefer a dedicated read-only NAS account for Windows testing. If an administrator intentionally enables guest access on a test network, enter the guest account name supplied by that NAS; do not enter or store personal credentials in source control.
 
-## Current delivery boundary
+## Managed deployment boundary
 
-A successful SMB connection proves that the prototype can reach and validate its controlled source repository. It does **not** make raw source intake packages safe to install. The repository's current state is not ready for customer installation: it still needs a reviewed component catalog, dependency closure, authorization/signature validation, and a supported Windows deployment executor. The UI reports this honestly and performs no mock installation or machine modification.
+A successful source connection does **not** make raw source intake packages safe to install. Before the UI enables installation, the web repository must be marked `ready` and provide `metadata/catalogs/prototype-managed-install-catalog-v0.1.json`. Every selected logical component must be approved in that catalog, declare `managed-file-copy`, have an immutable SHA-256 artifact digest and version, and be available under the content-addressed object tree.
+
+For each approved component, the prototype streams and verifies the artifact, extracts only ZIP entries below `payload/`, and writes only below `%LocalAppData%\NISetupPrototype\components`. Before any payload directory is moved into that location, it persists an ownership record in `%LocalAppData%\NISetupPrototype\ledger.json`. Uninstall removes every non-removed ledger record, including an interrupted transaction, and clears the app-owned transaction staging tree. It records every preflight, download, verification, install, rollback, and uninstall outcome as JSONL under `%LocalAppData%\NISetupPrototype\logs`.
+
+This is not a native NI product installer. It does not execute NIPM/MSI payloads or alter drivers, services, firmware, licensing, activation, credentials, customer configuration, or system-wide locations. The current repository remains blocked because it has no reviewed catalog; that blocked result is logged rather than reported as a successful installation.
