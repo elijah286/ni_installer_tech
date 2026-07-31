@@ -25,7 +25,9 @@ GitHub remains the source of truth for code, schemas, catalogs, manifests, evide
   logs/                         # non-secret build/capture audit logs
 ```
 
-The initial `repository.json` classifies this location as `internal-reference-derived-poc-only`. The first staged POC seed now consists of original NIPM package artifacts copied read-only from `DEMODOG` into `incoming-reference-captures/nipkg-cache-seed/`: NI-DAQmx 26.0 runtime/LabVIEW support/docs, MAX 26.5, and a partial LabVIEW 2026 Q3 x64 source set. SHA-256 digests were calculated after transfer and recorded in local NAS manifests. The seed is not yet a complete dependency closure or an installable clean-machine package set.
+`incoming-reference-captures/` is an intake area, not a serving area. It can retain unmodified legacy NIPM packages as evidence/source inputs while analysis determines new component boundaries. Only newly assembled, content-addressed component artifacts are eligible for promotion to `objects/sha256/` and for catalog/offline-bundle use.
+
+The initial `repository.json` classifies this location as `internal-reference-derived-poc-only`. The first staged POC seed now consists of unmodified original NIPM package artifacts copied read-only from `DEMODOG` into `incoming-reference-captures/nipkg-cache-seed/`: NI-DAQmx 26.0 runtime/LabVIEW support/docs, MAX 26.5, and a partial LabVIEW 2026 Q3 x64 source set. SHA-256 digests were calculated after transfer and recorded in local NAS manifests. The seed is not yet a complete dependency closure or an installable clean-machine package set—and it is not the target delivery format.
 
 ## Why SMB for this phase
 
@@ -49,7 +51,7 @@ Reference-derived POC component material must be read/copy-only from an approved
 - candidate resource claims and compatibility metadata;
 - non-destructive health checks.
 
-The original NIPM package cache is an additional controlled POC input when a package artifact is individually allowlisted. The repository stores package files only—not the package-manager configuration, activation/entitlement state, logs, generic ProgramData content, or raw Driver Store files. Package-cache artifacts remain POC-only until signature/provenance validation and an authorized production build-output path exist.
+The original NIPM package cache is an additional controlled POC input when a package artifact is individually allowlisted. The repository stores package files only—not the package-manager configuration, activation/entitlement state, logs, generic ProgramData content, or raw Driver Store files. Package-cache artifacts remain POC-only until signature/provenance validation and an authorized production build-output path exist. They remain in intake and are never directly served by the new installer: the new model reassembles independently serviceable component artifacts with a new manifest/catalog contract.
 
 See [reference-component POC capture](reference-component-poc-capture.md) and the [build-output contract](build-output-contract.md).
 

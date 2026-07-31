@@ -27,6 +27,28 @@ That narrow POC exception does not make an installed machine a production packag
 
 The detailed prototype boundary and capture record are in [reference-component-poc-capture.md](reference-component-poc-capture.md). The required future build outputs are specified in [build-output-contract.md](build-output-contract.md).
 
+## Original package intake is not the new delivery format
+
+The internal SMB repository may retain **unmodified original NIPM package files** from the reference machine in `incoming-reference-captures/`. They are a frozen source/evidence layer: they preserve original payload bytes, package metadata, signatures, dependency evidence, and a reproducible comparison point while the new model is designed.
+
+They are **not** the format that the new installer resolves or delivers. The prototype must not inherit NIPM's product boundaries, dependency graph, cache layout, archive format, or installer behavior merely because these are the first available source artifacts.
+
+The target flow is:
+
+```mermaid
+flowchart LR
+  A[Authorized build outputs / original packages] --> B[Immutable intake evidence]
+  B --> C[Ownership and compatibility analysis]
+  C --> D[New component assembler]
+  D --> E[ni-component-v1 artifacts by digest]
+  E --> F[Catalog and channels]
+  F --> G[Small hosted installer or offline bundle]
+```
+
+`ni-component-v1` is a new deterministic component artifact, assembled around the intended service/activation boundary—not an existing `.nipkg` file. It has a component manifest, selected payload files, resource claims, compatibility/coexistence rules, health checks, SBOM/provenance, and a digest. The original package identities remain provenance links inside that artifact.
+
+Windows driver payloads are the exception: their original signed INF/CAT/SYS package must remain byte-for-byte intact. The new component artifact may wrap/refer to it and define staging/binding policy, but it must not repackage or alter the signed driver payload.
+
 For the NAS prototype, it is acceptable to stage a controlled internal artifact set that represents a few selected components. Treat it as an experimental repository, not a customer distribution mechanism.
 
 ## The two levels of package identity
