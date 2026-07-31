@@ -35,6 +35,7 @@ The current experience tests:
 | [Build-output contract](docs/build-output-contract.md) | The versioned, evolving specification R&D build teams can use to emit component-ready outputs. | Draft v0.1 |
 | [CLI interface](docs/cli-interface.md) | Headless/container commands, JSON contract, exit codes, image boundary, and path to a functional executor. | Draft v0.1 |
 | [Coexistence and revision policy](docs/coexistence-and-revision-policy.md) | One selected primary release, catalog-controlled user-mode coexistence, and singleton driver/service/firmware domains. | Evidence-informed prototype policy |
+| [Driver modernization and API decoupling](docs/driver-modernization-and-api-decoupling.md) | Separate API/runtime delivery from deliberately rebuilt, individually signed hardware-driver packages. | Recommended architecture direction |
 | [Reference-component POC capture](docs/reference-component-poc-capture.md) | Controlled use of reference-machine components; safety, exclusions, provenance, and initial scope. | Planned implementation |
 | [SMB prototype repository](docs/nas-prototype-repository.md) | Chosen internal payload location, repository shape, exclusions, and clean-machine validation criterion. | Infrastructure ready; payloads pending review |
 | [Component repository and packaging architecture](docs/component-repository-and-packaging-architecture.md) | Artifact, catalog, channel, repository, and upgrade design. | Design hypothesis |

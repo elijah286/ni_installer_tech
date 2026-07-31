@@ -47,7 +47,9 @@ flowchart LR
 
 `ni-component-v1` is a new deterministic component artifact, assembled around the intended service/activation boundary—not an existing `.nipkg` file. It has a component manifest, selected payload files, resource claims, compatibility/coexistence rules, health checks, SBOM/provenance, and a digest. The original package identities remain provenance links inside that artifact.
 
-Windows driver payloads are the exception: their original signed INF/CAT/SYS package must remain byte-for-byte intact. The new component artifact may wrap/refer to it and define staging/binding policy, but it must not repackage or alter the signed driver payload.
+Windows driver payloads are the exception **when an existing driver package is reused**: its original signed INF/CAT/SYS package must remain byte-for-byte intact. The new component artifact may wrap/refer to it and define staging/binding policy, but it must not repackage or alter the signed driver payload.
+
+This does not preserve legacy driver boundaries indefinitely. When NI has the driver source and an authorized Windows build/signing pipeline, it can deliberately create a **new, smaller driver package** with a new INF/CAT/SYS identity and signature. That is a driver modernization effort—not a mutation of an old signed package. The API/runtime, driver, hardware-family, service, and firmware boundaries must then be separately tested and catalogued. See [driver modernization and API decoupling](driver-modernization-and-api-decoupling.md).
 
 For the NAS prototype, it is acceptable to stage a controlled internal artifact set that represents a few selected components. Treat it as an experimental repository, not a customer distribution mechanism.
 
