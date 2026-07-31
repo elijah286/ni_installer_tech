@@ -77,29 +77,7 @@ The prototype uses Avalonia and C# on .NET 10. Avalonia enables one native deskt
 
 ## Run the UI prototype
 
-### Launch on a new Windows test machine
-
-The UI is a non-mutating Avalonia prototype: it does not install packages, drivers, or firmware, and it does not require administrator privileges. To run it on a new Windows machine:
-
-1. Install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0). Install the **SDK**, not only the runtime.
-2. Install [Git for Windows](https://git-scm.com/download/win), if Git is not already available.
-3. Clone the [NI Platform Setup repository](https://github.com/elijah286/ni_installer_tech) and start the UI from the repository root:
-
-	```powershell
-	git clone https://github.com/elijah286/ni_installer_tech.git
-	cd ni_installer_tech
-	dotnet run --project NIInstallerTech/NIInstallerTech.csproj
-	```
-
-	The first launch restores the required NuGet packages. A native **NI Platform Setup** window should open; keep the terminal open while using the prototype and press `Ctrl+C` there to stop it.
-
-If Git cannot be installed, download the repository from [GitHub](https://github.com/elijah286/ni_installer_tech) using **Code → Download ZIP**, extract it, open PowerShell in the extracted repository folder, and run:
-
-```powershell
-dotnet run --project NIInstallerTech/NIInstallerTech.csproj
-```
-
-On macOS and Linux, install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0), clone the repository, and use the same `dotnet run --project NIInstallerTech/NIInstallerTech.csproj` command. The desktop window runs locally on the machine where the command is executed.
+From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET SDK. On Windows, the app opens as a native desktop window; on macOS, it runs locally for UX iteration.
 
 ## Run the headless prototype
 
