@@ -1,6 +1,6 @@
 # NI Platform Setup — installation-model prototype
 
-[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.1-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
+[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.2-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
 
 **Windows:** download the ZIP, extract it, and double-click **NI Platform Setup Prototype.exe**. No .NET SDK, terminal, or source checkout is required. The UI takes you through the installation workflow preview; it does not yet install NI software, drivers, firmware, or licensing content.
 
@@ -43,7 +43,7 @@ The current experience tests:
 | [Source-component assembly pipeline](docs/source-component-assembly.md) | Transforms original package intake into new content-addressed API/application source artifacts while excluding kernel driver content. | Executable prototype pipeline |
 | [Reference-component POC capture](docs/reference-component-poc-capture.md) | Controlled use of reference-machine components; safety, exclusions, provenance, and initial scope. | Planned implementation |
 | [SMB prototype repository](docs/nas-prototype-repository.md) | Chosen internal payload location, repository shape, exclusions, and clean-machine validation criterion. | Infrastructure ready; payloads pending review |
-| [Windows SMB source connection](docs/windows-smb-source-connection.md) | Connect the Windows UI to the internal prototype share without storing credentials or weakening SMB security. | Implemented prototype access flow |
+| [Windows prototype source connection](docs/windows-smb-source-connection.md) | Connect the Windows UI to a local HTTP/HTTPS repository endpoint, with SMB retained as an optional fallback. | Implemented prototype access flow |
 | [Component repository and packaging architecture](docs/component-repository-and-packaging-architecture.md) | Artifact, catalog, channel, repository, and upgrade design. | Design hypothesis |
 | [NI-DAQmx cut-point hypothesis](docs/ni-daqmx-cut-point-hypothesis.md) | Evidence-based starting boundaries and tests for NI-DAQmx. | Evidence-informed hypothesis |
 | [Portfolio audit and deployment model](docs/public-portfolio-audit-and-deployment-model.md) | Broad portfolio, OS, resource, and transaction model. | Public-information hypothesis |

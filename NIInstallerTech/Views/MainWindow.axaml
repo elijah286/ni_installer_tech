@@ -298,8 +298,37 @@
                         <Border Classes="card" Margin="0,10,0,0" Padding="16">
                             <StackPanel Spacing="11">
                                 <TextBlock Text="Prototype source repository" FontWeight="SemiBold" />
-                                <TextBlock Text="Use the internal SMB source only for this prototype. Windows first attempts your current sign-in; enter an approved SMB account only if the NAS requires it. The password is cleared after each attempt and is never stored." Classes="muted" TextWrapping="Wrap" />
-                                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="9">
+                                <TextBlock Text="A local web source is the preferred prototype path. It serves the approved repository over HTTP or HTTPS, avoiding SMB guest-sign-in policy. SMB remains available for internal testing." Classes="muted" TextWrapping="Wrap" />
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                    <Button Command="{Binding ChooseWebRepositoryTransportCommand}" HorizontalContentAlignment="Stretch" Background="#F2FAF7" BorderBrush="#005F4B" BorderThickness="1" Padding="12">
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <StackPanel Spacing="3">
+                                                <TextBlock Text="Web source" FontWeight="SemiBold" />
+                                                <TextBlock Text="HTTP or HTTPS endpoint" Classes="muted" FontSize="12" />
+                                            </StackPanel>
+                                            <Border Grid.Column="1" IsVisible="{Binding IsWebRepositoryTransport}" Background="#005F4B" CornerRadius="8" Padding="7,3" VerticalAlignment="Center">
+                                                <TextBlock Text="SELECTED" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                            </Border>
+                                        </Grid>
+                                    </Button>
+                                    <Button Grid.Column="1" Command="{Binding ChooseSmbRepositoryTransportCommand}" HorizontalContentAlignment="Stretch" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" Padding="12">
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <StackPanel Spacing="3">
+                                                <TextBlock Text="SMB share" FontWeight="SemiBold" />
+                                                <TextBlock Text="Windows network share" Classes="muted" FontSize="12" />
+                                            </StackPanel>
+                                            <Border Grid.Column="1" IsVisible="{Binding IsSmbRepositoryTransport}" Background="#005F4B" CornerRadius="8" Padding="7,3" VerticalAlignment="Center">
+                                                <TextBlock Text="SELECTED" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                            </Border>
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                                <StackPanel IsVisible="{Binding IsWebRepositoryTransport}" Spacing="7">
+                                    <TextBlock Text="Local web server URL" Classes="muted" FontSize="12" />
+                                    <TextBox Text="{Binding RepositoryUrl}" PlaceholderText="http://192.168.68.125:8080/" />
+                                    <TextBlock Text="Enter the server root that contains metadata/repository.json, objects/, and metadata/. The port is yours to choose." Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                </StackPanel>
+                                <Grid IsVisible="{Binding IsSmbRepositoryTransport}" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="9">
                                     <StackPanel Spacing="4">
                                         <TextBlock Text="Repository path" Classes="muted" FontSize="12" />
                                         <TextBox Text="{Binding RepositoryPath}" PlaceholderText="\\192.168.68.125\Files\NISetupPrototypeRepository" />
@@ -312,8 +341,8 @@
                                         <TextBlock Text="SMB password (optional)" Classes="muted" FontSize="12" />
                                         <TextBox Text="{Binding RepositoryPassword}" PasswordChar="●" PlaceholderText="Used once; never saved" />
                                     </StackPanel>
-                                    <Button Grid.Row="1" Grid.Column="1" Classes="primary" Command="{Binding ConnectRepositoryCommand}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Connect and verify source" />
                                 </Grid>
+                                <Button Classes="primary" Command="{Binding ConnectRepositoryCommand}" HorizontalAlignment="Left" Content="Connect and verify source" />
                                 <Border Background="#EDF6F3" CornerRadius="6" Padding="11,8">
                                     <StackPanel Spacing="3">
                                         <TextBlock Text="{Binding RepositoryStatus}" Foreground="{Binding RepositoryStatusColor}" FontWeight="SemiBold" TextWrapping="Wrap" />

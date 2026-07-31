@@ -13,7 +13,8 @@ namespace NIInstallerTech.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     private SetupScenario _scenario;
-    private readonly SmbRepositoryService _repositoryService = new();
+    private readonly SmbRepositoryService _smbRepositoryService = new();
+    private readonly HttpRepositoryService _httpRepositoryService = new();
 
     public MainViewModel()
     {
@@ -85,6 +86,14 @@ public partial class MainViewModel : ViewModelBase
     private string _repositoryPath = @"\\192.168.68.125\Files\NISetupPrototypeRepository";
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsWebRepositoryTransport))]
+    [NotifyPropertyChangedFor(nameof(IsSmbRepositoryTransport))]
+    private RepositoryTransport _selectedRepositoryTransport = RepositoryTransport.Web;
+
+    [ObservableProperty]
+    private string _repositoryUrl = "http://192.168.68.125:PORT/";
+
+    [ObservableProperty]
     private string _repositoryUserName = string.Empty;
 
     [ObservableProperty]
@@ -122,6 +131,8 @@ public partial class MainViewModel : ViewModelBase
 
     public bool IsNiHostedDelivery => SelectedDeliveryMode == DeliveryMode.NiHosted;
     public bool IsOfflineBundleDelivery => SelectedDeliveryMode == DeliveryMode.OfflineBundle;
+    public bool IsWebRepositoryTransport => SelectedRepositoryTransport == RepositoryTransport.Web;
+    public bool IsSmbRepositoryTransport => SelectedRepositoryTransport == RepositoryTransport.Smb;
     public bool IsInstallationExecutorAvailable => false;
     public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
@@ -203,17 +214,27 @@ public partial class MainViewModel : ViewModelBase
     private void ChooseOfflineBundle() => SelectedDeliveryMode = DeliveryMode.OfflineBundle;
 
     [RelayCommand]
+    private void ChooseWebRepositoryTransport() => SelectedRepositoryTransport = RepositoryTransport.Web;
+
+    [RelayCommand]
+    private void ChooseSmbRepositoryTransport() => SelectedRepositoryTransport = RepositoryTransport.Smb;
+
+    [RelayCommand]
     private async Task ConnectRepository()
     {
         RepositoryStatus = "Connecting to the source repository…";
-        RepositoryDetails = "Windows is attempting the configured SMB connection.";
+        RepositoryDetails = IsWebRepositoryTransport
+            ? "Verifying the web endpoint and repository identity."
+            : "Windows is attempting the configured SMB connection.";
         RepositoryIsConnected = false;
         RepositoryIsReadyForInstallation = false;
 
         var password = RepositoryPassword;
         try
         {
-            var result = await Task.Run(() => _repositoryService.ConnectAndVerify(RepositoryPath, RepositoryUserName, password));
+            var result = IsWebRepositoryTransport
+                ? await _httpRepositoryService.ConnectAndVerifyAsync(RepositoryUrl)
+                : await Task.Run(() => _smbRepositoryService.ConnectAndVerify(RepositoryPath, RepositoryUserName, password));
             RepositoryIsConnected = result.IsConnected;
             RepositoryIsReadyForInstallation = result.IsReadyForInstallation;
             RepositoryStatus = result.Status;
@@ -274,6 +295,24 @@ public partial class MainViewModel : ViewModelBase
         RepositoryIsReadyForInstallation = false;
         RepositoryStatus = "Not connected to the source repository.";
         RepositoryDetails = "Verify the configured UNC path before continuing.";
+    }
+
+    partial void OnRepositoryUrlChanged(string value)
+    {
+        RepositoryIsConnected = false;
+        RepositoryIsReadyForInstallation = false;
+        RepositoryStatus = "Not connected to the source repository.";
+        RepositoryDetails = "Enter the exact HTTP or HTTPS URL once the local server is available.";
+    }
+
+    partial void OnSelectedRepositoryTransportChanged(RepositoryTransport value)
+    {
+        RepositoryIsConnected = false;
+        RepositoryIsReadyForInstallation = false;
+        RepositoryStatus = "Not connected to the source repository.";
+        RepositoryDetails = value == RepositoryTransport.Web
+            ? "Enter the local web server URL. The app will request metadata/repository.json from it."
+            : "Use your current Windows sign-in first, or provide an SMB account with read-only access. Credentials are used only for this connection and are never saved.";
     }
 
     [RelayCommand]
@@ -438,6 +477,12 @@ public enum DeliveryMode
 {
     NiHosted,
     OfflineBundle
+}
+
+public enum RepositoryTransport
+{
+    Web,
+    Smb
 }
 
 public enum LabVIEWRelease
