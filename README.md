@@ -1,5 +1,9 @@
 # NI Platform Setup — installation-model prototype
 
+[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/archive/refs/heads/main.zip)
+
+**Download the prototype, extract it, then follow [Run the UI prototype](#run-the-ui-prototype).** The current download is the source-based Avalonia prototype and requires the .NET 10 SDK; it previews installer plans but does not yet install NI software, drivers, firmware, or licensing content.
+
 This repository is an R&D prototype for a new NI software installation model and its customer-facing experience. It explores how customers can install, update, repair, and remove only the applications, APIs, configuration tools, hardware-family support, drivers, and firmware they need.
 
 The repository is intentionally documentation-first. It is the reviewable record R&D teams use to converge on a build-output contract that can serve the eventual component model. A design conclusion, an evidence-backed change to that contract, or a new required build output must be documented here before it is treated as a prototype requirement.
@@ -73,7 +77,29 @@ The prototype uses Avalonia and C# on .NET 10. Avalonia enables one native deskt
 
 ## Run the UI prototype
 
-From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET SDK. On Windows, the app opens as a native desktop window; on macOS, it runs locally for UX iteration.
+### Launch on a new Windows test machine
+
+The UI is a non-mutating Avalonia prototype: it does not install packages, drivers, or firmware, and it does not require administrator privileges. To run it on a new Windows machine:
+
+1. Install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0). Install the **SDK**, not only the runtime.
+2. Install [Git for Windows](https://git-scm.com/download/win), if Git is not already available.
+3. Clone the [NI Platform Setup repository](https://github.com/elijah286/ni_installer_tech) and start the UI from the repository root:
+
+	```powershell
+	git clone https://github.com/elijah286/ni_installer_tech.git
+	cd ni_installer_tech
+	dotnet run --project NIInstallerTech/NIInstallerTech.csproj
+	```
+
+	The first launch restores the required NuGet packages. A native **NI Platform Setup** window should open; keep the terminal open while using the prototype and press `Ctrl+C` there to stop it.
+
+If Git cannot be installed, download the repository from [GitHub](https://github.com/elijah286/ni_installer_tech) using **Code → Download ZIP**, extract it, open PowerShell in the extracted repository folder, and run:
+
+```powershell
+dotnet run --project NIInstallerTech/NIInstallerTech.csproj
+```
+
+On macOS and Linux, install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0), clone the repository, and use the same `dotnet run --project NIInstallerTech/NIInstallerTech.csproj` command. The desktop window runs locally on the machine where the command is executed.
 
 ## Run the headless prototype
 
