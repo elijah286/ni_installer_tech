@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,6 +68,12 @@ public partial class MainViewModel : ViewModelBase
     private DeliveryMode _selectedDeliveryMode = DeliveryMode.NiHosted;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsLabVIEWQ1Selected))]
+    [NotifyPropertyChangedFor(nameof(IsLabVIEWQ3Selected))]
+    [NotifyPropertyChangedFor(nameof(SelectedLabVIEWReleaseLabel))]
+    private LabVIEWRelease _selectedLabVIEWRelease = LabVIEWRelease.Q3;
+
+    [ObservableProperty]
     private double _installProgress;
 
     [ObservableProperty]
@@ -104,6 +111,20 @@ public partial class MainViewModel : ViewModelBase
 
     public string PrimaryActionLabel => IsNiHostedDelivery ? "Install selected setup" : "Create offline installer";
     public string CompletionHeading => IsNiHostedDelivery ? "Your setup is ready" : "Your offline installer is ready";
+
+    public bool IsLabVIEWQ1Selected => SelectedLabVIEWRelease == LabVIEWRelease.Q1;
+    public bool IsLabVIEWQ3Selected => SelectedLabVIEWRelease == LabVIEWRelease.Q3;
+    public string SelectedLabVIEWReleaseLabel => SelectedLabVIEWRelease == LabVIEWRelease.Q1 ? "LabVIEW 2026 Q1 x64" : "LabVIEW 2026 Q3 x64";
+    public int SelectedComponentCount => Components.Count(component => component.IsSelected);
+    public string SelectedDownloadSize => FormatSize(Components.Where(component => component.IsSelected).Sum(component => component.SizeMb), "download");
+    public string SelectedInstallSize => FormatSize((int)(Components.Where(component => component.IsSelected).Sum(component => component.SizeMb) * 1.25), "installed");
+    public string SelectedAdminRequirement => Components.Where(component => component.IsSelected).Any(component => component.RequiresElevation)
+        ? "Required only for the selected driver, service, or firmware boundary"
+        : "Not expected for this user-mode plan";
+    public string SelectedRestartRequirement => Components.Where(component => component.IsSelected).Any(component => component.MayRequireRestart)
+        ? "Possible — driver or firmware activation is selected"
+        : "Not expected";
+    public string CoexistenceSummary => "One LabVIEW release is selected. User-mode adapters can coexist when explicitly compatible; drivers, services, configuration schemas, and firmware remain one active version.";
 
     public IEnumerable<string> SelectedComponentNames => Components
         .Where(component => component.IsSelected)
@@ -148,6 +169,22 @@ public partial class MainViewModel : ViewModelBase
 
     [RelayCommand]
     private void ChooseOfflineBundle() => SelectedDeliveryMode = DeliveryMode.OfflineBundle;
+
+    [RelayCommand]
+    private void SelectLabVIEWQ1()
+    {
+        if (SelectedLabVIEWRelease == LabVIEWRelease.Q1) return;
+        SelectedLabVIEWRelease = LabVIEWRelease.Q1;
+        ConfigurePlan(_scenario);
+    }
+
+    [RelayCommand]
+    private void SelectLabVIEWQ3()
+    {
+        if (SelectedLabVIEWRelease == LabVIEWRelease.Q3) return;
+        SelectedLabVIEWRelease = LabVIEWRelease.Q3;
+        ConfigurePlan(_scenario);
+    }
 
     [RelayCommand]
     private void Continue() => CurrentStep = 2;
@@ -208,10 +245,11 @@ public partial class MainViewModel : ViewModelBase
         _scenario = scenario;
         Components.Clear();
 
-        AddComponent("LabVIEW 2026 Q3 x64", "Application plane observed on the reference system. Create measurement, test, and control applications.", "1.2 GB", "Application", "User-mode only", false);
-        AddComponent("NI Measurement & Automation Explorer 26.5", "Configuration and discovery plane. Current device configuration is never copied into the plan.", "94 MB", "Configuration", "User-mode only", false);
-        AddComponent("NI-DAQmx 26.0 user-mode runtime", "API/runtime plane for NI data acquisition. It remains separate from hardware, driver, and firmware activation.", "124 MB", "API runtime", "User-mode only", false);
-        AddComponent("NI-DAQmx LabVIEW adapter", "LabVIEW API, palettes, and integration for the selected LabVIEW ABI.", "42 MB", "Language adapter", "User-mode only", false);
+        var release = SelectedLabVIEWRelease == LabVIEWRelease.Q1 ? "2026 Q1" : "2026 Q3";
+        AddComponent($"LabVIEW {release} x64", "Selected application release observed on the reference system. One LabVIEW release is selected for this plan.", "1.2 GB", "Application", "User-mode; one release selected", false, "labview-core", "One selected release");
+        AddComponent("NI Measurement & Automation Explorer 26.5", "Configuration and discovery plane. Current device configuration is never copied into the plan.", "94 MB", "Configuration", "One active configuration schema", false, "max-configuration", "Singleton");
+        AddComponent("NI-DAQmx 26.0 user-mode runtime", "API/runtime plane for NI data acquisition. It remains separate from hardware, driver, and firmware activation.", "124 MB", "API runtime", "User-mode; revision-compatible", false, "daqmx-user-mode", "Side-by-side when compatible");
+        AddComponent($"NI-DAQmx LabVIEW {release} adapter", "LabVIEW API, palettes, and integration bound to the selected LabVIEW ABI.", "42 MB", "Language adapter", "User-mode; bound to selected release", false, $"daqmx-labview-{release.Replace(" ", "-").ToLowerInvariant()}", "Side-by-side when compatible");
         AddComponent("NI-DAQmx documentation and examples", "Optional local help and examples; removable without changing runtime or device support.", "140 MB", "Optional content", "No machine impact", true);
 
         if (scenario == SetupScenario.Application)
@@ -226,11 +264,11 @@ public partial class MainViewModel : ViewModelBase
         if (scenario is SetupScenario.Hardware or SetupScenario.TestSystem)
         {
             AddComponent("NI-VISA runtime", "Instrument communication support for PXI, USB, Ethernet, serial, and GPIB instruments.", "118 MB", "API runtime", "User-mode only", false);
-            AddComponent("PXI Platform Services", "Platform services for compatible PXI chassis, controllers, and modules.", "86 MB", "Platform service", "May require elevation", true);
-            AddComponent("DAQmx local MIO support", "Family-level support for local PCI/PCIe and USB DAQ. The final plan separately stages signed driver packages.", "210 MB", "Hardware family", "Driver boundary", true);
-            AddComponent("CompactDAQ / FieldDAQ support", "Family-level Ethernet and CompactDAQ support. Firmware is not included by default.", "260 MB", "Hardware family", "Driver boundary", true);
-            AddComponent("PXI instrument support", "Select only the instrument families used in this chassis; platform and device drivers remain explicit.", "295 MB", "Hardware family", "Driver boundary", true);
-            AddComponent("CompactDAQ firmware", "Optional firmware plane for eligible devices. Requires a separate device-specific confirmation.", "240 MB", "Firmware", "Explicit approval", true);
+            AddComponent("PXI Platform Services", "Platform services for compatible PXI chassis, controllers, and modules.", "86 MB", "Platform service", "One active service version; may require elevation", true, "pxi-platform-service", "Singleton");
+            AddComponent("DAQmx local MIO support", "Family-level support for local PCI/PCIe and USB DAQ. The final plan separately stages signed driver packages.", "210 MB", "Hardware family", "One active driver domain", true, "daqmx-local-mio-driver", "Singleton");
+            AddComponent("CompactDAQ / FieldDAQ support", "Family-level Ethernet and CompactDAQ support. Firmware is not included by default.", "260 MB", "Hardware family", "One active driver domain", true, "daqmx-cdaq-driver", "Singleton");
+            AddComponent("PXI instrument support", "Select only the instrument families used in this chassis; platform and device drivers remain explicit.", "295 MB", "Hardware family", "One active driver domain", true, "pxi-instrument-driver", "Singleton");
+            AddComponent("CompactDAQ firmware", "Optional firmware plane for eligible devices. Requires a separate device-specific confirmation.", "240 MB", "Firmware", "One active device firmware revision; explicit approval", true, "cdaq-firmware", "Singleton");
         }
 
         if (scenario == SetupScenario.TestSystem)
@@ -258,18 +296,7 @@ public partial class MainViewModel : ViewModelBase
             SetupScenario.Hardware => "Includes the core NI setup plus support for instruments, PXI, RF, or industrial protocols.",
             _ => "Includes the core NI setup, TestStand, and selected hardware support for an automated test station."
         };
-        DownloadSize = scenario switch
-        {
-            SetupScenario.Application => "1.8 GB download",
-            SetupScenario.Hardware => "2.5 GB download",
-            _ => "3.8 GB download"
-        };
-        InstallSize = scenario switch
-        {
-            SetupScenario.Application => "2.6 GB",
-            SetupScenario.Hardware => "3.7 GB",
-            _ => "5.7 GB"
-        };
+        RefreshPlanMetrics();
         ImpactMessage = scenario == SetupScenario.Application
             ? "The default foundation is user-mode only. Device support, signed drivers, and firmware stay outside the plan until you select a hardware family."
             : "Hardware-family packs are separate from APIs and applications. The final installer checks Windows, device, driver, and firmware compatibility before activation.";
@@ -280,9 +307,9 @@ public partial class MainViewModel : ViewModelBase
             : "Hardware, signed driver, service, and firmware items are deliberate boundaries. The final installer will require explicit review if a selected item needs elevation, restart, or device activation.";
     }
 
-    private void AddComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional)
+    private void AddComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional, string upgradeDomain = "user-mode", string coexistencePolicy = "Side-by-side when compatible")
     {
-        var component = new SetupComponent(name, description, size, plane, changeBoundary, isOptional);
+        var component = new SetupComponent(name, description, size, plane, changeBoundary, isOptional, upgradeDomain, coexistencePolicy);
         component.PropertyChanged += ComponentChanged;
         Components.Add(component);
     }
@@ -292,13 +319,31 @@ public partial class MainViewModel : ViewModelBase
         if (e.PropertyName == nameof(SetupComponent.IsSelected))
         {
             OnPropertyChanged(nameof(SelectedComponentNames));
+            RefreshPlanMetrics();
         }
     }
+
+    private void RefreshPlanMetrics()
+    {
+        DownloadSize = SelectedDownloadSize;
+        InstallSize = SelectedInstallSize;
+        AdminRequirement = SelectedAdminRequirement;
+        RestartRequirement = SelectedRestartRequirement;
+        OnPropertyChanged(nameof(SelectedComponentCount));
+        OnPropertyChanged(nameof(SelectedDownloadSize));
+        OnPropertyChanged(nameof(SelectedInstallSize));
+        OnPropertyChanged(nameof(SelectedAdminRequirement));
+        OnPropertyChanged(nameof(SelectedRestartRequirement));
+        OnPropertyChanged(nameof(CoexistenceSummary));
+    }
+
+    private static string FormatSize(int megabytes, string suffix)
+        => megabytes >= 1024 ? $"{megabytes / 1024d:0.0} GB {suffix}" : $"{megabytes} MB {suffix}";
 }
 
 public partial class SetupComponent : ObservableObject
 {
-    public SetupComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional)
+    public SetupComponent(string name, string description, string size, string plane, string changeBoundary, bool isOptional, string upgradeDomain, string coexistencePolicy)
     {
         Name = name;
         Description = description;
@@ -306,6 +351,9 @@ public partial class SetupComponent : ObservableObject
         Plane = plane;
         ChangeBoundary = changeBoundary;
         IsOptional = isOptional;
+        UpgradeDomain = upgradeDomain;
+        CoexistencePolicy = coexistencePolicy;
+        SizeMb = ParseSizeMb(size);
         IsSelected = true;
     }
 
@@ -316,9 +364,22 @@ public partial class SetupComponent : ObservableObject
     public string ChangeBoundary { get; }
     public bool IsOptional { get; }
     public bool IsRequired => !IsOptional;
+    public int SizeMb { get; }
+    public string UpgradeDomain { get; }
+    public string CoexistencePolicy { get; }
+    public bool IsSingleton => CoexistencePolicy == "Singleton" || CoexistencePolicy == "One selected release";
+    public bool RequiresElevation => ChangeBoundary.Contains("elevation", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);
+    public bool MayRequireRestart => ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);
 
     [ObservableProperty]
     private bool _isSelected;
+
+    private static int ParseSizeMb(string size)
+    {
+        var parts = size.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var value = double.Parse(parts[0], System.Globalization.CultureInfo.InvariantCulture);
+        return parts[1] == "GB" ? (int)(value * 1024) : (int)value;
+    }
 }
 
 public enum SetupScenario
@@ -332,4 +393,10 @@ public enum DeliveryMode
 {
     NiHosted,
     OfflineBundle
+}
+
+public enum LabVIEWRelease
+{
+    Q1,
+    Q3
 }

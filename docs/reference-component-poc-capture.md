@@ -47,6 +47,12 @@ reference-poc/<component-id>/<version>/
 
 `origin-evidence.json` must retain no secrets and should identify the evidence file in [reference-inventory](../reference-inventory/README.md) that supports its assertions.
 
+## Capture tool
+
+[Capture-NIReferenceComponent.ps1](../tools/Capture-NIReferenceComponent.ps1) is the initial allowlist-driven capture implementation. It runs on a controlled Windows staging/reference host, defaults to manifest-only discovery, and copies payload only when `-CopyPayload` is explicitly supplied. The input manifest must have `review.status` set to `approved-for-poc-capture`; the committed [template](../tools/manifests/daqmx-user-mode.capture.template.json) is intentionally non-runnable until a component owner fills an approved source allowlist.
+
+The tool writes a component staging record under `incoming-reference-captures/<component-id>/<version>/` in the selected repository root. It produces payload hashes, origin evidence, exclusions, candidate resource claims, provenance, and a health-check placeholder. It rejects ProgramData, raw Driver Store, user data, registry exports, and common activation/licensing/secret paths.
+
 ## Mandatory exclusions
 
 Never capture:

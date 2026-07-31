@@ -36,6 +36,7 @@ A future supported container execution model must separately validate the host-d
 | Option | Meaning |
 |---|---|
 | `--profile recommended\|hardware\|test-system` | Selects the customer capability starting point. Default: `recommended`. |
+| `--labview-release 2026-q1\|2026-q3` | Selects exactly one observed LabVIEW release line. Default: `2026-q3`. |
 | `--source ni\|offline\|repository` | Source policy. Default: `ni`, the NI-hosted catalog. |
 | `--repository <URL>` | Required only with `--source repository`; identifies an organization-approved catalog. |
 | `--platform <OS-ARCH>` | Requested target, such as `linux-x64` or `windows-x64`. Default: `linux-x64`. |
@@ -54,7 +55,7 @@ ni-setup plan --profile recommended --source ni --platform linux-x64 --format js
 Resolve a plan from an organization-approved repository:
 
 ```sh
-ni-setup plan --profile test-system --source repository \
+ni-setup plan --profile test-system --labview-release 2026-q1 --source repository \
   --repository https://packages.example.invalid/ni/validated-2026.1 \
   --platform windows-x64 --format json
 ```

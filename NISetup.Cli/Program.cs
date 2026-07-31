@@ -35,6 +35,7 @@ if (options.ContainsKey("help") || command is "help" or "--help" or "-h")
 var profile = options.GetValueOrDefault("profile", "recommended");
 var source = options.GetValueOrDefault("source", "ni");
 var platform = options.GetValueOrDefault("platform", "linux-x64");
+var labviewRelease = options.GetValueOrDefault("labview-release", "2026-q3");
 var nonInteractive = options.ContainsKey("non-interactive");
 var simulation = options.ContainsKey("simulate");
 
@@ -56,7 +57,13 @@ if (source == "repository" && !options.ContainsKey("repository"))
     return InvalidArguments;
 }
 
-var plan = CreatePlan(profile, source, platform, options.GetValueOrDefault("repository"));
+if (labviewRelease is not ("2026-q1" or "2026-q3"))
+{
+    WriteError("--labview-release must be '2026-q1' or '2026-q3'.", InvalidArguments, options);
+    return InvalidArguments;
+}
+
+var plan = CreatePlan(profile, source, platform, labviewRelease, options.GetValueOrDefault("repository"));
 
 switch (command)
 {
@@ -141,32 +148,34 @@ static Dictionary<string, string> ParseOptions(IReadOnlyList<string> arguments, 
     return options;
 }
 
-static InstallationPlan CreatePlan(string profile, string source, string platform, string? repository)
+static InstallationPlan CreatePlan(string profile, string source, string platform, string labviewRelease, string? repository)
 {
+    var labviewLabel = labviewRelease == "2026-q1" ? "LabVIEW 2026 Q1 x64" : "LabVIEW 2026 Q3 x64";
     var components = new List<PlanComponent>
     {
-        new("labview.core", "LabVIEW 2026 Q3 x64", "application", "user-mode only", "pending-validation"),
-        new("max.configuration", "NI Measurement & Automation Explorer 26.5", "configuration", "user-mode only; machine configuration excluded", "ineligible"),
-        new("daqmx.runtime.user-mode", "NI-DAQmx 26.0 user-mode runtime", "api-runtime", "user-mode only", "pending-validation"),
-        new("daqmx.labview-adapter", "NI-DAQmx LabVIEW adapter", "language-adapter", "user-mode only", "pending-validation")
+        new($"labview.core.{labviewRelease}.x64", labviewLabel, "application", "one selected platform release", "pending-validation", "labview-core", "one-selected-release"),
+        new("max.configuration", "NI Measurement & Automation Explorer 26.5", "configuration", "one active configuration schema; machine configuration excluded", "ineligible", "max-configuration", "singleton"),
+        new("daqmx.runtime.user-mode", "NI-DAQmx 26.0 user-mode runtime", "api-runtime", "user-mode only", "pending-validation", "daqmx-user-mode", "side-by-side-when-compatible"),
+        new($"daqmx.labview-adapter.{labviewRelease}.x64", $"NI-DAQmx LabVIEW {labviewRelease} adapter", "language-adapter", "bound to selected LabVIEW ABI", "pending-validation", $"daqmx-labview-{labviewRelease}", "side-by-side-when-compatible")
     };
 
     if (profile == "hardware")
     {
-        components.Add(new("daqmx.local-mio-support", "DAQmx local MIO support", "hardware-family-support", "driver boundary; activation requires a supported host", "ineligible"));
-        components.Add(new("daqmx.compactdaq-firmware", "CompactDAQ firmware", "firmware", "explicit device-specific approval", "ineligible"));
+        components.Add(new("daqmx.local-mio-support", "DAQmx local MIO support", "hardware-family-support", "driver boundary; activation requires a supported host", "ineligible", "daqmx-local-mio-driver", "singleton"));
+        components.Add(new("daqmx.compactdaq-firmware", "CompactDAQ firmware", "firmware", "explicit device-specific approval", "ineligible", "cdaq-firmware", "singleton"));
     }
 
     if (profile == "test-system")
     {
-        components.Add(new("teststand.runtime", "TestStand runtime", "application", "user-mode only", "pending-validation"));
-        components.Add(new("ni-visa.runtime", "NI-VISA runtime", "api-runtime", "user-mode only", "pending-validation"));
+        components.Add(new("teststand.runtime", "TestStand runtime", "application", "user-mode only", "pending-validation", "teststand-runtime", "side-by-side-when-compatible"));
+        components.Add(new("ni-visa.runtime", "NI-VISA runtime", "api-runtime", "user-mode only", "pending-validation", "ni-visa-runtime", "side-by-side-when-compatible"));
     }
 
     return new InstallationPlan(
         "prototype-plan-v0.1",
         profile,
         platform,
+        labviewRelease,
         source,
         repository,
         "existing-ni-activation-tooling",
@@ -203,9 +212,9 @@ static void WriteHelp()
 NI Setup CLI — headless installation-model prototype
 
 Usage:
-  ni-setup plan [--profile recommended|hardware|test-system] [--source ni|offline|repository] [--repository URL] [--platform OS-ARCH] [--format json]
-  ni-setup bundle create --simulate [--profile ...] [--source ni|repository] [--format json]
-  ni-setup install --non-interactive --simulate [--profile ...] [--source ni|offline|repository] [--format json]
+    ni-setup plan [--profile recommended|hardware|test-system] [--labview-release 2026-q1|2026-q3] [--source ni|offline|repository] [--repository URL] [--platform OS-ARCH] [--format json]
+    ni-setup bundle create --simulate [--profile ...] [--labview-release ...] [--source ni|repository] [--format json]
+    ni-setup install --non-interactive --simulate [--profile ...] [--labview-release ...] [--source ni|offline|repository] [--format json]
 
 The CLI is safe for containers: this prototype never installs software, drivers, firmware, or licensing material.
 Use --simulate for bundle/install because the deployment engine is not implemented yet.
@@ -218,10 +227,11 @@ internal sealed record InstallationPlan(
     string SchemaVersion,
     string Profile,
     string Platform,
+    string LabVIEWRelease,
     string Source,
     string? Repository,
     string LicensingIntegration,
     string LicensingBehavior,
     IReadOnlyList<PlanComponent> Components,
     string Notes);
-internal sealed record PlanComponent(string Id, string DisplayName, string Role, string Boundary, string ContainerExecutionEligibility);
+internal sealed record PlanComponent(string Id, string DisplayName, string Role, string Boundary, string ContainerExecutionEligibility, string UpgradeDomain, string CoexistencePolicy);

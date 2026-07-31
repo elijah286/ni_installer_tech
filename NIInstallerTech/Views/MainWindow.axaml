@@ -182,13 +182,47 @@
                                 <TextBlock Text="{Binding PlanSummary}" Classes="muted" TextWrapping="Wrap" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" Spacing="5" HorizontalAlignment="Right">
-                                <TextBlock Text="{Binding DownloadSize}" FontWeight="SemiBold" HorizontalAlignment="Right" />
-                                <TextBlock Text="{Binding InstallSize} installed" Classes="muted" FontSize="12" HorizontalAlignment="Right" />
+                                <TextBlock Text="{Binding SelectedDownloadSize}" FontWeight="SemiBold" HorizontalAlignment="Right" />
+                                <TextBlock Text="{Binding SelectedInstallSize}" Classes="muted" FontSize="12" HorizontalAlignment="Right" />
                             </StackPanel>
                             <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,18,0,0" Background="#EDF6F3" CornerRadius="6" Padding="12,8">
                                 <TextBlock Text="{Binding ImpactMessage}" Foreground="#32435F" FontSize="13" TextWrapping="Wrap" />
                             </Border>
                         </Grid>
+                    </Border>
+
+                    <Border Classes="card" Background="#FBFCFF">
+                        <StackPanel Spacing="12">
+                            <TextBlock Text="Choose one LabVIEW release" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Text="This plan selects one platform release. Release-specific adapters follow that choice; compatible user-mode components may coexist only when the catalog allows it." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                <Button Command="{Binding SelectLabVIEWQ1Command}" HorizontalContentAlignment="Stretch" Background="#FFFFFF" BorderBrush="#D9DEEA" BorderThickness="1" Padding="14">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <StackPanel Spacing="3">
+                                            <TextBlock Text="LabVIEW 2026 Q1 x64" FontWeight="SemiBold" />
+                                            <TextBlock Text="Observed earlier release" Classes="muted" FontSize="12" />
+                                        </StackPanel>
+                                        <Border Grid.Column="1" IsVisible="{Binding IsLabVIEWQ1Selected}" Background="#005F4B" CornerRadius="8" Padding="7,3" VerticalAlignment="Center">
+                                            <TextBlock Text="SELECTED" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                        </Border>
+                                    </Grid>
+                                </Button>
+                                <Button Grid.Column="1" Command="{Binding SelectLabVIEWQ3Command}" HorizontalContentAlignment="Stretch" Background="#F2FAF7" BorderBrush="#005F4B" BorderThickness="1" Padding="14">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <StackPanel Spacing="3">
+                                            <TextBlock Text="LabVIEW 2026 Q3 x64" FontWeight="SemiBold" />
+                                            <TextBlock Text="Observed later release • default" Classes="muted" FontSize="12" />
+                                        </StackPanel>
+                                        <Border Grid.Column="1" IsVisible="{Binding IsLabVIEWQ3Selected}" Background="#005F4B" CornerRadius="8" Padding="7,3" VerticalAlignment="Center">
+                                            <TextBlock Text="SELECTED" Foreground="White" FontSize="10" FontWeight="Bold" />
+                                        </Border>
+                                    </Grid>
+                                </Button>
+                            </Grid>
+                            <Border Background="#FFF7E5" CornerRadius="6" Padding="10,7">
+                                <TextBlock Text="{Binding CoexistenceSummary}" Foreground="#5B4819" FontSize="12" TextWrapping="Wrap" />
+                            </Border>
+                        </StackPanel>
                     </Border>
 
                     <StackPanel Spacing="10">
@@ -208,6 +242,9 @@
                                                     </Border>
                                                     <Border Background="#EFF2F8" CornerRadius="8" Padding="7,2">
                                                         <TextBlock Text="{Binding Plane}" Foreground="#43506A" FontSize="10" FontWeight="SemiBold" />
+                                                    </Border>
+                                                    <Border Background="#FFF0D4" CornerRadius="8" Padding="7,2">
+                                                        <TextBlock Text="{Binding CoexistencePolicy}" Foreground="#8A4D00" FontSize="10" FontWeight="SemiBold" />
                                                     </Border>
                                                 </StackPanel>
                                                 <TextBlock Text="{Binding Description}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
@@ -281,6 +318,7 @@
                     <Border Classes="card">
                         <StackPanel Spacing="17">
                             <TextBlock Text="{Binding PlanName}" FontSize="18" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding SelectedLabVIEWReleaseLabel}" Foreground="#005F4B" FontWeight="SemiBold" />
                             <Border Background="#EDF6F3" CornerRadius="7" Padding="12">
                                 <StackPanel Spacing="3">
                                     <TextBlock Text="{Binding DeliveryTitle}" FontWeight="SemiBold" Foreground="#005F4B" />
@@ -291,19 +329,19 @@
                             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="35" RowSpacing="16">
                                 <StackPanel Spacing="4">
                                     <TextBlock Text="Download" Classes="muted" FontSize="12" />
-                                    <TextBlock Text="{Binding DownloadSize}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding SelectedDownloadSize}" FontWeight="SemiBold" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Spacing="4">
                                     <TextBlock Text="Disk space after install" Classes="muted" FontSize="12" />
-                                    <TextBlock Text="{Binding InstallSize}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding SelectedInstallSize}" FontWeight="SemiBold" />
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Spacing="4">
                                     <TextBlock Text="Administrative access" Classes="muted" FontSize="12" />
-                                    <TextBlock Text="{Binding AdminRequirement}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding SelectedAdminRequirement}" FontWeight="SemiBold" />
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Grid.Column="1" Spacing="4">
                                     <TextBlock Text="Restart" Classes="muted" FontSize="12" />
-                                    <TextBlock Text="{Binding RestartRequirement}" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding SelectedRestartRequirement}" FontWeight="SemiBold" />
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -317,7 +355,7 @@
                     </Border>
 
                     <StackPanel Spacing="8">
-                        <TextBlock Text="What will be changed" FontWeight="SemiBold" FontSize="16" />
+                        <TextBlock Text="{Binding SelectedComponentCount, StringFormat={}{0} selected components}" FontWeight="SemiBold" FontSize="16" />
                         <ItemsControl ItemsSource="{Binding SelectedComponentNames}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>

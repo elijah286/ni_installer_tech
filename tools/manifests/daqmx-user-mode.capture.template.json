@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "reference-capture-request-v0.1",
+  "componentId": "daqmx.runtime.user-mode",
+  "version": "26.0.0",
+  "review": {
+    "status": "replace-with-approved-for-poc-capture",
+    "approvedBy": "replace-with-reviewer",
+    "approvedAtUtc": "replace-with-ISO-8601-time",
+    "scope": "Read-only internal POC capture; not redistributable."
+  },
+  "evidenceReferences": [
+    "reference-inventory/NIReference-daqmx-package-info.txt",
+    "reference-inventory/windows-demodog-dependency-evidence/ni-daqmx.txt"
+  ],
+  "sources": [
+    {
+      "path": "C:\\REPLACE-WITH-REVIEWED-SOURCE-DIRECTORY",
+      "role": "runtime",
+      "reason": "Replace with the reviewed user-mode source boundary. Do not use ProgramData, DriverStore, registry exports, or license/activation paths."
+    }
+  ],
+  "resourceClaims": [
+    {
+      "kind": "file",
+      "ownership": "candidate-exclusive",
+      "activation": "none",
+      "notes": "Populate only after resource-ownership review."
+    }
+  ]
+}

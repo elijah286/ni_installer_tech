@@ -73,6 +73,8 @@ The final production archive/repository format remains open. These are logical b
 
 Required fields are `schemaVersion`, `id`, `version`, `displayName`, `role`, `platform`, `upgradeDomain`, and an owning team/reference. `id` is stable, lowercase, and dot-separated; version is immutable once released. Do not use a display name, installer filename, or download URL as identity.
 
+Every component must also declare `coexistencePolicy`, `maxSimultaneousVersions`, and, where relevant, `platformRelease`. These fields implement the [coexistence and revision policy](coexistence-and-revision-policy.md): user-mode coexistence requires explicit proof; drivers, services, configuration schemas, and firmware use singleton domains.
+
 Allowed initial `role` values include `application`, `api-runtime`, `language-adapter`, `configuration`, `hardware-family-support`, `device-driver`, `platform-service`, `firmware`, `documentation`, `examples`, and `third-party-prerequisite`.
 
 ## `payload-manifest.json`: bytes and deterministic assembly
