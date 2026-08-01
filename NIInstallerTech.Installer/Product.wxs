@@ -18,7 +18,7 @@
       </Directory>
     </StandardDirectory>
 
-    <StandardDirectory Id="ProgramMenuFolder">
+    <StandardDirectory Id="CommonProgramsFolder">
       <Directory Id="NISetupProgramsFolder" Name="NI Setup">
         <Component Id="NISetupShortcutComponent" Guid="*">
           <Shortcut Id="NISetupShortcut"
