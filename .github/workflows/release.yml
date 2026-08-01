@@ -1,0 +1,64 @@
+name: Release NI Setup
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ni-setup-release-main
+  cancel-in-progress: false
+
+jobs:
+  publish-windows-update:
+    name: Publish Windows update
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository and tags
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Run updater and deployment tests
+        shell: pwsh
+        run: dotnet test NIInstallerTech.Tests/NIInstallerTech.Tests.csproj --configuration Release --filter "Category!=LiveRepository"
+
+      - name: Allocate next patch version
+        id: version
+        shell: pwsh
+        run: |
+          git fetch --force --tags
+          $patches = git tag --list "v0.0.*" | ForEach-Object {
+            if ($_ -match '^v0\.0\.(\d+)$') { [int]$Matches[1] }
+          }
+          $nextPatch = if ($patches) { (($patches | Measure-Object -Maximum).Maximum + 1) } else { 1 }
+          "version=0.0.$nextPatch" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Publish self-contained Windows app
+        shell: pwsh
+        run: |
+          dotnet publish NIInstallerTech/NIInstallerTech.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -p:Version=${{ steps.version.outputs.version }} --output publish
+          New-Item -ItemType Directory -Path "package/NI Platform Setup" -Force | Out-Null
+          Move-Item "publish/NIInstallerTech.exe" "package/NI Platform Setup/NI Setup.exe"
+          Compress-Archive -Path "package/NI Platform Setup" -DestinationPath "NI-Platform-Setup-win-x64.zip"
+          $hash = (Get-FileHash "NI-Platform-Setup-win-x64.zip" -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash  NI-Platform-Setup-win-x64.zip" | Set-Content "NI-Platform-Setup-win-x64.zip.sha256"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: NI Setup v${{ steps.version.outputs.version }}
+          generate_release_notes: true
+          make_latest: true
+          files: |
+            NI-Platform-Setup-win-x64.zip
+            NI-Platform-Setup-win-x64.zip.sha256

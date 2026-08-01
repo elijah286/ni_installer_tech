@@ -83,6 +83,17 @@ The prototype uses Avalonia and C# on .NET 10. Avalonia enables one native deskt
 
 From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET SDK. On Windows, the app opens as a native desktop window; on macOS, it runs locally for UX iteration.
 
+## NI Setup updates
+
+The current local-development version is `0.0.1` and appears in the upper-right corner of the setup window. Selecting it opens the update dialog, which checks the latest stable GitHub Release for `elijah286/ni_installer_tech`. When a newer Windows release exists, it downloads the published ZIP, verifies the companion SHA-256 asset, then replaces the installed setup directory after the process exits and relaunches it. The user never needs to browse GitHub or manually download the next setup build.
+
+Every commit integrated into `main` triggers [Release NI Setup](.github/workflows/release.yml). The workflow finds the latest `v0.0.N` release tag and publishes the next patch version, beginning at `v0.0.1`, with these immutable assets:
+
+- `NI-Platform-Setup-win-x64.zip`
+- `NI-Platform-Setup-win-x64.zip.sha256`
+
+Release tags, rather than a source-file edit, are the version authority for shipped builds. This prevents version-bump commits and guarantees that each `main` integration produces exactly one sequential update the app can discover.
+
 ## Run the headless prototype
 
 The [NISetup.Cli](NISetup.Cli) project implements the documented non-mutating CLI contract. From the repository root, run `dotnet run --project NISetup.Cli -- plan --profile recommended --source ni --format json`. Its `install` and `bundle create` command shapes require `--simulate` until an approved deployment engine is implemented. The rootless container definition is [NISetup.Cli/Dockerfile](NISetup.Cli/Dockerfile).

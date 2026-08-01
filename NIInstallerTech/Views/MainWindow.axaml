@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:NIInstallerTech.ViewModels"
+        xmlns:local="using:NIInstallerTech"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
@@ -29,6 +30,16 @@
         </Style>
         <Style Selector="Button.subtle">
             <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#005F4B" />
+        </Style>
+        <Style Selector="Button.version">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#43506A" />
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style Selector="Button.version:pointerover">
+            <Setter Property="Background" Value="#EDF6F3" />
             <Setter Property="Foreground" Value="#005F4B" />
         </Style>
         <Style Selector="Border.card">
@@ -63,6 +74,9 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                     <Ellipse Width="8" Height="8" Fill="#00B894" VerticalAlignment="Center" />
                     <TextBlock Text="NI software portfolio • July 2026" Classes="muted" FontSize="13" />
+                    <Button Classes="version" Click="OnVersionClick" ToolTip.Tip="Check for NI Setup updates">
+                        <TextBlock Text="{x:Static local:AppVersion.Display}" />
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

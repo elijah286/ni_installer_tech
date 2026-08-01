@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="NIInstallerTech.Views.UpdateDialog"
+        Width="510"
+        SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="#F8F8F5"
+        Title="NI Setup updates">
+    <Grid Margin="28" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="18">
+        <StackPanel Spacing="5">
+            <TextBlock Text="NI Setup updates" FontFamily="Georgia" FontSize="25" />
+            <TextBlock x:Name="CurrentVersionText" Foreground="#5C615D" FontSize="13" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Spacing="8">
+            <TextBlock x:Name="StatusText" Text="Check GitHub for the latest approved setup experience." TextWrapping="Wrap" FontSize="15" />
+            <ProgressBar x:Name="DownloadProgress" IsVisible="False" Minimum="0" Maximum="1" Height="6" />
+            <TextBlock x:Name="ReleaseNotesText" Foreground="#5C615D" TextWrapping="Wrap" IsVisible="False" />
+        </StackPanel>
+
+        <Border Grid.Row="2" Background="#EDF6F3" Padding="12" CornerRadius="6">
+            <TextBlock Text="Updates download from the published GitHub release, verify its SHA-256 checksum, then restart NI Setup automatically." Foreground="#32435F" FontSize="12" TextWrapping="Wrap" />
+        </Border>
+
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+            <Button x:Name="CheckButton" Classes="primary" Click="OnCheckForUpdatesClick" Content="Check for updates" />
+            <Button x:Name="InstallButton" Grid.Column="1" IsEnabled="False" Click="OnInstallUpdateClick" Content="Install update" />
+            <Button Grid.Column="2" Click="OnCloseClick" Content="Close" />
+        </Grid>
+    </Grid>
+</Window>
