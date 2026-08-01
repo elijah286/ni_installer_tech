@@ -1,0 +1,9 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+  <PropertyGroup>
+    <OutputType>Package</OutputType>
+    <Platform>x64</Platform>
+    <ProductVersion Condition="'$(ProductVersion)' == ''">0.0.1</ProductVersion>
+    <PublishDirectory Condition="'$(PublishDirectory)' == ''">$(MSBuildThisFileDirectory)..\NIInstallerTech\bin\$(Configuration)\net10.0\win-x64\publish</PublishDirectory>
+    <DefineConstants>ProductVersion=$(ProductVersion);PublishDirectory=$(PublishDirectory)</DefineConstants>
+  </PropertyGroup>
+</Project>

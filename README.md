@@ -1,8 +1,8 @@
 # NI Platform Setup — installation-model prototype
 
-[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Prototype-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Prototype" height="54">](https://github.com/elijah286/ni_installer_tech/releases/download/v0.1.5-prototype/NI-Platform-Setup-Prototype-win-x64.zip)
+[<img src="https://img.shields.io/badge/Run%20Installers-Download%20Windows%20Installer-005B8E?style=for-the-badge&logo=windows&logoColor=white" alt="Run Installers — Download Windows Installer" height="54">](https://github.com/elijah286/ni_installer_tech/releases/latest/download/NI-Platform-Setup-win-x64.msi)
 
-**Windows:** download the ZIP, extract it, and double-click **NI Platform Setup Prototype.exe**. No .NET SDK, terminal, or source checkout is required. The released UI can deploy the currently staged catalog-approved source artifacts into its app-owned managed directory.
+**Windows x64 only:** download and run the MSI. It installs the small self-contained **NI Setup** launcher, including its .NET and native UI dependencies, in Program Files. Windows provides repair, uninstall, and upgrade support; selected NI products remain on-demand downloads. A Windows installer cannot run on macOS or Linux; those platforms can run the cross-platform Avalonia UI from source with the .NET SDK.
 
 This repository is an R&D prototype for a new NI software installation model and its customer-facing experience. It explores how customers can install, update, repair, and remove only the applications, APIs, configuration tools, hardware-family support, drivers, and firmware they need.
 
@@ -85,12 +85,13 @@ From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET
 
 ## NI Setup updates
 
-The current local-development version is `0.0.1` and appears in the upper-right corner of the setup window. Selecting it opens the update dialog, which checks the latest stable GitHub Release for `elijah286/ni_installer_tech`. When a newer Windows release exists, it downloads the published ZIP, verifies the companion SHA-256 asset, then replaces the installed setup directory after the process exits and relaunches it. The user never needs to browse GitHub or manually download the next setup build.
+The current local-development version is `0.0.1` and appears in the upper-right corner of the setup window. Selecting it opens the update dialog, which checks the latest stable GitHub Release for `elijah286/ni_installer_tech`. When a newer Windows release exists, it downloads the published MSI, verifies the companion SHA-256 asset, then opens Windows Installer after NI Setup exits. The user never needs to browse GitHub or manually download the next setup build.
 
 Every commit integrated into `main` triggers [Release NI Setup](.github/workflows/release.yml). The workflow finds the latest `v0.0.N` release tag and publishes the next patch version, beginning at `v0.0.1`, with these immutable assets:
 
-- `NI-Platform-Setup-win-x64.zip`
-- `NI-Platform-Setup-win-x64.zip.sha256`
+- `NI-Platform-Setup-win-x64.msi`
+- `NI-Platform-Setup-win-x64.msi.sha256`
+- `NI-Platform-Setup-win-x64.zip` and its checksum during the ZIP-to-MSI transition
 
 Release tags, rather than a source-file edit, are the version authority for shipped builds. This prevents version-bump commits and guarantees that each `main` integration produces exactly one sequential update the app can discover.
 

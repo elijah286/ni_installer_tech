@@ -46,3 +46,22 @@ jobs:
           name: test-results
           path: TestResults
           if-no-files-found: ignore
+
+  build-windows-installer:
+    name: Build Windows installer
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Publish launcher and build MSI
+        shell: pwsh
+        run: |
+          dotnet publish NIInstallerTech/NIInstallerTech.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true --output publish
+          dotnet build NIInstallerTech.Installer/NIInstallerTech.Installer.wixproj --configuration Release -p:ProductVersion=0.0.1 -p:PublishDirectory="$((Resolve-Path publish).Path)" --output installer
+          if (-not (Get-ChildItem -Path installer -Filter "*.msi" -File)) { throw "WiX did not produce an MSI package." }

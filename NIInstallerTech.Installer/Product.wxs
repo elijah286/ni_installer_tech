@@ -1,0 +1,44 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="NI Setup"
+           Manufacturer="National Instruments"
+           Version="$(var.ProductVersion)"
+           UpgradeCode="{13E06543-6EAB-48F8-8A8D-688D7818B1F5}"
+           Scope="perMachine">
+    <MajorUpgrade DowngradeErrorMessage="A newer version of NI Setup is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="NI Setup">
+        <Component Id="NISetupExecutableComponent" Bitness="always64">
+          <File Id="NISetupExecutable"
+                Source="$(var.PublishDirectory)\NIInstallerTech.exe"
+                Name="NI Setup.exe"
+                KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="NISetupProgramsFolder" Name="NI Setup">
+        <Component Id="NISetupShortcutComponent" Guid="*">
+          <Shortcut Id="NISetupShortcut"
+                    Name="NI Setup"
+                    Target="[INSTALLFOLDER]NI Setup.exe"
+                    WorkingDirectory="INSTALLFOLDER" />
+          <RemoveFolder Id="RemoveNISetupProgramsFolder" On="uninstall" />
+          <RegistryValue Root="HKLM"
+                         Key="Software\National Instruments\NI Setup"
+                         Name="Installed"
+                         Type="integer"
+                         Value="1"
+                         KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <Feature Id="MainFeature" Title="NI Setup" Level="1">
+      <ComponentRef Id="NISetupExecutableComponent" />
+      <ComponentRef Id="NISetupShortcutComponent" />
+    </Feature>
+  </Package>
+</Wix>

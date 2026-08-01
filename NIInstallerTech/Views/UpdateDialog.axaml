@@ -20,7 +20,7 @@
         </StackPanel>
 
         <Border Grid.Row="2" Background="#EDF6F3" Padding="12" CornerRadius="6">
-            <TextBlock Text="Updates download from the published GitHub release, verify its SHA-256 checksum, then restart NI Setup automatically." Foreground="#32435F" FontSize="12" TextWrapping="Wrap" />
+            <TextBlock Text="Updates download a signed Windows Installer package from the published GitHub release, verify its SHA-256 checksum, then open Windows Installer after NI Setup closes." Foreground="#32435F" FontSize="12" TextWrapping="Wrap" />
         </Border>
 
         <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">

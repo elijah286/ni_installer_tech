@@ -52,6 +52,16 @@ jobs:
           $hash = (Get-FileHash "NI-Platform-Setup-win-x64.zip" -Algorithm SHA256).Hash.ToLowerInvariant()
           "$hash  NI-Platform-Setup-win-x64.zip" | Set-Content "NI-Platform-Setup-win-x64.zip.sha256"
 
+      - name: Build Windows Installer package
+        shell: pwsh
+        run: |
+          dotnet build NIInstallerTech.Installer/NIInstallerTech.Installer.wixproj --configuration Release -p:ProductVersion=${{ steps.version.outputs.version }} -p:PublishDirectory="$((Resolve-Path publish).Path)" --output installer
+          $msi = Get-ChildItem -Path installer -Filter "*.msi" -File | Select-Object -First 1
+          if ($null -eq $msi) { throw "WiX did not produce an MSI package." }
+          Move-Item $msi.FullName "NI-Platform-Setup-win-x64.msi"
+          $hash = (Get-FileHash "NI-Platform-Setup-win-x64.msi" -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$hash  NI-Platform-Setup-win-x64.msi" | Set-Content "NI-Platform-Setup-win-x64.msi.sha256"
+
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
@@ -62,3 +72,5 @@ jobs:
           files: |
             NI-Platform-Setup-win-x64.zip
             NI-Platform-Setup-win-x64.zip.sha256
+            NI-Platform-Setup-win-x64.msi
+            NI-Platform-Setup-win-x64.msi.sha256

@@ -12,7 +12,7 @@ namespace NIInstallerTech.Services;
 
 public sealed class GitHubReleaseUpdateService
 {
-    private const string ReleaseAssetName = "NI-Platform-Setup-win-x64.zip";
+    private const string ReleaseAssetName = "NI-Platform-Setup-win-x64.msi";
     private const string LatestReleaseUrl = "https://api.github.com/repos/elijah286/ni_installer_tech/releases/latest";
     private readonly HttpClient _httpClient;
 
@@ -83,7 +83,7 @@ public sealed class GitHubReleaseUpdateService
         CancellationToken cancellationToken = default)
     {
         var expectedChecksum = await DownloadChecksumAsync(update.ChecksumUri, cancellationToken);
-        var destinationPath = Path.Combine(Path.GetTempPath(), $"ni-setup-{update.Version}-{Guid.NewGuid():N}.zip");
+        var destinationPath = Path.Combine(Path.GetTempPath(), $"ni-setup-{update.Version}-{Guid.NewGuid():N}.msi");
 
         try
         {

@@ -18,8 +18,8 @@ public sealed class GitHubReleaseUpdateServiceTests
               "prerelease": false,
               "body": "Improved update experience.",
               "assets": [
-                { "name": "NI-Platform-Setup-win-x64.zip", "browser_download_url": "https://example.test/setup.zip" },
-                { "name": "NI-Platform-Setup-win-x64.zip.sha256", "browser_download_url": "https://example.test/setup.zip.sha256" }
+                                { "name": "NI-Platform-Setup-win-x64.msi", "browser_download_url": "https://example.test/setup.msi" },
+                                { "name": "NI-Platform-Setup-win-x64.msi.sha256", "browser_download_url": "https://example.test/setup.msi.sha256" }
               ]
             }
             """));
@@ -29,7 +29,7 @@ public sealed class GitHubReleaseUpdateServiceTests
 
         Assert.NotNull(update);
         Assert.Equal("0.0.2", update.Version);
-        Assert.Equal("https://example.test/setup.zip", update.DownloadUri.AbsoluteUri);
+        Assert.Equal("https://example.test/setup.msi", update.DownloadUri.AbsoluteUri);
         Assert.Equal("Improved update experience.", update.Notes);
     }
 
