@@ -2,7 +2,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -17,7 +16,6 @@ public partial class MainViewModel : ViewModelBase
     private readonly SmbRepositoryService _smbRepositoryService = new();
     private readonly HttpRepositoryService _httpRepositoryService = new();
     private readonly ManagedDeploymentService _deploymentService = new();
-    private readonly CleanMachinePackageService _cleanMachinePackageService = new();
     private readonly PrototypeOperationLog _operationLog = new();
     private Uri? _resolvedRepositoryUri;
 
@@ -81,46 +79,13 @@ public partial class MainViewModel : ViewModelBase
     [NotifyPropertyChangedFor(nameof(IsLabVIEWQ1Selected))]
     [NotifyPropertyChangedFor(nameof(IsLabVIEWQ3Selected))]
     [NotifyPropertyChangedFor(nameof(SelectedLabVIEWReleaseLabel))]
-    [NotifyPropertyChangedFor(nameof(InstallationThirdPhaseLabel))]
-    [NotifyPropertyChangedFor(nameof(InstallationFourthPhaseLabel))]
     private LabVIEWRelease _selectedLabVIEWRelease = LabVIEWRelease.Q3;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(InstallationProgressLabel))]
     private double _installProgress;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(InstallationHeading))]
     private string _installationStatus = string.Empty;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(InstallationDownloadState))]
-    [NotifyPropertyChangedFor(nameof(InstallationVerifyState))]
-    [NotifyPropertyChangedFor(nameof(InstallationApprovalState))]
-    [NotifyPropertyChangedFor(nameof(InstallationApplyState))]
-    [NotifyPropertyChangedFor(nameof(InstallationDownloadColor))]
-    [NotifyPropertyChangedFor(nameof(InstallationVerifyColor))]
-    [NotifyPropertyChangedFor(nameof(InstallationApprovalColor))]
-    [NotifyPropertyChangedFor(nameof(InstallationApplyColor))]
-    private int _installationPhaseIndex;
-
-    [ObservableProperty]
-    private string _installationPhaseTitle = "Preparing installation";
-
-    [ObservableProperty]
-    private string _installationPhaseDetail = "Setup will keep you informed as each protected step completes.";
-
-    [ObservableProperty]
-    private bool _hasInstallationFailure;
-
-    [ObservableProperty]
-    private string _installationFailureTitle = string.Empty;
-
-    [ObservableProperty]
-    private string _installationFailureDetail = string.Empty;
-
-    [ObservableProperty]
-    private string _installationRecoveryGuidance = string.Empty;
 
     [ObservableProperty]
     private string _repositoryPath = @"\\192.168.68.125\Files\NISetupPrototypeRepository";
@@ -190,21 +155,16 @@ public partial class MainViewModel : ViewModelBase
     public bool IsOfflineBundleDelivery => SelectedDeliveryMode == DeliveryMode.OfflineBundle;
     public bool IsWebRepositoryTransport => SelectedRepositoryTransport == RepositoryTransport.Web;
     public bool IsSmbRepositoryTransport => SelectedRepositoryTransport == RepositoryTransport.Smb;
-    public bool IsCleanMachinePlanSelected => SelectedLabVIEWRelease == LabVIEWRelease.Q3 && SelectedDeploymentComponentIds.Count == 1 && string.Equals(SelectedDeploymentComponentIds.First(), PublishedCleanMachinePackages.Labview2026Q3.ComponentId, StringComparison.OrdinalIgnoreCase);
-    public bool IsInstallationExecutorAvailable => IsCleanMachinePlanSelected
-        ? RepositoryIsConnected && RepositoryIsReadyForInstallation
-        : RepositoryIsReadyForInstallation && DeploymentPreflightIsReady && IsWebRepositoryTransport;
+    public bool IsInstallationExecutorAvailable => RepositoryIsReadyForInstallation && DeploymentPreflightIsReady && IsWebRepositoryTransport;
     public bool HasInstalledPrototypeComponents => InstalledComponentCount > 0;
     public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
     public string DeliveryTitle => IsNiHostedDelivery
-        ? IsCleanMachinePlanSelected ? "Download verified package" : "Download from NI"
+        ? "Download from NI"
         : "Create an offline installer";
 
     public string DeliveryDescription => IsNiHostedDelivery
-        ? IsCleanMachinePlanSelected
-            ? "Setup downloads the selected verified package before requesting administrator approval for installation."
-            : "A small setup app retrieves only the selected, validated components from the NI-hosted catalog."
+        ? "A small setup app retrieves only the selected, validated components from the NI-hosted catalog."
         : "Download the complete selected plan now and create one portable installer for disconnected systems.";
 
     public string DeliveryDetail => IsNiHostedDelivery
@@ -215,24 +175,10 @@ public partial class MainViewModel : ViewModelBase
         ? "Connect source to continue"
         : !RepositoryIsReadyForInstallation
             ? "Source requires catalog approval"
-            : IsCleanMachinePlanSelected
-                ? "Download and install LabVIEW"
             : !DeploymentPreflightIsReady
                 ? "Selected plan is not deployable"
                 : IsNiHostedDelivery ? "Install selected managed artifacts" : "Create managed offline copy";
-    public string CompletionHeading => IsCleanMachinePlanSelected ? "LabVIEW installation completed" : IsNiHostedDelivery ? "Your setup is ready" : "Your offline installer is ready";
-    public string InstallationHeading => IsCleanMachinePlanSelected ? "Installing LabVIEW 2026 Q3" : PrimaryActionLabel;
-    public string InstallationProgressLabel => $"{Math.Round(InstallProgress):0}% complete";
-    public string InstallationDownloadState => InstallationPhaseState(1);
-    public string InstallationVerifyState => InstallationPhaseState(2);
-    public string InstallationApprovalState => InstallationPhaseState(3);
-    public string InstallationApplyState => InstallationPhaseState(4);
-    public string InstallationDownloadColor => InstallationPhaseColor(1);
-    public string InstallationVerifyColor => InstallationPhaseColor(2);
-    public string InstallationApprovalColor => InstallationPhaseColor(3);
-    public string InstallationApplyColor => InstallationPhaseColor(4);
-    public string InstallationThirdPhaseLabel => IsCleanMachinePlanSelected ? "3  Approve" : "3  Deploy";
-    public string InstallationFourthPhaseLabel => IsCleanMachinePlanSelected ? "4  Install" : "4  Finish";
+    public string CompletionHeading => IsNiHostedDelivery ? "Your setup is ready" : "Your offline installer is ready";
 
     public bool IsLabVIEWQ1Selected => SelectedLabVIEWRelease == LabVIEWRelease.Q1;
     public bool IsLabVIEWQ3Selected => SelectedLabVIEWRelease == LabVIEWRelease.Q3;
@@ -241,7 +187,7 @@ public partial class MainViewModel : ViewModelBase
     public string SelectedDownloadSize => FormatSize(Components.Where(component => component.IsSelected).Sum(component => component.SizeMb), "download");
     public string SelectedInstallSize => FormatSize((int)(Components.Where(component => component.IsSelected).Sum(component => component.SizeMb) * 1.25), "installed");
     public string SelectedAdminRequirement => Components.Where(component => component.IsSelected).Any(component => component.RequiresElevation)
-        ? "Required to install the selected software into Program Files"
+        ? "Required only for the selected driver, service, or firmware boundary"
         : "Not expected for this user-mode plan";
     public string SelectedRestartRequirement => Components.Where(component => component.IsSelected).Any(component => component.MayRequireRestart)
         ? "Possible — driver or firmware activation is selected"
@@ -261,9 +207,7 @@ public partial class MainViewModel : ViewModelBase
     public string CompletionMessage => _scenario switch
     {
         SetupScenario.Application => IsNiHostedDelivery
-            ? IsCleanMachinePlanSelected
-                ? "LabVIEW 2026 Q3 was downloaded, verified, and installed to Program Files. Existing NI activation and licensing tooling was not changed."
-                : "The selected managed source artifacts were verified, deployed under this prototype's owned directory, and recorded for complete removal. LabVIEW, drivers, firmware, activation, and licensing remain outside this source catalog."
+            ? "The selected managed source artifacts were verified, deployed under this prototype's owned directory, and recorded for complete removal. LabVIEW, drivers, firmware, activation, and licensing remain outside this source catalog."
             : "A portable offline installer contains the selected LabVIEW, MAX, and NI-DAQmx component planes. It can be taken to a disconnected system without carrying licenses or machine configuration.",
         SetupScenario.Hardware => IsNiHostedDelivery
             ? "Your core NI software and selected family-level hardware support are ready. Driver and firmware boundaries were reviewed separately."
@@ -331,12 +275,7 @@ public partial class MainViewModel : ViewModelBase
             _resolvedRepositoryUri = result.RepositoryUri;
             _operationLog.Write("repository-connect", result.IsConnected ? "connected" : "failed", result.Status, new { result.Details, RepositoryUrl, RepositoryPath });
 
-            if (RepositoryIsReadyForInstallation && IsCleanMachinePlanSelected)
-            {
-                DeploymentPreflightIsReady = true;
-                DeploymentStatus = "The selected LabVIEW package will be downloaded, verified, then installed after Windows administrator approval.";
-            }
-            else if (RepositoryIsReadyForInstallation && IsWebRepositoryTransport && _resolvedRepositoryUri is not null)
+            if (RepositoryIsReadyForInstallation && IsWebRepositoryTransport && _resolvedRepositoryUri is not null)
             {
                 await RefreshDeploymentPreflightAsync();
             }
@@ -396,14 +335,6 @@ public partial class MainViewModel : ViewModelBase
             return;
         }
 
-        HasInstallationFailure = false;
-
-        if (IsCleanMachinePlanSelected)
-        {
-            await InstallCleanMachinePackageAsync();
-            return;
-        }
-
         if (!IsWebRepositoryTransport || _resolvedRepositoryUri is null)
         {
             DeploymentStatus = "Managed deployment currently requires the approved web repository source.";
@@ -422,24 +353,11 @@ public partial class MainViewModel : ViewModelBase
 
             CurrentStep = 3;
             InstallProgress = 0;
-            SetInstallationPhase(1, "Downloading selected components", "Setup is retrieving each selected artifact and validating its publisher digest.");
             InstallationStatus = "Starting managed deployment transaction...";
             var progress = new Progress<DeploymentProgress>(update =>
             {
                 InstallationStatus = update.Status;
                 InstallProgress = update.TotalComponents == 0 ? 0 : (update.CompletedComponents / (double)update.TotalComponents) * 100;
-                if (update.Status.StartsWith("Downloading", StringComparison.OrdinalIgnoreCase))
-                {
-                    SetInstallationPhase(1, "Downloading selected components", "Setup is retrieving each selected artifact and validating its publisher digest.");
-                }
-                else if (update.Status.StartsWith("Deploying", StringComparison.OrdinalIgnoreCase))
-                {
-                    SetInstallationPhase(3, "Applying selected components", "Verified files are being placed in the managed installation location.");
-                }
-                else if (update.Status.Contains("completed", StringComparison.OrdinalIgnoreCase))
-                {
-                    SetInstallationPhase(4, "Finalizing installation", "Setup is recording the completed transaction and cleaning temporary files.");
-                }
             });
             var preflight = await _deploymentService.PreflightAsync(_resolvedRepositoryUri, SelectedDeploymentComponentIds, _operationLog);
             var result = await _deploymentService.InstallAsync(preflight, _operationLog, progress);
@@ -449,7 +367,6 @@ public partial class MainViewModel : ViewModelBase
 
             if (!result.IsSuccess)
             {
-                RecordInstallationFailure("Installation did not complete", result.Message, "Review the installation details, correct the reported issue, then try again. Files created by this managed transaction were rolled back.");
                 CurrentStep = 2;
                 RepositoryStatus = "Installation did not complete.";
                 RepositoryDetails = result.Message;
@@ -457,7 +374,6 @@ public partial class MainViewModel : ViewModelBase
             }
 
             InstallProgress = 100;
-            SetInstallationPhase(4, "Installation complete", "The installation record is complete and the setup log is available below.");
             CurrentStep = 4;
             OnPropertyChanged(nameof(CompletionMessage));
         }
@@ -466,7 +382,6 @@ public partial class MainViewModel : ViewModelBase
             CurrentStep = 2;
             DeploymentPreflightIsReady = false;
             DeploymentStatus = $"Installation could not proceed: {exception.Message}";
-            RecordInstallationFailure("Installation could not proceed", DeploymentStatus, "Confirm that the approved source is available, then reconnect and try the installation again.");
             RepositoryStatus = "Installation encountered an unexpected error.";
             RepositoryDetails = DeploymentStatus;
             _operationLog.Write("install", "failed", DeploymentStatus, new { exception.StackTrace });
@@ -514,82 +429,6 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
-    private async Task InstallCleanMachinePackageAsync()
-    {
-        var package = PublishedCleanMachinePackages.Labview2026Q3;
-        try
-        {
-            CurrentStep = 3;
-            InstallProgress = 0;
-            SetInstallationPhase(1, "Downloading verified package", "Setup is retrieving the LabVIEW package and validating its SHA-256 digest as it downloads.");
-            InstallationStatus = "Preparing the selected LabVIEW package...";
-            var progress = new Progress<CleanMachinePackageProgress>(update =>
-            {
-                InstallationStatus = update.Status;
-                InstallProgress = update.TotalBytes is > 0
-                    ? Math.Min(75, update.BytesTransferred / (double)update.TotalBytes.Value * 75)
-                    : 0;
-                if (update.Status.StartsWith("Verified", StringComparison.OrdinalIgnoreCase))
-                {
-                    SetInstallationPhase(2, "Package verified", "The downloaded package matches the approved digest and is ready for Windows installation.");
-                }
-                else
-                {
-                    SetInstallationPhase(1, "Downloading verified package", "Setup is retrieving the LabVIEW package and validating its SHA-256 digest as it downloads.");
-                }
-            });
-
-            CleanMachineStagedPackage stagedPackage;
-            if (IsWebRepositoryTransport)
-            {
-                if (_resolvedRepositoryUri is null) throw new InvalidOperationException("The verified web repository location is unavailable.");
-                var packageUri = new Uri(_resolvedRepositoryUri, package.ArchiveRelativePath);
-                stagedPackage = await _cleanMachinePackageService.StageFromUriAsync(package, packageUri, progress);
-            }
-            else
-            {
-                var sourcePath = Path.Combine(RepositoryPath, package.ArchiveRelativePath.Replace('/', Path.DirectorySeparatorChar));
-                stagedPackage = await _cleanMachinePackageService.StageFromFileAsync(package, sourcePath, progress);
-            }
-
-            SetInstallationPhase(3, "Administrator approval required", "Windows will ask for approval before software is installed to Program Files.");
-            InstallationStatus = "Windows will now request administrator approval to install LabVIEW.";
-            InstallProgress = 80;
-            var installerProgress = new Progress<CleanMachineInstallerProgress>(update =>
-            {
-                SetInstallationPhase(update.PhaseIndex, update.Status, update.Detail);
-                InstallationStatus = update.Status;
-                InstallProgress = update.PhaseIndex == 4 ? 85 : 80;
-            });
-            var result = await CleanMachineInstallerWorker.RunElevatedAsync(stagedPackage, installerProgress);
-            DeploymentStatus = result.Message;
-            OperationLogPath = string.IsNullOrWhiteSpace(result.LogFilePath) ? _operationLog.FilePath : result.LogFilePath;
-            if (!result.IsSuccess)
-            {
-                RecordInstallationFailure("LabVIEW installation did not complete", result.Message, "If administrator approval was cancelled, select Try again and approve the Windows prompt. Otherwise, review the detail below before retrying.");
-                CurrentStep = 2;
-                RepositoryStatus = "Installation did not complete.";
-                RepositoryDetails = result.Message;
-                return;
-            }
-
-            InstallProgress = 100;
-            SetInstallationPhase(4, "LabVIEW installation complete", "Windows completed the installation and setup recorded the result.");
-            InstallationStatus = "LabVIEW installation completed.";
-            CurrentStep = 4;
-            OnPropertyChanged(nameof(CompletionMessage));
-        }
-        catch (Exception exception)
-        {
-            CurrentStep = 2;
-            DeploymentStatus = $"Installation could not proceed: {exception.Message}";
-            RecordInstallationFailure("LabVIEW installation could not proceed", DeploymentStatus, "Confirm that the approved source is available, then reconnect and try again.");
-            RepositoryStatus = "Installation encountered an error before administrator approval.";
-            RepositoryDetails = DeploymentStatus;
-            _operationLog.Write("clean-machine-install", "failed", DeploymentStatus, new { exception.StackTrace });
-        }
-    }
-
     partial void OnRepositoryPathChanged(string value)
     {
         RepositoryIsConnected = false;
@@ -625,52 +464,7 @@ public partial class MainViewModel : ViewModelBase
         CurrentStep = 0;
         InstallProgress = 0;
         InstallationStatus = string.Empty;
-        ResetInstallationExperience();
         SelectedDeliveryMode = DeliveryMode.NiHosted;
-    }
-
-    [RelayCommand]
-    private async Task RetryInstallation()
-    {
-        await StartInstall();
-    }
-
-    private void SetInstallationPhase(int phaseIndex, string title, string detail)
-    {
-        InstallationPhaseIndex = phaseIndex;
-        InstallationPhaseTitle = title;
-        InstallationPhaseDetail = detail;
-    }
-
-    private void ResetInstallationExperience()
-    {
-        InstallationPhaseIndex = 0;
-        InstallationPhaseTitle = "Preparing installation";
-        InstallationPhaseDetail = "Setup will keep you informed as each protected step completes.";
-        HasInstallationFailure = false;
-        InstallationFailureTitle = string.Empty;
-        InstallationFailureDetail = string.Empty;
-        InstallationRecoveryGuidance = string.Empty;
-    }
-
-    private void RecordInstallationFailure(string title, string detail, string recoveryGuidance)
-    {
-        HasInstallationFailure = true;
-        InstallationFailureTitle = title;
-        InstallationFailureDetail = detail;
-        InstallationRecoveryGuidance = recoveryGuidance;
-    }
-
-    private string InstallationPhaseState(int phaseIndex)
-    {
-        if (InstallationPhaseIndex > phaseIndex) return "Complete";
-        return InstallationPhaseIndex == phaseIndex ? "In progress" : "Next";
-    }
-
-    private string InstallationPhaseColor(int phaseIndex)
-    {
-        if (InstallationPhaseIndex > phaseIndex) return "#197449";
-        return InstallationPhaseIndex == phaseIndex ? "#005F4B" : "#A6AAA7";
     }
 
     private void ConfigurePlan(SetupScenario scenario)
@@ -682,14 +476,11 @@ public partial class MainViewModel : ViewModelBase
 
         var release = SelectedLabVIEWRelease == LabVIEWRelease.Q1 ? "2026 Q1" : "2026 Q3";
         var releaseId = SelectedLabVIEWRelease == LabVIEWRelease.Q1 ? "2026-q1" : "2026-q3";
-        var hasCleanMachineLabviewPackage = SelectedLabVIEWRelease == LabVIEWRelease.Q3;
-        AddComponent($"LabVIEW {release} x64", hasCleanMachineLabviewPackage
-            ? "Ready for clean-machine validation. Setup downloads the verified package, then Windows requests administrator approval before installing it to Program Files."
-            : "A clean-machine package is not published for this release.", "1.2 GB", "Application", hasCleanMachineLabviewPackage ? "Administrator approval required" : "Not available from this source", false, "labview-core", "One selected release", hasCleanMachineLabviewPackage ? "labview.application.2026-q3.x64" : $"labview.core.{releaseId}.x64", initiallySelected: hasCleanMachineLabviewPackage);
-        AddComponent("NI Measurement & Automation Explorer 26.5", "Configuration and discovery plane. Current device configuration is never copied into the plan.", "94 MB", "Configuration", "A clean-machine package is not published", false, "max-configuration", "Singleton", "max.configuration", initiallySelected: false);
-        AddComponent("NI-DAQmx 26.0 user-mode runtime", "API/runtime plane for NI data acquisition. It remains separate from hardware, driver, and firmware activation.", "124 MB", "API runtime", "A clean-machine package is not published", false, "daqmx-user-mode", "Side-by-side when compatible", "daqmx.runtime.user-mode", initiallySelected: false);
+        AddComponent($"LabVIEW {release} x64", "Not staged in the managed prototype source catalog. Select it only after a verified LabVIEW artifact closure is published.", "1.2 GB", "Application", "Not available from this source", true, "labview-core", "One selected release", $"labview.core.{releaseId}.x64", initiallySelected: false);
+        AddComponent("NI Measurement & Automation Explorer 26.5", "Configuration and discovery plane. Current device configuration is never copied into the plan.", "94 MB", "Configuration", "One active configuration schema", false, "max-configuration", "Singleton", "max.configuration", initiallySelected: true);
+        AddComponent("NI-DAQmx 26.0 user-mode runtime", "API/runtime plane for NI data acquisition. It remains separate from hardware, driver, and firmware activation.", "124 MB", "API runtime", "User-mode; revision-compatible", false, "daqmx-user-mode", "Side-by-side when compatible", "daqmx.runtime.user-mode", initiallySelected: true);
         AddComponent($"NI-DAQmx LabVIEW {release} adapter", "A managed source artifact is staged for 2026 Q3, but it remains optional until a compatible LabVIEW core is staged.", "42 MB", "Language adapter", "User-mode; bound to selected release", true, $"daqmx-labview-{release.Replace(" ", "-").ToLowerInvariant()}", "Side-by-side when compatible", $"daqmx.labview-adapter.{releaseId}.x64", initiallySelected: false);
-        AddComponent("NI-DAQmx documentation and examples", "Optional local help and examples; removable without changing runtime or device support.", "140 MB", "Optional content", "A clean-machine package is not published", true, deploymentComponentId: "daqmx.documentation", initiallySelected: false);
+        AddComponent("NI-DAQmx documentation and examples", "Optional local help and examples; removable without changing runtime or device support.", "140 MB", "Optional content", "No machine impact", true, deploymentComponentId: "daqmx.documentation", initiallySelected: true);
 
         if (scenario == SetupScenario.Application)
         {
@@ -731,7 +522,7 @@ public partial class MainViewModel : ViewModelBase
         };
         PlanSummary = scenario switch
         {
-            SetupScenario.Application => hasCleanMachineLabviewPackage ? "LabVIEW 2026 Q3 is ready for clean-machine validation. Other components remain unselected until their own clean-machine packages are published." : "No clean-machine package is published for this LabVIEW release.",
+            SetupScenario.Application => "This staged source includes managed MAX and NI-DAQmx artifacts. LabVIEW and other applications remain unselected until their verified source closures are published.",
             SetupScenario.Hardware => "Includes the core NI setup plus support for instruments, PXI, RF, or industrial protocols.",
             _ => "Includes the core NI setup, TestStand, and selected hardware support for an automated test station."
         };
@@ -742,9 +533,7 @@ public partial class MainViewModel : ViewModelBase
         AdminRequirement = scenario == SetupScenario.Application ? "Not expected for this user-mode plan" : "Only if selected hardware support activates";
         RestartRequirement = "Not expected";
         ReviewNotice = scenario == SetupScenario.Application
-            ? hasCleanMachineLabviewPackage
-                ? "Setup downloads and verifies the selected package before asking Windows for administrator approval. Current NI activation and licensing tooling remains unchanged; no activation data, license data, or machine configuration is copied."
-                : "Optional applications are not installed unless you select them. Current licensing and activation tooling remains unchanged and no license or machine configuration is placed in an offline bundle."
+            ? "Optional applications are not installed unless you select them. Current licensing and activation tooling remains unchanged and no license or machine configuration is placed in an offline bundle."
             : "Hardware, signed driver, service, and firmware items are deliberate boundaries. The final installer will require explicit review if a selected item needs elevation, restart, or device activation.";
     }
 
@@ -763,11 +552,6 @@ public partial class MainViewModel : ViewModelBase
             DeploymentStatus = "The selected plan changed. Reconnect to preflight the updated selection.";
             OnPropertyChanged(nameof(SelectedComponentNames));
             OnPropertyChanged(nameof(SelectedDeploymentComponentIds));
-            OnPropertyChanged(nameof(IsCleanMachinePlanSelected));
-            OnPropertyChanged(nameof(IsInstallationExecutorAvailable));
-            OnPropertyChanged(nameof(PrimaryActionLabel));
-            OnPropertyChanged(nameof(InstallationThirdPhaseLabel));
-            OnPropertyChanged(nameof(InstallationFourthPhaseLabel));
             RefreshPlanMetrics();
         }
     }
@@ -827,7 +611,7 @@ public partial class SetupComponent : ObservableObject
     public bool IsCatalogAvailable => DeploymentComponentId is "max.configuration" or "daqmx.runtime.user-mode" or "daqmx.labview-adapter.2026-q3.x64" or "daqmx.documentation";
     public bool CanSelect => IsOptional && IsCatalogAvailable;
     public bool IsSingleton => CoexistencePolicy == "Singleton" || CoexistencePolicy == "One selected release";
-    public bool RequiresElevation => ChangeBoundary.Contains("elevation", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("administrator", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);
+    public bool RequiresElevation => ChangeBoundary.Contains("elevation", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);
     public bool MayRequireRestart => ChangeBoundary.Contains("driver", StringComparison.OrdinalIgnoreCase) || ChangeBoundary.Contains("firmware", StringComparison.OrdinalIgnoreCase);
 
     [ObservableProperty]
