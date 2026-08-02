@@ -6,7 +6,6 @@
            Scope="perMachine">
     <MajorUpgrade DowngradeErrorMessage="A newer version of NI Setup is already installed." />
     <MediaTemplate EmbedCab="yes" />
-    <Property Id="ALLUSERS" Value="1" />
 
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLFOLDER" Name="NI Setup">
