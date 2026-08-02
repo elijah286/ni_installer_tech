@@ -6,6 +6,7 @@
            Scope="perMachine">
     <MajorUpgrade DowngradeErrorMessage="A newer version of NI Setup is already installed." />
     <MediaTemplate EmbedCab="yes" />
+    <Property Id="ALLUSERS" Value="1" />
 
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLFOLDER" Name="NI Setup">
@@ -26,7 +27,7 @@
                     Target="[INSTALLFOLDER]NI Setup.exe"
                     WorkingDirectory="INSTALLFOLDER" />
           <RemoveFolder Id="RemoveNISetupProgramsFolder" On="uninstall" />
-          <RegistryValue Root="HKCU"
+          <RegistryValue Root="HKLM"
                          Key="Software\National Instruments\NI Setup"
                          Name="Installed"
                          Type="integer"
@@ -36,9 +37,37 @@
       </Directory>
     </StandardDirectory>
 
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="NISetupDesktopShortcutComponent" Guid="*">
+        <Shortcut Id="NISetupDesktopShortcut"
+                  Name="NI Setup"
+                  Target="[INSTALLFOLDER]NI Setup.exe"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKLM"
+                       Key="Software\National Instruments\NI Setup"
+                       Name="DesktopShortcutInstalled"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+
+    <CustomAction Id="LaunchNISetup"
+                  FileRef="NISetupExecutable"
+                  ExeCommand=""
+                  Impersonate="yes"
+                  Return="asyncNoWait" />
+
+    <InstallExecuteSequence>
+      <Custom Action="LaunchNISetup"
+              After="InstallFinalize"
+              Condition="NOT Installed AND UILevel &gt;= 3" />
+    </InstallExecuteSequence>
+
     <Feature Id="MainFeature" Title="NI Setup" Level="1">
       <ComponentRef Id="NISetupExecutableComponent" />
       <ComponentRef Id="NISetupShortcutComponent" />
+      <ComponentRef Id="NISetupDesktopShortcutComponent" />
     </Feature>
   </Package>
 </Wix>

@@ -13,7 +13,12 @@ Selected product content is still downloaded and verified by the application.
 ## Windows behavior
 
 - Installs the launcher to `C:\Program Files\NI Setup`.
-- Creates an `NI Setup` Start Menu entry.
+- Creates all-users `NI Setup` entries in the Start Menu and Desktop.
+- Launches NI Setup after a successful interactive first installation. It does
+  not relaunch the app after repair, upgrade, silent installation, or uninstall.
+- Does not pin the taskbar. Windows reserves taskbar pinning for an explicit
+  user action; users can pin NI Setup from its Start Menu entry or while it is
+  running.
 - Registers repair, uninstall, and major-upgrade behavior in Windows Apps &
   Features.
 - Requests UAC for the MSI installation or upgrade because it writes to Program
