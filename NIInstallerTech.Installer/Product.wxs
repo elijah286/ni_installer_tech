@@ -26,7 +26,7 @@
                     Target="[INSTALLFOLDER]NI Setup.exe"
                     WorkingDirectory="INSTALLFOLDER" />
           <RemoveFolder Id="RemoveNISetupProgramsFolder" On="uninstall" />
-          <RegistryValue Root="HKLM"
+          <RegistryValue Root="HKCU"
                          Key="Software\National Instruments\NI Setup"
                          Name="Installed"
                          Type="integer"
@@ -42,7 +42,7 @@
                   Name="NI Setup"
                   Target="[INSTALLFOLDER]NI Setup.exe"
                   WorkingDirectory="INSTALLFOLDER" />
-        <RegistryValue Root="HKLM"
+        <RegistryValue Root="HKCU"
                        Key="Software\National Instruments\NI Setup"
                        Name="DesktopShortcutInstalled"
                        Type="integer"
