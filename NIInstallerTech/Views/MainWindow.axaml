@@ -42,6 +42,16 @@
             <Setter Property="Background" Value="#EDF6F3" />
             <Setter Property="Foreground" Value="#005F4B" />
         </Style>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#43506A" />
+            <Setter Property="Padding" Value="12,9" />
+            <Setter Property="CornerRadius" Value="0" />
+        </Style>
+        <Style Selector="Button.tab:pointerover">
+            <Setter Property="Background" Value="#EDF6F3" />
+            <Setter Property="Foreground" Value="#005F4B" />
+        </Style>
         <Style Selector="Border.card">
             <Setter Property="Background" Value="White" />
             <Setter Property="BorderBrush" Value="#D9DEEA" />
@@ -59,7 +69,7 @@
         </Style>
     </Window.Styles>
 
-    <Grid ColumnDefinitions="278,*" RowDefinitions="72,*">
+    <Grid ColumnDefinitions="278,*" RowDefinitions="72,42,*">
         <Border Grid.ColumnSpan="2" Background="White" BorderBrush="#E4E7EF" BorderThickness="0,0,0,1">
             <Grid Margin="32,0" ColumnDefinitions="*,Auto" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
@@ -81,7 +91,15 @@
             </Grid>
         </Border>
 
-        <Border Grid.Row="1" Background="#004B3C" Padding="28,35">
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="White" BorderBrush="#E4E7EF" BorderThickness="0,0,0,1">
+            <StackPanel Margin="32,0" Orientation="Horizontal" Spacing="5" VerticalAlignment="Center">
+                <Button Classes="tab" Command="{Binding ShowSetupWorkspaceCommand}" Content="Setup" />
+                <Button Classes="tab" Command="{Binding ShowCatalogIntakeWorkspaceCommand}" Content="Catalog intake" />
+                <TextBlock Text="Build candidate contracts from legacy installer evidence" Classes="muted" FontSize="12" VerticalAlignment="Center" Margin="10,0,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Background="#004B3C" Padding="28,35" IsVisible="{Binding IsSetupWorkspace}">
             <Grid RowDefinitions="Auto,*,Auto">
                 <StackPanel Spacing="7">
                     <TextBlock Text="YOUR SETUP" Foreground="#9AE3D3" FontSize="11" FontWeight="Bold" LetterSpacing="1.2" />
@@ -120,8 +138,9 @@
             </Grid>
         </Border>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <Grid Margin="58,42" MaxWidth="810">
+        <ScrollViewer Grid.Row="2" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+            <Grid Margin="58,42" MaxWidth="810" IsVisible="{Binding IsSetupWorkspace}">
                 <StackPanel IsVisible="{Binding IsGoalsStep}" Spacing="25">
                     <StackPanel Spacing="8">
                         <TextBlock Text="Set up your NI software" Classes="display" />
@@ -544,6 +563,145 @@
                     <Button Classes="primary" Command="{Binding StartOverCommand}" Content="Explore another setup" HorizontalAlignment="Left" />
                 </StackPanel>
             </Grid>
+
+            <StackPanel Margin="58,42" MaxWidth="920" Spacing="24" IsVisible="{Binding IsCatalogIntakeWorkspace}">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Catalog intake" Classes="display" />
+                    <TextBlock Text="Create reviewable candidate contracts from legacy installer evidence. Discovery reads the paths you provide; it never executes an installer or approves a component for deployment." Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                </StackPanel>
+
+                <Border Classes="card" BorderBrush="#9CDACB" Background="#F7FBF9">
+                    <StackPanel Spacing="13">
+                        <TextBlock Text="Start a candidate contract" FontSize="17" FontWeight="SemiBold" />
+                        <TextBlock Text="Point to a local file, a mounted cache, or a read-only network path. Directories are scanned for .nipkg, .msi, .exe, .cab, and .zip artifacts." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                            <StackPanel Spacing="5">
+                                <TextBlock Text="Product or capability" Classes="muted" FontSize="12" />
+                                <TextBox Text="{Binding CandidateProductName}" PlaceholderText="Example: NI-VISA Runtime" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="5">
+                                <TextBlock Text="Candidate component ID" Classes="muted" FontSize="12" />
+                                <TextBox Text="{Binding CandidateComponentId}" PlaceholderText="Example: visa.runtime" />
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Legacy sources, one path per line" Classes="muted" FontSize="12" />
+                            <TextBox Text="{Binding CandidateSourcePaths}" AcceptsReturn="True" MinHeight="82" TextWrapping="Wrap" PlaceholderText="C:\NI Cache\packages&#10;\\reference-host\share\legacy-installer.msi" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <Button Classes="primary" Command="{Binding DiscoverCandidateCommand}" Content="Inspect and refresh candidate" />
+                            <TextBlock Text="{Binding CandidateIntakeStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="550" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Grid ColumnDefinitions="280,*" ColumnSpacing="22">
+                    <StackPanel Spacing="9">
+                        <TextBlock Text="Candidate contracts" FontSize="16" FontWeight="SemiBold" />
+                        <TextBlock Text="Saved locally for iterative review." Classes="muted" FontSize="12" />
+                        <ListBox ItemsSource="{Binding CandidateContracts}" SelectedItem="{Binding SelectedCandidate}" MinHeight="230">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Spacing="2">
+                                        <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                        <TextBlock Text="{Binding Id}" Classes="muted" FontSize="11" TextWrapping="Wrap" />
+                                        <TextBlock Text="{Binding ReviewStatus}" Foreground="#005F4B" FontSize="11" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="{Binding CandidateCatalogPath}" Classes="muted" FontSize="11" TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Spacing="16" IsVisible="{Binding HasSelectedCandidate}">
+                        <Border Classes="card">
+                            <StackPanel Spacing="10">
+                                <StackPanel Spacing="3">
+                                    <TextBlock Text="{Binding SelectedCandidate.DisplayName}" FontSize="18" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding SelectedCandidate.Id}" Foreground="#005F4B" FontSize="12" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="18">
+                                    <StackPanel Spacing="3">
+                                        <TextBlock Text="Observed version" Classes="muted" FontSize="12" />
+                                        <TextBlock Text="{Binding SelectedCandidate.ObservedVersion}" FontWeight="SemiBold" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Spacing="3">
+                                        <TextBlock Text="Legacy packages" Classes="muted" FontSize="12" />
+                                        <ItemsControl ItemsSource="{Binding SelectedCandidate.LegacyPackageNames}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate><TextBlock Text="{Binding}" FontWeight="SemiBold" TextWrapping="Wrap" /></DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </Grid>
+                                <TextBlock Text="Dependencies observed in native package control metadata" Classes="muted" FontSize="12" />
+                                <ItemsControl ItemsSource="{Binding SelectedCandidate.Dependencies}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate><TextBlock Text="{Binding}" Foreground="#43506A" FontSize="12" /></DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="card" Background="#FBFCFF">
+                            <StackPanel Spacing="9">
+                                <TextBlock Text="Evidence captured" FontSize="16" FontWeight="SemiBold" />
+                                <ItemsControl ItemsSource="{Binding SelectedCandidate.Evidence}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="#E4E7EF" BorderThickness="0,0,0,1" Padding="0,0,0,8" Margin="0,0,0,8">
+                                                <StackPanel Spacing="2">
+                                                    <TextBlock Text="{Binding FileName}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding Observation}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding Sha256}" Foreground="#43506A" FontFamily="Menlo" FontSize="11" TextWrapping="Wrap" />
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="#FFF7E5" BorderBrush="#F0D89A" BorderThickness="1" CornerRadius="8" Padding="15">
+                            <StackPanel Spacing="6">
+                                <TextBlock Text="Evidence gaps to resolve" Foreground="#5B4819" FontWeight="SemiBold" />
+                                <ItemsControl ItemsSource="{Binding SelectedCandidate.Warnings}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate><TextBlock Text="{Binding}" Foreground="#5B4819" FontSize="12" TextWrapping="Wrap" Margin="0,2" /></DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="card" BorderBrush="#B8CCFA">
+                            <StackPanel Spacing="12">
+                                <TextBlock Text="R&amp;D review" FontSize="16" FontWeight="SemiBold" />
+                                <TextBlock Text="These fields are authored decisions. They survive the next evidence refresh and do not make the candidate installable." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Review status" Classes="muted" FontSize="12" />
+                                        <TextBox Text="{Binding CandidateReviewStatus}" PlaceholderText="awaiting-rd-review" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Spacing="5">
+                                        <TextBlock Text="Declared install mode" Classes="muted" FontSize="12" />
+                                        <TextBox Text="{Binding CandidateDeclaredInstallMode}" PlaceholderText="undecided" />
+                                    </StackPanel>
+                                </Grid>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Review notes, decisions, and open questions" Classes="muted" FontSize="12" />
+                                    <TextBox Text="{Binding CandidateReviewNotes}" AcceptsReturn="True" MinHeight="84" TextWrapping="Wrap" />
+                                </StackPanel>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Reviewed by" Classes="muted" FontSize="12" />
+                                    <TextBox Text="{Binding CandidateReviewedBy}" PlaceholderText="Product and installer R&amp;D owners" />
+                                </StackPanel>
+                                <Button Classes="primary" Command="{Binding SaveCandidateReviewCommand}" Content="Save R&amp;D review" HorizontalAlignment="Left" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>

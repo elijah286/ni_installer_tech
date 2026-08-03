@@ -18,18 +18,58 @@ public partial class MainViewModel : ViewModelBase
     private readonly HttpRepositoryService _httpRepositoryService = new();
     private readonly ManagedDeploymentService _deploymentService = new();
     private readonly CleanMachinePackageService _cleanMachinePackageService = new();
+    private readonly CandidateCatalogService _candidateCatalogService = new();
     private readonly PrototypeOperationLog _operationLog = new();
     private Uri? _resolvedRepositoryUri;
 
     public MainViewModel()
     {
         Components = new ObservableCollection<SetupComponent>();
+        CandidateContracts = new ObservableCollection<CandidateComponent>();
         OperationLogPath = _operationLog.FilePath;
+        CandidateCatalogPath = _candidateCatalogService.CatalogPath;
         InstalledComponentCount = _deploymentService.GetInstalledComponentCount();
         ConfigurePlan(SetupScenario.Application);
+        _ = LoadCandidateContractsAsync();
     }
 
     public ObservableCollection<SetupComponent> Components { get; }
+    public ObservableCollection<CandidateComponent> CandidateContracts { get; }
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsSetupWorkspace))]
+    private bool _isCatalogIntakeWorkspace;
+
+    [ObservableProperty]
+    private string _candidateProductName = string.Empty;
+
+    [ObservableProperty]
+    private string _candidateComponentId = string.Empty;
+
+    [ObservableProperty]
+    private string _candidateSourcePaths = string.Empty;
+
+    [ObservableProperty]
+    private string _candidateIntakeStatus = "Add a proposed component and one or more local legacy artifact or cache paths.";
+
+    [ObservableProperty]
+    private string _candidateCatalogPath = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasSelectedCandidate))]
+    private CandidateComponent? _selectedCandidate;
+
+    [ObservableProperty]
+    private string _candidateReviewStatus = "awaiting-rd-review";
+
+    [ObservableProperty]
+    private string _candidateDeclaredInstallMode = "undecided";
+
+    [ObservableProperty]
+    private string _candidateReviewNotes = string.Empty;
+
+    [ObservableProperty]
+    private string _candidateReviewedBy = string.Empty;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsGoalsStep))]
@@ -172,6 +212,7 @@ public partial class MainViewModel : ViewModelBase
     private int _installedComponentCount;
 
     public bool IsGoalsStep => CurrentStep == 0;
+    public bool IsSetupWorkspace => !IsCatalogIntakeWorkspace;
     public bool IsPlanStep => CurrentStep == 1;
     public bool IsReviewStep => CurrentStep == 2;
     public bool IsInstallingStep => CurrentStep == 3;
@@ -195,6 +236,7 @@ public partial class MainViewModel : ViewModelBase
         ? RepositoryIsConnected && RepositoryIsReadyForInstallation
         : RepositoryIsReadyForInstallation && DeploymentPreflightIsReady && IsWebRepositoryTransport;
     public bool HasInstalledPrototypeComponents => InstalledComponentCount > 0;
+    public bool HasSelectedCandidate => SelectedCandidate is not null;
     public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
     public string DeliveryTitle => IsNiHostedDelivery
@@ -633,6 +675,92 @@ public partial class MainViewModel : ViewModelBase
     private async Task RetryInstallation()
     {
         await StartInstall();
+    }
+
+    [RelayCommand]
+    private void ShowSetupWorkspace() => IsCatalogIntakeWorkspace = false;
+
+    [RelayCommand]
+    private async Task ShowCatalogIntakeWorkspace()
+    {
+        IsCatalogIntakeWorkspace = true;
+        await LoadCandidateContractsAsync();
+    }
+
+    [RelayCommand]
+    private async Task DiscoverCandidate()
+    {
+        CandidateIntakeStatus = "Inspecting selected legacy sources. No installer will run and no component will become deployable.";
+        try
+        {
+            var sourcePaths = CandidateSourcePaths
+                .Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            var result = await _candidateCatalogService.InspectAndUpsertAsync(new CandidateIntakeRequest(CandidateProductName, CandidateComponentId, sourcePaths));
+            await LoadCandidateContractsAsync(result.Candidate.Id);
+            CandidateIntakeStatus = $"Captured {result.SourceFilesScanned} artifact(s) for '{result.Candidate.DisplayName}'. The candidate remains {result.Candidate.ReviewStatus.Replace('-', ' ')}.";
+        }
+        catch (Exception exception)
+        {
+            CandidateIntakeStatus = $"Candidate discovery could not complete: {exception.Message}";
+        }
+    }
+
+    [RelayCommand]
+    private async Task SaveCandidateReview()
+    {
+        if (SelectedCandidate is null)
+        {
+            CandidateIntakeStatus = "Select a candidate contract before saving a review.";
+            return;
+        }
+
+        try
+        {
+            var updated = await _candidateCatalogService.UpdateReviewAsync(
+                SelectedCandidate.Id,
+                new CandidateReviewUpdate(
+                    SelectedCandidate.DisplayName,
+                    CandidateReviewStatus,
+                    CandidateDeclaredInstallMode,
+                    CandidateReviewNotes,
+                    CandidateReviewedBy));
+            await LoadCandidateContractsAsync(updated.Id);
+            CandidateIntakeStatus = $"Saved R&D review fields for '{updated.DisplayName}'. It remains non-deployable until a separate approved catalog is published.";
+        }
+        catch (Exception exception)
+        {
+            CandidateIntakeStatus = $"Review could not be saved: {exception.Message}";
+        }
+    }
+
+    partial void OnSelectedCandidateChanged(CandidateComponent? value)
+    {
+        if (value is null) return;
+        CandidateReviewStatus = value.ReviewStatus;
+        CandidateDeclaredInstallMode = value.DeclaredInstallMode;
+        CandidateReviewNotes = value.RAndDNotes;
+        CandidateReviewedBy = value.ReviewedBy;
+    }
+
+    private async Task LoadCandidateContractsAsync(string? selectedId = null)
+    {
+        try
+        {
+            var catalog = await _candidateCatalogService.LoadAsync();
+            CandidateContracts.Clear();
+            foreach (var component in catalog.Components.OrderBy(component => component.DisplayName, StringComparer.OrdinalIgnoreCase))
+            {
+                CandidateContracts.Add(component);
+            }
+
+            var candidateId = selectedId ?? SelectedCandidate?.Id;
+            SelectedCandidate = CandidateContracts.FirstOrDefault(component => string.Equals(component.Id, candidateId, StringComparison.OrdinalIgnoreCase))
+                ?? CandidateContracts.FirstOrDefault();
+        }
+        catch (Exception exception)
+        {
+            CandidateIntakeStatus = $"Candidate catalog could not be loaded: {exception.Message}";
+        }
     }
 
     private void SetInstallationPhase(int phaseIndex, string title, string detail)

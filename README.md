@@ -4,6 +4,16 @@
 
 **Windows x64 only:** download and run the MSI. It installs the small self-contained **NI Setup** launcher, including its .NET and native UI dependencies, in Program Files. Windows provides repair, uninstall, and upgrade support; selected NI products remain on-demand downloads. A Windows installer cannot run on macOS or Linux; those platforms can run the cross-platform Avalonia UI from source with the .NET SDK.
 
+## Interactive clean-machine validation download
+
+The current internal LabVIEW 2026 Q3 clean-machine validation setup is an interactive Windows executable, not a CLI workflow:
+
+`http://192.168.68.125:8081/Files/NISetupPrototypeRepository/bundles/clean-machine-validation/labview-2026-q3-x64/NI-Platform-Setup-Clean-Machine-POC-win-x64.zip`
+
+On a clean Windows x64 computer, download and extract the ZIP, then run `NI Platform Setup\NI Setup.exe`. In the setup window, choose **Recommended setup**, keep **LabVIEW 2026 Q3 x64** selected, connect the supplied source repository, review the change, and choose **Download and install LabVIEW**. The app downloads and verifies the package under the current user's local application data, then Windows requests administrator approval only for the Program Files installation step. The app remains open to show installation progress, completion, or an actionable error.
+
+The clean-machine package protects an existing target: it refuses to overwrite `C:\Program Files\National Instruments\LabVIEW 2026`. It records copied files for rollback and ownership, and does not modify drivers, firmware, services, activation, licensing, registry state, or machine configuration. It remains an internal `reference-derived-poc` until a fresh Windows-machine test confirms that LabVIEW starts and reports the expected product version.
+
 This repository is an R&D prototype for a new NI software installation model and its customer-facing experience. It explores how customers can install, update, repair, and remove only the applications, APIs, configuration tools, hardware-family support, drivers, and firmware they need.
 
 The repository is intentionally documentation-first. It is the reviewable record R&D teams use to converge on a build-output contract that can serve the eventual component model. A design conclusion, an evidence-backed change to that contract, or a new required build output must be documented here before it is treated as a prototype requirement.
@@ -26,6 +36,8 @@ The repository is intentionally documentation-first. It is the reviewable record
 
 The current internal repository publishes a managed-install catalog for the staged MAX, NI-DAQmx runtime, NI-DAQmx LabVIEW adapter, and documentation source artifacts. The UI enables only catalog-backed selections and blocks LabVIEW, drivers, firmware, services, and unstaged products. Each catalog entry has an immutable SHA-256 digest, version, and `managed-file-copy` scope.
 
+An additional internal clean-machine validation path now exists for the captured LabVIEW 2026 Q3 reference POC archive. The elevated Windows CLI verifies the archive's fixed SHA-256, extracts only its manifest-listed application files into an empty `C:\Program Files\National Instruments\LabVIEW 2026` target, verifies every copied file, records a machine-level ownership ledger, rolls back a failed transaction, and removes only ledger-owned files. It does not install drivers, services, firmware, registry state, machine configuration, activation, or licensing data. This is an executable POC transaction, not a claim that the resulting application is functionally validated on a clean machine; that validation remains required.
+
 The current experience tests:
 
 1. A managed source-artifact foundation: NI Measurement & Automation Explorer and NI-DAQmx.
@@ -43,9 +55,13 @@ The current experience tests:
 | [Coexistence and revision policy](docs/coexistence-and-revision-policy.md) | One selected primary release, catalog-controlled user-mode coexistence, and singleton driver/service/firmware domains. | Evidence-informed prototype policy |
 | [Driver modernization and API decoupling](docs/driver-modernization-and-api-decoupling.md) | Separate API/runtime delivery from deliberately rebuilt, individually signed hardware-driver packages. | Recommended architecture direction |
 | [Source-component assembly pipeline](docs/source-component-assembly.md) | Transforms original package intake into new content-addressed API/application source artifacts while excluding kernel driver content. | Executable prototype pipeline |
+| [Candidate contract intake](docs/candidate-contract-intake.md) | NI Setup's local, read-only legacy-evidence intake and R&D review workflow. | Implemented prototype workflow |
+| [Native-package product support](docs/native-package-product-support.md) | Observed native NI Package Manager closures and execution boundaries for VISA, TestStand, InstrumentStudio, and DIAdem. | Closure evidence complete; execution pending |
 | [Reference-component POC capture](docs/reference-component-poc-capture.md) | Controlled use of reference-machine components; safety, exclusions, provenance, and initial scope. | Planned implementation |
+| [Final-state capture](docs/final-state-capture.md) | Read-only installed-system discovery and reviewed LabVIEW VI overlay capture workflow. | Implemented discovery; awaiting Windows capture |
 | [SMB prototype repository](docs/nas-prototype-repository.md) | Chosen internal payload location, repository shape, exclusions, and clean-machine validation criterion. | Infrastructure ready; payloads pending review |
 | [Windows prototype source connection](docs/windows-smb-source-connection.md) | Connect the Windows UI to a local HTTP/HTTPS repository endpoint, with SMB retained as an optional fallback. | Implemented prototype access flow |
+| [Windows setup installer](docs/windows-setup-installer.md) | MSI distribution, Windows lifecycle behavior, and the Authenticode signing gate. | Implemented packaging; signing pending |
 | [Testing and CI](docs/testing.md) | Isolated deployment safety harness, local test command, and GitHub Actions validation scope. | Implemented baseline |
 | [Component repository and packaging architecture](docs/component-repository-and-packaging-architecture.md) | Artifact, catalog, channel, repository, and upgrade design. | Design hypothesis |
 | [NI-DAQmx cut-point hypothesis](docs/ni-daqmx-cut-point-hypothesis.md) | Evidence-based starting boundaries and tests for NI-DAQmx. | Evidence-informed hypothesis |
@@ -81,7 +97,7 @@ The prototype uses Avalonia and C# on .NET 10. Avalonia enables one native deskt
 
 ## Run the UI prototype
 
-From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET SDK. On Windows, the app opens as a native desktop window; on macOS, it runs locally for UX iteration.
+From [NIInstallerTech](NIInstallerTech), run `dotnet run` using a supported .NET SDK. On Windows, macOS, and Linux, the app opens as a native desktop window for UX iteration. The published GitHub executable is currently Windows x64 only.
 
 ## NI Setup updates
 
