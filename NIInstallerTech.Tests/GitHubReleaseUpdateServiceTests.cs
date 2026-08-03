@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using NIInstallerTech.Services;
 using Xunit;
@@ -52,6 +53,32 @@ public sealed class GitHubReleaseUpdateServiceTests
         Assert.Null(update);
     }
 
+    [Fact]
+    public async Task DownloadAndVerifyAsync_ClosesThePackageBeforeReturning()
+    {
+        var package = Encoding.UTF8.GetBytes("verified update package");
+        var checksum = Convert.ToHexString(SHA256.HashData(package)).ToLowerInvariant();
+        using var client = new HttpClient(new RouteResponseHandler(request => request.RequestUri!.AbsolutePath switch
+        {
+            "/setup.msi" => new HttpResponseMessage(HttpStatusCode.OK) { Content = new ByteArrayContent(package) },
+            "/setup.msi.sha256" => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{checksum}  setup.msi") },
+            _ => new HttpResponseMessage(HttpStatusCode.NotFound)
+        }));
+        var service = new GitHubReleaseUpdateService(client);
+        var update = new UpdateRelease("0.0.2", new Uri("https://example.test/setup.msi"), new Uri("https://example.test/setup.msi.sha256"), string.Empty);
+
+        var packagePath = await service.DownloadAndVerifyAsync(update);
+        try
+        {
+            await using var lockProbe = new FileStream(packagePath, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            Assert.Equal(package.Length, lockProbe.Length);
+        }
+        finally
+        {
+            File.Delete(packagePath);
+        }
+    }
+
     private sealed class StaticResponseHandler(string response) : HttpMessageHandler
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -61,6 +88,12 @@ public sealed class GitHubReleaseUpdateServiceTests
                 Content = new StringContent(response, Encoding.UTF8, "application/json")
             });
         }
+    }
+
+    private sealed class RouteResponseHandler(Func<HttpRequestMessage, HttpResponseMessage> responseFactory) : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            => Task.FromResult(responseFactory(request));
     }
 
 }

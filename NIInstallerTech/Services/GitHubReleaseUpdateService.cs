@@ -81,21 +81,24 @@ public sealed class GitHubReleaseUpdateService
             response.EnsureSuccessStatusCode();
             var totalBytes = response.Content.Headers.ContentLength;
             await using var source = await response.Content.ReadAsStreamAsync(cancellationToken);
-            await using var destination = new FileStream(destinationPath, FileMode.CreateNew, FileAccess.Write, FileShare.None, 131072, useAsync: true);
-            var buffer = new byte[131072];
-            long downloadedBytes = 0;
-            int read;
-            while ((read = await source.ReadAsync(buffer, cancellationToken)) > 0)
+            await using (var destination = new FileStream(destinationPath, FileMode.CreateNew, FileAccess.Write, FileShare.None, 131072, useAsync: true))
             {
-                await destination.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
-                downloadedBytes += read;
-                if (totalBytes is > 0)
+                var buffer = new byte[131072];
+                long downloadedBytes = 0;
+                int read;
+                while ((read = await source.ReadAsync(buffer, cancellationToken)) > 0)
                 {
-                    progress?.Report((double)downloadedBytes / totalBytes.Value);
+                    await destination.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
+                    downloadedBytes += read;
+                    if (totalBytes is > 0)
+                    {
+                        progress?.Report((double)downloadedBytes / totalBytes.Value);
+                    }
                 }
+
+                await destination.FlushAsync(cancellationToken);
             }
 
-            await destination.FlushAsync(cancellationToken);
             await using var file = File.OpenRead(destinationPath);
             var actualChecksum = Convert.ToHexString(await SHA256.HashDataAsync(file, cancellationToken)).ToLowerInvariant();
             if (!CryptographicOperations.FixedTimeEquals(
