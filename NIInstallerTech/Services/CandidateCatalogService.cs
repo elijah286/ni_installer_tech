@@ -377,6 +377,96 @@ public sealed record LegacyPackageOption(
     public string SelectionLabel => $"{PackageName} {PackageVersion}";
 }
 
+public sealed record LegacyProductGroup(
+    string ProductKey,
+    string ProductName,
+    string VersionLabel,
+    IReadOnlyList<LegacyPackageOption> Packages)
+{
+    public string SelectionLabel => $"{ProductName}  {VersionLabel}";
+    public string ComponentId => ProductKey;
+    public string AllPackagePaths => string.Join(Environment.NewLine, Packages.Select(p => p.PackagePath));
+}
+
+public static class NiProductNameResolver
+{
+    // Ordered most-specific first so the first matching prefix wins.
+    private static readonly (string Prefix, string ProductKey, string? DisplayName)[] KnownPrefixes =
+    [
+        ("ni-labview-2026", "ni-labview-2026", "LabVIEW 2026"),
+        ("ni-labview-2025", "ni-labview-2025", "LabVIEW 2025"),
+        ("ni-labview-2024", "ni-labview-2024", "LabVIEW 2024"),
+        ("ni-labview-2023", "ni-labview-2023", "LabVIEW 2023"),
+        ("ni-labview-2022", "ni-labview-2022", "LabVIEW 2022"),
+        ("ni-labview",      "ni-labview",      "LabVIEW"),
+        ("ni-system-configuration", "ni-system-configuration", "NI System Configuration"),
+        ("ni-package-manager",      "ni-package-manager",      "NI Package Manager"),
+        ("ni-teststand",            "ni-teststand",             "NI TestStand"),
+        ("ni-daqmx",                "ni-daqmx",                "NI-DAQmx"),
+        ("ni-488.2",                "ni-488.2",                "NI-488.2"),
+        ("ni-visa",                 "ni-visa",                 "NI-VISA"),
+        ("ni-fpga",                 "ni-fpga",                 "NI-FPGA"),
+        ("ni-rio",                  "ni-rio",                  "NI-RIO"),
+        ("ni-assistant-framework",  "ni-assistant-framework",  "NI Assistant Framework"),
+        ("ni-python",               "ni-python",               "Python for NI"),
+        ("ni-auth",                 "ni-auth",                 "NI Auth"),
+        ("ni-ceip",                 "ni-ceip",                 "NI CEIP"),
+        ("ni-msiproperties",        "ni-msiproperties",        "NI MSI Properties"),
+        ("eula-",                   "eula",                    null),   // excluded from product list
+        ("system-windows",          "system-windows",          "Windows System"),
+        ("system-",                 "system",                  "System"),
+    ];
+
+    /// <summary>Returns null for packages that should not appear as selectable products (e.g. EULA packages).</summary>
+    public static (string ProductKey, string DisplayName)? Resolve(string packageName)
+    {
+        foreach (var (prefix, key, name) in KnownPrefixes)
+        {
+            if (packageName.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                return name is null ? null : (key, name);
+        }
+        return (packageName, packageName);
+    }
+
+    /// <summary>Returns the major.minor portion of an NIPM version string like "25.8.0.49257-0+f105".</summary>
+    public static string FormatVersionLabel(string packageVersion)
+    {
+        var dashIndex = packageVersion.IndexOf('-');
+        var clean = dashIndex > 0 ? packageVersion[..dashIndex] : packageVersion;
+        var parts = clean.Split('.');
+        return parts.Length >= 2 ? $"{parts[0]}.{parts[1]}" : clean;
+    }
+
+    /// <summary>Groups a flat package list into product-level entries, ordered by product name then version.</summary>
+    public static IReadOnlyList<LegacyProductGroup> GroupIntoProducts(IEnumerable<LegacyPackageOption> packages)
+    {
+        var buckets = new Dictionary<string, (string DisplayName, List<LegacyPackageOption> Items)>(StringComparer.OrdinalIgnoreCase);
+        foreach (var package in packages)
+        {
+            var resolved = Resolve(package.PackageName);
+            if (resolved is null) continue; // skip excluded categories such as EULA packages
+            var (key, name) = resolved.Value;
+            if (!buckets.TryGetValue(key, out var bucket))
+                buckets[key] = bucket = (name, []);
+            bucket.Items.Add(package);
+        }
+
+        return [.. buckets
+            .Select(kv =>
+            {
+                var items = kv.Value.Items;
+                // Use the most-common major.minor across the group as the version label.
+                var versionLabel = items
+                    .GroupBy(p => FormatVersionLabel(p.PackageVersion), StringComparer.OrdinalIgnoreCase)
+                    .OrderByDescending(g => g.Count())
+                    .First().Key;
+                return new LegacyProductGroup(kv.Key, kv.Value.DisplayName, versionLabel, items);
+            })
+            .OrderBy(g => g.ProductName, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(g => g.VersionLabel, StringComparer.OrdinalIgnoreCase)];
+    }
+}
+
 public sealed record LegacyPackageIndexResult(
     IReadOnlyList<LegacyPackageOption> Packages,
     int IndexedPackageCount,

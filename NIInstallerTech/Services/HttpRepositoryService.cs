@@ -50,7 +50,7 @@ public sealed class HttpRepositoryService
             var root = document.RootElement;
             var id = root.TryGetProperty("id", out var idElement) ? idElement.GetString() : null;
             var state = root.TryGetProperty("state", out var stateElement) ? stateElement.GetString() : null;
-            var repositoryUri = new Uri(metadataUri, "..");
+            var repositoryUri = new Uri(metadataUri, "../..");
             if (!string.Equals(id, ExpectedRepositoryId, StringComparison.Ordinal))
             {
                 return RepositoryAccessResult.ConnectedButNotReady(

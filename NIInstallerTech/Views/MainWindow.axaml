@@ -84,9 +84,13 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                     <Ellipse Width="8" Height="8" Fill="#00B894" VerticalAlignment="Center" />
                     <TextBlock Text="NI software portfolio • July 2026" Classes="muted" FontSize="13" />
-                    <Button Classes="version" Click="OnVersionClick" ToolTip.Tip="Check for NI Setup updates">
-                        <TextBlock Text="{x:Static local:AppVersion.Display}" />
-                    </Button>
+                    <Panel>
+                        <Button Classes="version" Click="OnVersionClick" ToolTip.Tip="Check for NI Setup updates">
+                            <TextBlock Text="{x:Static local:AppVersion.Display}" />
+                        </Button>
+                        <Ellipse x:Name="UpdateBadge" Width="8" Height="8" Fill="#F59E0B" IsVisible="False"
+                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-3,-3,0" />
+                    </Panel>
                 </StackPanel>
             </Grid>
         </Border>
@@ -584,27 +588,30 @@
                             </Grid>
                         </Border>
                         <StackPanel Spacing="5">
-                            <TextBlock Text="Discovered NIPM package" Classes="muted" FontSize="12" />
-                            <ComboBox ItemsSource="{Binding LegacyPackageOptions}" SelectedItem="{Binding SelectedLegacyPackage}" MinHeight="38" PlaceholderText="Index a package cache to populate this list">
+                            <TextBlock Text="Discovered NI product" Classes="muted" FontSize="12" />
+                            <ComboBox ItemsSource="{Binding LegacyProductOptions}" SelectedItem="{Binding SelectedLegacyProduct}" MinHeight="38" PlaceholderText="Index a package cache to populate this list">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid ColumnDefinitions="*,Auto" Margin="4">
-                                            <TextBlock Text="{Binding SelectionLabel}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding ProductName}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                                <TextBlock Text="{Binding VersionLabel}" Classes="muted" FontSize="11" />
+                                            </StackPanel>
                                             <TextBlock Grid.Column="1" Text="NIPM" Foreground="#005F4B" FontSize="11" VerticalAlignment="Center" />
                                         </Grid>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                         </StackPanel>
-                        <Border IsVisible="{Binding HasSelectedLegacyPackage}" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" CornerRadius="6" Padding="12">
+                        <Border IsVisible="{Binding HasSelectedLegacyProduct}" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" CornerRadius="6" Padding="12">
                             <StackPanel Spacing="4">
-                                <TextBlock Text="{Binding SelectedLegacyPackage.PackageName}" FontWeight="SemiBold" />
-                                <TextBlock Text="{Binding SelectedLegacyPackage.PackageVersion}" Foreground="#005F4B" FontSize="12" FontWeight="SemiBold" />
-                                <TextBlock Text="{Binding SelectedLegacyPackage.PackagePath}" Classes="muted" FontSize="11" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding SelectedLegacyProduct.ProductName}" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding SelectedLegacyProduct.VersionLabel}" Foreground="#005F4B" FontSize="12" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding SelectedLegacyProduct.ProductKey}" Classes="muted" FontSize="11" TextWrapping="Wrap" />
                             </StackPanel>
                         </Border>
                         <StackPanel Orientation="Horizontal" Spacing="12">
-                            <Button Classes="primary" Command="{Binding CreateCandidateFromSelectedPackageCommand}" IsEnabled="{Binding HasSelectedLegacyPackage}" Content="Create or refresh candidate contract" />
+                            <Button Classes="primary" Command="{Binding CreateCandidateFromSelectedPackageCommand}" IsEnabled="{Binding HasSelectedLegacyProduct}" Content="Create or refresh candidate contract" />
                             <TextBlock Text="{Binding CandidateIntakeStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="500" />
                         </StackPanel>
                         <Expander Header="Use a nonstandard or mounted NIPM cache" FontWeight="SemiBold">

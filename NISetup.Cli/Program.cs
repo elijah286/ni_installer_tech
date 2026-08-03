@@ -1,9 +1,12 @@
+using System.Security.Principal;
 using System.Text.Json;
+using NIInstallerTech.Services;
 
 const int Success = 0;
 const int InvalidArguments = 2;
 const int PolicyViolation = 4;
 const int UnsupportedOperation = 6;
+const string LabviewReferencePocArchiveSha256 = "8a2f6f00f13ff9c8083f694b4ec2fdf81b71577aac2af7d26ac0f3c2ae822a91";
 
 var arguments = args.ToList();
 var command = arguments.FirstOrDefault() ?? "help";
@@ -108,6 +111,61 @@ switch (command)
         WriteResult(new CliResult("simulated", "The non-interactive installation plan was validated; no machine state, drivers, firmware, licensing, or activation state was changed.", plan), format);
         return Success;
 
+    case "install-reference-poc":
+        if (!nonInteractive)
+        {
+            WriteError("Clean-machine installation requires --non-interactive.", PolicyViolation, options);
+            return PolicyViolation;
+        }
+
+        if (!options.ContainsKey("acknowledge-reference-poc"))
+        {
+            WriteError("Clean-machine installation of a reference-derived POC requires --acknowledge-reference-poc.", PolicyViolation, options);
+            return PolicyViolation;
+        }
+
+        if (!OperatingSystem.IsWindows())
+        {
+            WriteError("Clean-machine LabVIEW deployment is supported only on Windows x64.", UnsupportedOperation, options);
+            return UnsupportedOperation;
+        }
+
+        if (!IsWindowsAdministrator())
+        {
+            WriteError("Clean-machine LabVIEW deployment must run from an elevated Windows console.", PolicyViolation, options);
+            return PolicyViolation;
+        }
+
+        if (!options.TryGetValue("archive", out var archivePath))
+        {
+            WriteError("--archive is required for install-reference-poc.", InvalidArguments, options);
+            return InvalidArguments;
+        }
+
+        var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+        if (string.IsNullOrWhiteSpace(programFiles))
+        {
+            WriteError("The Windows Program Files location could not be resolved.", UnsupportedOperation, options);
+            return UnsupportedOperation;
+        }
+
+        var stateDirectory = options.GetValueOrDefault("state-directory");
+        var deploymentService = new CleanMachineDeploymentService(stateDirectory);
+        var operationLog = new PrototypeOperationLog(deploymentService.StateDirectory);
+        var deployment = deploymentService.Install(
+            new CleanMachineDeploymentRequest(
+                "labview.application.2026-q3.x64",
+                "26.30.49792",
+                archivePath,
+                LabviewReferencePocArchiveSha256,
+                Path.Combine(programFiles, "National Instruments", "LabVIEW 2026"),
+                "labview-application",
+                "LabVIEW.exe",
+                true),
+            operationLog);
+        WriteResult(deployment, format);
+        return deployment.IsSuccess ? Success : PolicyViolation;
+
     default:
         WriteError($"Unknown command '{command}'.", InvalidArguments, options);
         WriteHelp();
@@ -130,7 +188,7 @@ static Dictionary<string, string> ParseOptions(IReadOnlyList<string> arguments, 
         }
 
         var key = argument[2..];
-        if (key is "help" or "non-interactive" or "simulate")
+        if (key is "help" or "non-interactive" or "simulate" or "acknowledge-reference-poc")
         {
             options[key] = "true";
             continue;
@@ -146,6 +204,12 @@ static Dictionary<string, string> ParseOptions(IReadOnlyList<string> arguments, 
     }
 
     return options;
+}
+
+static bool IsWindowsAdministrator()
+{
+    using var identity = WindowsIdentity.GetCurrent();
+    return new WindowsPrincipal(identity).IsInRole(WindowsBuiltInRole.Administrator);
 }
 
 static InstallationPlan CreatePlan(string profile, string source, string platform, string labviewRelease, string? repository)
@@ -215,9 +279,11 @@ Usage:
     ni-setup plan [--profile recommended|hardware|test-system] [--labview-release 2026-q1|2026-q3] [--source ni|offline|repository] [--repository URL] [--platform OS-ARCH] [--format json]
     ni-setup bundle create --simulate [--profile ...] [--labview-release ...] [--source ni|repository] [--format json]
     ni-setup install --non-interactive --simulate [--profile ...] [--labview-release ...] [--source ni|offline|repository] [--format json]
+    ni-setup install-reference-poc --non-interactive --acknowledge-reference-poc --archive PATH [--state-directory PATH] [--format json]
 
 The CLI is safe for containers: this prototype never installs software, drivers, firmware, or licensing material.
 Use --simulate for bundle/install because the deployment engine is not implemented yet.
+install-reference-poc is an elevated Windows-only clean-machine validation command for the exact internal LabVIEW 2026 Q3 POC archive. It does not change NI activation or licensing.
 """);
 }
 

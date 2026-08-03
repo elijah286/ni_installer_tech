@@ -13,7 +13,7 @@ namespace NIInstallerTech.Services;
 public sealed class GitHubReleaseUpdateService
 {
     private const string ReleaseAssetName = "NI-Platform-Setup-win-x64.msi";
-    private const string LatestReleaseUrl = "https://api.github.com/repos/elijah286/ni_installer_tech/releases/latest";
+    private const string ReleasesUrl = "https://api.github.com/repos/elijah286/ni_installer_tech/releases?per_page=10";
     private readonly HttpClient _httpClient;
 
     public GitHubReleaseUpdateService(HttpClient? httpClient = null)
@@ -27,16 +27,17 @@ public sealed class GitHubReleaseUpdateService
 
     public async Task<UpdateRelease?> CheckForUpdateAsync(CancellationToken cancellationToken = default)
     {
-        using var response = await _httpClient.GetAsync(LatestReleaseUrl, cancellationToken);
+        using var response = await _httpClient.GetAsync(ReleasesUrl, cancellationToken);
         response.EnsureSuccessStatusCode();
         await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
         using var document = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
-        var release = document.RootElement;
 
-        if (release.GetProperty("draft").GetBoolean() || release.GetProperty("prerelease").GetBoolean())
-        {
+        // Accept either a /releases array (surfaces pre-releases) or a single /releases/latest object.
+        var release = document.RootElement.ValueKind == JsonValueKind.Array
+            ? document.RootElement.EnumerateArray().FirstOrDefault(r => !r.GetProperty("draft").GetBoolean())
+            : document.RootElement;
+        if (release.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null || release.GetProperty("draft").GetBoolean())
             return null;
-        }
 
         var version = release.GetProperty("tag_name").GetString()?.TrimStart('v');
         if (string.IsNullOrWhiteSpace(version) || !IsNewer(version, AppVersion.Display))

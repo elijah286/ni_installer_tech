@@ -12,10 +12,23 @@ public partial class UpdateDialog : Window
     private readonly GitHubReleaseUpdateService _updateService = new();
     private UpdateRelease? _availableUpdate;
 
-    public UpdateDialog()
+    public UpdateDialog() : this(null) { }
+
+    public UpdateDialog(UpdateRelease? availableUpdate)
     {
         InitializeComponent();
         CurrentVersionText.Text = $"Installed version {AppVersion.Display}";
+        if (availableUpdate is not null)
+            ApplyUpdate(availableUpdate);
+    }
+
+    private void ApplyUpdate(UpdateRelease update)
+    {
+        _availableUpdate = update;
+        StatusText.Text = $"Version {update.Version} is available.";
+        ReleaseNotesText.Text = update.Notes;
+        ReleaseNotesText.IsVisible = !string.IsNullOrWhiteSpace(update.Notes);
+        InstallButton.IsEnabled = true;
     }
 
     private async void OnCheckForUpdatesClick(object? sender, RoutedEventArgs e)
@@ -34,10 +47,7 @@ public partial class UpdateDialog : Window
                 return;
             }
 
-            StatusText.Text = $"Version {_availableUpdate.Version} is ready to install.";
-            ReleaseNotesText.Text = _availableUpdate.Notes;
-            ReleaseNotesText.IsVisible = !string.IsNullOrWhiteSpace(_availableUpdate.Notes);
-            InstallButton.IsEnabled = true;
+            ApplyUpdate(_availableUpdate);
         }
         catch (Exception exception)
         {

@@ -30,6 +30,7 @@ A future supported container execution model must separately validate the host-d
 | `plan` | Resolve a capability/profile into component planes and boundaries. | None |
 | `bundle create --simulate` | Validate the complete artifact closure that would form one portable offline installer. | None |
 | `install --non-interactive --simulate` | Validate a headless installation plan. | None |
+| `install-reference-poc` | Install the exact internal LabVIEW 2026 Q3 reference POC archive for clean-machine validation. | Windows x64 only; elevated |
 
 ### Common options
 
@@ -43,6 +44,9 @@ A future supported container execution model must separately validate the host-d
 | `--format json\|text` | Output format. Automation should use `json`. |
 | `--non-interactive` | Required by `install`; declares that no prompt can be shown. |
 | `--simulate` | Required for mutating command shapes in this prototype. Validates without downloading, installing, or writing a bundle. |
+| `--acknowledge-reference-poc` | Explicitly permits the narrowly scoped internal reference-derived clean-machine validation command. |
+| `--archive <PATH>` | Required local path to the exact reference POC archive used by `install-reference-poc`. |
+| `--state-directory <PATH>` | Optional machine-level state and ownership-ledger root for `install-reference-poc`. |
 
 ### Examples
 
@@ -71,6 +75,19 @@ Validate an unattended headless install plan:
 ```sh
 ni-setup install --non-interactive --simulate --profile recommended --source ni --format json
 ```
+
+## Clean-machine reference POC
+
+The following command is intentionally separate from generic `install`. It runs only from an elevated Windows console and accepts only the published LabVIEW 2026 Q3 reference POC archive with SHA-256 `8a2f6f00f13ff9c8083f694b4ec2fdf81b71577aac2af7d26ac0f3c2ae822a91`.
+
+```powershell
+ni-setup install-reference-poc --non-interactive --acknowledge-reference-poc `
+  --archive "\\server\share\labview.application.2026-q3.x64-26.30.49792.reference-derived-poc.tar" --format json
+```
+
+The command refuses an existing target and installs only into `C:\Program Files\National Instruments\LabVIEW 2026`. It verifies the archive digest, validates every copied file against the embedded payload manifest, records a durable machine-level ownership ledger, rolls back files created by a failed transaction, and removes only ledger-owned files when the corresponding service API is invoked. It does not mutate drivers, firmware, services, registry configuration, activation, or licensing.
+
+This is a clean-machine validation POC, not a functional-install claim. The captured archive has a placeholder application health check, so a clean Windows x64 test must still prove that LabVIEW starts and reports the expected product version without changing NI activation behavior before this command can be promoted beyond the internal validation boundary.
 
 ## JSON contract
 

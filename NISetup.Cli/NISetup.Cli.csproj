@@ -7,4 +7,9 @@
     <AssemblyName>ni-setup</AssemblyName>
     <RootNamespace>NISetup.Cli</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\NIInstallerTech\Services\CleanMachineDeploymentService.cs" Link="Services\CleanMachineDeploymentService.cs" />
+    <Compile Include="..\NIInstallerTech\Services\PrototypeOperationLog.cs" Link="Services\PrototypeOperationLog.cs" />
+  </ItemGroup>
 </Project>

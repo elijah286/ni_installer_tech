@@ -28,14 +28,15 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+$OutputRoot = [System.IO.Path]::GetFullPath($OutputRoot)
 
 $prohibitedPathPatterns = @(
     '(?i)(^|\\)programdata(\\|$)',
     '(?i)(^|\\)driverstore(\\|$)',
     '(?i)(^|\\)appdata(\\|$)',
     '(?i)(^|\\)users(\\|$)',
-    '(?i)(^|\\)(activation|license|licensing|entitlement|credential|secret|password|private.?key|ssh)(\\|$)',
-    '(?i)\.(reg|dat|pfx|p12|pem|key)$'
+    '(?i)(^|\\)[^\\]*(activation|license|licensing|entitlement|credential|secret|password|private.?key|ssh)[^\\]*(\\|$)',
+    '(?i)\.(reg|dat|lic|pfx|p12|pem|key)$'
 )
 
 function Test-ProhibitedPath {
@@ -53,13 +54,15 @@ function Write-JsonFile {
 
 function Get-RelativeDestination {
     param([Parameter(Mandatory)][string]$SourceRoot, [Parameter(Mandatory)][string]$FullName)
-    $relative = [System.IO.Path]::GetRelativePath($SourceRoot, $FullName)
-    if ($relative.StartsWith('..')) { throw "Source path escapes its reviewed root: $FullName" }
-    return $relative.Replace('\', '/')
+    $normalizedRoot = $SourceRoot.TrimEnd('\') + '\'
+    if (-not $FullName.StartsWith($normalizedRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Source path escapes its reviewed root: $FullName"
+    }
+    return $FullName.Substring($normalizedRoot.Length).Replace('\', '/')
 }
 
 $manifest = Get-Content -LiteralPath $ManifestPath -Raw | ConvertFrom-Json
-foreach ($required in 'schemaVersion', 'componentId', 'version', 'review', 'sources') {
+foreach ($required in 'schemaVersion', 'componentId', 'version', 'review', 'sources', 'compatibility') {
     if ($null -eq $manifest.$required) { throw "Manifest is missing '$required'." }
 }
 if ($manifest.review.status -ne 'approved-for-poc-capture') {
@@ -119,13 +122,21 @@ foreach ($source in $manifest.sources) {
 
         if ($CopyPayload) {
             $target = Join-Path $payloadRoot $destination
-            New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force | Out-Null
-            Copy-Item -LiteralPath $file.FullName -Destination $target -Force
+            $targetDirectory = Split-Path -Parent $target
+            $longTargetDirectory = "\\?\$targetDirectory"
+            $longSource = "\\?\$($file.FullName)"
+            $longTarget = "\\?\$target"
+            [System.IO.Directory]::CreateDirectory($longTargetDirectory) | Out-Null
+            [System.IO.File]::Copy($longSource, $longTarget, $true)
+            $copiedHash = (Get-FileHash -LiteralPath $longTarget -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($copiedHash -ne $hash) {
+                throw "Copied payload hash mismatch for '$destination'."
+            }
         }
     }
 }
 
-$totalBytes = ($files | Measure-Object -Property sizeBytes -Sum).Sum
+$totalBytes = [long](($files | ForEach-Object { $_['sizeBytes'] } | Measure-Object -Sum).Sum)
 $timestamp = [DateTime]::UtcNow.ToString('o')
 Write-JsonFile ([ordered]@{
     schemaVersion = 'reference-poc-manifest-v0.1'
@@ -148,6 +159,7 @@ Write-JsonFile ([ordered]@{
 }) (Join-Path $stagingRoot 'origin-evidence.json')
 Write-JsonFile ([ordered]@{ schemaVersion = 'exclusions-v0.1'; excludedFiles = $exclusions; mandatoryExclusions = @('activation', 'licenses', 'entitlements', 'credentials', 'customer data', 'machine configuration', 'raw Driver Store') }) (Join-Path $stagingRoot 'exclusions.json')
 Write-JsonFile ([ordered]@{ schemaVersion = 'resource-claims-v0.1'; confidence = 'candidate'; claims = $manifest.resourceClaims }) (Join-Path $stagingRoot 'resource-claims.json')
+Write-JsonFile ([ordered]@{ schemaVersion = 'compatibility-v0.1'; evidenceStatus = 'reference-machine-observed'; constraints = $manifest.compatibility }) (Join-Path $stagingRoot 'compatibility.json')
 Write-JsonFile ([ordered]@{ schemaVersion = 'provenance-v0.1'; tool = 'Capture-NIReferenceComponent.ps1'; capturedAtUtc = $timestamp; mode = if ($CopyPayload) { 'copy-approved-payload' } else { 'dry-run-manifests-only' }; review = $manifest.review }) (Join-Path $stagingRoot 'provenance.json')
 Write-JsonFile ([ordered]@{ schemaVersion = 'health-check-v0.1'; status = 'placeholder'; check = 'Define a non-destructive component health check before activation.' }) (Join-Path $stagingRoot 'health-check.json')
 
