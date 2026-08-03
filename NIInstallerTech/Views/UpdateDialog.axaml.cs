@@ -23,7 +23,7 @@ public partial class UpdateDialog : Window
         CheckButton.IsEnabled = false;
         InstallButton.IsEnabled = false;
         ReleaseNotesText.IsVisible = false;
-        StatusText.Text = "Checking GitHub for an update...";
+        StatusText.Text = "Checking the approved update source...";
 
         try
         {
@@ -38,6 +38,10 @@ public partial class UpdateDialog : Window
             ReleaseNotesText.Text = _availableUpdate.Notes;
             ReleaseNotesText.IsVisible = !string.IsNullOrWhiteSpace(_availableUpdate.Notes);
             InstallButton.IsEnabled = true;
+        }
+        catch (UpdateFeedUnavailableException exception)
+        {
+            StatusText.Text = exception.Message;
         }
         catch (Exception exception)
         {

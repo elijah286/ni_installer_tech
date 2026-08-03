@@ -14,13 +14,13 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Spacing="8">
-            <TextBlock x:Name="StatusText" Text="Check GitHub for the latest approved setup experience." TextWrapping="Wrap" FontSize="15" />
+            <TextBlock x:Name="StatusText" Text="Check the approved internal source for the latest setup experience." TextWrapping="Wrap" FontSize="15" />
             <ProgressBar x:Name="DownloadProgress" IsVisible="False" Minimum="0" Maximum="1" Height="6" />
             <TextBlock x:Name="ReleaseNotesText" Foreground="#5C615D" TextWrapping="Wrap" IsVisible="False" />
         </StackPanel>
 
         <Border Grid.Row="2" Background="#EDF6F3" Padding="12" CornerRadius="6">
-            <TextBlock Text="Updates download a signed Windows Installer package from the published GitHub release, verify its SHA-256 checksum, then open Windows Installer after NI Setup closes." Foreground="#32435F" FontSize="12" TextWrapping="Wrap" />
+            <TextBlock Text="Updates download a Windows Installer package from the approved source, verify its SHA-256 checksum, then open Windows Installer after NI Setup closes." Foreground="#32435F" FontSize="12" TextWrapping="Wrap" />
         </Border>
 
         <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
