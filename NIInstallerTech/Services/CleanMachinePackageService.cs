@@ -53,26 +53,30 @@ public sealed class CleanMachinePackageService
         var temporaryPath = destinationPath + ".partial-" + Guid.NewGuid().ToString("N");
         try
         {
-            await using var destination = File.Create(temporaryPath);
-            using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
-            var buffer = new byte[1024 * 128];
             long copied = 0;
-            int read;
-            while ((read = await source.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken)) > 0)
+            string actualHash;
+            await using (var destination = File.Create(temporaryPath))
+            using (var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256))
             {
-                await destination.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
-                hash.AppendData(buffer, 0, read);
-                copied += read;
-                progress?.Report(new CleanMachinePackageProgress(copied, totalBytes, "Downloading and verifying the selected package..."));
+                var buffer = new byte[1024 * 128];
+                int read;
+                while ((read = await source.ReadAsync(buffer.AsMemory(0, buffer.Length), cancellationToken)) > 0)
+                {
+                    await destination.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
+                    hash.AppendData(buffer, 0, read);
+                    copied += read;
+                    progress?.Report(new CleanMachinePackageProgress(copied, totalBytes, "Downloading and verifying the selected package..."));
+                }
+
+                actualHash = Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant();
+                await destination.FlushAsync(cancellationToken);
             }
 
-            var actualHash = Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant();
             if (!string.Equals(actualHash, package.ArchiveSha256, StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidDataException($"Package digest mismatch. Expected {package.ArchiveSha256}, received {actualHash}.");
             }
 
-            await destination.FlushAsync(cancellationToken);
             File.Move(temporaryPath, destinationPath, overwrite: true);
             progress?.Report(new CleanMachinePackageProgress(copied, totalBytes ?? copied, "Verified the selected package."));
             return new CleanMachineStagedPackage(package, destinationPath);
