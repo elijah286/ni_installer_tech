@@ -7,7 +7,9 @@
 
 The **Catalog intake** tab in NI Setup helps turn legacy installer artifacts into a reviewable candidate component contract. It is an authoring and evidence-capture workflow, not an installer and not an approval mechanism.
 
-An operator indexes a local or mounted NI Package Manager package cache, then chooses a discovered package from the resulting list. The selected package pre-populates the candidate display name, component ID, source path, version, dependency evidence, and digest; the operator does not begin with an empty product or component-ID form.
+When NI Package Manager is installed locally, Catalog intake detects `nipkg.exe` in the standard Program Files location and automatically indexes its cache under `C:\ProgramData\National Instruments\NI Package Manager`. The discovered package list is ready when the tab opens. A manually entered path exists only as an advanced fallback for nonstandard or mounted approved caches.
+
+An operator chooses a discovered package from the resulting list. The selected package pre-populates the candidate display name, component ID, source path, version, and dependency evidence; the operator does not begin with an empty product or component-ID form.
 
 The indexer recursively reads `.nipkg` package artifacts only. It does not execute NIPM, run an installer, or change the indexed source. Future collectors may add separately reviewable discovery for MSI, EXE, and final installed-state evidence.
 
@@ -15,7 +17,9 @@ For every indexed package, the service records:
 
 - source cache root and package path;
 - package name, version, and declared dependencies from the Debian-style `control` metadata inside `control.tar.gz`; and
-- SHA-256 digest and indexing time.
+- indexing time.
+
+The package artifact is hashed only when the selected package becomes a candidate contract. This keeps automatic discovery responsive on machines whose NIPM cache contains many gigabytes of packages while retaining immutable digest evidence for every reviewed candidate.
 
 ## Local Candidate Database
 

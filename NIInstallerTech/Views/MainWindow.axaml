@@ -572,16 +572,17 @@
 
                 <Border Classes="card" BorderBrush="#9CDACB" Background="#F7FBF9">
                     <StackPanel Spacing="13">
-                        <TextBlock Text="Index a legacy NIPM source" FontSize="17" FontWeight="SemiBold" />
-                        <TextBlock Text="Choose a local or mounted NI Package Manager cache. Setup reads only .nipkg control metadata, dependencies, source paths, and hashes; it does not run NIPM or alter the source." Classes="muted" FontSize="13" TextWrapping="Wrap" />
-                        <StackPanel Spacing="5">
-                            <TextBlock Text="NIPM package-cache folder" Classes="muted" FontSize="12" />
-                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
-                                <TextBox Text="{Binding LegacyPackageSourcePath}" PlaceholderText="C:\ProgramData\National Instruments\NI Package Manager\packages" />
-                                <Button Grid.Column="1" Classes="primary" Command="{Binding IndexLegacyPackageSourceCommand}" Content="Index packages" />
+                        <TextBlock Text="Local NI Package Manager" FontSize="17" FontWeight="SemiBold" />
+                        <TextBlock Text="Setup detects NIPM on this computer and reads its local package cache automatically. It does not run NIPM, change the cache, or approve a package for deployment." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                        <Border Background="White" BorderBrush="#D9DEEA" BorderThickness="1" CornerRadius="6" Padding="12">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <StackPanel Spacing="3">
+                                    <TextBlock Text="{Binding LegacyPackageManagerDetails}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding LegacyPackageIndexStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                </StackPanel>
+                                <Button Grid.Column="1" Classes="subtle" Command="{Binding RefreshLocalNativePackageManagerCommand}" Content="Refresh package list" VerticalAlignment="Top" />
                             </Grid>
-                        </StackPanel>
-                        <TextBlock Text="{Binding LegacyPackageIndexStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                        </Border>
                         <StackPanel Spacing="5">
                             <TextBlock Text="Discovered NIPM package" Classes="muted" FontSize="12" />
                             <ComboBox ItemsSource="{Binding LegacyPackageOptions}" SelectedItem="{Binding SelectedLegacyPackage}" MinHeight="38" PlaceholderText="Index a package cache to populate this list">
@@ -606,6 +607,15 @@
                             <Button Classes="primary" Command="{Binding CreateCandidateFromSelectedPackageCommand}" IsEnabled="{Binding HasSelectedLegacyPackage}" Content="Create or refresh candidate contract" />
                             <TextBlock Text="{Binding CandidateIntakeStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="500" />
                         </StackPanel>
+                        <Expander Header="Use a nonstandard or mounted NIPM cache" FontWeight="SemiBold">
+                            <StackPanel Margin="0,10,0,0" Spacing="7">
+                                <TextBlock Text="Use this only when NIPM is installed outside the standard Windows location or the package source is mounted from another approved machine." Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                    <TextBox Text="{Binding LegacyPackageSourcePath}" PlaceholderText="C:\ProgramData\National Instruments\NI Package Manager" />
+                                    <Button Grid.Column="1" Classes="primary" Command="{Binding IndexLegacyPackageSourceCommand}" Content="Index this cache" />
+                                </Grid>
+                            </StackPanel>
+                        </Expander>
                     </StackPanel>
                 </Border>
 

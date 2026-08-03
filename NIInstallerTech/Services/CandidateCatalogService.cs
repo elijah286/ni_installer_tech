@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Formats.Tar;
 using System.IO;
 using System.IO.Compression;
@@ -28,6 +29,20 @@ public sealed class CandidateCatalogService
 
     public string CatalogPath => Path.Combine(_rootDirectory, "candidate-contract-catalog.json");
     public string LegacyPackageIndexPath => Path.Combine(_rootDirectory, "legacy-package-index.json");
+
+    public static NativePackageManagerInstallation? DiscoverLocalNativePackageManager(string? programFilesDirectory = null, string? commonApplicationDataDirectory = null)
+    {
+        if (programFilesDirectory is null && !OperatingSystem.IsWindows()) return null;
+
+        var programFiles = programFilesDirectory ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+        var nipkgPath = Path.Combine(programFiles, "National Instruments", "NI Package Manager", "nipkg.exe");
+        if (!File.Exists(nipkgPath)) return null;
+
+        var programData = commonApplicationDataDirectory ?? Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+        var cachePath = Path.Combine(programData, "National Instruments", "NI Package Manager");
+        var version = FileVersionInfo.GetVersionInfo(nipkgPath).ProductVersion;
+        return new NativePackageManagerInstallation(nipkgPath, cachePath, string.IsNullOrWhiteSpace(version) ? "unknown" : version);
+    }
 
     public async Task<LegacyPackageIndex> LoadLegacyPackageIndexAsync(CancellationToken cancellationToken = default)
     {
@@ -64,14 +79,12 @@ public sealed class CandidateCatalogService
                 try
                 {
                     var metadata = ReadNativePackageMetadata(packagePath);
-                    await using var stream = File.OpenRead(packagePath);
-                    var digest = Convert.ToHexString(await SHA256.HashDataAsync(stream, cancellationToken)).ToLowerInvariant();
                     discovered.Add(new LegacyPackageOption(
                         fullSourcePath,
                         metadata.Name,
                         metadata.Version,
                         packagePath,
-                        digest,
+                        string.Empty,
                         metadata.Dependencies,
                         DateTimeOffset.UtcNow));
                 }
@@ -349,6 +362,8 @@ public sealed class CandidateCatalogService
 public sealed record CandidateCatalog(string SchemaVersion, List<CandidateComponent> Components);
 
 public sealed record LegacyPackageIndex(string SchemaVersion, List<LegacyPackageOption> Packages);
+
+public sealed record NativePackageManagerInstallation(string NipkgPath, string PackageCachePath, string Version);
 
 public sealed record LegacyPackageOption(
     string SourceRoot,

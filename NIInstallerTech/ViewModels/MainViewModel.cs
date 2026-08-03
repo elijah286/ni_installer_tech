@@ -33,7 +33,7 @@ public partial class MainViewModel : ViewModelBase
         InstalledComponentCount = _deploymentService.GetInstalledComponentCount();
         ConfigurePlan(SetupScenario.Application);
         _ = LoadCandidateContractsAsync();
-        _ = LoadLegacyPackageOptionsAsync();
+        _ = InitializeLegacyPackageOptionsAsync();
     }
 
     public ObservableCollection<SetupComponent> Components { get; }
@@ -57,7 +57,10 @@ public partial class MainViewModel : ViewModelBase
     private string _legacyPackageSourcePath = string.Empty;
 
     [ObservableProperty]
-    private string _legacyPackageIndexStatus = "Index a local or mounted NIPM package cache to discover selectable packages.";
+    private string _legacyPackageIndexStatus = "Looking for NI Package Manager on this computer...";
+
+    [ObservableProperty]
+    private string _legacyPackageManagerDetails = "NIPM has not been detected yet.";
 
     [ObservableProperty]
     private string _legacyPackageIndexPath = string.Empty;
@@ -703,7 +706,13 @@ public partial class MainViewModel : ViewModelBase
     {
         IsCatalogIntakeWorkspace = true;
         await LoadCandidateContractsAsync();
-        await LoadLegacyPackageOptionsAsync();
+        await InitializeLegacyPackageOptionsAsync();
+    }
+
+    [RelayCommand]
+    private async Task RefreshLocalNativePackageManager()
+    {
+        await InitializeLegacyPackageOptionsAsync(forceRefresh: true);
     }
 
     [RelayCommand]
@@ -841,6 +850,41 @@ public partial class MainViewModel : ViewModelBase
         catch (Exception exception)
         {
             LegacyPackageIndexStatus = $"The legacy package index could not be loaded: {exception.Message}";
+        }
+    }
+
+    private async Task InitializeLegacyPackageOptionsAsync(bool forceRefresh = false)
+    {
+        await LoadLegacyPackageOptionsAsync();
+        var installation = CandidateCatalogService.DiscoverLocalNativePackageManager();
+        if (installation is null)
+        {
+            LegacyPackageManagerDetails = "NI Package Manager was not found in the standard Windows installation location.";
+            LegacyPackageIndexStatus = "No local NIPM cache is available to index. Use the advanced source option only for a nonstandard or mounted cache.";
+            return;
+        }
+
+        LegacyPackageSourcePath = installation.PackageCachePath;
+        LegacyPackageManagerDetails = $"Found NIPM {installation.Version} at {installation.NipkgPath}.";
+        var alreadyIndexed = LegacyPackageOptions.Any(package => string.Equals(package.SourceRoot, installation.PackageCachePath, StringComparison.OrdinalIgnoreCase));
+        if (alreadyIndexed && !forceRefresh)
+        {
+            LegacyPackageIndexStatus = $"Loaded {LegacyPackageOptions.Count(package => string.Equals(package.SourceRoot, installation.PackageCachePath, StringComparison.OrdinalIgnoreCase))} package(s) previously indexed from the local NIPM cache.";
+            return;
+        }
+
+        LegacyPackageIndexStatus = "Found local NIPM. Reading package metadata to populate the catalog list...";
+        try
+        {
+            var result = await _candidateCatalogService.IndexNativePackageSourceAsync(installation.PackageCachePath);
+            await LoadLegacyPackageOptionsAsync();
+            LegacyPackageIndexStatus = result.Warnings.Count == 0
+                ? $"Indexed {result.IndexedPackageCount} package(s) from the local NIPM cache."
+                : $"Indexed {result.IndexedPackageCount} package(s) from the local NIPM cache with {result.Warnings.Count} unreadable package(s).";
+        }
+        catch (Exception exception)
+        {
+            LegacyPackageIndexStatus = $"Local NIPM was found, but its package cache could not be indexed: {exception.Message}";
         }
     }
 

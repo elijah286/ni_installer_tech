@@ -74,6 +74,23 @@ public sealed class CandidateCatalogServiceTests
         Assert.True(File.Exists(service.LegacyPackageIndexPath));
     }
 
+    [Fact]
+    public void DiscoverLocalNativePackageManager_ReturnsInstalledExecutableAndCachePath()
+    {
+        using var workspace = new TestWorkspace();
+        var programFilesPath = Path.Combine(workspace.RootDirectory, "Program Files");
+        var programDataPath = Path.Combine(workspace.RootDirectory, "ProgramData");
+        var nipkgPath = Path.Combine(programFilesPath, "National Instruments", "NI Package Manager", "nipkg.exe");
+        Directory.CreateDirectory(Path.GetDirectoryName(nipkgPath)!);
+        File.WriteAllText(nipkgPath, "NIPM evidence only");
+
+        var installation = CandidateCatalogService.DiscoverLocalNativePackageManager(programFilesPath, programDataPath);
+
+        Assert.NotNull(installation);
+        Assert.Equal(nipkgPath, installation.NipkgPath);
+        Assert.Equal(Path.Combine(programDataPath, "National Instruments", "NI Package Manager"), installation.PackageCachePath);
+    }
+
     private static byte[] CreateNativePackage(string controlContents)
     {
         byte[] controlTar;
