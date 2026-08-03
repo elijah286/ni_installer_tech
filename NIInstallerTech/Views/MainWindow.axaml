@@ -308,6 +308,16 @@
                         </StackPanel>
                     </Border>
 
+                    <Border Classes="card" Background="#F2FAF7" BorderBrush="#9CDACB">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Verify the download source" Foreground="#005F4B" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Text="Setup verifies the selected package before it downloads anything. The default source is already configured for this internal validation package." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                            <Button Classes="primary" Command="{Binding ConnectRepositoryCommand}" HorizontalAlignment="Left" Content="Connect and verify source" />
+                            <TextBlock Text="{Binding RepositoryStatus}" Foreground="{Binding RepositoryStatusColor}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding RepositoryDetails}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
                     <Expander Header="Organization-approved repository (advanced)" FontWeight="SemiBold">
                         <Border Classes="card" Margin="0,10,0,0" Padding="16">
                             <StackPanel Spacing="11">
@@ -425,9 +435,24 @@
                         </StackPanel>
                     </Border>
 
+                    <Border IsVisible="{Binding HasInstallationFailure}" Background="#FFF1F0" BorderBrush="#E6A5A0" BorderThickness="1" CornerRadius="8" Padding="18">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                            <Border Width="30" Height="30" Background="#F8D5D2" CornerRadius="15">
+                                <TextBlock Text="!" Foreground="#A52A2A" FontWeight="Bold" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <StackPanel Grid.Column="1" Spacing="7">
+                                <TextBlock Text="{Binding InstallationFailureTitle}" Foreground="#8F2424" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding InstallationFailureDetail}" Foreground="#5B3131" FontSize="13" TextWrapping="Wrap" />
+                                <TextBlock Text="Next step" Foreground="#8F2424" FontSize="12" FontWeight="SemiBold" Margin="0,5,0,0" />
+                                <TextBlock Text="{Binding InstallationRecoveryGuidance}" Foreground="#5B3131" FontSize="13" TextWrapping="Wrap" />
+                                <Button Classes="primary" Command="{Binding RetryInstallationCommand}" Content="Try again" HorizontalAlignment="Left" Margin="0,6,0,0" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
                     <Border Background="#F2FAF7" BorderBrush="#9CDACB" BorderThickness="1" CornerRadius="8" Padding="16">
                         <StackPanel Spacing="6">
-                            <TextBlock Text="Managed deployment preflight" Foreground="#005F4B" FontWeight="SemiBold" />
+                            <TextBlock Text="Installation preparation" Foreground="#005F4B" FontWeight="SemiBold" />
                             <TextBlock Text="{Binding DeploymentStatus}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding OperationLogPath}" Foreground="#43506A" FontSize="12" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding InstalledComponentCount, StringFormat={}{0} managed prototype component(s) currently installed}" Foreground="#43506A" FontSize="12" />
@@ -452,18 +477,49 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel IsVisible="{Binding IsInstallingStep}" Spacing="24" VerticalAlignment="Center" Margin="0,90,0,0">
-                    <TextBlock Text="{Binding PrimaryActionLabel}" Classes="display" />
-                    <TextBlock Text="{Binding InstallationStatus}" Classes="muted" FontSize="16" />
-                    <ProgressBar Minimum="0" Maximum="100" Value="{Binding InstallProgress}" Height="10" />
-                    <Grid ColumnDefinitions="*,Auto">
-                        <TextBlock Text="{Binding InstallProgress, StringFormat={}{0:0}% complete}" Classes="muted" />
-                        <TextBlock Grid.Column="1" Text="Plan details recorded" Foreground="#005F4B" FontWeight="SemiBold" />
-                    </Grid>
-                    <Border Classes="card" Margin="0,18,0,0">
+                <StackPanel IsVisible="{Binding IsInstallingStep}" Spacing="21" VerticalAlignment="Center" Margin="0,52,0,0">
+                    <StackPanel Spacing="7">
+                        <TextBlock Text="{Binding InstallationHeading}" Classes="display" />
+                        <TextBlock Text="{Binding InstallationPhaseTitle}" Foreground="#005F4B" FontSize="19" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding InstallationPhaseDetail}" Classes="muted" FontSize="15" TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <Border Background="#F7FBF9" BorderBrush="#B8DDD3" BorderThickness="1" CornerRadius="8" Padding="20">
+                        <StackPanel Spacing="18">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <TextBlock Text="{Binding InstallationStatus}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding InstallationProgressLabel}" Foreground="#005F4B" FontWeight="Bold" VerticalAlignment="Top" />
+                            </Grid>
+                            <ProgressBar Minimum="0" Maximum="100" Value="{Binding InstallProgress}" Height="10" />
+                            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
+                                <StackPanel Spacing="6">
+                                    <Border Height="4" Background="{Binding InstallationDownloadColor}" CornerRadius="2" />
+                                    <TextBlock Text="1  Download" FontWeight="SemiBold" FontSize="12" />
+                                    <TextBlock Text="{Binding InstallationDownloadState}" Foreground="{Binding InstallationDownloadColor}" FontSize="11" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Spacing="6">
+                                    <Border Height="4" Background="{Binding InstallationVerifyColor}" CornerRadius="2" />
+                                    <TextBlock Text="2  Verify" FontWeight="SemiBold" FontSize="12" />
+                                    <TextBlock Text="{Binding InstallationVerifyState}" Foreground="{Binding InstallationVerifyColor}" FontSize="11" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" Spacing="6">
+                                    <Border Height="4" Background="{Binding InstallationApprovalColor}" CornerRadius="2" />
+                                    <TextBlock Text="{Binding InstallationThirdPhaseLabel}" FontWeight="SemiBold" FontSize="12" />
+                                    <TextBlock Text="{Binding InstallationApprovalState}" Foreground="{Binding InstallationApprovalColor}" FontSize="11" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" Spacing="6">
+                                    <Border Height="4" Background="{Binding InstallationApplyColor}" CornerRadius="2" />
+                                    <TextBlock Text="{Binding InstallationFourthPhaseLabel}" FontWeight="SemiBold" FontSize="12" />
+                                    <TextBlock Text="{Binding InstallationApplyState}" Foreground="{Binding InstallationApplyColor}" FontSize="11" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="card" Padding="18">
                         <StackPanel Spacing="7">
-                            <TextBlock Text="Tracked and reversible" FontWeight="SemiBold" />
-                            <TextBlock Text="Every deployment event, verification result, and error is recorded in the operation log. A failure rolls back files created by this transaction." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="Installation record" FontWeight="SemiBold" />
+                            <TextBlock Text="Setup verifies selected artifacts before applying them. The operation log records each decision and any recovery action, so you have a clear record of this installation." Classes="muted" FontSize="13" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding OperationLogPath}" Foreground="#43506A" FontSize="12" TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>
@@ -479,8 +535,8 @@
                     </StackPanel>
                     <Border Classes="card">
                         <StackPanel Spacing="10">
-                            <TextBlock Text="Managed prototype deployment is recorded" FontWeight="SemiBold" />
-                            <TextBlock Text="Only payload files deployed under this app's local managed directory are recorded in the ownership ledger. The uninstall action removes only those recorded files." Classes="muted" TextWrapping="Wrap" />
+                            <TextBlock Text="Clean-machine deployment is recorded" FontWeight="SemiBold" />
+                            <TextBlock Text="Only files verified from the selected package are recorded in the machine-level ownership ledger. Existing NI activation and licensing tooling remains unchanged." Classes="muted" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding OperationLogPath}" Foreground="#43506A" FontSize="12" TextWrapping="Wrap" />
                         </StackPanel>
                     </Border>

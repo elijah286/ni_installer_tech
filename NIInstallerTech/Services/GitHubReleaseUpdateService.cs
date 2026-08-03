@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -14,14 +13,12 @@ namespace NIInstallerTech.Services;
 public sealed class GitHubReleaseUpdateService
 {
     private const string ReleaseAssetName = "NI-Platform-Setup-win-x64.msi";
-    private static readonly Uri DefaultUpdateFeedUri = new("http://192.168.68.125:8081/Files/NISetupPrototypeRepository/updates/latest.json");
+    private const string LatestReleaseUrl = "https://api.github.com/repos/elijah286/ni_installer_tech/releases/latest";
     private readonly HttpClient _httpClient;
-    private readonly Uri _updateFeedUri;
 
-    public GitHubReleaseUpdateService(HttpClient? httpClient = null, Uri? updateFeedUri = null)
+    public GitHubReleaseUpdateService(HttpClient? httpClient = null)
     {
         _httpClient = httpClient ?? new HttpClient();
-        _updateFeedUri = updateFeedUri ?? DefaultUpdateFeedUri;
         if (!_httpClient.DefaultRequestHeaders.UserAgent.Any())
         {
             _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("NI-Platform-Setup", AppVersion.Display));
@@ -30,31 +27,44 @@ public sealed class GitHubReleaseUpdateService
 
     public async Task<UpdateRelease?> CheckForUpdateAsync(CancellationToken cancellationToken = default)
     {
-        using var response = await _httpClient.GetAsync(_updateFeedUri, cancellationToken);
-        if (response.StatusCode == HttpStatusCode.NotFound)
-        {
-            throw new UpdateFeedUnavailableException("The approved update feed is not published yet. Install the latest NI Setup MSI once manually, then updates will use the internal repository.");
-        }
-
+        using var response = await _httpClient.GetAsync(LatestReleaseUrl, cancellationToken);
         response.EnsureSuccessStatusCode();
         await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
         using var document = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
         var release = document.RootElement;
 
-        var version = ReadRequiredString(release, "version").TrimStart('v');
+        if (release.GetProperty("draft").GetBoolean() || release.GetProperty("prerelease").GetBoolean())
+        {
+            return null;
+        }
+
+        var version = release.GetProperty("tag_name").GetString()?.TrimStart('v');
         if (string.IsNullOrWhiteSpace(version) || !IsNewer(version, AppVersion.Display))
         {
             return null;
         }
 
-        var packageUri = ResolveFeedUri(ReadRequiredString(release, "packageUrl"));
-        var checksumUri = ResolveFeedUri(ReadRequiredString(release, "checksumUrl"));
+        Uri? packageUri = null;
+        Uri? checksumUri = null;
+        foreach (var asset in release.GetProperty("assets").EnumerateArray())
+        {
+            var name = asset.GetProperty("name").GetString();
+            var url = asset.GetProperty("browser_download_url").GetString();
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(url)) continue;
+            if (string.Equals(name, ReleaseAssetName, StringComparison.Ordinal)) packageUri = new Uri(url);
+            else if (string.Equals(name, $"{ReleaseAssetName}.sha256", StringComparison.Ordinal)) checksumUri = new Uri(url);
+        }
+
+        if (packageUri is null || checksumUri is null)
+        {
+            throw new InvalidDataException("The latest release is missing its Windows update package or checksum.");
+        }
 
         return new UpdateRelease(
             version,
             packageUri,
             checksumUri,
-            release.TryGetProperty("notes", out var notes) ? notes.GetString() ?? string.Empty : string.Empty);
+            release.GetProperty("body").GetString() ?? string.Empty);
     }
 
     public async Task<string> DownloadAndVerifyAsync(
@@ -117,26 +127,6 @@ public sealed class GitHubReleaseUpdateService
         return checksum.ToLowerInvariant();
     }
 
-    private Uri ResolveFeedUri(string value)
-    {
-        if (!Uri.TryCreate(_updateFeedUri, value, out var uri) || uri.Scheme is not ("http" or "https"))
-        {
-            throw new InvalidDataException($"The update feed contains an invalid URL for {ReleaseAssetName}.");
-        }
-
-        return uri;
-    }
-
-    private static string ReadRequiredString(JsonElement element, string propertyName)
-    {
-        if (!element.TryGetProperty(propertyName, out var property) || property.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(property.GetString()))
-        {
-            throw new InvalidDataException($"The update feed is missing '{propertyName}'.");
-        }
-
-        return property.GetString()!;
-    }
-
     private static bool IsNewer(string candidate, string current)
     {
         return Version.TryParse(candidate, out var candidateVersion)
@@ -144,5 +134,3 @@ public sealed class GitHubReleaseUpdateService
             && candidateVersion > currentVersion;
     }
 }
-
-public sealed class UpdateFeedUnavailableException(string message) : InvalidOperationException(message);

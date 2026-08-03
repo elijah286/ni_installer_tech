@@ -9,23 +9,27 @@ namespace NIInstallerTech.Tests;
 public sealed class GitHubReleaseUpdateServiceTests
 {
     [Fact]
-    public async Task CheckForUpdateAsync_ReturnsNewerReleaseFromApprovedFeed()
+    public async Task CheckForUpdateAsync_ReturnsNewerReleaseWithWindowsAssets()
     {
         using var client = new HttpClient(new StaticResponseHandler("""
             {
-              "version": "0.0.2",
-              "packageUrl": "NI-Platform-Setup-win-x64.msi",
-              "checksumUrl": "NI-Platform-Setup-win-x64.msi.sha256",
-              "notes": "Improved update experience."
+                            "tag_name": "v0.0.2",
+                            "draft": false,
+                            "prerelease": false,
+                            "body": "Improved update experience.",
+                            "assets": [
+                                { "name": "NI-Platform-Setup-win-x64.msi", "browser_download_url": "https://example.test/setup.msi" },
+                                { "name": "NI-Platform-Setup-win-x64.msi.sha256", "browser_download_url": "https://example.test/setup.msi.sha256" }
+                            ]
             }
             """));
-        var service = new GitHubReleaseUpdateService(client, new Uri("https://example.test/updates/latest.json"));
+        var service = new GitHubReleaseUpdateService(client);
 
         var update = await service.CheckForUpdateAsync();
 
         Assert.NotNull(update);
         Assert.Equal("0.0.2", update.Version);
-        Assert.Equal("https://example.test/updates/NI-Platform-Setup-win-x64.msi", update.DownloadUri.AbsoluteUri);
+        Assert.Equal("https://example.test/setup.msi", update.DownloadUri.AbsoluteUri);
         Assert.Equal("Improved update experience.", update.Notes);
     }
 
@@ -34,27 +38,18 @@ public sealed class GitHubReleaseUpdateServiceTests
     {
         using var client = new HttpClient(new StaticResponseHandler("""
             {
-              "version": "0.0.1",
-              "packageUrl": "NI-Platform-Setup-win-x64.msi",
-              "checksumUrl": "NI-Platform-Setup-win-x64.msi.sha256"
+              "tag_name": "v0.0.1",
+              "draft": false,
+              "prerelease": false,
+              "body": "",
+              "assets": []
             }
             """));
-        var service = new GitHubReleaseUpdateService(client, new Uri("https://example.test/updates/latest.json"));
+        var service = new GitHubReleaseUpdateService(client);
 
         var update = await service.CheckForUpdateAsync();
 
         Assert.Null(update);
-    }
-
-    [Fact]
-    public async Task CheckForUpdateAsync_ExplainsWhenApprovedFeedIsMissing()
-    {
-        using var client = new HttpClient(new StatusResponseHandler(HttpStatusCode.NotFound));
-        var service = new GitHubReleaseUpdateService(client, new Uri("https://example.test/updates/latest.json"));
-
-        var exception = await Assert.ThrowsAsync<UpdateFeedUnavailableException>(() => service.CheckForUpdateAsync());
-
-        Assert.Contains("not published", exception.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     private sealed class StaticResponseHandler(string response) : HttpMessageHandler
@@ -68,9 +63,4 @@ public sealed class GitHubReleaseUpdateServiceTests
         }
     }
 
-    private sealed class StatusResponseHandler(HttpStatusCode statusCode) : HttpMessageHandler
-    {
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-            => Task.FromResult(new HttpResponseMessage(statusCode));
-    }
 }
