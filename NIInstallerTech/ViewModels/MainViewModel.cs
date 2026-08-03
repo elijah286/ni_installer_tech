@@ -26,15 +26,19 @@ public partial class MainViewModel : ViewModelBase
     {
         Components = new ObservableCollection<SetupComponent>();
         CandidateContracts = new ObservableCollection<CandidateComponent>();
+        LegacyPackageOptions = new ObservableCollection<LegacyPackageOption>();
         OperationLogPath = _operationLog.FilePath;
         CandidateCatalogPath = _candidateCatalogService.CatalogPath;
+        LegacyPackageIndexPath = _candidateCatalogService.LegacyPackageIndexPath;
         InstalledComponentCount = _deploymentService.GetInstalledComponentCount();
         ConfigurePlan(SetupScenario.Application);
         _ = LoadCandidateContractsAsync();
+        _ = LoadLegacyPackageOptionsAsync();
     }
 
     public ObservableCollection<SetupComponent> Components { get; }
     public ObservableCollection<CandidateComponent> CandidateContracts { get; }
+    public ObservableCollection<LegacyPackageOption> LegacyPackageOptions { get; }
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsSetupWorkspace))]
@@ -48,6 +52,19 @@ public partial class MainViewModel : ViewModelBase
 
     [ObservableProperty]
     private string _candidateSourcePaths = string.Empty;
+
+    [ObservableProperty]
+    private string _legacyPackageSourcePath = string.Empty;
+
+    [ObservableProperty]
+    private string _legacyPackageIndexStatus = "Index a local or mounted NIPM package cache to discover selectable packages.";
+
+    [ObservableProperty]
+    private string _legacyPackageIndexPath = string.Empty;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasSelectedLegacyPackage))]
+    private LegacyPackageOption? _selectedLegacyPackage;
 
     [ObservableProperty]
     private string _candidateIntakeStatus = "Add a proposed component and one or more local legacy artifact or cache paths.";
@@ -237,6 +254,7 @@ public partial class MainViewModel : ViewModelBase
         : RepositoryIsReadyForInstallation && DeploymentPreflightIsReady && IsWebRepositoryTransport;
     public bool HasInstalledPrototypeComponents => InstalledComponentCount > 0;
     public bool HasSelectedCandidate => SelectedCandidate is not null;
+    public bool HasSelectedLegacyPackage => SelectedLegacyPackage is not null;
     public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
     public string DeliveryTitle => IsNiHostedDelivery
@@ -685,6 +703,40 @@ public partial class MainViewModel : ViewModelBase
     {
         IsCatalogIntakeWorkspace = true;
         await LoadCandidateContractsAsync();
+        await LoadLegacyPackageOptionsAsync();
+    }
+
+    [RelayCommand]
+    private async Task IndexLegacyPackageSource()
+    {
+        LegacyPackageIndexStatus = "Indexing NIPM package metadata. No installer will run and source files will not be changed.";
+        try
+        {
+            var result = await _candidateCatalogService.IndexNativePackageSourceAsync(LegacyPackageSourcePath);
+            await LoadLegacyPackageOptionsAsync();
+            LegacyPackageIndexStatus = result.Warnings.Count == 0
+                ? $"Indexed {result.IndexedPackageCount} NIPM package(s). Select one to create its candidate contract."
+                : $"Indexed {result.IndexedPackageCount} NIPM package(s) with {result.Warnings.Count} unreadable package(s).";
+        }
+        catch (Exception exception)
+        {
+            LegacyPackageIndexStatus = $"NIPM package indexing could not complete: {exception.Message}";
+        }
+    }
+
+    [RelayCommand]
+    private async Task CreateCandidateFromSelectedPackage()
+    {
+        if (SelectedLegacyPackage is null)
+        {
+            CandidateIntakeStatus = "Select a discovered NIPM package before creating a candidate contract.";
+            return;
+        }
+
+        CandidateProductName = SelectedLegacyPackage.PackageName;
+        CandidateComponentId = SelectedLegacyPackage.PackageName;
+        CandidateSourcePaths = SelectedLegacyPackage.PackagePath;
+        await DiscoverCandidate();
     }
 
     [RelayCommand]
@@ -742,6 +794,14 @@ public partial class MainViewModel : ViewModelBase
         CandidateReviewedBy = value.ReviewedBy;
     }
 
+    partial void OnSelectedLegacyPackageChanged(LegacyPackageOption? value)
+    {
+        if (value is null) return;
+        CandidateProductName = value.PackageName;
+        CandidateComponentId = value.PackageName;
+        CandidateSourcePaths = value.PackagePath;
+    }
+
     private async Task LoadCandidateContractsAsync(string? selectedId = null)
     {
         try
@@ -760,6 +820,27 @@ public partial class MainViewModel : ViewModelBase
         catch (Exception exception)
         {
             CandidateIntakeStatus = $"Candidate catalog could not be loaded: {exception.Message}";
+        }
+    }
+
+    private async Task LoadLegacyPackageOptionsAsync()
+    {
+        try
+        {
+            var index = await _candidateCatalogService.LoadLegacyPackageIndexAsync();
+            var selectedPath = SelectedLegacyPackage?.PackagePath;
+            LegacyPackageOptions.Clear();
+            foreach (var package in index.Packages
+                .OrderBy(package => package.PackageName, StringComparer.OrdinalIgnoreCase)
+                .ThenByDescending(package => package.PackageVersion, StringComparer.OrdinalIgnoreCase))
+            {
+                LegacyPackageOptions.Add(package);
+            }
+            SelectedLegacyPackage = LegacyPackageOptions.FirstOrDefault(package => string.Equals(package.PackagePath, selectedPath, StringComparison.OrdinalIgnoreCase));
+        }
+        catch (Exception exception)
+        {
+            LegacyPackageIndexStatus = $"The legacy package index could not be loaded: {exception.Message}";
         }
     }
 

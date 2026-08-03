@@ -7,15 +7,15 @@
 
 The **Catalog intake** tab in NI Setup helps turn legacy installer artifacts into a reviewable candidate component contract. It is an authoring and evidence-capture workflow, not an installer and not an approval mechanism.
 
-An operator supplies a proposed product/capability, a candidate component ID, and one or more local paths. A path can be a single file, a mounted cache, or a read-only network directory. The intake service recursively reads only these artifact types:
+An operator indexes a local or mounted NI Package Manager package cache, then chooses a discovered package from the resulting list. The selected package pre-populates the candidate display name, component ID, source path, version, dependency evidence, and digest; the operator does not begin with an empty product or component-ID form.
 
-- `.nipkg`
-- `.msi`
-- `.exe`
-- `.cab`
-- `.zip`
+The indexer recursively reads `.nipkg` package artifacts only. It does not execute NIPM, run an installer, or change the indexed source. Future collectors may add separately reviewable discovery for MSI, EXE, and final installed-state evidence.
 
-For every artifact it can read, the service records its path, file name, type, byte size, and SHA-256 digest. For `.nipkg` artifacts it also reads the Debian-style package `control` metadata inside `control.tar.gz`, recording package name, version, and declared dependencies. MSI artifacts are fingerprinted but their tables, resource claims, and custom actions are deliberately left as evidence gaps until a Windows-specific collector captures them.
+For every indexed package, the service records:
+
+- source cache root and package path;
+- package name, version, and declared dependencies from the Debian-style `control` metadata inside `control.tar.gz`; and
+- SHA-256 digest and indexing time.
 
 ## Local Candidate Database
 
@@ -25,7 +25,7 @@ The local catalog is stored at:
 %LocalAppData%\NISetupPrototype\candidate-contracts\candidate-contract-catalog.json
 ```
 
-The database contains generated evidence alongside authored R&D fields:
+The candidate database contains generated evidence alongside authored R&D fields:
 
 - review status;
 - declared install mode;
@@ -33,6 +33,14 @@ The database contains generated evidence alongside authored R&D fields:
 - reviewer identity.
 
 Refreshing a candidate replaces only generated discovery fields. Authored review fields remain intact so a team can revisit, correct, and improve conclusions as additional evidence arrives.
+
+The package-source index is saved beside it at:
+
+```text
+%LocalAppData%\NISetupPrototype\candidate-contracts\legacy-package-index.json
+```
+
+Rescanning a cache replaces its own discovered entries, preserving packages indexed from other approved read-only sources.
 
 ## Authority Boundary
 

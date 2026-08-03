@@ -567,30 +567,44 @@
             <StackPanel Margin="58,42" MaxWidth="920" Spacing="24" IsVisible="{Binding IsCatalogIntakeWorkspace}">
                 <StackPanel Spacing="8">
                     <TextBlock Text="Catalog intake" Classes="display" />
-                    <TextBlock Text="Create reviewable candidate contracts from legacy installer evidence. Discovery reads the paths you provide; it never executes an installer or approves a component for deployment." Classes="muted" FontSize="16" TextWrapping="Wrap" />
+                    <TextBlock Text="Index legacy installation sources, choose a discovered package, and create a reviewable candidate contract from its captured metadata. Indexing never executes installers or approves deployment." Classes="muted" FontSize="16" TextWrapping="Wrap" />
                 </StackPanel>
 
                 <Border Classes="card" BorderBrush="#9CDACB" Background="#F7FBF9">
                     <StackPanel Spacing="13">
-                        <TextBlock Text="Start a candidate contract" FontSize="17" FontWeight="SemiBold" />
-                        <TextBlock Text="Point to a local file, a mounted cache, or a read-only network path. Directories are scanned for .nipkg, .msi, .exe, .cab, and .zip artifacts." Classes="muted" FontSize="13" TextWrapping="Wrap" />
-                        <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
-                            <StackPanel Spacing="5">
-                                <TextBlock Text="Product or capability" Classes="muted" FontSize="12" />
-                                <TextBox Text="{Binding CandidateProductName}" PlaceholderText="Example: NI-VISA Runtime" />
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Spacing="5">
-                                <TextBlock Text="Candidate component ID" Classes="muted" FontSize="12" />
-                                <TextBox Text="{Binding CandidateComponentId}" PlaceholderText="Example: visa.runtime" />
-                            </StackPanel>
-                        </Grid>
+                        <TextBlock Text="Index a legacy NIPM source" FontSize="17" FontWeight="SemiBold" />
+                        <TextBlock Text="Choose a local or mounted NI Package Manager cache. Setup reads only .nipkg control metadata, dependencies, source paths, and hashes; it does not run NIPM or alter the source." Classes="muted" FontSize="13" TextWrapping="Wrap" />
                         <StackPanel Spacing="5">
-                            <TextBlock Text="Legacy sources, one path per line" Classes="muted" FontSize="12" />
-                            <TextBox Text="{Binding CandidateSourcePaths}" AcceptsReturn="True" MinHeight="82" TextWrapping="Wrap" PlaceholderText="C:\NI Cache\packages&#10;\\reference-host\share\legacy-installer.msi" />
+                            <TextBlock Text="NIPM package-cache folder" Classes="muted" FontSize="12" />
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <TextBox Text="{Binding LegacyPackageSourcePath}" PlaceholderText="C:\ProgramData\National Instruments\NI Package Manager\packages" />
+                                <Button Grid.Column="1" Classes="primary" Command="{Binding IndexLegacyPackageSourceCommand}" Content="Index packages" />
+                            </Grid>
                         </StackPanel>
+                        <TextBlock Text="{Binding LegacyPackageIndexStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Discovered NIPM package" Classes="muted" FontSize="12" />
+                            <ComboBox ItemsSource="{Binding LegacyPackageOptions}" SelectedItem="{Binding SelectedLegacyPackage}" MinHeight="38" PlaceholderText="Index a package cache to populate this list">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnDefinitions="*,Auto" Margin="4">
+                                            <TextBlock Text="{Binding SelectionLabel}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="1" Text="NIPM" Foreground="#005F4B" FontSize="11" VerticalAlignment="Center" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <Border IsVisible="{Binding HasSelectedLegacyPackage}" Background="White" BorderBrush="#D9DEEA" BorderThickness="1" CornerRadius="6" Padding="12">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="{Binding SelectedLegacyPackage.PackageName}" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding SelectedLegacyPackage.PackageVersion}" Foreground="#005F4B" FontSize="12" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding SelectedLegacyPackage.PackagePath}" Classes="muted" FontSize="11" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Border>
                         <StackPanel Orientation="Horizontal" Spacing="12">
-                            <Button Classes="primary" Command="{Binding DiscoverCandidateCommand}" Content="Inspect and refresh candidate" />
-                            <TextBlock Text="{Binding CandidateIntakeStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="550" />
+                            <Button Classes="primary" Command="{Binding CreateCandidateFromSelectedPackageCommand}" IsEnabled="{Binding HasSelectedLegacyPackage}" Content="Create or refresh candidate contract" />
+                            <TextBlock Text="{Binding CandidateIntakeStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="500" />
                         </StackPanel>
                     </StackPanel>
                 </Border>

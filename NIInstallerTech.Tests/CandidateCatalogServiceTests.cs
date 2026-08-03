@@ -52,6 +52,28 @@ public sealed class CandidateCatalogServiceTests
         Assert.Equal("ni-example", discovery.Candidate.Evidence.Single().PackageName);
     }
 
+    [Fact]
+    public async Task IndexNativePackageSourceAsync_PersistsSelectableNipmPackages()
+    {
+        using var workspace = new TestWorkspace();
+        var cachePath = Path.Combine(workspace.RootDirectory, "nipm-cache");
+        Directory.CreateDirectory(cachePath);
+        await File.WriteAllBytesAsync(Path.Combine(cachePath, "ni-example.nipkg"), CreateNativePackage("Package: ni-example\nVersion: 1.2.3\nDepends: ni-runtime\n\n"));
+        await File.WriteAllBytesAsync(Path.Combine(cachePath, "ni-runtime.nipkg"), CreateNativePackage("Package: ni-runtime\nVersion: 4.5.6\n\n"));
+        var service = new CandidateCatalogService(Path.Combine(workspace.RootDirectory, "catalog"));
+
+        var result = await service.IndexNativePackageSourceAsync(cachePath);
+        var persisted = await service.LoadLegacyPackageIndexAsync();
+
+        Assert.Equal(2, result.IndexedPackageCount);
+        Assert.Equal(2, persisted.Packages.Count);
+        var example = Assert.Single(persisted.Packages, package => package.PackageName == "ni-example");
+        Assert.Equal("1.2.3", example.PackageVersion);
+        Assert.Equal(["ni-runtime"], example.Dependencies);
+        Assert.Equal(Path.Combine(cachePath, "ni-example.nipkg"), example.PackagePath);
+        Assert.True(File.Exists(service.LegacyPackageIndexPath));
+    }
+
     private static byte[] CreateNativePackage(string controlContents)
     {
         byte[] controlTar;

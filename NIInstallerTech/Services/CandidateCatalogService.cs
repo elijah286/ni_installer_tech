@@ -27,6 +27,73 @@ public sealed class CandidateCatalogService
     }
 
     public string CatalogPath => Path.Combine(_rootDirectory, "candidate-contract-catalog.json");
+    public string LegacyPackageIndexPath => Path.Combine(_rootDirectory, "legacy-package-index.json");
+
+    public async Task<LegacyPackageIndex> LoadLegacyPackageIndexAsync(CancellationToken cancellationToken = default)
+    {
+        if (!File.Exists(LegacyPackageIndexPath)) return new LegacyPackageIndex("ni-setup-legacy-package-index-v0.1", []);
+
+        await using var stream = File.OpenRead(LegacyPackageIndexPath);
+        var index = await JsonSerializer.DeserializeAsync<LegacyPackageIndex>(stream, SerializerOptions, cancellationToken);
+        return index is null || !string.Equals(index.SchemaVersion, "ni-setup-legacy-package-index-v0.1", StringComparison.Ordinal)
+            ? new LegacyPackageIndex("ni-setup-legacy-package-index-v0.1", [])
+            : index;
+    }
+
+    public async Task<LegacyPackageIndexResult> IndexNativePackageSourceAsync(string sourcePath, CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(sourcePath)) throw new InvalidOperationException("Provide the local or mounted NIPM package-cache path to index.");
+
+        var fullSourcePath = Path.GetFullPath(sourcePath.Trim());
+        if (!Directory.Exists(fullSourcePath)) throw new DirectoryNotFoundException($"The NIPM package-cache path was not found: {fullSourcePath}");
+
+        var discovered = new List<LegacyPackageOption>();
+        var warnings = new List<string>();
+        var options = new EnumerationOptions
+        {
+            RecurseSubdirectories = true,
+            IgnoreInaccessible = true,
+            AttributesToSkip = FileAttributes.ReparsePoint
+        };
+
+        try
+        {
+            foreach (var packagePath in Directory.EnumerateFiles(fullSourcePath, "*.nipkg", options))
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                try
+                {
+                    var metadata = ReadNativePackageMetadata(packagePath);
+                    await using var stream = File.OpenRead(packagePath);
+                    var digest = Convert.ToHexString(await SHA256.HashDataAsync(stream, cancellationToken)).ToLowerInvariant();
+                    discovered.Add(new LegacyPackageOption(
+                        fullSourcePath,
+                        metadata.Name,
+                        metadata.Version,
+                        packagePath,
+                        digest,
+                        metadata.Dependencies,
+                        DateTimeOffset.UtcNow));
+                }
+                catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or InvalidDataException)
+                {
+                    warnings.Add($"Could not index {Path.GetFileName(packagePath)}: {exception.Message}");
+                }
+            }
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException)
+        {
+            throw new InvalidOperationException($"The NIPM package cache could not be read: {exception.Message}", exception);
+        }
+
+        var index = await LoadLegacyPackageIndexAsync(cancellationToken);
+        index.Packages.RemoveAll(package => string.Equals(package.SourceRoot, fullSourcePath, StringComparison.OrdinalIgnoreCase));
+        index.Packages.AddRange(discovered
+            .OrderBy(package => package.PackageName, StringComparer.OrdinalIgnoreCase)
+            .ThenByDescending(package => package.PackageVersion, StringComparer.OrdinalIgnoreCase));
+        await SaveLegacyPackageIndexAsync(index, cancellationToken);
+        return new LegacyPackageIndexResult(index.Packages, discovered.Count, warnings, LegacyPackageIndexPath);
+    }
 
     public async Task<CandidateCatalog> LoadAsync(CancellationToken cancellationToken = default)
     {
@@ -145,6 +212,17 @@ public sealed class CandidateCatalogService
             await JsonSerializer.SerializeAsync(stream, catalog, SerializerOptions, cancellationToken);
         }
         File.Move(temporaryPath, CatalogPath, overwrite: true);
+    }
+
+    private async Task SaveLegacyPackageIndexAsync(LegacyPackageIndex index, CancellationToken cancellationToken)
+    {
+        Directory.CreateDirectory(_rootDirectory);
+        var temporaryPath = LegacyPackageIndexPath + ".tmp";
+        await using (var stream = File.Create(temporaryPath))
+        {
+            await JsonSerializer.SerializeAsync(stream, index, SerializerOptions, cancellationToken);
+        }
+        File.Move(temporaryPath, LegacyPackageIndexPath, overwrite: true);
     }
 
     private static async Task<int> InspectFileAsync(string filePath, ICollection<CandidateEvidence> evidence, ICollection<string> warnings, CancellationToken cancellationToken)
@@ -269,6 +347,26 @@ public sealed class CandidateCatalogService
 }
 
 public sealed record CandidateCatalog(string SchemaVersion, List<CandidateComponent> Components);
+
+public sealed record LegacyPackageIndex(string SchemaVersion, List<LegacyPackageOption> Packages);
+
+public sealed record LegacyPackageOption(
+    string SourceRoot,
+    string PackageName,
+    string PackageVersion,
+    string PackagePath,
+    string Sha256,
+    IReadOnlyList<string> Dependencies,
+    DateTimeOffset IndexedAtUtc)
+{
+    public string SelectionLabel => $"{PackageName} {PackageVersion}";
+}
+
+public sealed record LegacyPackageIndexResult(
+    IReadOnlyList<LegacyPackageOption> Packages,
+    int IndexedPackageCount,
+    IReadOnlyList<string> Warnings,
+    string IndexPath);
 
 public sealed record CandidateComponent(
     string Id,
