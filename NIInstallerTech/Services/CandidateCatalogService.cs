@@ -18,17 +18,21 @@ public sealed class CandidateCatalogService
     private const string SchemaVersion = "ni-setup-candidate-contract-catalog-v0.1";
     private static readonly JsonSerializerOptions SerializerOptions = new() { WriteIndented = true, PropertyNameCaseInsensitive = true };
     private readonly string _rootDirectory;
+    private readonly string _legacyIndexDirectory;
 
-    public CandidateCatalogService(string? rootDirectory = null)
+    public CandidateCatalogService(string? rootDirectory = null, string? legacyIndexDirectory = null)
     {
-        _rootDirectory = rootDirectory ?? Path.Combine(
+        var defaultRoot = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "NISetupPrototype",
             "candidate-contracts");
+        _rootDirectory = rootDirectory ?? defaultRoot;
+        // The legacy package index records machine-local cache paths, so it is kept off the shared repository by default.
+        _legacyIndexDirectory = legacyIndexDirectory ?? defaultRoot;
     }
 
     public string CatalogPath => Path.Combine(_rootDirectory, "candidate-contract-catalog.json");
-    public string LegacyPackageIndexPath => Path.Combine(_rootDirectory, "legacy-package-index.json");
+    public string LegacyPackageIndexPath => Path.Combine(_legacyIndexDirectory, "legacy-package-index.json");
 
     public static NativePackageManagerInstallation? DiscoverLocalNativePackageManager(string? programFilesDirectory = null, string? commonApplicationDataDirectory = null)
     {
@@ -229,7 +233,7 @@ public sealed class CandidateCatalogService
 
     private async Task SaveLegacyPackageIndexAsync(LegacyPackageIndex index, CancellationToken cancellationToken)
     {
-        Directory.CreateDirectory(_rootDirectory);
+        Directory.CreateDirectory(_legacyIndexDirectory);
         var temporaryPath = LegacyPackageIndexPath + ".tmp";
         await using (var stream = File.Create(temporaryPath))
         {
@@ -390,42 +394,46 @@ public sealed record LegacyProductGroup(
 
 public static class NiProductNameResolver
 {
-    // Ordered most-specific first so the first matching prefix wins.
-    private static readonly (string Prefix, string ProductKey, string? DisplayName)[] KnownPrefixes =
+    // Curated product catalog. Recognized NI products are presented at the marketing
+    // product+release level (names sourced from docs/native-package-product-support.md
+    // and the closure-catalog ProductIds). Release qualifiers such as "Q1/Q3" are NOT
+    // derivable from NIPM versions (LabVIEW 2026 Q3 = 26.3, but TestStand 2026 Q1 = 26.0),
+    // so they are curated here. ReleaseLabel semantics:
+    //   non-null -> display = (Family + " " + ReleaseLabel).Trim()
+    //   null     -> display = Family + " " + observed major.minor version
+    // Ordered most-specific first so the first matching prefix wins. Packages that match
+    // no entry (shared components, plumbing, EULAs) are hidden from the product list.
+    private static readonly (string Prefix, string ProductKey, string Family, string? ReleaseLabel)[] KnownProducts =
     [
-        ("ni-labview-2026", "ni-labview-2026", "LabVIEW 2026"),
-        ("ni-labview-2025", "ni-labview-2025", "LabVIEW 2025"),
-        ("ni-labview-2024", "ni-labview-2024", "LabVIEW 2024"),
-        ("ni-labview-2023", "ni-labview-2023", "LabVIEW 2023"),
-        ("ni-labview-2022", "ni-labview-2022", "LabVIEW 2022"),
-        ("ni-labview",      "ni-labview",      "LabVIEW"),
-        ("ni-system-configuration", "ni-system-configuration", "NI System Configuration"),
-        ("ni-package-manager",      "ni-package-manager",      "NI Package Manager"),
-        ("ni-teststand",            "ni-teststand",             "NI TestStand"),
-        ("ni-daqmx",                "ni-daqmx",                "NI-DAQmx"),
-        ("ni-488.2",                "ni-488.2",                "NI-488.2"),
-        ("ni-visa",                 "ni-visa",                 "NI-VISA"),
-        ("ni-fpga",                 "ni-fpga",                 "NI-FPGA"),
-        ("ni-rio",                  "ni-rio",                  "NI-RIO"),
-        ("ni-assistant-framework",  "ni-assistant-framework",  "NI Assistant Framework"),
-        ("ni-python",               "ni-python",               "Python for NI"),
-        ("ni-auth",                 "ni-auth",                 "NI Auth"),
-        ("ni-ceip",                 "ni-ceip",                 "NI CEIP"),
-        ("ni-msiproperties",        "ni-msiproperties",        "NI MSI Properties"),
-        ("eula-",                   "eula",                    null),   // excluded from product list
-        ("system-windows",          "system-windows",          "Windows System"),
-        ("system-",                 "system",                  "System"),
+        ("ni-labview-2026",     "ni-labview-2026",     "LabVIEW 2026", "Q3"),
+        ("ni-labview-2025",     "ni-labview-2025",     "LabVIEW 2025", null),
+        ("ni-labview-2024",     "ni-labview-2024",     "LabVIEW 2024", null),
+        ("ni-labview-2023",     "ni-labview-2023",     "LabVIEW 2023", null),
+        ("ni-teststand-2026",   "ni-teststand-2026",   "TestStand 2026", "Q1"),
+        ("ni-teststand-2025",   "ni-teststand-2025",   "TestStand 2025", null),
+        ("ni-teststand",        "ni-teststand",        "TestStand", null),
+        ("ni-instrumentstudio", "ni-instrumentstudio", "InstrumentStudio", "26.0"),
+        ("ni-diadem-2026",      "ni-diadem-2026",      "DIAdem 2026", ""),
+        ("ni-diadem",           "ni-diadem",           "DIAdem", null),
+        ("ni-visa",             "ni-visa",             "NI-VISA", null),
+        ("ni-daqmx",            "ni-daqmx",            "NI-DAQmx", null),
+        ("ni-488.2",            "ni-488.2",            "NI-488.2", null),
+        ("ni-serial",           "ni-serial",           "NI-Serial", null),
+        ("ni-fpga",             "ni-fpga",             "NI-FPGA", null),
+        ("ni-rio",              "ni-rio",              "NI-RIO", null),
+        ("ni-system-configuration", "ni-system-configuration", "NI System Configuration", null),
+        ("ni-package-manager",  "ni-package-manager",  "NI Package Manager", ""),
     ];
 
-    /// <summary>Returns null for packages that should not appear as selectable products (e.g. EULA packages).</summary>
-    public static (string ProductKey, string DisplayName)? Resolve(string packageName)
+    /// <summary>Resolves a package name to its curated product, or null when the package is not a recognized standalone product.</summary>
+    public static (string ProductKey, string Family, string? ReleaseLabel)? Resolve(string packageName)
     {
-        foreach (var (prefix, key, name) in KnownPrefixes)
+        foreach (var (prefix, key, family, release) in KnownProducts)
         {
             if (packageName.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-                return name is null ? null : (key, name);
+                return (key, family, release);
         }
-        return (packageName, packageName);
+        return null;
     }
 
     /// <summary>Returns the major.minor portion of an NIPM version string like "25.8.0.49257-0+f105".</summary>
@@ -437,33 +445,34 @@ public static class NiProductNameResolver
         return parts.Length >= 2 ? $"{parts[0]}.{parts[1]}" : clean;
     }
 
-    /// <summary>Groups a flat package list into product-level entries, ordered by product name then version.</summary>
+    /// <summary>Groups a flat package list into curated product-level entries, ordered by product name.</summary>
     public static IReadOnlyList<LegacyProductGroup> GroupIntoProducts(IEnumerable<LegacyPackageOption> packages)
     {
-        var buckets = new Dictionary<string, (string DisplayName, List<LegacyPackageOption> Items)>(StringComparer.OrdinalIgnoreCase);
+        var buckets = new Dictionary<string, (string Family, string? Release, List<LegacyPackageOption> Items)>(StringComparer.OrdinalIgnoreCase);
         foreach (var package in packages)
         {
             var resolved = Resolve(package.PackageName);
-            if (resolved is null) continue; // skip excluded categories such as EULA packages
-            var (key, name) = resolved.Value;
+            if (resolved is null) continue; // hide shared components, plumbing, and EULA packages
+            var (key, family, release) = resolved.Value;
             if (!buckets.TryGetValue(key, out var bucket))
-                buckets[key] = bucket = (name, []);
+                buckets[key] = bucket = (family, release, []);
             bucket.Items.Add(package);
         }
 
         return [.. buckets
             .Select(kv =>
             {
-                var items = kv.Value.Items;
-                // Use the most-common major.minor across the group as the version label.
-                var versionLabel = items
+                var (family, release, items) = kv.Value;
+                var observedVersion = items
                     .GroupBy(p => FormatVersionLabel(p.PackageVersion), StringComparer.OrdinalIgnoreCase)
                     .OrderByDescending(g => g.Count())
                     .First().Key;
-                return new LegacyProductGroup(kv.Key, kv.Value.DisplayName, versionLabel, items);
+                var displayName = release is null
+                    ? $"{family} {observedVersion}".Trim()
+                    : $"{family} {release}".Trim();
+                return new LegacyProductGroup(kv.Key, displayName, observedVersion, items);
             })
-            .OrderBy(g => g.ProductName, StringComparer.OrdinalIgnoreCase)
-            .ThenBy(g => g.VersionLabel, StringComparer.OrdinalIgnoreCase)];
+            .OrderBy(g => g.ProductName, StringComparer.OrdinalIgnoreCase)];
     }
 }
 

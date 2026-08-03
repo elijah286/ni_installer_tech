@@ -18,7 +18,7 @@ public partial class MainViewModel : ViewModelBase
     private readonly HttpRepositoryService _httpRepositoryService = new();
     private readonly ManagedDeploymentService _deploymentService = new();
     private readonly CleanMachinePackageService _cleanMachinePackageService = new();
-    private readonly CandidateCatalogService _candidateCatalogService = new();
+    private CandidateCatalogService _candidateCatalogService = new(DefaultCandidateOutputRoot(), DefaultLegacyIndexDirectory());
     private readonly PrototypeOperationLog _operationLog = new();
     private Uri? _resolvedRepositoryUri;
 
@@ -67,13 +67,21 @@ public partial class MainViewModel : ViewModelBase
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasSelectedLegacyProduct))]
+    [NotifyPropertyChangedFor(nameof(HasProductPreview))]
     private LegacyProductGroup? _selectedLegacyProduct;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasProductPreview))]
+    private RepackagingPreview? _selectedProductPreview;
 
     [ObservableProperty]
     private string _candidateIntakeStatus = "Add a proposed component and one or more local legacy artifact or cache paths.";
 
     [ObservableProperty]
     private string _candidateCatalogPath = string.Empty;
+
+    [ObservableProperty]
+    private string _candidateOutputRoot = DefaultCandidateOutputRoot();
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasSelectedCandidate))]
@@ -258,6 +266,7 @@ public partial class MainViewModel : ViewModelBase
     public bool HasInstalledPrototypeComponents => InstalledComponentCount > 0;
     public bool HasSelectedCandidate => SelectedCandidate is not null;
     public bool HasSelectedLegacyProduct => SelectedLegacyProduct is not null;
+    public bool HasProductPreview => SelectedProductPreview is not null;
     public string RepositoryStatusColor => RepositoryIsConnected ? "#197449" : "#A52A2A";
 
     public string DeliveryTitle => IsNiHostedDelivery
@@ -805,11 +814,39 @@ public partial class MainViewModel : ViewModelBase
 
     partial void OnSelectedLegacyProductChanged(LegacyProductGroup? value)
     {
-        if (value is null) return;
+        if (value is null)
+        {
+            SelectedProductPreview = null;
+            return;
+        }
         CandidateProductName = value.ProductName;
         CandidateComponentId = value.ComponentId;
         CandidateSourcePaths = value.AllPackagePaths;
+        SelectedProductPreview = RepackagingPreviewService.Analyze(value);
     }
+
+    partial void OnCandidateOutputRootChanged(string value)
+    {
+        var root = string.IsNullOrWhiteSpace(value) ? DefaultCandidateOutputRoot() : value.Trim();
+        _candidateCatalogService = new CandidateCatalogService(root, DefaultLegacyIndexDirectory());
+        CandidateCatalogPath = _candidateCatalogService.CatalogPath;
+        _ = LoadCandidateContractsAsync();
+    }
+
+    // Cataloged product source files default to the mounted SMB prototype repository; the user can retarget this path.
+    private static string DefaultCandidateOutputRoot()
+    {
+        var repositoryRoot = OperatingSystem.IsWindows()
+            ? @"\\192.168.68.125\Files\NISetupPrototypeRepository"
+            : "/Volumes/Files/NISetupPrototypeRepository";
+        return Path.Combine(repositoryRoot, "metadata", "candidate-contracts");
+    }
+
+    // The legacy package index references machine-local cache paths, so it stays off the shared repository.
+    private static string DefaultLegacyIndexDirectory() => Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        "NISetupPrototype",
+        "candidate-contracts");
 
     private async Task LoadCandidateContractsAsync(string? selectedId = null)
     {

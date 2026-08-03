@@ -610,8 +610,93 @@
                                 <TextBlock Text="{Binding SelectedLegacyProduct.ProductKey}" Classes="muted" FontSize="11" TextWrapping="Wrap" />
                             </StackPanel>
                         </Border>
+                        <Border IsVisible="{Binding HasProductPreview}" Background="White" BorderBrush="#9CDACB" BorderThickness="1" CornerRadius="8" Padding="14">
+                            <StackPanel Spacing="13">
+                                <StackPanel Spacing="3">
+                                    <TextBlock Text="Repackaging preview" FontSize="15" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding SelectedProductPreview.Summary}" Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                                </StackPanel>
+
+                                <StackPanel Spacing="5">
+                                    <Grid ColumnDefinitions="150,*,Auto">
+                                        <TextBlock Text="Today: NIPM packages" Classes="muted" FontSize="12" VerticalAlignment="Center" />
+                                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="{Binding SelectedProductPreview.ArtifactBarMaximum}" Value="{Binding SelectedProductPreview.ArtifactBarMaximum}" Height="8" Foreground="#B9C4D6" Margin="8,0" />
+                                        <TextBlock Grid.Column="2" Text="{Binding SelectedProductPreview.LegacyPackageCount, StringFormat='{}{0} packages'}" FontSize="12" VerticalAlignment="Center" />
+                                    </Grid>
+                                    <Grid ColumnDefinitions="150,*,Auto">
+                                        <TextBlock Text="After repackaging" FontSize="12" Foreground="#005F4B" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="{Binding SelectedProductPreview.ArtifactBarMaximum}" Value="{Binding SelectedProductPreview.ProjectedInstallableCount}" Height="8" Foreground="#00B894" Margin="8,0" />
+                                        <TextBlock Grid.Column="2" Text="1 component" FontSize="12" Foreground="#005F4B" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                    </Grid>
+                                </StackPanel>
+
+                                <StackPanel Spacing="5" IsVisible="{Binding SelectedProductPreview.HasMeasuredSize}">
+                                    <Grid ColumnDefinitions="150,*,Auto">
+                                        <TextBlock Text="Today: source size" Classes="muted" FontSize="12" VerticalAlignment="Center" />
+                                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="{Binding SelectedProductPreview.SizeBarMaximum}" Value="{Binding SelectedProductPreview.SizeBarMaximum}" Height="8" Foreground="#B9C4D6" Margin="8,0" />
+                                        <TextBlock Grid.Column="2" Text="{Binding SelectedProductPreview.LegacySizeText}" FontSize="12" VerticalAlignment="Center" />
+                                    </Grid>
+                                    <Grid ColumnDefinitions="150,*,Auto">
+                                        <TextBlock Text="Estimated new size" FontSize="12" Foreground="#005F4B" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="{Binding SelectedProductPreview.SizeBarMaximum}" Value="{Binding SelectedProductPreview.ProjectedBarValue}" Height="8" Foreground="#00B894" Margin="8,0" />
+                                        <TextBlock Grid.Column="2" Text="{Binding SelectedProductPreview.ProjectedSizeText}" FontSize="12" Foreground="#005F4B" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                    </Grid>
+                                    <TextBlock Text="{Binding SelectedProductPreview.ReductionText}" FontSize="12" Foreground="#005F4B" HorizontalAlignment="Right" />
+                                </StackPanel>
+
+                                <ItemsControl ItemsSource="{Binding SelectedProductPreview.TopHighlights}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="Auto,*" Margin="0,1">
+                                                <TextBlock Text="&#8226;" Foreground="#00B894" Margin="0,0,7,0" />
+                                                <TextBlock Grid.Column="1" Text="{Binding}" FontSize="12" TextWrapping="Wrap" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <Expander Header="See the full findings and how this was estimated">
+                                    <StackPanel Margin="0,9,0,0" Spacing="11">
+                                        <TextBlock Text="{Binding SelectedProductPreview.EstimationBasis}" Classes="muted" FontSize="12" TextWrapping="Wrap" />
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                                            <StackPanel Spacing="2">
+                                                <TextBlock Text="Unique dependencies" Classes="muted" FontSize="11" />
+                                                <TextBlock Text="{Binding SelectedProductPreview.UniqueDependencyCount}" FontWeight="SemiBold" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Spacing="2">
+                                                <TextBlock Text="Shared prerequisites" Classes="muted" FontSize="11" />
+                                                <TextBlock Text="{Binding SelectedProductPreview.SharedPrerequisiteCount}" FontWeight="SemiBold" />
+                                            </StackPanel>
+                                        </Grid>
+                                        <TextBlock Text="Source artifacts" Classes="muted" FontSize="11" />
+                                        <ItemsControl ItemsSource="{Binding SelectedProductPreview.Breakdown}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid ColumnDefinitions="*,Auto,90" Margin="0,1">
+                                                        <TextBlock Text="{Binding Label}" FontSize="12" />
+                                                        <TextBlock Grid.Column="1" Text="{Binding Count}" FontSize="12" Margin="10,0" />
+                                                        <TextBlock Grid.Column="2" Text="{Binding SizeText}" FontSize="12" HorizontalAlignment="Right" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <TextBlock Text="What changes" Classes="muted" FontSize="11" />
+                                        <ItemsControl ItemsSource="{Binding SelectedProductPreview.Highlights}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid ColumnDefinitions="Auto,*" Margin="0,1">
+                                                        <TextBlock Text="&#8226;" Foreground="#00B894" Margin="0,0,7,0" />
+                                                        <TextBlock Grid.Column="1" Text="{Binding}" FontSize="12" TextWrapping="Wrap" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                        </Border>
                         <StackPanel Orientation="Horizontal" Spacing="12">
-                            <Button Classes="primary" Command="{Binding CreateCandidateFromSelectedPackageCommand}" IsEnabled="{Binding HasSelectedLegacyProduct}" Content="Create or refresh candidate contract" />
+                            <Button Classes="primary" Command="{Binding CreateCandidateFromSelectedPackageCommand}" IsEnabled="{Binding HasSelectedLegacyProduct}" Content="Approve repackaging &amp; create contract" />
                             <TextBlock Text="{Binding CandidateIntakeStatus}" Classes="muted" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" MaxWidth="500" />
                         </StackPanel>
                         <Expander Header="Use a nonstandard or mounted NIPM cache" FontWeight="SemiBold">
@@ -626,10 +711,18 @@
                     </StackPanel>
                 </Border>
 
+                <Border Classes="card">
+                    <StackPanel Spacing="9">
+                        <TextBlock Text="Component source output" FontSize="16" FontWeight="SemiBold" />
+                        <TextBlock Text="Cataloged product source files are written here. This is pre-populated with the mounted SMB prototype repository; change it to any writable local or mounted path." Classes="muted" FontSize="13" TextWrapping="Wrap" />
+                        <TextBox Text="{Binding CandidateOutputRoot}" MinHeight="38" PlaceholderText="/Volumes/Files/NISetupPrototypeRepository/metadata/candidate-contracts" />
+                    </StackPanel>
+                </Border>
+
                 <Grid ColumnDefinitions="280,*" ColumnSpacing="22">
                     <StackPanel Spacing="9">
                         <TextBlock Text="Candidate contracts" FontSize="16" FontWeight="SemiBold" />
-                        <TextBlock Text="Saved locally for iterative review." Classes="muted" FontSize="12" />
+                        <TextBlock Text="Written to the configured source output for iterative review." Classes="muted" FontSize="12" />
                         <ListBox ItemsSource="{Binding CandidateContracts}" SelectedItem="{Binding SelectedCandidate}" MinHeight="230">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
